@@ -1,0 +1,304 @@
+/* Projects Page Specific Styles */
+
+/* Filter Bar */
+.filter-bar {
+    margin-bottom: var(--spacing-6);
+    padding: var(--spacing-3) 0;
+    border-bottom: 1px solid var(--md-outline-variant);
+}
+
+.filter-chips {
+    display: flex;
+    gap: var(--spacing-2);
+    flex-wrap: wrap;
+}
+
+.filter-chip {
+    background-color: var(--md-surface-container);
+    color: var(--md-on-surface-variant);
+    border: 1px solid var(--md-outline-variant);
+    padding: var(--spacing-1) var(--spacing-3);
+    border-radius: var(--radius-full);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+}
+
+.filter-chip:hover {
+    background-color: var(--md-state-hover);
+    color: var(--md-on-surface);
+}
+
+.filter-chip.active {
+    background-color: var(--md-primary-container);
+    color: var(--md-on-primary-container);
+    border-color: var(--md-primary);
+}
+
+/* Project Gallery */
+.project-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: var(--spacing-4);
+}
+
+/* Project Cards */
+.project-card {
+    background-color: var(--md-surface-container);
+    border: 1px solid var(--md-outline-variant);
+    border-radius: var(--radius-large);
+    padding: var(--spacing-4);
+    transition: all 0.3s ease;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.project-card:hover {
+    box-shadow: var(--md-elevation-2);
+    transform: translateY(-4px);
+    border-color: var(--md-outline);
+}
+
+.project-card.hidden {
+    display: none;
+}
+
+.project-card.fade-out {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* Project Header */
+.project-header {
+    margin-bottom: var(--spacing-3);
+}
+
+.project-header h2 {
+    color: var(--md-on-surface);
+    margin-bottom: var(--spacing-1);
+}
+
+.project-meta {
+    display: flex;
+    gap: var(--spacing-2);
+    align-items: center;
+}
+
+.project-date {
+    background-color: var(--md-primary-container);
+    color: var(--md-on-primary-container);
+    padding: 4px var(--spacing-2);
+    border-radius: var(--radius-medium);
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.project-type {
+    color: var(--md-on-surface-variant);
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Project Description */
+.project-description {
+    margin-bottom: var(--spacing-4);
+}
+
+.project-description p {
+    color: var(--md-on-surface-variant);
+    margin-bottom: var(--spacing-3);
+}
+
+.project-achievements {
+    list-style: none;
+    padding: 0;
+}
+
+.project-achievements li {
+    color: var(--md-on-surface);
+    margin-bottom: var(--spacing-1);
+    padding-left: var(--spacing-2);
+    position: relative;
+}
+
+.project-achievements li::before {
+    content: '•';
+    color: var(--md-primary);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+/* Technology Stack */
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-1);
+    margin-bottom: var(--spacing-3);
+}
+
+.tech-chip {
+    background-color: var(--md-surface-container-high);
+    color: var(--md-on-surface);
+    padding: 4px var(--spacing-2);
+    border-radius: var(--radius-medium);
+    font-size: 12px;
+    font-weight: 500;
+    border: 1px solid var(--md-outline-variant);
+}
+
+/* Project Actions */
+.project-actions {
+    display: flex;
+    gap: var(--spacing-2);
+    flex-wrap: wrap;
+}
+
+.project-actions .btn-text {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-1);
+    padding: var(--spacing-1) var(--spacing-2);
+    border-radius: var(--radius-medium);
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.project-actions .btn-text:hover {
+    background-color: var(--md-state-hover);
+    transform: translateY(-1px);
+}
+
+.project-actions .material-symbols-outlined {
+    font-size: 18px;
+}
+
+/* Animation for filtering */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.project-card.visible {
+    animation: fadeIn 0.4s ease forwards;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .project-gallery {
+        grid-template-columns: 1fr;
+    }
+    
+    .filter-chips {
+        justify-content: center;
+    }
+    
+    .project-actions {
+        flex-direction: column;
+    }
+    
+    .project-actions .btn-text {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .project-card {
+        padding: var(--spacing-3);
+    }
+    
+    .project-tech {
+        gap: 6px;
+    }
+    
+    .tech-chip {
+        font-size: 11px;
+        padding: 3px var(--spacing-1);
+    }
+}
+
+/* Loading state for projects */
+.project-card.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.project-card.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid var(--md-outline-variant);
+    border-top: 2px solid var(--md-primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Empty state */
+.project-gallery.empty {
+    text-align: center;
+    padding: var(--spacing-8) 0;
+}
+
+.project-gallery.empty::after {
+    content: 'No projects found for the selected category.';
+    color: var(--md-on-surface-variant);
+    font-size: 16px;
+    display: block;
+    margin-top: var(--spacing-4);
+}
+
+/* Hover effects for better interactivity */
+.project-card:hover .project-header h2 {
+    color: var(--md-primary);
+}
+
+.project-card:hover .tech-chip {
+    border-color: var(--md-primary);
+    background-color: var(--md-primary-container);
+    color: var(--md-on-primary-container);
+}
+
+/* Focus states for accessibility */
+.filter-chip:focus,
+.project-card:focus-within {
+    outline: 2px solid var(--md-primary);
+    outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+    .filter-bar,
+    .project-actions {
+        display: none;
+    }
+    
+    .project-gallery {
+        grid-template-columns: 1fr;
+    }
+    
+    .project-card {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+} 

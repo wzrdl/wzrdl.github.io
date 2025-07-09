@@ -1,0 +1,469 @@
+/* Papers Page Specific Styles */
+
+/* Publications Overview */
+.publications-overview {
+    margin-bottom: var(--spacing-6);
+    text-align: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.publications-overview p {
+    color: var(--md-on-surface-variant);
+}
+
+/* Publications List */
+.publications-list {
+    margin-bottom: var(--spacing-8);
+}
+
+/* Publication Cards */
+.publication-card {
+    background-color: var(--md-surface-container);
+    border: 1px solid var(--md-outline-variant);
+    border-radius: var(--radius-large);
+    padding: var(--spacing-4);
+    margin-bottom: var(--spacing-4);
+    transition: all 0.3s ease;
+}
+
+.publication-card:hover {
+    box-shadow: var(--md-elevation-2);
+    transform: translateY(-2px);
+    border-color: var(--md-outline);
+}
+
+/* Publication Header */
+.publication-header {
+    margin-bottom: var(--spacing-2);
+}
+
+.publication-header h2 {
+    color: var(--md-on-surface);
+    margin-bottom: var(--spacing-1);
+    line-height: 1.3;
+}
+
+.publication-meta {
+    display: flex;
+    gap: var(--spacing-2);
+    align-items: center;
+}
+
+.publication-type {
+    background-color: var(--md-primary-container);
+    color: var(--md-on-primary-container);
+    padding: 4px var(--spacing-2);
+    border-radius: var(--radius-medium);
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.publication-year {
+    color: var(--md-on-surface-variant);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Publication Authors */
+.publication-authors {
+    margin-bottom: var(--spacing-2);
+    font-size: 16px;
+    color: var(--md-on-surface);
+}
+
+.author.primary {
+    color: var(--md-primary);
+    font-weight: 600;
+}
+
+/* Publication Venue */
+.publication-venue {
+    margin-bottom: var(--spacing-2);
+    color: var(--md-on-surface-variant);
+    font-size: 14px;
+}
+
+/* Publication Details */
+.publication-details {
+    display: flex;
+    gap: var(--spacing-2);
+    margin-bottom: var(--spacing-3);
+    flex-wrap: wrap;
+}
+
+.volume,
+.publisher,
+.pages,
+.status,
+.institution {
+    color: var(--md-on-surface-variant);
+    font-size: 14px;
+}
+
+.status {
+    background-color: var(--md-surface-container-high);
+    padding: 4px var(--spacing-2);
+    border-radius: var(--radius-medium);
+    font-weight: 500;
+}
+
+/* Publication Abstract */
+.publication-abstract {
+    margin-bottom: var(--spacing-3);
+    padding: var(--spacing-3);
+    background-color: var(--md-surface);
+    border-radius: var(--radius-medium);
+    border-left: 4px solid var(--md-primary);
+}
+
+.publication-abstract p {
+    color: var(--md-on-surface);
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Publication Actions */
+.publication-actions {
+    display: flex;
+    gap: var(--spacing-2);
+    margin-bottom: var(--spacing-3);
+    flex-wrap: wrap;
+}
+
+.publication-actions .btn-text {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-1);
+    padding: var(--spacing-1) var(--spacing-2);
+    border-radius: var(--radius-medium);
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.publication-actions .btn-text:hover {
+    background-color: var(--md-state-hover);
+    transform: translateY(-1px);
+}
+
+.publication-actions .material-symbols-outlined {
+    font-size: 18px;
+}
+
+/* Publication Keywords */
+.publication-keywords {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-1);
+}
+
+.keyword {
+    background-color: var(--md-surface-container-high);
+    color: var(--md-on-surface);
+    padding: 4px var(--spacing-2);
+    border-radius: var(--radius-medium);
+    font-size: 12px;
+    font-weight: 500;
+    border: 1px solid var(--md-outline-variant);
+}
+
+/* Research Areas */
+.research-areas {
+    margin-bottom: var(--spacing-8);
+}
+
+.research-areas h2 {
+    color: var(--md-on-surface);
+    margin-bottom: var(--spacing-4);
+}
+
+.research-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-4);
+}
+
+/* Research Area Cards */
+.research-area-card {
+    background-color: var(--md-surface-container);
+    border: 1px solid var(--md-outline-variant);
+    border-radius: var(--radius-large);
+    padding: var(--spacing-4);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.research-area-card:hover {
+    box-shadow: var(--md-elevation-2);
+    transform: translateY(-2px);
+    border-color: var(--md-outline);
+}
+
+.research-icon {
+    width: 64px;
+    height: 64px;
+    background-color: var(--md-primary-container);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--spacing-3);
+}
+
+.research-icon .material-symbols-outlined {
+    font-size: 32px;
+    color: var(--md-on-primary-container);
+}
+
+.research-area-card h3 {
+    color: var(--md-on-surface);
+    margin-bottom: var(--spacing-2);
+}
+
+.research-area-card p {
+    color: var(--md-on-surface-variant);
+    line-height: 1.6;
+}
+
+/* Citation Metrics */
+.citation-metrics {
+    margin-bottom: var(--spacing-8);
+}
+
+.citation-metrics h2 {
+    color: var(--md-on-surface);
+    margin-bottom: var(--spacing-4);
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-4);
+}
+
+/* Metric Cards */
+.metric-card {
+    background-color: var(--md-surface-container);
+    border: 1px solid var(--md-outline-variant);
+    border-radius: var(--radius-large);
+    padding: var(--spacing-4);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.metric-card:hover {
+    box-shadow: var(--md-elevation-2);
+    transform: translateY(-2px);
+    border-color: var(--md-outline);
+}
+
+.metric-number {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--md-primary);
+    line-height: 1;
+    margin-bottom: var(--spacing-1);
+}
+
+.metric-label {
+    font-size: 14px;
+    color: var(--md-on-surface-variant);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Animation for publication cards */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.publication-card {
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
+}
+
+.publication-card:nth-child(1) { animation-delay: 0.1s; }
+.publication-card:nth-child(2) { animation-delay: 0.2s; }
+.publication-card:nth-child(3) { animation-delay: 0.3s; }
+
+/* Animation for research areas */
+.research-area-card {
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
+}
+
+.research-area-card:nth-child(1) { animation-delay: 0.1s; }
+.research-area-card:nth-child(2) { animation-delay: 0.2s; }
+.research-area-card:nth-child(3) { animation-delay: 0.3s; }
+
+/* Animation for metrics */
+.metric-card {
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
+}
+
+.metric-card:nth-child(1) { animation-delay: 0.1s; }
+.metric-card:nth-child(2) { animation-delay: 0.2s; }
+.metric-card:nth-child(3) { animation-delay: 0.3s; }
+.metric-card:nth-child(4) { animation-delay: 0.4s; }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .publication-details {
+        flex-direction: column;
+        gap: var(--spacing-1);
+    }
+    
+    .publication-actions {
+        flex-direction: column;
+    }
+    
+    .publication-actions .btn-text {
+        justify-content: center;
+    }
+    
+    .research-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .publication-card {
+        padding: var(--spacing-3);
+    }
+    
+    .publication-abstract {
+        padding: var(--spacing-2);
+    }
+    
+    .metrics-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .metric-number {
+        font-size: 28px;
+    }
+}
+
+/* Print styles */
+@media print {
+    .publication-card {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+    
+    .publication-actions {
+        display: none;
+    }
+    
+    .research-area-card,
+    .metric-card {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+}
+
+/* Hover effects */
+.publication-card:hover .publication-header h2 {
+    color: var(--md-primary);
+}
+
+.research-area-card:hover .research-icon {
+    background-color: var(--md-primary);
+    transform: scale(1.05);
+}
+
+.research-area-card:hover .research-icon .material-symbols-outlined {
+    color: var(--md-on-primary);
+}
+
+.keyword:hover {
+    border-color: var(--md-primary);
+    background-color: var(--md-primary-container);
+    color: var(--md-on-primary-container);
+}
+
+/* Focus states for accessibility */
+.publication-card:focus-within,
+.research-area-card:focus-within,
+.metric-card:focus-within {
+    outline: 2px solid var(--md-primary);
+    outline-offset: 2px;
+}
+
+/* Citation count indicator */
+.publication-card[data-citations]::before {
+    content: attr(data-citations) ' citations';
+    position: absolute;
+    top: var(--spacing-2);
+    right: var(--spacing-2);
+    background-color: var(--md-primary-container);
+    color: var(--md-on-primary-container);
+    padding: 4px var(--spacing-2);
+    border-radius: var(--radius-medium);
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.publication-card {
+    position: relative;
+}
+
+/* Publication status indicators */
+.publication-card[data-status="published"] {
+    border-left: 4px solid #4caf50;
+}
+
+.publication-card[data-status="in-progress"] {
+    border-left: 4px solid #ff9800;
+}
+
+.publication-card[data-status="under-review"] {
+    border-left: 4px solid #2196f3;
+}
+
+/* Abstract expand/collapse functionality */
+.publication-abstract.collapsed {
+    max-height: 60px;
+    overflow: hidden;
+    position: relative;
+}
+
+.publication-abstract.collapsed::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background: linear-gradient(transparent, var(--md-surface));
+}
+
+.publication-abstract.expandable {
+    cursor: pointer;
+}
+
+.publication-abstract.expandable::before {
+    content: 'Click to expand';
+    position: absolute;
+    top: var(--spacing-1);
+    right: var(--spacing-1);
+    font-size: 12px;
+    color: var(--md-primary);
+    font-weight: 500;
+} 

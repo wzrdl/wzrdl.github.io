@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found - Zirui Wen</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        .error-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+            padding: var(--spacing-4);
+        }
+        
+        .error-code {
+            font-size: 120px;
+            font-weight: 700;
+            color: var(--md-primary);
+            margin-bottom: var(--spacing-2);
+        }
+        
+        .error-message {
+            font-size: 24px;
+            color: var(--md-on-surface);
+            margin-bottom: var(--spacing-3);
+        }
+        
+        .error-description {
+            font-size: 16px;
+            color: var(--md-on-surface-variant);
+            margin-bottom: var(--spacing-4);
+            max-width: 500px;
+        }
+        
+        .error-actions {
+            display: flex;
+            gap: var(--spacing-2);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        @media (max-width: 768px) {
+            .error-code {
+                font-size: 80px;
+            }
+            
+            .error-message {
+                font-size: 20px;
+            }
+            
+            .error-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="error-code">404</div>
+        <h1 class="error-message">Page Not Found</h1>
+        <p class="error-description">
+            The page you're looking for doesn't exist. It might have been moved, deleted, or you entered the wrong URL.
+        </p>
+        <div class="error-actions">
+            <a href="index.html" class="btn-filled">
+                <span class="material-symbols-outlined">home</span>
+                Go Home
+            </a>
+            <a href="projects.html" class="btn-outlined">
+                <span class="material-symbols-outlined">work</span>
+                View Projects
+            </a>
+        </div>
+    </div>
+    
+    <script src="scripts/main.js"></script>
+</body>
+</html> 
