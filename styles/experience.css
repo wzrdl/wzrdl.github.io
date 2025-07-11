@@ -8,18 +8,19 @@
 /* Timeline */
 .timeline {
     position: relative;
-    padding-left: var(--spacing-6);
+    padding-left: 72px; /* 适中内边距 */
     margin-top: var(--spacing-4);
 }
 
 .timeline::before {
     content: '';
     position: absolute;
-    left: 20px;
+    left: 32px; /* 竖线居中 */
     top: 0;
     bottom: 0;
     width: 2px;
     background: linear-gradient(to bottom, var(--md-primary), var(--md-outline-variant));
+    z-index: 0;
 }
 
 /* Timeline Items */
@@ -30,7 +31,7 @@
 
 .timeline-marker {
     position: absolute;
-    left: -32px;
+    left: 28px; /* icon更精确居中于竖线和卡片之间 */
     top: 0;
     width: 40px;
     height: 40px;
@@ -41,6 +42,7 @@
     align-items: center;
     justify-content: center;
     z-index: 2;
+    transition: background 0.2s, border 0.2s, color 0.2s, box-shadow 0.2s;
 }
 
 .timeline-marker.current {
@@ -484,9 +486,73 @@
 }
 
 /* Focus states for accessibility */
-.timeline-item:focus-within,
-.education-card:focus-within,
-.certification-card:focus-within {
+/* 只在 body 有 .keyboard-navigation 类时才显示 outline */
+.keyboard-navigation .timeline-item:focus-within,
+.keyboard-navigation .experience-card:focus-within,
+.keyboard-navigation .certification-card:focus-within {
     outline: 2px solid var(--md-primary);
     outline-offset: 2px;
+}
+
+/* 默认不显示 outline */
+.timeline-item:focus-within,
+.experience-card:focus-within,
+.certification-card:focus-within {
+    outline: none !important;
+}
+
+/* Show More/Less 按钮左对齐 */
+.expand-button.btn-text {
+    display: flex;
+    align-items: center;
+    margin-left: 0;
+    margin-top: 8px;
+    padding-left: 0;
+    outline: none !important;
+    box-shadow: none !important;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+.expand-button.btn-text:focus,
+.expand-button.btn-text:active,
+.expand-button.btn-text:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+}
+.expand-button.btn-text::-moz-focus-inner {
+    border: 0 !important;
+}
+
+/* 阻止experience-card因按钮点击而获得:focus-within高亮 */
+.experience-card:focus-within {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* 修复多余竖线：只保留.timeline::before主竖线，js动态添加的.timeline-progress建议移除或隐藏 */
+.timeline-progress {
+    display: none !important;
+}
+
+/* 鼠标悬停高亮icon */
+.timeline-item:hover .timeline-marker,
+.timeline-item:focus-within .timeline-marker {
+    background-color: var(--md-primary);
+    border-color: var(--md-primary);
+    color: var(--md-on-primary);
+    box-shadow: 0 2px 8px rgba(11,87,208,0.15);
+    transition: background 0.2s, border 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.timeline-marker {
+    transition: background 0.2s, border 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+/* 保证当前项高亮优先级最高 */
+.timeline-item .timeline-marker.current,
+.timeline-item:hover .timeline-marker.current {
+    background-color: var(--md-primary);
+    border-color: var(--md-primary);
+    color: var(--md-on-primary);
+    box-shadow: 0 2px 8px rgba(11,87,208,0.15);
 } 

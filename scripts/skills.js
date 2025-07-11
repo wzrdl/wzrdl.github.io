@@ -266,13 +266,17 @@ function showSkillDetails(skillName) {
         }
         
         .modal-overlay {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
             background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
         }
         
         .modal-content {
@@ -284,8 +288,11 @@ function showSkillDetails(skillName) {
             max-height: 80vh;
             overflow-y: auto;
             position: relative;
-            z-index: 1;
+            z-index: 10001;
             box-shadow: var(--md-elevation-3);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
         }
         
         .modal-header {
