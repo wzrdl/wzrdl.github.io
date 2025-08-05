@@ -1,16 +1,23 @@
 // Projects Page JavaScript
 
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('Projects page loading...');
+    
     // Filter functionality
     const filterChips = document.querySelectorAll('.filter-chip');
-    const projectCards = document.querySelectorAll('.project-card');
+    const projectCards = document.querySelectorAll('.square-card');
     const projectGallery = document.querySelector('.project-gallery');
+    
+    console.log('Found filter chips:', filterChips.length);
+    console.log('Found project cards:', projectCards.length);
+    console.log('Found project gallery:', projectGallery);
 
     // Initialize filtering
     function initFiltering() {
         filterChips.forEach(chip => {
             chip.addEventListener('click', function() {
                 const filter = this.getAttribute('data-filter');
+                console.log('Filter clicked:', filter);
                 
                 // Update active chip
                 filterChips.forEach(c => c.classList.remove('active'));
@@ -24,87 +31,32 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Filter projects based on category
     function filterProjects(category) {
+        console.log('Filtering by category:', category);
         let visibleCount = 0;
         
         projectCards.forEach(card => {
             const categories = card.getAttribute('data-categories').split(',');
             const isVisible = category === 'all' || categories.includes(category);
             
+            console.log('Card categories:', categories, 'Visible:', isVisible);
+            
             if (isVisible) {
-                card.classList.remove('hidden', 'fade-out');
-                card.classList.add('visible');
+                card.style.display = 'block';
+                card.classList.remove('hidden');
                 visibleCount++;
             } else {
-                card.classList.add('fade-out');
-                setTimeout(() => {
-                    card.classList.add('hidden');
-                }, 300);
+                card.style.display = 'none';
+                card.classList.add('hidden');
             }
         });
         
-        // Update gallery state
-        if (visibleCount === 0) {
-            projectGallery.classList.add('empty');
-        } else {
-            projectGallery.classList.remove('empty');
-        }
-        
-        // Add animation delay for visible cards
-        const visibleCards = document.querySelectorAll('.project-card:not(.hidden)');
-        visibleCards.forEach((card, index) => {
-            card.style.animationDelay = `${index * 0.1}s`;
-        });
+        console.log('Visible projects:', visibleCount);
     }
 
     // Initialize filtering
     initFiltering();
 
-    // Add search functionality
-    function addSearchFunctionality() {
-        const searchInput = document.createElement('input');
-        searchInput.type = 'text';
-        searchInput.placeholder = 'Search projects...';
-        searchInput.className = 'search-input';
-        
-        const searchContainer = document.createElement('div');
-        searchContainer.className = 'search-container';
-        searchContainer.appendChild(searchInput);
-        
-        const filterBar = document.querySelector('.filter-bar');
-        filterBar.appendChild(searchContainer);
-        
-        // Search functionality
-        searchInput.addEventListener('input', function() {
-            const searchTerm = this.value.toLowerCase();
-            
-            projectCards.forEach(card => {
-                const title = card.querySelector('h2').textContent.toLowerCase();
-                const description = card.querySelector('p').textContent.toLowerCase();
-                const tech = Array.from(card.querySelectorAll('.tech-chip'))
-                    .map(chip => chip.textContent.toLowerCase())
-                    .join(' ');
-                
-                const matches = title.includes(searchTerm) || 
-                              description.includes(searchTerm) || 
-                              tech.includes(searchTerm);
-                
-                if (matches) {
-                    card.classList.remove('hidden', 'fade-out');
-                    card.classList.add('visible');
-                } else {
-                    card.classList.add('fade-out');
-                    setTimeout(() => {
-                        card.classList.add('hidden');
-                    }, 300);
-                }
-            });
-        });
-    }
-
-    // Add search functionality
-    addSearchFunctionality();
-
-    // Add project card interactions
+    // Add project card interactions with expand/collapse functionality
     function addProjectInteractions() {
         projectCards.forEach(card => {
             // Add click to expand functionality
@@ -113,12 +65,32 @@ document.addEventListener('DOMContentLoaded', function() {
             
             if (header && description) {
                 header.style.cursor = 'pointer';
+                console.log('Adding expand functionality to card');
                 
-                header.addEventListener('click', function() {
-                    description.style.maxHeight = 
-                        description.style.maxHeight ? null : description.scrollHeight + 'px';
-                    card.classList.toggle('expanded');
+                header.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('Header clicked, expanding/collapsing');
+                    
+                    // Check if this card is already expanded
+                    const isExpanded = card.classList.contains('expanded');
+                    
+                    // First, collapse all other cards
+                    projectCards.forEach(otherCard => {
+                        if (otherCard !== card) {
+                            collapseCard(otherCard);
+                        }
+                    });
+                    
+                    // Then toggle this card
+                    if (isExpanded) {
+                        collapseCard(card);
+                    } else {
+                        expandCard(card);
+                    }
                 });
+            } else {
+                console.log('Header or description not found for card');
             }
             
             // Add hover effects for tech chips
@@ -133,6 +105,42 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             });
         });
+    }
+
+    // 移除FLIP动画相关函数
+
+    // Function to expand a card
+    function expandCard(card) {
+        const description = card.querySelector('.project-description');
+        const projectGallery = document.querySelector('.project-gallery');
+        
+        card.classList.add('expanded');
+        description.style.maxHeight = 'none';
+        description.style.opacity = '1';
+        
+        // Move expanded card to the top-left position
+        if (projectGallery && projectGallery.firstChild !== card) {
+            projectGallery.insertBefore(card, projectGallery.firstChild);
+        }
+    }
+
+    // Function to collapse a card
+    function collapseCard(card) {
+        const description = card.querySelector('.project-description');
+        const projectGallery = document.querySelector('.project-gallery');
+        
+        card.classList.remove('expanded');
+        description.style.maxHeight = '120px';
+        description.style.opacity = '0.8';
+        
+        // Restore original order when collapsing
+        const cardsArray = Array.from(projectGallery.children);
+        cardsArray.sort((a, b) => {
+            return parseInt(a.getAttribute('data-original-index') || '0') - parseInt(b.getAttribute('data-original-index') || '0');
+        });
+        cardsArray.forEach(cardEl => projectGallery.appendChild(cardEl));
+        
+        console.log('Card collapsed');
     }
 
     // Add project interactions
@@ -155,164 +163,19 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add keyboard navigation
     addKeyboardNavigation();
 
-    // Add project statistics
-    function addProjectStats() {
-        const statsContainer = document.createElement('div');
-        statsContainer.className = 'project-stats';
-        
-        const totalProjects = projectCards.length;
-        const categories = {};
-        
-        projectCards.forEach(card => {
-            const cardCategories = card.getAttribute('data-categories').split(',');
-            cardCategories.forEach(cat => {
-                categories[cat] = (categories[cat] || 0) + 1;
-            });
-        });
-        
-        statsContainer.innerHTML = `
-            <div class="stat-item">
-                <span class="stat-number">${totalProjects}</span>
-                <span class="stat-label">Total Projects</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number">${Object.keys(categories).length}</span>
-                <span class="stat-label">Categories</span>
-            </div>
-        `;
-        
-        const filterBar = document.querySelector('.filter-bar');
-        filterBar.appendChild(statsContainer);
-    }
-
-    // Add project statistics
-    addProjectStats();
-
-    // Add CSS for new elements
+    // Add minimal CSS for functionality
     const additionalStyles = document.createElement('style');
     additionalStyles.textContent = `
-        .search-container {
-            margin-top: var(--spacing-3);
-        }
-        
-        .search-input {
-            width: 100%;
-            max-width: 300px;
-            padding: var(--spacing-2);
-            border: 1px solid var(--md-outline-variant);
-            border-radius: var(--radius-medium);
-            font-size: 14px;
-            background-color: var(--md-surface);
-            color: var(--md-on-surface);
-            transition: border-color 0.2s ease;
-        }
-        
-        .search-input:focus {
-            outline: none;
-            border-color: var(--md-primary);
-        }
-        
-        .project-stats {
-            display: flex;
-            gap: var(--spacing-4);
-            margin-top: var(--spacing-3);
-            padding-top: var(--spacing-3);
-            border-top: 1px solid var(--md-outline-variant);
-        }
-        
-        .stat-item {
-            text-align: center;
-        }
-        
-        .stat-number {
-            display: block;
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--md-primary);
-        }
-        
-        .stat-label {
-            font-size: 12px;
-            color: var(--md-on-surface-variant);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .project-card.expanded .project-description {
-            max-height: none;
-        }
-        
-        .project-description {
-            max-height: 120px;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-        
-        @media (max-width: 768px) {
-            .project-stats {
-                justify-content: center;
-            }
-            
-            .search-input {
-                max-width: 100%;
-            }
+        .hidden {
+            display: none !important;
         }
     `;
     document.head.appendChild(additionalStyles);
 
-    // Add intersection observer for lazy loading
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '50px'
-    };
-
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, observerOptions);
-
-    // Observe project cards
-    projectCards.forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(card);
+    // Set original index for each card to restore order when collapsing
+    projectCards.forEach((card, idx) => {
+        card.setAttribute('data-original-index', idx);
     });
-
-    // Add URL hash navigation
-    function handleHashNavigation() {
-        const hash = window.location.hash.substring(1);
-        if (hash) {
-            const targetCard = document.getElementById(hash);
-            if (targetCard) {
-                setTimeout(() => {
-                    targetCard.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                    targetCard.style.animation = 'pulse 1s ease';
-                }, 500);
-            }
-        }
-    }
-
-    // Handle hash navigation
-    handleHashNavigation();
-
-    // Add pulse animation for hash navigation
-    const pulseStyle = document.createElement('style');
-    pulseStyle.textContent = `
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(11, 87, 208, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(11, 87, 208, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(11, 87, 208, 0); }
-        }
-    `;
-    document.head.appendChild(pulseStyle);
 
     console.log('Projects page initialized successfully!');
 }); 

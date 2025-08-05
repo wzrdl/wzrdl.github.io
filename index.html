@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
@@ -129,62 +129,151 @@
             </div>
         </section>
 
-        <!-- Featured Projects Section -->
+        <!-- Featured Projects Grid -->
         <section class="featured-projects">
             <h2 class="title-large">Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card elevated">
-                    <h3 class="title-large">Automatic Prompt Optimization</h3>
-                    <p class="body-medium">Designed a system using text-based gradient descent to automatically optimize medical prompts, improving LLM performance by 20%.</p>
-                    <a href="projects.html#prompt-optimization" class="btn-text">Learn More →</a>
+            <div class="square-grid">
+                <div class="square-card">
+                    <div class="card-content">
+                        <h3 class="title-large">Automatic Prompt Optimization</h3>
+                        <p class="body-medium">Designed a system using text-based gradient descent to automatically optimize medical prompts, improving LLM performance by 20%.</p>
+                        <div class="card-actions">
+                            <a href="projects.html#prompt-optimization" class="btn-text">Learn More →</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="project-card elevated">
-                    <h3 class="title-large">Liar's Bar: Bayesian Reinforcement Learning</h3>
-                    <p class="body-medium">Implemented Bayesian reinforcement learning algorithms for strategic decision-making in competitive environments.</p>
-                    <a href="projects.html#liars-bar" class="btn-text">Learn More →</a>
+                <div class="square-card">
+                    <div class="card-content">
+                        <h3 class="title-large">Liar's Bar: Bayesian RL</h3>
+                        <p class="body-medium">Implemented Bayesian reinforcement learning algorithms for strategic decision-making.</p>
+                        <div class="card-actions">
+                            <a href="projects.html#liars-bar" class="btn-text">Learn More →</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="project-card elevated">
-                    <h3 class="title-large">Apex Legend AI Aimbot</h3>
-                    <p class="body-medium">Developed computer vision-based AI system for real-time game analysis and strategic assistance.</p>
-                    <a href="projects.html#apex-ai" class="btn-text">Learn More →</a>
+                <div class="square-card">
+                    <div class="card-content">
+                        <h3 class="title-large">Apex Legend AI</h3>
+                        <p class="body-medium">Developed computer vision-based AI system for real-time game analysis.</p>
+                        <div class="card-actions">
+                            <a href="projects.html#apex-ai" class="btn-text">Learn More →</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="square-card">
+                    <div class="card-content">
+                        <h3 class="title-large">E-commerce Recommendation</h3>
+                        <p class="body-medium">Built personalized recommendation system using collaborative filtering.</p>
+                        <div class="card-actions">
+                            <a href="projects.html#recommendation-system" class="btn-text">Learn More →</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- What I Do Section -->
-        <section class="what-i-do">
-            <h2 class="title-large">What I Do</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <span class="material-symbols-outlined">smart_toy</span>
+        <!-- Expertise Grid -->
+        <section class="expertise-section">
+            <h2 class="title-large">Areas of Expertise</h2>
+            <div class="square-grid">
+                <div class="square-card">
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <span class="material-symbols-outlined">smart_toy</span>
+                        </div>
+                        <h3 class="title-large">AI & Machine Learning</h3>
+                        <p class="body-medium">LLMs, RAG systems, reinforcement learning algorithms, and intelligent systems.</p>
                     </div>
-                    <h3 class="title-large">AI & Machine Learning</h3>
-                    <p class="body-large">Specializing in LLMs, RAG systems, and reinforcement learning algorithms. Building intelligent systems that learn and adapt.</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <span class="material-symbols-outlined">storage</span>
+                <div class="square-card">
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <span class="material-symbols-outlined">storage</span>
+                        </div>
+                        <h3 class="title-large">Backend & Data</h3>
+                        <p class="body-medium">Scalable backends with Flask, FastAPI, Spring Boot, and data management.</p>
                     </div>
-                    <h3 class="title-large">Backend & Data</h3>
-                    <p class="body-large">Building scalable backends with Flask, FastAPI, and Spring Boot. Managing data with MongoDB, PostgreSQL, and Redis.</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <span class="material-symbols-outlined">web</span>
+                <div class="square-card">
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <span class="material-symbols-outlined">web</span>
+                        </div>
+                        <h3 class="title-large">Frontend & UI</h3>
+                        <p class="body-medium">Interactive frontends with React, Next.js, and modern web technologies.</p>
                     </div>
-                    <h3 class="title-large">Frontend & UI</h3>
-                    <p class="body-large">Creating interactive frontends with React and Next.js. Designing intuitive user experiences with modern web technologies.</p>
+                </div>
+                <div class="square-card">
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <span class="material-symbols-outlined">analytics</span>
+                        </div>
+                        <h3 class="title-large">Data Science</h3>
+                        <p class="body-medium">Statistical modeling, time series analysis, and predictive analytics.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Highlights -->
+        <section class="research-highlights">
+            <h2 class="title-large">Research Highlights</h2>
+            <div class="square-grid">
+                <div class="square-card">
+                    <div class="card-content">
+                        <h3 class="title-large">Large Language Model Optimization</h3>
+                        <p class="body-medium">Enhanced LLM performance through integration of RAG and knowledge graphs (Neo4j, LangChain, FAISS). Achieved 20% improvement in medical prompt optimization.</p>
+                        <div class="research-stats">
+                            <div class="stat">
+                                <span class="stat-number">20%</span>
+                                <span class="stat-label">Performance Improvement</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">3</span>
+                                <span class="stat-label">Technologies Integrated</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="square-card">
+                    <div class="card-content">
+                        <h3 class="title-large">Bayesian Reinforcement Learning</h3>
+                        <p class="body-medium">Implemented Bayesian Q-learning algorithms for uncertain environments with Thompson sampling.</p>
+                        <div class="research-stats">
+                            <div class="stat">
+                                <span class="stat-number">15%</span>
+                                <span class="stat-label">Decision Accuracy</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="square-card">
+                    <div class="card-content">
+                        <h3 class="title-large">Computer Vision AI</h3>
+                        <p class="body-medium">Real-time object detection using YOLO and OpenCV with 95% accuracy and <50ms latency.</p>
+                        <div class="research-stats">
+                            <div class="stat">
+                                <span class="stat-number">95%</span>
+                                <span class="stat-label">Accuracy</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Call to Action -->
         <section class="cta-section">
-            <p class="body-large">Want to learn more about my work or see my complete technical skills?</p>
-            <div class="cta-actions">
-                <a href="projects.html" class="btn-filled">View All Projects</a>
-                <a href="skills.html" class="btn-outlined">See My Skills</a>
+            <div class="square-card">
+                <div class="card-content">
+                    <h2 class="title-large">Ready to Collaborate?</h2>
+                    <p class="body-large">I'm always interested in new opportunities and collaborations. Let's discuss how we can work together on your next project.</p>
+                    <div class="cta-actions">
+                        <a href="projects.html" class="btn-filled">View All Projects</a>
+                        <a href="skills.html" class="btn-outlined">See My Skills</a>
+                        <a href="mailto:zirui.wen@stevens.edu" class="btn-text">Get in Touch</a>
+                    </div>
+                </div>
             </div>
         </section>
     </main>

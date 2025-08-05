@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="styles/skills.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
@@ -90,190 +90,196 @@
 
     <!-- Main Content -->
     <main class="main-content">
-        <h1 class="headline-large">Technical Skills</h1>
+        <div class="skills-container">
+            <h1 class="headline-large">Technical Skills</h1>
         
         <!-- Skills Overview -->
         <section class="skills-overview">
             <p class="body-large">A comprehensive overview of my technical expertise across various domains, from programming languages to cutting-edge AI technologies.</p>
         </section>
 
-        <!-- Programming Languages -->
-        <section class="skill-category">
-            <div class="category-header">
-                <div class="category-icon">
-                    <span class="material-symbols-outlined">code</span>
+        <!-- Skills Grid -->
+        <div class="square-grid">
+            <!-- Programming Languages -->
+            <div class="square-card">
+                <div class="card-content">
+                    <div class="card-icon">
+                        <span class="material-symbols-outlined">code</span>
+                    </div>
+                    <h2 class="title-large">Programming Languages</h2>
+                    <div class="skills-list">
+                        <div class="skill-chip primary">Python</div>
+                        <div class="skill-chip primary">C++</div>
+                        <div class="skill-chip primary">Java</div>
+                        <div class="skill-chip primary">JavaScript</div>
+                        <div class="skill-chip primary">TypeScript</div>
+                        <div class="skill-chip">HTML</div>
+                        <div class="skill-chip">CSS</div>
+                        <div class="skill-chip">SQL</div>
+                        <div class="skill-chip">R</div>
+                    </div>
                 </div>
-                <h2 class="title-large">Programming Languages</h2>
             </div>
-            <div class="skills-grid">
-                <div class="skill-chip primary">Python</div>
-                <div class="skill-chip primary">C++</div>
-                <div class="skill-chip primary">Java</div>
-                <div class="skill-chip primary">JavaScript</div>
-                <div class="skill-chip primary">TypeScript</div>
-                <div class="skill-chip">HTML</div>
-                <div class="skill-chip">CSS</div>
-                <div class="skill-chip">SQL</div>
-                <div class="skill-chip">R</div>
-            </div>
-        </section>
 
-        <!-- AI & Machine Learning -->
-        <section class="skill-category">
-            <div class="category-header">
-                <div class="category-icon">
-                    <span class="material-symbols-outlined">smart_toy</span>
+            <!-- AI & Machine Learning -->
+            <div class="square-card">
+                <div class="card-content">
+                    <div class="card-icon">
+                        <span class="material-symbols-outlined">smart_toy</span>
+                    </div>
+                    <h2 class="title-large">AI & Machine Learning</h2>
+                    <div class="skills-list">
+                        <div class="skill-chip primary">TensorFlow</div>
+                        <div class="skill-chip primary">PyTorch</div>
+                        <div class="skill-chip primary">Scikit-learn</div>
+                        <div class="skill-chip primary">OpenCV</div>
+                        <div class="skill-chip primary">NLP</div>
+                        <div class="skill-chip primary">LLM</div>
+                        <div class="skill-chip primary">LangChain</div>
+                        <div class="skill-chip primary">FAISS</div>
+                        <div class="skill-chip primary">Neo4j</div>
+                        <div class="skill-chip primary">Evolutionary Algorithms</div>
+                        <div class="skill-chip primary">Game Theory</div>
+                        <div class="skill-chip primary">Reinforcement Learning</div>
+                        <div class="skill-chip primary">Hypothesis Testing</div>
+                        <div class="skill-chip">RAG</div>
+                        <div class="skill-chip">Knowledge Graphs</div>
+                        <div class="skill-chip">Computer Vision</div>
+                        <div class="skill-chip">Deep Learning</div>
+                        <div class="skill-chip">Statistical Modeling</div>
+                        <div class="skill-chip">Time Series Analysis</div>
+                    </div>
                 </div>
-                <h2 class="title-large">AI & Machine Learning</h2>
             </div>
-            <div class="skills-grid">
-                <div class="skill-chip primary">TensorFlow</div>
-                <div class="skill-chip primary">PyTorch</div>
-                <div class="skill-chip primary">Scikit-learn</div>
-                <div class="skill-chip primary">OpenCV</div>
-                <div class="skill-chip primary">NLP</div>
-                <div class="skill-chip primary">LLM</div>
-                <div class="skill-chip primary">LangChain</div>
-                <div class="skill-chip primary">FAISS</div>
-                <div class="skill-chip primary">Neo4j</div>
-                <div class="skill-chip primary">Evolutionary Algorithms</div>
-                <div class="skill-chip primary">Game Theory</div>
-                <div class="skill-chip primary">Reinforcement Learning</div>
-                <div class="skill-chip primary">Hypothesis Testing</div>
-                <div class="skill-chip">RAG</div>
-                <div class="skill-chip">Knowledge Graphs</div>
-                <div class="skill-chip">Computer Vision</div>
-                <div class="skill-chip">Deep Learning</div>
-                <div class="skill-chip">Statistical Modeling</div>
-                <div class="skill-chip">Time Series Analysis</div>
-            </div>
-        </section>
 
-        <!-- Backend & Databases -->
-        <section class="skill-category">
-            <div class="category-header">
-                <div class="category-icon">
-                    <span class="material-symbols-outlined">storage</span>
+            <!-- Backend & Databases -->
+            <div class="square-card">
+                <div class="card-content">
+                    <div class="card-icon">
+                        <span class="material-symbols-outlined">storage</span>
+                    </div>
+                    <h2 class="title-large">Backend & Databases</h2>
+                    <div class="skills-list">
+                        <div class="skill-chip primary">Flask</div>
+                        <div class="skill-chip primary">FastAPI</div>
+                        <div class="skill-chip primary">Spring Boot</div>
+                        <div class="skill-chip primary">MySQL</div>
+                        <div class="skill-chip primary">PostgreSQL</div>
+                        <div class="skill-chip primary">MongoDB</div>
+                        <div class="skill-chip primary">Redis</div>
+                        <div class="skill-chip primary">REST API</div>
+                        <div class="skill-chip">GraphQL</div>
+                        <div class="skill-chip">Docker</div>
+                        <div class="skill-chip">Kubernetes</div>
+                        <div class="skill-chip">Microservices</div>
+                        <div class="skill-chip">API Design</div>
+                    </div>
                 </div>
-                <h2 class="title-large">Backend & Databases</h2>
             </div>
-            <div class="skills-grid">
-                <div class="skill-chip primary">Flask</div>
-                <div class="skill-chip primary">FastAPI</div>
-                <div class="skill-chip primary">Spring Boot</div>
-                <div class="skill-chip primary">MySQL</div>
-                <div class="skill-chip primary">PostgreSQL</div>
-                <div class="skill-chip primary">MongoDB</div>
-                <div class="skill-chip primary">Redis</div>
-                <div class="skill-chip primary">REST API</div>
-                <div class="skill-chip">GraphQL</div>
-                <div class="skill-chip">Docker</div>
-                <div class="skill-chip">Kubernetes</div>
-                <div class="skill-chip">Microservices</div>
-                <div class="skill-chip">API Design</div>
-            </div>
-        </section>
 
-        <!-- Frontend & UI -->
-        <section class="skill-category">
-            <div class="category-header">
-                <div class="category-icon">
-                    <span class="material-symbols-outlined">web</span>
+            <!-- Frontend & UI -->
+            <div class="square-card">
+                <div class="card-content">
+                    <div class="card-icon">
+                        <span class="material-symbols-outlined">web</span>
+                    </div>
+                    <h2 class="title-large">Frontend & UI</h2>
+                    <div class="skills-list">
+                        <div class="skill-chip primary">Vue.js</div>
+                        <div class="skill-chip primary">React Native</div>
+                        <div class="skill-chip primary">Next.js</div>
+                        <div class="skill-chip primary">Redux</div>
+                        <div class="skill-chip primary">Material-UI</div>
+                        <div class="skill-chip">React</div>
+                        <div class="skill-chip">Angular</div>
+                        <div class="skill-chip">Bootstrap</div>
+                        <div class="skill-chip">Tailwind CSS</div>
+                        <div class="skill-chip">Responsive Design</div>
+                        <div class="skill-chip">UI/UX Design</div>
+                    </div>
                 </div>
-                <h2 class="title-large">Frontend & UI</h2>
             </div>
-            <div class="skills-grid">
-                <div class="skill-chip primary">Vue.js</div>
-                <div class="skill-chip primary">React Native</div>
-                <div class="skill-chip primary">Next.js</div>
-                <div class="skill-chip primary">Redux</div>
-                <div class="skill-chip primary">Material-UI</div>
-                <div class="skill-chip">React</div>
-                <div class="skill-chip">Angular</div>
-                <div class="skill-chip">Bootstrap</div>
-                <div class="skill-chip">Tailwind CSS</div>
-                <div class="skill-chip">Responsive Design</div>
-                <div class="skill-chip">UI/UX Design</div>
-            </div>
-        </section>
 
-        <!-- DevOps & Tools -->
-        <section class="skill-category">
-            <div class="category-header">
-                <div class="category-icon">
-                    <span class="material-symbols-outlined">build</span>
+            <!-- DevOps & Tools -->
+            <div class="square-card">
+                <div class="card-content">
+                    <div class="card-icon">
+                        <span class="material-symbols-outlined">build</span>
+                    </div>
+                    <h2 class="title-large">DevOps & Tools</h2>
+                    <div class="skills-list">
+                        <div class="skill-chip primary">Docker</div>
+                        <div class="skill-chip primary">Git</div>
+                        <div class="skill-chip primary">CUDA</div>
+                        <div class="skill-chip">AWS</div>
+                        <div class="skill-chip">Google Cloud</div>
+                        <div class="skill-chip">Azure</div>
+                        <div class="skill-chip">Jenkins</div>
+                        <div class="skill-chip">CI/CD</div>
+                        <div class="skill-chip">Linux</div>
+                        <div class="skill-chip">Shell Scripting</div>
+                        <div class="skill-chip">Monitoring</div>
+                        <div class="skill-chip">Logging</div>
+                    </div>
                 </div>
-                <h2 class="title-large">DevOps & Tools</h2>
             </div>
-            <div class="skills-grid">
-                <div class="skill-chip primary">Docker</div>
-                <div class="skill-chip primary">Git</div>
-                <div class="skill-chip primary">CUDA</div>
-                <div class="skill-chip">AWS</div>
-                <div class="skill-chip">Google Cloud</div>
-                <div class="skill-chip">Azure</div>
-                <div class="skill-chip">Jenkins</div>
-                <div class="skill-chip">CI/CD</div>
-                <div class="skill-chip">Linux</div>
-                <div class="skill-chip">Shell Scripting</div>
-                <div class="skill-chip">Monitoring</div>
-                <div class="skill-chip">Logging</div>
-            </div>
-        </section>
 
-        <!-- Data Science & Analytics -->
-        <section class="skill-category">
-            <div class="category-header">
-                <div class="category-icon">
-                    <span class="material-symbols-outlined">analytics</span>
+            <!-- Data Science & Analytics -->
+            <div class="square-card">
+                <div class="card-content">
+                    <div class="card-icon">
+                        <span class="material-symbols-outlined">analytics</span>
+                    </div>
+                    <h2 class="title-large">Data Science & Analytics</h2>
+                    <div class="skills-list">
+                        <div class="skill-chip primary">Pandas</div>
+                        <div class="skill-chip primary">NumPy</div>
+                        <div class="skill-chip primary">Matplotlib</div>
+                        <div class="skill-chip primary">Seaborn</div>
+                        <div class="skill-chip primary">Jupyter</div>
+                        <div class="skill-chip">Data Visualization</div>
+                        <div class="skill-chip">Data Cleaning</div>
+                        <div class="skill-chip">Feature Engineering</div>
+                        <div class="skill-chip">A/B Testing</div>
+                        <div class="skill-chip">Business Intelligence</div>
+                    </div>
                 </div>
-                <h2 class="title-large">Data Science & Analytics</h2>
             </div>
-            <div class="skills-grid">
-                <div class="skill-chip primary">Pandas</div>
-                <div class="skill-chip primary">NumPy</div>
-                <div class="skill-chip primary">Matplotlib</div>
-                <div class="skill-chip primary">Seaborn</div>
-                <div class="skill-chip primary">Jupyter</div>
-                <div class="skill-chip">Data Visualization</div>
-                <div class="skill-chip">Data Cleaning</div>
-                <div class="skill-chip">Feature Engineering</div>
-                <div class="skill-chip">A/B Testing</div>
-                <div class="skill-chip">Business Intelligence</div>
-            </div>
-        </section>
+        </div>
 
         <!-- Skills Summary -->
         <section class="skills-summary">
-            <div class="summary-card">
-                <h3 class="title-large">Skills Summary</h3>
-                <div class="summary-stats">
-                    <div class="stat-item">
-                        <span class="stat-number">50+</span>
-                        <span class="stat-label">Technologies</span>
+            <div class="square-card">
+                <div class="card-content">
+                    <h3 class="title-large">Skills Summary</h3>
+                    <div class="summary-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">50+</span>
+                            <span class="stat-label">Technologies</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">6</span>
+                            <span class="stat-label">Categories</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">5+</span>
+                            <span class="stat-label">Years Experience</span>
+                        </div>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number">6</span>
-                        <span class="stat-label">Categories</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">5+</span>
-                        <span class="stat-label">Years Experience</span>
-                    </div>
+                    <p class="body-medium">Continuously learning and adapting to new technologies in the rapidly evolving field of AI and software development.</p>
                 </div>
-                <p class="body-medium">Continuously learning and adapting to new technologies in the rapidly evolving field of AI and software development.</p>
             </div>
         </section>
 
         <!-- Learning Path -->
         <section class="learning-path">
             <h2 class="title-large">Currently Learning</h2>
-            <div class="learning-items">
-                <div class="learning-item">
-                    <div class="learning-icon">
-                        <span class="material-symbols-outlined">trending_up</span>
-                    </div>
-                    <div class="learning-content">
+            <div class="square-grid">
+                <div class="square-card">
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <span class="material-symbols-outlined">trending_up</span>
+                        </div>
                         <h3 class="title-large">Advanced LLM Architectures</h3>
                         <p class="body-medium">Exploring transformer models, attention mechanisms, and large-scale language model training.</p>
                         <div class="progress-bar">
@@ -281,11 +287,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="learning-item">
-                    <div class="learning-icon">
-                        <span class="material-symbols-outlined">psychology</span>
-                    </div>
-                    <div class="learning-content">
+                <div class="square-card">
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <span class="material-symbols-outlined">psychology</span>
+                        </div>
                         <h3 class="title-large">Multi-Agent Systems</h3>
                         <p class="body-medium">Studying collaborative AI systems and agent-based modeling for complex problem solving.</p>
                         <div class="progress-bar">
@@ -293,11 +299,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="learning-item">
-                    <div class="learning-icon">
-                        <span class="material-symbols-outlined">cloud</span>
-                    </div>
-                    <div class="learning-content">
+                <div class="square-card">
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <span class="material-symbols-outlined">cloud</span>
+                        </div>
                         <h3 class="title-large">Cloud Architecture</h3>
                         <p class="body-medium">Deepening knowledge in distributed systems, microservices, and cloud-native applications.</p>
                         <div class="progress-bar">
@@ -307,6 +313,7 @@
                 </div>
             </div>
         </section>
+        </div>
     </main>
 
     <!-- Footer -->
