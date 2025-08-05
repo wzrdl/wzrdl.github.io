@@ -1,304 +1,495 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zirui Wen - AI Programmer | Researcher</title>
-    
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Zirui Wen is an AI programmer and researcher specializing in large language models, reinforcement learning, and full-stack development. Research Assistant at Stevens Institute of Technology.">
-    <meta name="keywords" content="AI, machine learning, LLM, reinforcement learning, full-stack development, Python, React, FastAPI, research">
-    <meta name="author" content="Zirui Wen">
-    <meta name="robots" content="index, follow">
-    
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Zirui Wen - AI Programmer | Researcher">
-    <meta property="og:description" content="AI programmer and researcher specializing in large language models, reinforcement learning, and full-stack development.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://wzrdl.github.io">
-    <meta property="og:site_name" content="Zirui Wen Portfolio">
-    
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Zirui Wen - AI Programmer | Researcher">
-    <meta name="twitter:description" content="AI programmer and researcher specializing in large language models, reinforcement learning, and full-stack development.">
-    
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://wzrdl.github.io">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>Zirui Wen - AI Engineer | 赛博朋克风格个人主页</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <!-- Navigation Rail (Desktop) -->
-    <nav class="nav-rail" id="navRail">
-        <div class="nav-header">
-            <a href="index.html" class="nav-name">Zirui Wen</a>
-        </div>
-        <div class="nav-links">
-            <a href="index.html" class="nav-link active" data-page="home">
-                <span class="material-symbols-outlined">home</span>
-                <span class="nav-label">Home</span>
-            </a>
-            <a href="projects.html" class="nav-link" data-page="projects">
-                <span class="material-symbols-outlined">work</span>
-                <span class="nav-label">Projects</span>
-            </a>
-            <a href="experience.html" class="nav-link" data-page="experience">
-                <span class="material-symbols-outlined">business_center</span>
-                <span class="nav-label">Experience</span>
-            </a>
-            <a href="skills.html" class="nav-link" data-page="skills">
-                <span class="material-symbols-outlined">psychology</span>
-                <span class="nav-label">Skills</span>
-            </a>
-            <a href="papers.html" class="nav-link" data-page="papers">
-                <span class="material-symbols-outlined">article</span>
-                <span class="nav-label">Papers</span>
-            </a>
-        </div>
-        <div class="nav-footer">
-            <a href="#contact" class="btn-filled">Contact</a>
+    <!-- 背景动画 -->
+    <div class="background-animation">
+        <div class="grid"></div>
+        <div class="particles"></div>
+    </div>
+
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">ZIRUI_WEN</span>
+                <span class="logo-subtitle">AI_ENGINEER</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">首页</a></li>
+                <li><a href="#about" class="nav-link">关于</a></li>
+                <li><a href="#skills" class="nav-link">技能</a></li>
+                <li><a href="#projects" class="nav-link">项目</a></li>
+                <li><a href="#experience" class="nav-link">经验</a></li>
+                <li><a href="#contact" class="nav-link">联系</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </nav>
 
-    <!-- Top App Bar (Mobile) -->
-    <header class="top-app-bar" id="topAppBar">
-        <div class="top-app-bar-content">
-            <button class="menu-button" id="menuButton">
-                <span class="material-symbols-outlined">menu</span>
-            </button>
-            <h1 class="top-app-bar-title">Zirui Wen</h1>
-            <a href="#contact" class="btn-filled">Contact</a>
-        </div>
-    </header>
-
-    <!-- Navigation Drawer (Mobile) -->
-    <div class="nav-drawer-overlay" id="navDrawerOverlay"></div>
-    <nav class="nav-drawer" id="navDrawer">
-        <div class="nav-drawer-header">
-            <h2>Navigation</h2>
-            <button class="close-button" id="closeButton">
-                <span class="material-symbols-outlined">close</span>
-            </button>
-        </div>
-        <div class="nav-drawer-links">
-            <a href="index.html" class="nav-drawer-link active">
-                <span class="material-symbols-outlined">home</span>
-                <span>Home</span>
-            </a>
-            <a href="projects.html" class="nav-drawer-link">
-                <span class="material-symbols-outlined">work</span>
-                <span>Projects</span>
-            </a>
-            <a href="experience.html" class="nav-drawer-link">
-                <span class="material-symbols-outlined">business_center</span>
-                <span>Experience</span>
-            </a>
-            <a href="skills.html" class="nav-drawer-link">
-                <span class="material-symbols-outlined">psychology</span>
-                <span>Skills</span>
-            </a>
-            <a href="papers.html" class="nav-drawer-link">
-                <span class="material-symbols-outlined">article</span>
-                <span>Papers</span>
-            </a>
-        </div>
-    </nav>
-
-    <!-- Main Content -->
-    <main class="main-content">
-        <!-- Hero Section -->
-        <section class="hero-section">
+    <!-- 主页区域 -->
+    <section id="home" class="hero-section">
+        <div class="hero-container">
             <div class="hero-content">
-                <h1 class="display-large">Zirui Wen</h1>
-                <h2 class="headline-large">AI Programmer | Researcher</h2>
-                <p class="body-large hero-intro">
-                    I am dedicated to building and optimizing intelligent systems, with extensive experience in large language models, reinforcement learning, and full-stack application development. Currently serving as a Research Assistant at Stevens Institute of Technology.
-                </p>
-                <div class="hero-actions">
-                    <a href="projects.html" class="btn-filled">View My Projects</a>
-                    <a href="#contact" class="btn-outlined">Download CV</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Featured Projects Grid -->
-        <section class="featured-projects">
-            <h2 class="title-large">Featured Projects</h2>
-            <div class="square-grid">
-                <div class="square-card">
-                    <div class="card-content">
-                        <h3 class="title-large">Automatic Prompt Optimization</h3>
-                        <p class="body-medium">Designed a system using text-based gradient descent to automatically optimize medical prompts, improving LLM performance by 20%.</p>
-                        <div class="card-actions">
-                            <a href="projects.html#prompt-optimization" class="btn-text">Learn More →</a>
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        <span class="title-line">ZIRUI WEN</span>
+                        <span class="title-subtitle">AI ENGINEER</span>
+                    </h1>
+                    <p class="hero-description">
+                        人工智能与机器学习领域的专业工程师
+                        <br>专注于深度学习、自然语言处理和计算机视觉技术的研究与应用
+                    </p>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">AI/ML</span>
+                            <span class="stat-label">专业领域</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">Python</span>
+                            <span class="stat-label">主要语言</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">研发</span>
+                            <span class="stat-label">工作方向</span>
                         </div>
                     </div>
-                </div>
-                <div class="square-card">
-                    <div class="card-content">
-                        <h3 class="title-large">Liar's Bar: Bayesian RL</h3>
-                        <p class="body-medium">Implemented Bayesian reinforcement learning algorithms for strategic decision-making.</p>
-                        <div class="card-actions">
-                            <a href="projects.html#liars-bar" class="btn-text">Learn More →</a>
-                        </div>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn btn-primary">联系我</a>
+                        <a href="#projects" class="btn btn-secondary">查看项目</a>
                     </div>
                 </div>
-                <div class="square-card">
-                    <div class="card-content">
-                        <h3 class="title-large">Apex Legend AI</h3>
-                        <p class="body-medium">Developed computer vision-based AI system for real-time game analysis.</p>
-                        <div class="card-actions">
-                            <a href="projects.html#apex-ai" class="btn-text">Learn More →</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="square-card">
-                    <div class="card-content">
-                        <h3 class="title-large">E-commerce Recommendation</h3>
-                        <p class="body-medium">Built personalized recommendation system using collaborative filtering.</p>
-                        <div class="card-actions">
-                            <a href="projects.html#recommendation-system" class="btn-text">Learn More →</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Expertise Grid -->
-        <section class="expertise-section">
-            <h2 class="title-large">Areas of Expertise</h2>
-            <div class="square-grid">
-                <div class="square-card">
-                    <div class="card-content">
-                        <div class="card-icon">
-                            <span class="material-symbols-outlined">smart_toy</span>
-                        </div>
-                        <h3 class="title-large">AI & Machine Learning</h3>
-                        <p class="body-medium">LLMs, RAG systems, reinforcement learning algorithms, and intelligent systems.</p>
-                    </div>
-                </div>
-                <div class="square-card">
-                    <div class="card-content">
-                        <div class="card-icon">
-                            <span class="material-symbols-outlined">storage</span>
-                        </div>
-                        <h3 class="title-large">Backend & Data</h3>
-                        <p class="body-medium">Scalable backends with Flask, FastAPI, Spring Boot, and data management.</p>
-                    </div>
-                </div>
-                <div class="square-card">
-                    <div class="card-content">
-                        <div class="card-icon">
-                            <span class="material-symbols-outlined">web</span>
-                        </div>
-                        <h3 class="title-large">Frontend & UI</h3>
-                        <p class="body-medium">Interactive frontends with React, Next.js, and modern web technologies.</p>
-                    </div>
-                </div>
-                <div class="square-card">
-                    <div class="card-content">
-                        <div class="card-icon">
-                            <span class="material-symbols-outlined">analytics</span>
-                        </div>
-                        <h3 class="title-large">Data Science</h3>
-                        <p class="body-medium">Statistical modeling, time series analysis, and predictive analytics.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Research Highlights -->
-        <section class="research-highlights">
-            <h2 class="title-large">Research Highlights</h2>
-            <div class="square-grid">
-                <div class="square-card">
-                    <div class="card-content">
-                        <h3 class="title-large">Large Language Model Optimization</h3>
-                        <p class="body-medium">Enhanced LLM performance through integration of RAG and knowledge graphs (Neo4j, LangChain, FAISS). Achieved 20% improvement in medical prompt optimization.</p>
-                        <div class="research-stats">
-                            <div class="stat">
-                                <span class="stat-number">20%</span>
-                                <span class="stat-label">Performance Improvement</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-number">3</span>
-                                <span class="stat-label">Technologies Integrated</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="square-card">
-                    <div class="card-content">
-                        <h3 class="title-large">Bayesian Reinforcement Learning</h3>
-                        <p class="body-medium">Implemented Bayesian Q-learning algorithms for uncertain environments with Thompson sampling.</p>
-                        <div class="research-stats">
-                            <div class="stat">
-                                <span class="stat-number">15%</span>
-                                <span class="stat-label">Decision Accuracy</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="square-card">
-                    <div class="card-content">
-                        <h3 class="title-large">Computer Vision AI</h3>
-                        <p class="body-medium">Real-time object detection using YOLO and OpenCV with 95% accuracy and <50ms latency.</p>
-                        <div class="research-stats">
-                            <div class="stat">
-                                <span class="stat-number">95%</span>
-                                <span class="stat-label">Accuracy</span>
+                <div class="hero-visual">
+                    <div class="avatar-container">
+                        <div class="avatar-frame">
+                            <div class="avatar-placeholder">
+                                <i class="fas fa-user-astronaut"></i>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Call to Action -->
-        <section class="cta-section">
-            <div class="square-card">
-                <div class="card-content">
-                    <h2 class="title-large">Ready to Collaborate?</h2>
-                    <p class="body-large">I'm always interested in new opportunities and collaborations. Let's discuss how we can work together on your next project.</p>
-                    <div class="cta-actions">
-                        <a href="projects.html" class="btn-filled">View All Projects</a>
-                        <a href="skills.html" class="btn-outlined">See My Skills</a>
-                        <a href="mailto:zirui.wen@stevens.edu" class="btn-text">Get in Touch</a>
+    <!-- 关于我区域 -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">关于我</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="about-description">
+                        我是一名专注于人工智能与机器学习的工程师，拥有扎实的计算机科学背景。
+                        致力于深度学习、自然语言处理和计算机视觉等前沿技术的研究与实践。
+                    </p>
+                    <p class="about-description">
+                        具备丰富的Python编程经验，熟练使用TensorFlow、PyTorch等主流AI框架。
+                        热衷于将理论知识转化为实际应用，持续学习和探索AI技术的最新发展。
+                    </p>
+                    <div class="about-highlights">
+                        <div class="highlight-item">
+                            <i class="fas fa-brain"></i>
+                            <span>机器学习专业</span>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-code"></i>
+                            <span>Python开发</span>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-rocket"></i>
+                            <span>AI研发应用</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="tech-radar">
+                        <div class="radar-circle">
+                            <div class="radar-item" style="--angle: 0deg">Python</div>
+                            <div class="radar-item" style="--angle: 60deg">TensorFlow</div>
+                            <div class="radar-item" style="--angle: 120deg">PyTorch</div>
+                            <div class="radar-item" style="--angle: 180deg">NLP</div>
+                            <div class="radar-item" style="--angle: 240deg">Computer Vision</div>
+                            <div class="radar-item" style="--angle: 300deg">MLOps</div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
-    <!-- Footer -->
-    <footer class="footer" id="contact">
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="https://linkedin.com/in/zirui-wen" target="_blank" class="footer-link">
-                    <span class="material-symbols-outlined">link</span>
-                    LinkedIn
-                </a>
-                <a href="https://github.com/wzrdl" target="_blank" class="footer-link">
-                    <span class="material-symbols-outlined">code</span>
-                    GitHub
-                </a>
-                <a href="mailto:zirui.wen@stevens.edu" class="footer-link">
-                    <span class="material-symbols-outlined">email</span>
-                    Email
-                </a>
+    <!-- 技能区域 -->
+    <section id="skills" class="skills-section">
+        <div class="container">
+            <h2 class="section-title">技能专长</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3 class="category-title">编程语言</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span class="skill-name">Python</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">JavaScript</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Java</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">C++</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="category-title">AI/ML框架</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span class="skill-name">TensorFlow</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">PyTorch</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 88%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Scikit-learn</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 92%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Hugging Face</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="category-title">专业领域</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span class="skill-name">自然语言处理</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 88%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">计算机视觉</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">推荐系统</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 82%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">强化学习</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 78%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="category-title">工具与平台</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span class="skill-name">Docker</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Kubernetes</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">AWS/GCP</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 82%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Git</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <p class="body-medium">© 2024 Zirui Wen. All rights reserved.</p>
+        </div>
+    </section>
+
+    <!-- 项目展示区域 -->
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <h2 class="section-title">项目展示</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">深度学习模型研究</h3>
+                        <p class="project-description">
+                            专注于神经网络架构优化与深度学习算法研究，
+                            探索提升模型性能和训练效率的创新方法。
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">PyTorch</span>
+                            <span class="tech-tag">Deep Learning</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/wzrdl" class="project-link"><i class="fab fa-github"></i></a>
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">计算机视觉应用</h3>
+                        <p class="project-description">
+                            基于深度学习的图像处理与分析技术研究，
+                            涉及目标检测、图像分类和特征提取算法的实现与优化。
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">OpenCV</span>
+                            <span class="tech-tag">Computer Vision</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/wzrdl" class="project-link"><i class="fab fa-github"></i></a>
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">自然语言处理研究</h3>
+                        <p class="project-description">
+                            专注于NLP技术的研究与实现，包括文本分析、语言模型训练
+                            和语义理解等方向的算法开发与应用。
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Transformers</span>
+                            <span class="tech-tag">NLP</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/wzrdl" class="project-link"><i class="fab fa-github"></i></a>
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">机器学习工程实践</h3>
+                        <p class="project-description">
+                            探索机器学习模型的部署与优化，包括模型训练流程、
+                            性能优化和工程化实践的研究与实现。
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">MLOps</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/wzrdl" class="project-link"><i class="fab fa-github"></i></a>
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 工作经验区域 -->
+    <section id="experience" class="experience-section">
+        <div class="container">
+            <h2 class="section-title">工作经验</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3 class="timeline-title">AI工程师</h3>
+                            <span class="timeline-company">技术研发</span>
+                            <span class="timeline-date">当前工作</span>
+                        </div>
+                        <p class="timeline-description">
+                            专注于人工智能和机器学习技术的研究与开发，
+                            涉及深度学习、自然语言处理和计算机视觉等领域的技术实践。
+                        </p>
+                        <div class="timeline-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">PyTorch</span>
+                            <span class="tech-tag">TensorFlow</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3 class="timeline-title">机器学习研究</h3>
+                            <span class="timeline-company">学术研究</span>
+                            <span class="timeline-date">研究经历</span>
+                        </div>
+                        <p class="timeline-description">
+                            深入研究机器学习算法和深度学习模型，
+                            专注于算法优化、模型训练和性能提升的理论与实践结合。
+                        </p>
+                        <div class="timeline-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Deep Learning</span>
+                            <span class="tech-tag">Research</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3 class="timeline-title">技术学习与实践</h3>
+                            <span class="timeline-company">个人发展</span>
+                            <span class="timeline-date">持续学习</span>
+                        </div>
+                        <p class="timeline-description">
+                            持续学习和掌握人工智能领域的前沿技术，
+                            通过实际项目练习巩固理论知识，不断提升技术能力。
+                        </p>
+                        <div class="timeline-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">AI/ML</span>
+                            <span class="tech-tag">Self-Learning</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系方式区域 -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">联系我</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>联系邮箱: 请通过LinkedIn联系</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <a href="https://www.linkedin.com/in/zirui-wen-76320b327/" target="_blank" style="color: inherit; text-decoration: none;">
+                            <span>linkedin.com/in/zirui-wen-76320b327</span>
+                        </a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <a href="https://github.com/wzrdl" target="_blank" style="color: inherit; text-decoration: none;">
+                            <span>github.com/wzrdl</span>
+                        </a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>位置: 请通过LinkedIn了解</span>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form class="contact-form-container">
+                        <div class="form-group">
+                            <input type="text" placeholder="您的姓名" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="您的邮箱" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="您的消息" class="form-textarea"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">发送消息</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <p>&copy; 2024 Zirui Wen. All rights reserved.</p>
+                    <p>Built with ❤️ and lots of ☕</p>
+                </div>
+                <div class="footer-social">
+                    <a href="https://github.com/wzrdl" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/zirui-wen-76320b327/" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#contact" class="social-link"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
         </div>
     </footer>
 
-    <script src="scripts/main.js"></script>
+    <script src="script.js"></script>
 </body>
 </html> 

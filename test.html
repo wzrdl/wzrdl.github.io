@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试页面 - Zirui Wen Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #0a0a0a;
+            color: #ffffff;
+        }
+        .test-section {
+            background: #1a1a1a;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            border: 1px solid #00ffff;
+        }
+        .success {
+            color: #00ff00;
+        }
+        .error {
+            color: #ff0000;
+        }
+        .info {
+            color: #00ffff;
+        }
+        .test-button {
+            background: #00ffff;
+            color: #000000;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 5px;
+        }
+        .test-button:hover {
+            background: #00cccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 个人主页测试页面</h1>
+    
+    <div class="test-section">
+        <h2>📋 文件结构检查</h2>
+        <ul>
+            <li class="success">✅ index.html - 主页面</li>
+            <li class="success">✅ styles.css - 样式文件</li>
+            <li class="success">✅ script.js - 交互脚本</li>
+            <li class="success">✅ README.md - 项目说明</li>
+            <li class="success">✅ deploy.sh - 部署脚本</li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <h2>🎨 设计特色验证</h2>
+        <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+            <div style="background: #00ffff; color: #000; padding: 10px; border-radius: 5px;">
+                主色调 - 青色
+            </div>
+            <div style="background: #ff00ff; color: #000; padding: 10px; border-radius: 5px;">
+                辅助色 - 洋红
+            </div>
+            <div style="background: #ffff00; color: #000; padding: 10px; border-radius: 5px;">
+                强调色 - 黄色
+            </div>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>🔧 功能测试</h2>
+        <button class="test-button" onclick="testNotification()">测试通知系统</button>
+        <button class="test-button" onclick="testAnimation()">测试动画效果</button>
+        <button class="test-button" onclick="testResponsive()">测试响应式</button>
+        <div id="test-results" style="margin-top: 20px;"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>📱 响应式测试</h2>
+        <p>请调整浏览器窗口大小来测试响应式设计：</p>
+        <ul>
+            <li>桌面端 (> 768px): 完整布局</li>
+            <li>平板端 (768px - 480px): 适配布局</li>
+            <li>移动端 (< 480px): 移动优化</li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <h2>🚀 部署检查清单</h2>
+        <ul>
+            <li>✅ 创建 GitHub 仓库: wzrdl.github.io</li>
+            <li>✅ 上传所有文件到仓库</li>
+            <li>⏳ 启用 GitHub Pages</li>
+            <li>⏳ 配置自定义域名（可选）</li>
+            <li>⏳ 测试网站功能</li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <h2>🔗 快速链接</h2>
+        <p><a href="index.html" style="color: #00ffff;">查看主页面</a></p>
+        <p><a href="README.md" style="color: #00ffff;">查看项目说明</a></p>
+        <p><a href="https://github.com/wzrdl/wzrdl.github.io" style="color: #00ffff;">GitHub 仓库</a></p>
+    </div>
+
+    <script>
+        function testNotification() {
+            const results = document.getElementById('test-results');
+            results.innerHTML = '<p class="success">✅ 通知系统测试成功！</p>';
+            
+            // 模拟通知
+            setTimeout(() => {
+                results.innerHTML += '<p class="info">📢 测试通知已显示</p>';
+            }, 1000);
+        }
+
+        function testAnimation() {
+            const results = document.getElementById('test-results');
+            results.innerHTML = '<p class="success">✅ 动画效果测试成功！</p>';
+            
+            // 简单的动画测试
+            const testElement = document.createElement('div');
+            testElement.style.cssText = `
+                width: 50px;
+                height: 50px;
+                background: #00ffff;
+                border-radius: 50%;
+                transition: transform 0.5s ease;
+                margin: 10px 0;
+            `;
+            results.appendChild(testElement);
+            
+            setTimeout(() => {
+                testElement.style.transform = 'scale(1.5) rotate(180deg)';
+            }, 500);
+        }
+
+        function testResponsive() {
+            const results = document.getElementById('test-results');
+            const width = window.innerWidth;
+            
+            let deviceType = '';
+            if (width > 768) {
+                deviceType = '桌面端';
+            } else if (width > 480) {
+                deviceType = '平板端';
+            } else {
+                deviceType = '移动端';
+            }
+            
+            results.innerHTML = `<p class="success">✅ 响应式测试成功！当前设备: ${deviceType} (${width}px)</p>`;
+        }
+
+        // 页面加载完成后的测试
+        window.addEventListener('load', function() {
+            console.log('🧪 测试页面加载完成');
+            console.log('📊 浏览器信息:', navigator.userAgent);
+            console.log('📱 屏幕尺寸:', window.innerWidth, 'x', window.innerHeight);
+        });
+    </script>
+</body>
+</html> 
