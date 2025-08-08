@@ -67,6 +67,11 @@ wzrdl.github.io/
 2. Configure DNS settings with your domain provider
 3. Enable custom domain in repository settings
 
+### Repo Files Added For Pages
+- `.nojekyll` to disable Jekyll processing
+- `404.html` to gracefully redirect unknown routes to `/`
+- `robots.txt` and `sitemap.xml` for SEO
+
 ## 🎯 Key Sections
 
 ### 1. Hero Section
