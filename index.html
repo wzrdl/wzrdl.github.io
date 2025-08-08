@@ -1,126 +1,84 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zirui Wen - AI Engineer | 赛博朋克风格个人主页</title>
+    <title>Zirui Wen - AI & Machine Learning Engineer</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Source+Code+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 </head>
 <body>
-    <!-- 背景动画 -->
-    <div class="background-animation">
-        <div class="grid"></div>
-        <div class="particles"></div>
-    </div>
+    <!-- CRT Scanlines Overlay -->
+    <div class="scanlines"></div>
+    
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-trail"></div>
 
-    <!-- 导航栏 -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <span class="logo-text">ZIRUI_WEN</span>
-                <span class="logo-subtitle">AI_ENGINEER</span>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="#home" class="nav-link">首页</a></li>
-                <li><a href="#about" class="nav-link">关于</a></li>
-                <li><a href="#skills" class="nav-link">技能</a></li>
-                <li><a href="#projects" class="nav-link">项目</a></li>
-                <li><a href="#experience" class="nav-link">经验</a></li>
-                <li><a href="#contact" class="nav-link">联系</a></li>
-            </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+    <!-- Navigation -->
+    <nav class="nav-container">
+        <div class="nav-brand">
+            <span class="glitch" data-text="ZW">[ZW]</span>
         </div>
+        <ul class="nav-menu">
+            <li><a href="#hero" class="nav-link" data-section="hero">HOME</a></li>
+            <li><a href="#about" class="nav-link" data-section="about">ABOUT</a></li>
+            <li><a href="#skills" class="nav-link" data-section="skills">SKILLS</a></li>
+            <li><a href="#experience" class="nav-link" data-section="experience">TIMELINE</a></li>
+            <li><a href="#projects" class="nav-link" data-section="projects">PROJECTS</a></li>
+            <li><a href="#contact" class="nav-link" data-section="contact">CONTACT</a></li>
+        </ul>
     </nav>
 
-    <!-- 主页区域 -->
-    <section id="home" class="hero-section">
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1 class="hero-title">
-                        <span class="title-line">ZIRUI WEN</span>
-                        <span class="title-subtitle">AI ENGINEER</span>
-                    </h1>
-                    <p class="hero-description">
-                        人工智能与机器学习领域的专业工程师
-                        <br>专注于深度学习、自然语言处理和计算机视觉技术的研究与应用
-                    </p>
-                    <div class="hero-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">AI/ML</span>
-                            <span class="stat-label">专业领域</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">Python</span>
-                            <span class="stat-label">主要语言</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">研发</span>
-                            <span class="stat-label">工作方向</span>
-                        </div>
-                    </div>
-                    <div class="hero-buttons">
-                        <a href="#contact" class="btn btn-primary">联系我</a>
-                        <a href="#projects" class="btn btn-secondary">查看项目</a>
-                    </div>
-                </div>
-                <div class="hero-visual">
-                    <div class="avatar-container">
-                        <div class="avatar-frame">
-                            <div class="avatar-placeholder">
-                                <i class="fas fa-user-astronaut"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+        <div class="particle-background" id="particle-container"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span data-text="ZIRUI WEN">ZIRUI WEN</span>
+                </h1>
+                <h2 class="hero-subtitle typewriter">
+                    <span class="typewriter-text">AI & SOFTWARE ENGINEERING EXPERT</span>
+                </h2>
+                <p class="hero-description">
+                    > Specializing in AI/ML systems and software engineering<br>
+                    > Building intelligent solutions from concept to production
+                </p>
+            </div>
+            <div class="scroll-indicator">
+                <span class="scroll-text">SCROLL_TO_EXPLORE</span>
+                <div class="scroll-arrow">↓</div>
             </div>
         </div>
     </section>
 
-    <!-- 关于我区域 -->
+    <!-- About Section -->
     <section id="about" class="about-section">
         <div class="container">
-            <h2 class="section-title">关于我</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p class="about-description">
-                        我是一名专注于人工智能与机器学习的工程师，拥有扎实的计算机科学背景。
-                        致力于深度学习、自然语言处理和计算机视觉等前沿技术的研究与实践。
-                    </p>
-                    <p class="about-description">
-                        具备丰富的Python编程经验，熟练使用TensorFlow、PyTorch等主流AI框架。
-                        热衷于将理论知识转化为实际应用，持续学习和探索AI技术的最新发展。
-                    </p>
-                    <div class="about-highlights">
-                        <div class="highlight-item">
-                            <i class="fas fa-brain"></i>
-                            <span>机器学习专业</span>
+            <h2 class="section-title" data-aos="fade-up">
+                <span class="title-bracket">[</span>SYSTEM.OVERVIEW<span class="title-bracket">]</span>
+            </h2>
+            <div class="about-grid">
+                <div class="about-text full-width" data-aos="fade-right">
+                    <div class="terminal-window">
+                        <div class="terminal-header">
+                            <span class="terminal-dot red"></span>
+                            <span class="terminal-dot yellow"></span>
+                            <span class="terminal-dot green"></span>
+                            <span class="terminal-title">profile.exe</span>
                         </div>
-                        <div class="highlight-item">
-                            <i class="fas fa-code"></i>
-                            <span>Python开发</span>
-                        </div>
-                        <div class="highlight-item">
-                            <i class="fas fa-rocket"></i>
-                            <span>AI研发应用</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-visual">
-                    <div class="tech-radar">
-                        <div class="radar-circle">
-                            <div class="radar-item" style="--angle: 0deg">Python</div>
-                            <div class="radar-item" style="--angle: 60deg">TensorFlow</div>
-                            <div class="radar-item" style="--angle: 120deg">PyTorch</div>
-                            <div class="radar-item" style="--angle: 180deg">NLP</div>
-                            <div class="radar-item" style="--angle: 240deg">Computer Vision</div>
-                            <div class="radar-item" style="--angle: 300deg">MLOps</div>
+                        <div class="terminal-body">
+                            <p class="terminal-line">> <span class="command">cat profile.txt</span></p>
+                            <p class="terminal-output">
+                                Research Assistant at Stevens Institute's Brain Imaging Lab, specializing in 
+                                end-to-end AI systems that bridge neural networks, knowledge graphs, and 
+                                high-performance computing. Currently pursuing MS in Applied AI while building 
+                                production-grade solutions that deliver measurable impact.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -128,126 +86,140 @@
         </div>
     </section>
 
-    <!-- 技能区域 -->
+    <!-- Skills Section -->
     <section id="skills" class="skills-section">
         <div class="container">
-            <h2 class="section-title">技能专长</h2>
+            <h2 class="section-title" data-aos="fade-up">
+                <span class="title-bracket">[</span>CORE.MATRIX<span class="title-bracket">]</span>
+            </h2>
             <div class="skills-grid">
-                <div class="skill-category">
-                    <h3 class="category-title">编程语言</h3>
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="category-title">
+                        <span class="category-icon">λ</span>
+                        PROGRAMMING
+                    </h3>
                     <div class="skill-items">
                         <div class="skill-item">
                             <span class="skill-name">Python</span>
                             <div class="skill-bar">
-                                <div class="skill-progress" style="width: 95%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">JavaScript</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Java</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 80%"></div>
+                                <div class="skill-progress" data-progress="95"></div>
                             </div>
                         </div>
                         <div class="skill-item">
                             <span class="skill-name">C++</span>
                             <div class="skill-bar">
-                                <div class="skill-progress" style="width: 75%"></div>
+                                <div class="skill-progress" data-progress="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">JavaScript</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">SQL</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="88"></div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="skill-category">
-                    <h3 class="category-title">AI/ML框架</h3>
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="category-title">
+                        <span class="category-icon">🧠</span>
+                        AI/ML FRAMEWORKS
+                    </h3>
                     <div class="skill-items">
-                        <div class="skill-item">
-                            <span class="skill-name">TensorFlow</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 90%"></div>
-                            </div>
-                        </div>
                         <div class="skill-item">
                             <span class="skill-name">PyTorch</span>
                             <div class="skill-bar">
-                                <div class="skill-progress" style="width: 88%"></div>
+                                <div class="skill-progress" data-progress="92"></div>
                             </div>
                         </div>
                         <div class="skill-item">
-                            <span class="skill-name">Scikit-learn</span>
+                            <span class="skill-name">TensorFlow</span>
                             <div class="skill-bar">
-                                <div class="skill-progress" style="width: 92%"></div>
+                                <div class="skill-progress" data-progress="88"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">LangChain</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="85"></div>
                             </div>
                         </div>
                         <div class="skill-item">
                             <span class="skill-name">Hugging Face</span>
                             <div class="skill-bar">
-                                <div class="skill-progress" style="width: 85%"></div>
+                                <div class="skill-progress" data-progress="90"></div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="skill-category">
-                    <h3 class="category-title">专业领域</h3>
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="category-title">
+                        <span class="category-icon">⚡</span>
+                        DATA & COMPUTE
+                    </h3>
                     <div class="skill-items">
                         <div class="skill-item">
-                            <span class="skill-name">自然语言处理</span>
+                            <span class="skill-name">CUDA</span>
                             <div class="skill-bar">
-                                <div class="skill-progress" style="width: 88%"></div>
+                                <div class="skill-progress" data-progress="87"></div>
                             </div>
                         </div>
                         <div class="skill-item">
-                            <span class="skill-name">计算机视觉</span>
+                            <span class="skill-name">Neo4j</span>
                             <div class="skill-bar">
-                                <div class="skill-progress" style="width: 85%"></div>
+                                <div class="skill-progress" data-progress="82"></div>
                             </div>
                         </div>
                         <div class="skill-item">
-                            <span class="skill-name">推荐系统</span>
+                            <span class="skill-name">PostgreSQL</span>
                             <div class="skill-bar">
-                                <div class="skill-progress" style="width: 82%"></div>
+                                <div class="skill-progress" data-progress="85"></div>
                             </div>
                         </div>
-                        <div class="skill-item">
-                            <span class="skill-name">强化学习</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 78%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3 class="category-title">工具与平台</h3>
-                    <div class="skill-items">
                         <div class="skill-item">
                             <span class="skill-name">Docker</span>
                             <div class="skill-bar">
-                                <div class="skill-progress" style="width: 85%"></div>
+                                <div class="skill-progress" data-progress="80"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="400">
+                    <h3 class="category-title">
+                        <span class="category-icon">🌐</span>
+                        WEB & DEVOPS
+                    </h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span class="skill-name">React</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="88"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Next.js</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="85"></div>
                             </div>
                         </div>
                         <div class="skill-item">
                             <span class="skill-name">Kubernetes</span>
                             <div class="skill-bar">
-                                <div class="skill-progress" style="width: 80%"></div>
+                                <div class="skill-progress" data-progress="78"></div>
                             </div>
                         </div>
                         <div class="skill-item">
-                            <span class="skill-name">AWS/GCP</span>
+                            <span class="skill-name">AWS</span>
                             <div class="skill-bar">
-                                <div class="skill-progress" style="width: 82%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Git</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 90%"></div>
+                                <div class="skill-progress" data-progress="82"></div>
                             </div>
                         </div>
                     </div>
@@ -256,240 +228,285 @@
         </div>
     </section>
 
-    <!-- 项目展示区域 -->
+    <!-- Experience Timeline -->
+    <section id="experience" class="timeline-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">
+                <span class="title-bracket">[</span>CAREER.LOG<span class="title-bracket">]</span>
+            </h2>
+            <div class="timeline">
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-date">NOV 2024 - PRESENT</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Research Assistant</h3>
+                        <h4 class="timeline-company">Brain Imaging & Graph Learning Lab, Stevens Institute</h4>
+                        <ul class="timeline-achievements">
+                            <li><span class="highlight">32%</span> accuracy boost in RAG platform using Neo4j + FAISS</li>
+                            <li>Cross-center validation improving seizure prediction AUC from <span class="highlight">0.71 to 0.83</span></li>
+                            <li><span class="highlight">20%</span> F1 improvement fine-tuning LLaMA-3 & Mistral-7B</li>
+                            <li><span class="highlight">17%</span> higher cumulative reward in RL seizure prediction</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-date">SEPT 2024 - PRESENT</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">MS Applied Artificial Intelligence</h3>
+                        <h4 class="timeline-company">Stevens Institute of Technology</h4>
+                        <ul class="timeline-achievements">
+                            <li>GPA: <span class="highlight">3.94/4.0</span></li>
+                            <li>Focus: Deep Learning, Computer Vision, NLP</li>
+                            <li>Advanced coursework in neural architectures</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-date">NOV 2023 - MAR 2024</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Data Team Assistant Intern</h3>
+                        <h4 class="timeline-company">Siemens - Guangzhou, China</h4>
+                        <ul class="timeline-achievements">
+                            <li><span class="highlight">60%</span> reduction in manual processing time</li>
+                            <li><span class="highlight">99.8%</span> data quality conformance</li>
+                            <li><span class="highlight">12%</span> engagement improvement from insights</li>
+                            <li>2+ years transactional data analysis</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-date">SEPT 2020 - JUNE 2024</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">BS Applied Mathematics</h3>
+                        <h4 class="timeline-company">University of Birmingham & Jinan University</h4>
+                        <ul class="timeline-achievements">
+                            <li>Joint degree program with strong mathematical foundation</li>
+                            <li>Specialized in Information Computing Science</li>
+                            <li>Published research in COVID-19 prediction</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
     <section id="projects" class="projects-section">
         <div class="container">
-            <h2 class="section-title">项目展示</h2>
+            <h2 class="section-title" data-aos="fade-up">
+                <span class="title-bracket">[</span>PROJECT.ARCHIVES<span class="title-bracket">]</span>
+            </h2>
             <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-robot"></i>
+                <!-- Project 1 -->
+                <div class="project-card" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="project-header">
+                        <h3 class="project-title">Medical Prompt Optimizer</h3>
+                        <div class="project-tech">
+                            <span class="tech-tag">LangChain</span>
+                            <span class="tech-tag">PyTorch</span>
+                            <span class="tech-tag">Flask</span>
+                            <span class="tech-tag">Next.js</span>
                         </div>
                     </div>
-                    <div class="project-content">
-                        <h3 class="project-title">深度学习模型研究</h3>
-                        <p class="project-description">
-                            专注于神经网络架构优化与深度学习算法研究，
-                            探索提升模型性能和训练效率的创新方法。
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">PyTorch</span>
-                            <span class="tech-tag">Deep Learning</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/wzrdl" class="project-link"><i class="fab fa-github"></i></a>
-                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
+                    <div class="project-description">
+                        Automated prompt optimization using text-based gradient descent and Bayesian validation
+                    </div>
+                    <div class="project-metrics">
+                        <span class="metric"><span class="highlight">20%</span> LLM improvement</span>
+                        <span class="metric">Production-grade API</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link" data-project="medical-optimizer">
+                            <span>VIEW_DETAILS</span>
+                        </a>
                     </div>
                 </div>
 
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-eye"></i>
+                <!-- Project 2 -->
+                <div class="project-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="project-header">
+                        <h3 class="project-title">B+Tree Database Engine</h3>
+                        <div class="project-tech">
+                            <span class="tech-tag">C++</span>
+                            <span class="tech-tag">B+Tree</span>
+                            <span class="tech-tag">SQL</span>
+                            <span class="tech-tag">Python</span>
                         </div>
                     </div>
-                    <div class="project-content">
-                        <h3 class="project-title">计算机视觉应用</h3>
-                        <p class="project-description">
-                            基于深度学习的图像处理与分析技术研究，
-                            涉及目标检测、图像分类和特征提取算法的实现与优化。
-                        </p>
+                    <div class="project-description">
+                        Mini-RDBMS with order-3 B+Tree storage, buffer pool, and WAL for O(log n) queries
+                    </div>
+                    <div class="project-metrics">
+                        <span class="metric">15 SQL commands</span>
+                        <span class="metric"><span class="highlight">90%+</span> test coverage</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link" data-project="btree-db">
+                            <span>VIEW_DETAILS</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="project-header">
+                        <h3 class="project-title">CUDA K-Means Accelerator</h3>
                         <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">OpenCV</span>
+                            <span class="tech-tag">CUDA</span>
+                            <span class="tech-tag">cuBLAS</span>
+                            <span class="tech-tag">cuSPARSE</span>
+                            <span class="tech-tag">C++</span>
+                        </div>
+                    </div>
+                    <div class="project-description">
+                        GPU-accelerated K-means using sparse matrix operations for massive performance gains
+                    </div>
+                    <div class="project-metrics">
+                        <span class="metric"><span class="highlight">1000×</span> CPU speedup</span>
+                        <span class="metric"><span class="highlight">2.6×</span> dense CUDA baseline</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link" data-project="cuda-kmeans">
+                            <span>VIEW_DETAILS</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="project-header">
+                        <h3 class="project-title">Liar's Bar RL Agent</h3>
+                        <div class="project-tech">
+                            <span class="tech-tag">DQN</span>
+                            <span class="tech-tag">Bayesian Games</span>
+                            <span class="tech-tag">Flask</span>
+                            <span class="tech-tag">Kubernetes</span>
+                        </div>
+                    </div>
+                    <div class="project-description">
+                        Bayesian game theory meets deep reinforcement learning for imperfect information games
+                    </div>
+                    <div class="project-metrics">
+                        <span class="metric"><span class="highlight">12%</span> win-rate boost</span>
+                        <span class="metric">Auto-scaled deployment</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link" data-project="liars-bar">
+                            <span>VIEW_DETAILS</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="project-header">
+                        <h3 class="project-title">YOLO Aimbot System</h3>
+                        <div class="project-tech">
+                            <span class="tech-tag">YOLOv8</span>
+                            <span class="tech-tag">TensorRT</span>
+                            <span class="tech-tag">CUDA</span>
                             <span class="tech-tag">Computer Vision</span>
                         </div>
-                        <div class="project-links">
-                            <a href="https://github.com/wzrdl" class="project-link"><i class="fab fa-github"></i></a>
-                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
+                    </div>
+                    <div class="project-description">
+                        Real-time object detection with TensorRT optimization for gaming applications
+                    </div>
+                    <div class="project-metrics">
+                        <span class="metric">60 FPS performance</span>
+                        <span class="metric"><span class="highlight">0.89</span> mAP accuracy</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link" data-project="yolo-aimbot">
+                            <span>VIEW_DETAILS</span>
+                        </a>
                     </div>
                 </div>
 
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">自然语言处理研究</h3>
-                        <p class="project-description">
-                            专注于NLP技术的研究与实现，包括文本分析、语言模型训练
-                            和语义理解等方向的算法开发与应用。
-                        </p>
+                <!-- Project 6 -->
+                <div class="project-card" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="project-header">
+                        <h3 class="project-title">Asset Allocation Optimizer</h3>
                         <div class="project-tech">
+                            <span class="tech-tag">PSO</span>
+                            <span class="tech-tag">Fixed Point</span>
                             <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Transformers</span>
-                            <span class="tech-tag">NLP</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/wzrdl" class="project-link"><i class="fab fa-github"></i></a>
-                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                            <span class="tech-tag">Finance</span>
                         </div>
                     </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-cloud"></i>
-                        </div>
+                    <div class="project-description">
+                        L1-regularized portfolio optimization using Particle Swarm and proximal gradient methods
                     </div>
-                    <div class="project-content">
-                        <h3 class="project-title">机器学习工程实践</h3>
-                        <p class="project-description">
-                            探索机器学习模型的部署与优化，包括模型训练流程、
-                            性能优化和工程化实践的研究与实现。
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Docker</span>
-                            <span class="tech-tag">MLOps</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/wzrdl" class="project-link"><i class="fab fa-github"></i></a>
-                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
+                    <div class="project-metrics">
+                        <span class="metric"><span class="highlight">2.6×</span> return boost</span>
+                        <span class="metric">5-year backtest</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link" data-project="asset-optimizer">
+                            <span>VIEW_DETAILS</span>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 工作经验区域 -->
-    <section id="experience" class="experience-section">
-        <div class="container">
-            <h2 class="section-title">工作经验</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3 class="timeline-title">AI工程师</h3>
-                            <span class="timeline-company">技术研发</span>
-                            <span class="timeline-date">当前工作</span>
-                        </div>
-                        <p class="timeline-description">
-                            专注于人工智能和机器学习技术的研究与开发，
-                            涉及深度学习、自然语言处理和计算机视觉等领域的技术实践。
-                        </p>
-                        <div class="timeline-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">PyTorch</span>
-                            <span class="tech-tag">TensorFlow</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3 class="timeline-title">机器学习研究</h3>
-                            <span class="timeline-company">学术研究</span>
-                            <span class="timeline-date">研究经历</span>
-                        </div>
-                        <p class="timeline-description">
-                            深入研究机器学习算法和深度学习模型，
-                            专注于算法优化、模型训练和性能提升的理论与实践结合。
-                        </p>
-                        <div class="timeline-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Deep Learning</span>
-                            <span class="tech-tag">Research</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3 class="timeline-title">技术学习与实践</h3>
-                            <span class="timeline-company">个人发展</span>
-                            <span class="timeline-date">持续学习</span>
-                        </div>
-                        <p class="timeline-description">
-                            持续学习和掌握人工智能领域的前沿技术，
-                            通过实际项目练习巩固理论知识，不断提升技术能力。
-                        </p>
-                        <div class="timeline-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">AI/ML</span>
-                            <span class="tech-tag">Self-Learning</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 联系方式区域 -->
+    <!-- Contact Section -->
     <section id="contact" class="contact-section">
         <div class="container">
-            <h2 class="section-title">联系我</h2>
-            <div class="contact-content">
+            <h2 class="section-title" data-aos="fade-up">
+                <span class="title-bracket">[</span>CONNECT.PROTOCOL<span class="title-bracket">]</span>
+            </h2>
+            <div class="contact-content" data-aos="fade-up" data-aos-delay="200">
                 <div class="contact-info">
                     <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>联系邮箱: 请通过LinkedIn联系</span>
+                        <span class="contact-label">EMAIL:</span>
+                        <a href="mailto:wzrqczj@gmail.com" class="contact-value glitch" data-text="wzrqczj@gmail.com">wzrqczj@gmail.com</a>
                     </div>
                     <div class="contact-item">
-                        <i class="fab fa-linkedin"></i>
-                        <a href="https://www.linkedin.com/in/zirui-wen-76320b327/" target="_blank" style="color: inherit; text-decoration: none;">
-                            <span>linkedin.com/in/zirui-wen-76320b327</span>
-                        </a>
+                        <span class="contact-label">PHONE:</span>
+                        <a href="tel:+12019325000" class="contact-value">+1 201-932-5000</a>
                     </div>
                     <div class="contact-item">
-                        <i class="fab fa-github"></i>
-                        <a href="https://github.com/wzrdl" target="_blank" style="color: inherit; text-decoration: none;">
-                            <span>github.com/wzrdl</span>
-                        </a>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>位置: 请通过LinkedIn了解</span>
+                        <span class="contact-label">LOCATION:</span>
+                        <span class="contact-value">Stevens Institute of Technology</span>
                     </div>
                 </div>
-                <div class="contact-form">
-                    <form class="contact-form-container">
-                        <div class="form-group">
-                            <input type="text" placeholder="您的姓名" class="form-input">
-                        </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="您的邮箱" class="form-input">
-                        </div>
-                        <div class="form-group">
-                            <textarea placeholder="您的消息" class="form-textarea"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">发送消息</button>
-                    </form>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/zirui-wen-76320b327/" class="social-link" target="_blank">
+                        <span class="social-icon">🔗</span>
+                        <span class="social-text">LinkedIn</span>
+                    </a>
+                    <a href="#" class="social-link" target="_blank">
+                        <span class="social-icon">⚡</span>
+                        <span class="social-text">GitHub</span>
+                    </a>
+                    <a href="#" class="social-link" target="_blank">
+                        <span class="social-icon">📄</span>
+                        <span class="social-text">Resume</span>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 页脚 -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-text">
-                    <p>&copy; 2024 Zirui Wen. All rights reserved.</p>
-                    <p>Built with ❤️ and lots of ☕</p>
-                </div>
-                <div class="footer-social">
-                    <a href="https://github.com/wzrdl" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/zirui-wen-76320b327/" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
-                    <a href="#contact" class="social-link"><i class="fas fa-envelope"></i></a>
-                </div>
+    <!-- Project Modals -->
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title"></h3>
+                <span class="modal-close">&times;</span>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Dynamic content will be loaded here -->
             </div>
         </div>
-    </footer>
+    </div>
 
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="script.js"></script>
 </body>
-</html> 
+</html>
