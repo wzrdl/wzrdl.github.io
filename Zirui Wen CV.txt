@@ -69,7 +69,7 @@ independent optimisers—Particle Swarm Optimization (global search) and a proxi
 (local refinement)—boosting five-year back-test returns 2.6× versus the vanilla MV solver.
 
 Technologies
-Languages: Python, C++, Java, JavaScript, HTML/CSS, SQL
+Languages: Python, C++, Java, JavaScript, HTML/CSS, SQL, R
 Deep Learning Frameworks: PyTorch, TensorFlow, Keras, scikit-learn, Hugging Face, LangChain
 Data Analysis: NumPy, Pandas, MySQL, PostgreSQL, MongoDB, Redis, Neo4j, FAISS
 Web & DevOps Tools: Flask, FastAPI, React, Next.js, Vue.js, Kafka, Docker, Kubernetes, Git, Linux, CUDA, CI/CD, AWS/GCP
