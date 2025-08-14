@@ -70,7 +70,7 @@ independent optimisers—Particle Swarm Optimization (global search) and a proxi
 
 Technologies
 Languages: Python, C++, Java, JavaScript, HTML/CSS, SQL, R
-Deep Learning Frameworks: PyTorch, TensorFlow, Keras, scikit-learn, Hugging Face, LangChain
+Deep Learning Frameworks: PyTorch, TensorFlow, Keras, scikit-learn, Hugging Face, LangChain, langGraph
 Data Analysis: NumPy, Pandas, MySQL, PostgreSQL, MongoDB, Redis, Neo4j, FAISS
 Web & DevOps Tools: Flask, FastAPI, React, Next.js, Vue.js, Kafka, Docker, Kubernetes, Git, Linux, CUDA, CI/CD, AWS/GCP
 Skills: Machine Learning, Data structure, Algorithm Design, Recommendation system, Object-Oriented programming
