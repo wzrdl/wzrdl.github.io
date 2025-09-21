@@ -316,37 +316,38 @@ function initProjectModals() {
     
     // Project data
     const projectData = {
-        'medical-optimizer': {
-            title: 'Medical Prompt Optimizer',
+        'ecommerce-platform': {
+            title: 'E-Commerce Platform',
             content: `
                 <div class="modal-project-content">
                     <h4>Project Overview</h4>
-                    <p>Designed an advanced algorithm for automatically optimizing medical prompts using text-based gradient descent and momentum with Bayesian reverse validation. This system significantly boosts LLM performance on medical Q&A datasets.</p>
+                    <p>Built a comprehensive full-stack e-commerce platform with modern web technologies, featuring secure payment processing, real-time inventory management, and scalable microservices architecture.</p>
                     
                     <h4>Technical Architecture</h4>
                     <ul>
-                        <li><strong>Optimization Engine:</strong> Text-based gradient descent with momentum</li>
-                        <li><strong>Validation System:</strong> Bayesian reverse validation for robustness</li>
-                        <li><strong>LangChain Integration:</strong> Advanced prompt-engineering patterns</li>
-                        <li><strong>Production API:</strong> Flask REST API with versioned prompt history</li>
-                        <li><strong>Frontend Dashboard:</strong> Next.js dashboard with live streaming</li>
+                        <li><strong>Frontend:</strong> React with TypeScript for type-safe development</li>
+                        <li><strong>Backend:</strong> Node.js with Express.js RESTful API</li>
+                        <li><strong>Database:</strong> PostgreSQL with optimized queries and indexing</li>
+                        <li><strong>Payment:</strong> Stripe API integration with webhook handling</li>
+                        <li><strong>Infrastructure:</strong> Docker containers with Kubernetes orchestration</li>
                     </ul>
                     
-                    <h4>Key Achievements</h4>
+                    <h4>Key Features</h4>
                     <ul>
-                        <li><span class="highlight">20% relative improvement</span> over CoT baseline on MedQA & PubMedQA</li>
-                        <li>Production-grade AI microservice deployment</li>
-                        <li>Dynamic system/instruction templates with function-calling</li>
-                        <li>RAG fallback mechanisms for enhanced reliability</li>
+                        <li>User authentication and authorization with JWT</li>
+                        <li>Real-time inventory tracking and management</li>
+                        <li>Secure payment processing with Stripe integration</li>
+                        <li>Order management and tracking system</li>
+                        <li>Admin dashboard for product and user management</li>
                     </ul>
                     
                     <h4>Technologies Used</h4>
                     <div class="tech-stack">
-                        <span class="tech-tag">LangChain</span>
-                        <span class="tech-tag">PyTorch</span>
-                        <span class="tech-tag">Flask</span>
-                        <span class="tech-tag">Next.js</span>
-                        <span class="tech-tag">Bayesian Optimization</span>
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">Stripe API</span>
+                        <span class="tech-tag">Docker</span>
                     </div>
                 </div>
             `
@@ -394,44 +395,47 @@ function initProjectModals() {
                 </div>
             `
         },
-        'cuda-kmeans': {
-            title: 'CUDA K-Means GPU Accelerator',
+        'chat-application': {
+            title: 'Real-time Chat Application',
             content: `
                 <div class="modal-project-content">
                     <h4>Project Overview</h4>
-                    <p>Built an open-source GPU kernel K-means accelerator in CUDA, achieving massive performance improvements by refactoring distance operations into sparse SpMM/SpMV operations using cuBLAS and cuSPARSE libraries.</p>
+                    <p>Developed a real-time messaging application with WebSocket integration, featuring instant message delivery, user presence indicators, and message persistence with MongoDB.</p>
                     
-                    <h4>Technical Innovation</h4>
+                    <h4>Technical Features</h4>
                     <ul>
-                        <li><strong>Sparse Matrix Operations:</strong> Converted distance calculations to sparse matrix multiplications</li>
-                        <li><strong>GPU Memory Optimization:</strong> Efficient memory coalescing and bank conflict avoidance</li>
-                        <li><strong>Library Integration:</strong> Leveraged cuBLAS and cuSPARSE for optimized operations</li>
-                        <li><strong>Kernel Optimization:</strong> Custom CUDA kernels for centroid updates</li>
+                        <li><strong>Real-time Communication:</strong> WebSocket-based bidirectional messaging</li>
+                        <li><strong>User Management:</strong> Authentication and user presence tracking</li>
+                        <li><strong>Message Persistence:</strong> MongoDB for storing chat history</li>
+                        <li><strong>Scalability:</strong> Support for multiple concurrent users</li>
+                        <li><strong>Modern UI:</strong> Responsive React interface with real-time updates</li>
                     </ul>
                     
-                    <h4>Performance Results</h4>
+                    <h4>Key Achievements</h4>
                     <ul>
-                        <li><span class="highlight">1,000× speedup</span> compared to CPU implementation</li>
-                        <li><span class="highlight">2.6× improvement</span> over dense CUDA baseline</li>
-                        <li>Tested on MNIST and CIFAR-10 datasets</li>
-                        <li>Scalable to large-scale clustering problems</li>
+                        <li><span class="highlight">&lt;100ms</span> message delivery latency</li>
+                        <li>Support for <span class="highlight">1000+</span> concurrent users</li>
+                        <li>Message encryption for enhanced security</li>
+                        <li>Offline message synchronization</li>
+                        <li>File sharing capabilities with image preview</li>
                     </ul>
                     
-                    <h4>Optimization Techniques</h4>
+                    <h4>Architecture</h4>
                     <ul>
-                        <li>Sparse matrix representation for distance calculations</li>
-                        <li>Shared memory optimization for centroid caching</li>
-                        <li>Warp-level primitives for efficient reductions</li>
-                        <li>Stream-based processing for overlapped computation</li>
+                        <li>Express.js server with Socket.IO for WebSocket management</li>
+                        <li>React frontend with real-time state management</li>
+                        <li>MongoDB with optimized indexing for message queries</li>
+                        <li>Redis for session management and caching</li>
+                        <li>Docker containerization for easy deployment</li>
                     </ul>
                     
                     <h4>Technologies Used</h4>
                     <div class="tech-stack">
-                        <span class="tech-tag">CUDA</span>
-                        <span class="tech-tag">cuBLAS</span>
-                        <span class="tech-tag">cuSPARSE</span>
-                        <span class="tech-tag">C++</span>
-                        <span class="tech-tag">NVIDIA GPU</span>
+                        <span class="tech-tag">WebSocket</span>
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Express.js</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">Socket.IO</span>
                     </div>
                 </div>
             `
