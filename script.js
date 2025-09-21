@@ -316,38 +316,43 @@ function initProjectModals() {
     
     // Project data
     const projectData = {
-        'ecommerce-platform': {
-            title: 'E-Commerce Platform',
+        'recommendation-service': {
+            title: 'Recommendation Service',
             content: `
                 <div class="modal-project-content">
                     <h4>Project Overview</h4>
-                    <p>Built a comprehensive full-stack e-commerce platform with modern web technologies, featuring secure payment processing, real-time inventory management, and scalable microservices architecture.</p>
+                    <p>Built a Java Spring Boot (WebFlux) microservice for real-time recommendation with Apache Kafka streaming and Redis caching.</p>
                     
                     <h4>Technical Architecture</h4>
                     <ul>
-                        <li><strong>Frontend:</strong> React with TypeScript for type-safe development</li>
-                        <li><strong>Backend:</strong> Node.js with Express.js RESTful API</li>
-                        <li><strong>Database:</strong> PostgreSQL with optimized queries and indexing</li>
-                        <li><strong>Payment:</strong> Stripe API integration with webhook handling</li>
-                        <li><strong>Infrastructure:</strong> Docker containers with Kubernetes orchestration</li>
+                        <li><strong>Backend:</strong> Java Spring Boot (WebFlux) for reactive programming</li>
+                        <li><strong>Streaming:</strong> Apache Kafka for real-time data processing</li>
+                        <li><strong>Caching:</strong> Redis for low-latency feature storage</li>
+                        <li><strong>ML Model:</strong> XGBoost4J with hot reload capability</li>
                     </ul>
                     
-                    <h4>Key Features</h4>
+                    <h4>Infrastructure & Deployment</h4>
                     <ul>
-                        <li>User authentication and authorization with JWT</li>
-                        <li>Real-time inventory tracking and management</li>
-                        <li>Secure payment processing with Stripe integration</li>
-                        <li>Order management and tracking system</li>
-                        <li>Admin dashboard for product and user management</li>
+                        <li>Containerized with Docker and deployed on Kubernetes using Helm</li>
+                        <li>HPA (Horizontal Pod Autoscaling) enabled for dynamic scaling</li>
+                        <li>Health probes and structured JSON logging</li>
+                        <li>Metrics exported via Micrometer to Prometheus and visualized in Grafana</li>
+                    </ul>
+                    
+                    <h4>CI/CD Pipeline</h4>
+                    <ul>
+                        <li>GitHub Actions CI/CD with Maven</li>
+                        <li>Unit and integration tests using JUnit 5 and Testcontainers</li>
+                        <li>Images built with Jib and shipped to container registry</li>
                     </ul>
                     
                     <h4>Technologies Used</h4>
                     <div class="tech-stack">
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">Node.js</span>
-                        <span class="tech-tag">PostgreSQL</span>
-                        <span class="tech-tag">Stripe API</span>
-                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">Spring Boot</span>
+                        <span class="tech-tag">Kafka</span>
+                        <span class="tech-tag">Redis</span>
+                        <span class="tech-tag">Kubernetes</span>
+                        <span class="tech-tag">XGBoost4J</span>
                     </div>
                 </div>
             `
@@ -395,173 +400,193 @@ function initProjectModals() {
                 </div>
             `
         },
-        'chat-application': {
-            title: 'Real-time Chat Application',
+        'kernel-kmeans': {
+            title: 'Kernel K-Means GPU Accelerator',
             content: `
                 <div class="modal-project-content">
                     <h4>Project Overview</h4>
-                    <p>Developed a real-time messaging application with WebSocket integration, featuring instant message delivery, user presence indicators, and message persistence with MongoDB.</p>
+                    <p>Refactored kernel-Kmeans to sparse linear algebra, casting core steps as SpMM/SpMV operations, offloading to cuSPARSE/cuBLAS for massive performance gains.</p>
                     
-                    <h4>Technical Features</h4>
+                    <h4>Technical Innovation</h4>
                     <ul>
-                        <li><strong>Real-time Communication:</strong> WebSocket-based bidirectional messaging</li>
-                        <li><strong>User Management:</strong> Authentication and user presence tracking</li>
-                        <li><strong>Message Persistence:</strong> MongoDB for storing chat history</li>
-                        <li><strong>Scalability:</strong> Support for multiple concurrent users</li>
-                        <li><strong>Modern UI:</strong> Responsive React interface with real-time updates</li>
+                        <li><strong>Sparse Matrix Operations:</strong> Converted distance calculations to sparse matrix multiplications</li>
+                        <li><strong>GPU Memory Optimization:</strong> Efficient memory coalescing and bank conflict avoidance</li>
+                        <li><strong>Library Integration:</strong> Leveraged cuBLAS and cuSPARSE for optimized operations</li>
+                        <li><strong>Performance Tuning:</strong> Memory throughput and occupancy optimization</li>
                     </ul>
                     
-                    <h4>Key Achievements</h4>
+                    <h4>Performance Results</h4>
                     <ul>
-                        <li><span class="highlight">&lt;100ms</span> message delivery latency</li>
-                        <li>Support for <span class="highlight">1000+</span> concurrent users</li>
-                        <li>Message encryption for enhanced security</li>
-                        <li>Offline message synchronization</li>
-                        <li>File sharing capabilities with image preview</li>
+                        <li><span class="highlight">1000×</span> faster than CPU baseline</li>
+                        <li><span class="highlight">2.6×</span> improvement over dense-GPU baselines</li>
+                        <li>Tested on MNIST and CIFAR-10 datasets</li>
+                        <li>Optimized for memory throughput and occupancy</li>
                     </ul>
                     
-                    <h4>Architecture</h4>
+                    <h4>Implementation Details</h4>
                     <ul>
-                        <li>Express.js server with Socket.IO for WebSocket management</li>
-                        <li>React frontend with real-time state management</li>
-                        <li>MongoDB with optimized indexing for message queries</li>
-                        <li>Redis for session management and caching</li>
-                        <li>Docker containerization for easy deployment</li>
+                        <li>Coalesced global memory accesses for optimal bandwidth</li>
+                        <li>Shared memory tiling for data reuse</li>
+                        <li>Register and SM balance optimization</li>
+                        <li>Custom CUDA kernels for sparse operations</li>
                     </ul>
                     
                     <h4>Technologies Used</h4>
                     <div class="tech-stack">
-                        <span class="tech-tag">WebSocket</span>
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">Express.js</span>
-                        <span class="tech-tag">MongoDB</span>
-                        <span class="tech-tag">Socket.IO</span>
+                        <span class="tech-tag">CUDA</span>
+                        <span class="tech-tag">cuSPARSE</span>
+                        <span class="tech-tag">cuBLAS</span>
+                        <span class="tech-tag">C++</span>
+                        <span class="tech-tag">GPU Computing</span>
                     </div>
                 </div>
             `
         },
-        'liars-bar': {
-            title: "Liar's Bar: Bayesian Reinforcement Learning",
+        'medical-optimizer': {
+            title: 'Medical Prompt Optimizer',
             content: `
                 <div class="modal-project-content">
                     <h4>Project Overview</h4>
-                    <p>Modeled Liar's Bar as an imperfect-information Bayesian game, solved for subgame-perfect Nash equilibria, and used those policies to warm-start a DQN agent for superior performance in multiplayer gaming scenarios.</p>
+                    <p>Built a text-gradient + momentum prompt optimizer with Bayesian reverse validation for medical Q&A, improving MedQA/PubMedQA accuracy by 20% vs Chain-of-Thought.</p>
                     
-                    <h4>Game Theory Foundation</h4>
+                    <h4>Core Innovation</h4>
                     <ul>
-                        <li><strong>Bayesian Game Modeling:</strong> Imperfect information game representation</li>
-                        <li><strong>Nash Equilibria:</strong> Computed subgame-perfect equilibrium strategies</li>
-                        <li><strong>Belief State Tracking:</strong> Probabilistic opponent modeling</li>
-                        <li><strong>Strategy Integration:</strong> Nash policies as DQN initialization</li>
+                        <li><strong>Text-Gradient Optimization:</strong> Gradient-based prompt engineering</li>
+                        <li><strong>Momentum Integration:</strong> Improved convergence stability</li>
+                        <li><strong>Bayesian Validation:</strong> Reverse validation for robustness</li>
+                        <li><strong>Medical Focus:</strong> Specialized for MedQA/PubMedQA datasets</li>
                     </ul>
                     
-                    <h4>Reinforcement Learning</h4>
+                    <h4>RAG Integration</h4>
                     <ul>
-                        <li><strong>DQN Architecture:</strong> Deep Q-Network with experience replay</li>
-                        <li><strong>Warm-Start Training:</strong> Nash equilibrium policy initialization</li>
-                        <li><strong>Opponent Modeling:</strong> Adaptive strategies for multiple players</li>
-                        <li><strong>Reward Engineering:</strong> Shaped rewards for strategic gameplay</li>
+                        <li><strong>Hybrid Retrieval:</strong> BM25 + dense embeddings with RRF</li>
+                        <li><strong>Cross-Encoder Reranker:</strong> Tightened answer relevance</li>
+                        <li><strong>LangChain Service:</strong> Flask API + Next.js frontend</li>
+                        <li><strong>Fallback System:</strong> Pragmatic RAG when optimization fails</li>
                     </ul>
                     
-                    <h4>Production System</h4>
+                    <h4>Evaluation & Monitoring</h4>
                     <ul>
-                        <li>Flask + PostgreSQL microservice architecture</li>
-                        <li>Kubernetes auto-scaling for multiplayer sessions</li>
-                        <li>Real-time game state synchronization</li>
-                        <li><span class="highlight">12% win-rate improvement</span> over baseline bots in 10k simulations</li>
+                        <li><strong>RAGAS Metrics:</strong> Faithfulness, context precision/recall</li>
+                        <li><strong>LangSmith Integration:</strong> Datasets and traces</li>
+                        <li><strong>OpenTelemetry:</strong> Latency/QPS/errors dashboards</li>
+                        <li><strong>gRPC Scoring:</strong> Low-latency path for critical calls</li>
+                    </ul>
+                    
+                    <h4>Performance Results</h4>
+                    <ul>
+                        <li><span class="highlight">20% accuracy improvement</span> vs CoT baselines</li>
+                        <li>Validated on MedQA and PubMedQA benchmarks</li>
+                        <li>Robust performance across different medical domains</li>
                     </ul>
                     
                     <h4>Technologies Used</h4>
                     <div class="tech-stack">
-                        <span class="tech-tag">Deep Q-Networks</span>
-                        <span class="tech-tag">Bayesian Games</span>
-                        <span class="tech-tag">Flask</span>
-                        <span class="tech-tag">PostgreSQL</span>
-                        <span class="tech-tag">Kubernetes</span>
+                        <span class="tech-tag">LangChain</span>
+                        <span class="tech-tag">Flask API</span>
+                        <span class="tech-tag">Next.js</span>
+                        <span class="tech-tag">gRPC</span>
+                        <span class="tech-tag">RAGAS</span>
                     </div>
                 </div>
             `
         },
-        'yolo-aimbot': {
-            title: 'YOLO Aimbot System',
+        'graphrag-pipeline': {
+            title: 'GraphRAG Pipeline',
             content: `
                 <div class="modal-project-content">
                     <h4>Project Overview</h4>
-                    <p>Developed a high-performance real-time object detection system using YOLOv8 optimized with TensorRT and CUDA Graphs for gaming applications, achieving exceptional frame rates and accuracy.</p>
+                    <p>Architected a GraphRAG pipeline integrating Neo4j (Cypher) with FAISS dense retrieval via LangChain for neurology FAQ benchmark, achieving significant performance improvements.</p>
                     
-                    <h4>Performance Optimization</h4>
+                    <h4>Technical Architecture</h4>
                     <ul>
-                        <li><strong>TensorRT Integration:</strong> Deep learning inference optimization</li>
-                        <li><strong>CUDA Graphs:</strong> GPU kernel launch overhead reduction</li>
-                        <li><strong>Memory Management:</strong> Zero-copy operations and pinned memory</li>
-                        <li><strong>Pipeline Optimization:</strong> Asynchronous processing workflows</li>
+                        <li><strong>Graph Database:</strong> Neo4j with Cypher queries for structured data</li>
+                        <li><strong>Vector Search:</strong> FAISS for dense retrieval operations</li>
+                        <li><strong>Integration Layer:</strong> LangChain for seamless pipeline orchestration</li>
+                        <li><strong>Evaluation Framework:</strong> RAGAS metrics for comprehensive assessment</li>
                     </ul>
                     
-                    <h4>System Architecture</h4>
+                    <h4>Data Pipeline</h4>
                     <ul>
-                        <li><strong>Real-time Capture:</strong> High-speed screen capture system</li>
-                        <li><strong>Object Detection:</strong> YOLOv8 with custom training on game data</li>
-                        <li><strong>Target Tracking:</strong> Kalman filter-based trajectory prediction</li>
-                        <li><strong>Desktop Overlay:</strong> Lightweight visualization system</li>
+                        <li><strong>Python ETL:</strong> Large-scale hypothesis testing on 10k+ patient records</li>
+                        <li><strong>Vectorized Processing:</strong> Efficient ETL and hypothesis testing</li>
+                        <li><strong>Statistical Analysis:</strong> Shapiro–Wilk, Chi-square testing</li>
+                        <li><strong>Data Quality:</strong> De-identified patient record processing</li>
                     </ul>
                     
-                    <h4>Performance Metrics</h4>
+                    <h4>Model Integration</h4>
                     <ul>
-                        <li><span class="highlight">60 FPS</span> sustained performance on RTX 3060</li>
-                        <li><span class="highlight">&lt;10ms</span> end-to-end latency</li>
-                        <li><span class="highlight">0.89 mAP</span> accuracy on 1k test frames</li>
-                        <li>Real-time target acquisition and tracking</li>
+                        <li><strong>LLM Fine-tuning:</strong> LLaMA-3 & Mistral-7B with LoRA</li>
+                        <li><strong>Quantization:</strong> 8-bit quantized artifacts for inference</li>
+                        <li><strong>Hugging Face Stack:</strong> Modern ML workflow integration</li>
+                        <li><strong>Performance:</strong> +20% F1 on de-identified brain-science Q&A</li>
+                    </ul>
+                    
+                    <h4>Performance Results</h4>
+                    <ul>
+                        <li><span class="highlight">+32% EM improvement</span> on neurology FAQ benchmark</li>
+                        <li>RAGAS faithfulness and answer-relevance validation</li>
+                        <li>Mean±95% CI confidence intervals</li>
+                        <li>Cross-center validation for robustness</li>
                     </ul>
                     
                     <h4>Technologies Used</h4>
                     <div class="tech-stack">
-                        <span class="tech-tag">YOLOv8</span>
-                        <span class="tech-tag">TensorRT</span>
-                        <span class="tech-tag">CUDA Graphs</span>
-                        <span class="tech-tag">OpenCV</span>
-                        <span class="tech-tag">Computer Vision</span>
-                    </div>
-                </div>
-            `
-        },
-        'asset-optimizer': {
-            title: 'Asset Allocation Optimizer',
-            content: `
-                <div class="modal-project-content">
-                    <h4>Project Overview</h4>
-                    <p>Reformulated the Markowitz mean-variance problem into an L1-regularized SSMP model and solved it using a novel combination of Particle Swarm Optimization for global search and proximal fixed-point gradient methods for local refinement.</p>
-                    
-                    <h4>Mathematical Framework</h4>
-                    <ul>
-                        <li><strong>Problem Reformulation:</strong> L1-regularized Sharpe ratio maximization</li>
-                        <li><strong>Dual Optimization:</strong> Global PSO + local gradient descent</li>
-                        <li><strong>Risk Management:</strong> VaR and CVaR constraint integration</li>
-                        <li><strong>Regularization:</strong> Sparsity-inducing penalties for portfolio concentration</li>
-                    </ul>
-                    
-                    <h4>Optimization Strategy</h4>
-                    <ul>
-                        <li><strong>Particle Swarm Phase:</strong> Global exploration of solution space</li>
-                        <li><strong>Fixed-Point Refinement:</strong> Local convergence to optimal solutions</li>
-                        <li><strong>Constraint Handling:</strong> Penalty methods for investment constraints</li>
-                        <li><strong>Multi-objective Optimization:</strong> Return vs. risk trade-off analysis</li>
-                    </ul>
-                    
-                    <h4>Backtesting Results</h4>
-                    <ul>
-                        <li><span class="highlight">2.6× return improvement</span> vs. vanilla MV solver</li>
-                        <li>5-year historical backtesting period</li>
-                        <li>Superior risk-adjusted returns (Sharpe ratio)</li>
-                        <li>Reduced portfolio turnover and transaction costs</li>
-                    </ul>
-                    
-                    <h4>Technologies Used</h4>
-                    <div class="tech-stack">
-                        <span class="tech-tag">Particle Swarm Optimization</span>
-                        <span class="tech-tag">Fixed Point Methods</span>
+                        <span class="tech-tag">Neo4j</span>
+                        <span class="tech-tag">FAISS</span>
+                        <span class="tech-tag">LangChain</span>
                         <span class="tech-tag">Python</span>
-                        <span class="tech-tag">NumPy</span>
-                        <span class="tech-tag">Quantitative Finance</span>
+                        <span class="tech-tag">RAGAS</span>
+                    </div>
+                </div>
+            `
+        },
+        'ppo-seizure': {
+            title: 'PPO Seizure Prediction',
+            content: `
+                <div class="modal-project-content">
+                    <h4>Project Overview</h4>
+                    <p>Built a custom RL environment and trained PPO for multi-step seizure-trajectory prediction, delivering superior performance compared to clinician-derived baselines.</p>
+                    
+                    <h4>Reinforcement Learning Approach</h4>
+                    <ul>
+                        <li><strong>PPO Algorithm:</strong> Proximal Policy Optimization for stable training</li>
+                        <li><strong>Custom Environment:</strong> Specialized RL environment for seizure prediction</li>
+                        <li><strong>Multi-step Prediction:</strong> Trajectory-based seizure forecasting</li>
+                        <li><strong>Reward Engineering:</strong> Clinically-relevant reward functions</li>
+                    </ul>
+                    
+                    <h4>Technical Implementation</h4>
+                    <ul>
+                        <li><strong>Environment Design:</strong> Custom gym-compatible RL environment</li>
+                        <li><strong>State Representation:</strong> Patient data and temporal features</li>
+                        <li><strong>Action Space:</strong> Seizure prediction and intervention recommendations</li>
+                        <li><strong>Training Pipeline:</strong> Stable PPO implementation with hyperparameter tuning</li>
+                    </ul>
+                    
+                    <h4>Performance Results</h4>
+                    <ul>
+                        <li><span class="highlight">+17% higher cumulative reward</span> vs clinician baselines</li>
+                        <li>Improved seizure prediction accuracy</li>
+                        <li>Better temporal prediction capabilities</li>
+                        <li>Validated on real patient data</li>
+                    </ul>
+                    
+                    <h4>Clinical Integration</h4>
+                    <ul>
+                        <li><strong>Baseline Comparison:</strong> Clinician-derived prediction methods</li>
+                        <li><strong>Medical Validation:</strong> Real-world clinical data testing</li>
+                        <li><strong>Interpretability:</strong> Explainable AI for medical decision support</li>
+                        <li><strong>Safety Considerations:</strong> Robust prediction with uncertainty quantification</li>
+                    </ul>
+                    
+                    <h4>Technologies Used</h4>
+                    <div class="tech-stack">
+                        <span class="tech-tag">PPO</span>
+                        <span class="tech-tag">Reinforcement Learning</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">PyTorch</span>
+                        <span class="tech-tag">Custom RL Environment</span>
                     </div>
                 </div>
             `
