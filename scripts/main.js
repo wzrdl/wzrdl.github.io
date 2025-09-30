@@ -452,7 +452,7 @@ function initMacTrackpadScrolling() {
             // Add a tiny bit of smoothing
             e.preventDefault();
             window.scrollBy({
-                top: e.deltaY * 0.8, // Slightly reduce the scroll amount
+                top: e.deltaY * 0.5, // Slightly reduce the scroll amount
                 behavior: 'smooth'
             });
         }
