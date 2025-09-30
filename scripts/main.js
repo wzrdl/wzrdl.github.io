@@ -9,6 +9,7 @@ initHeaderScrollEffect();
 initTechGalleryDrag();
 initVinylPlayer();
 initFooterCTA();
+initInertialScrolling();
 initPreventBottomBounce();
 });
 
@@ -149,18 +150,235 @@ function throttle(func, limit) {
     };
 }
 
+// Inertial Scrolling Engine - Physics-based momentum scrolling
+function initInertialScrolling() {
+    // Check if user prefers reduced motion - disable inertia if true
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+        console.log('Inertial scrolling disabled: user prefers reduced motion');
+        return;
+    }
+
+    // Physics constants - tuned for responsive, controlled feel
+    const FRICTION = 0.95;              // Deceleration factor (0.95 = 5% reduction per frame, stops faster)
+    const VELOCITY_SCALE = 0.4;         // Multiplier for wheel input sensitivity (reduced for smaller scrolls)
+    const MIN_VELOCITY = 0.2;           // Threshold to stop animation (prevents infinite tiny movements)
+    const MAX_VELOCITY = 40;            // Cap maximum velocity for control (reduced from 100)
+    const VELOCITY_SMOOTHING = 0.1;    // Weight for new velocity (reduced for more immediate response)
+    
+    // State management
+    let targetScrollY = window.scrollY;
+    let currentScrollY = window.scrollY;
+    let velocity = 0;
+    let animationId = null;
+    let isScrolling = false;
+    let lastWheelTime = 0;
+    let smoothedVelocity = 0;
+    
+    // High refresh rate support
+    let lastFrameTime = performance.now();
+    let deltaTime = 0;
+    
+    // Scroll bounds helper
+    const getMaxScroll = () => {
+        return Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+    };
+    
+    // Clamp value between min and max
+    const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+    
+    // Stop ongoing animation
+    const stopAnimation = () => {
+        if (animationId) {
+            cancelAnimationFrame(animationId);
+            animationId = null;
+        }
+        isScrolling = false;
+        velocity = 0;
+        smoothedVelocity = 0;
+    };
+    
+    // Core animation loop - optimized for high refresh rates (60fps+)
+    const animate = (currentTime) => {
+        // Calculate delta time for frame-rate independence
+        deltaTime = currentTime - lastFrameTime;
+        lastFrameTime = currentTime;
+        
+        // Normalize to 60fps baseline (deltaTime in ms, target is ~16.67ms)
+        const timeScale = deltaTime / 16.67;
+        
+        // Apply friction to velocity (frame-rate independent)
+        const adjustedFriction = Math.pow(FRICTION, timeScale);
+        velocity *= adjustedFriction;
+        smoothedVelocity *= adjustedFriction;
+        
+        // Stop if velocity is negligible
+        if (Math.abs(velocity) < MIN_VELOCITY && Math.abs(smoothedVelocity) < MIN_VELOCITY) {
+            stopAnimation();
+            currentScrollY = Math.round(currentScrollY);
+            window.scrollTo(0, currentScrollY);
+            return;
+        }
+        
+        // Update position based on velocity (frame-rate independent)
+        currentScrollY += smoothedVelocity * timeScale;
+        
+        // Enforce scroll bounds with elastic resistance at edges
+        const maxScroll = getMaxScroll();
+        
+        if (currentScrollY < 0) {
+            // Top boundary - elastic resistance
+            currentScrollY = currentScrollY * 0.5;
+            velocity *= 0.5;
+            smoothedVelocity *= 0.5;
+        } else if (currentScrollY > maxScroll) {
+            // Bottom boundary - elastic resistance
+            const overshoot = currentScrollY - maxScroll;
+            currentScrollY = maxScroll + (overshoot * 0.5);
+            velocity *= 0.5;
+            smoothedVelocity *= 0.5;
+        }
+        
+        // Clamp to valid range
+        currentScrollY = clamp(currentScrollY, 0, maxScroll);
+        
+        // Apply scroll position (optimized: avoid layout thrashing)
+        window.scrollTo(0, currentScrollY);
+        
+        // Continue animation
+        animationId = requestAnimationFrame(animate);
+    };
+    
+    // Wheel event handler - captures scroll input
+    const handleWheel = (e) => {
+        e.preventDefault();
+        
+        const currentTime = Date.now();
+        const timeDelta = currentTime - lastWheelTime;
+        lastWheelTime = currentTime;
+        
+        // Calculate new velocity from wheel delta
+        // Use deltaY for vertical scrolling
+        let newVelocity = e.deltaY * VELOCITY_SCALE;
+        
+        // Detect scroll mode (pixel vs line vs page) and normalize
+        if (e.deltaMode === 1) {
+            // Line mode (Firefox, some trackpads)
+            newVelocity *= 16;
+        } else if (e.deltaMode === 2) {
+            // Page mode
+            newVelocity *= window.innerHeight;
+        }
+        
+        // Cap velocity to prevent excessive speeds
+        newVelocity = clamp(newVelocity, -MAX_VELOCITY, MAX_VELOCITY);
+        
+        // Quick successive scrolls should accumulate (feel responsive)
+        if (timeDelta < 50) {
+            velocity += newVelocity;
+            velocity = clamp(velocity, -MAX_VELOCITY * 1.5, MAX_VELOCITY * 1.5);
+        } else {
+            velocity = newVelocity;
+        }
+        
+        // Smooth velocity using exponential moving average
+        smoothedVelocity = smoothedVelocity * (1 - VELOCITY_SMOOTHING) + velocity * VELOCITY_SMOOTHING;
+        
+        // Update current position to actual scroll position (handles interruptions)
+        currentScrollY = window.scrollY;
+        
+        // Start animation if not already running
+        if (!isScrolling) {
+            isScrolling = true;
+            lastFrameTime = performance.now();
+            animationId = requestAnimationFrame(animate);
+        }
+    };
+    
+    // User scroll interruption - allows user to grab control
+    const handleScroll = () => {
+        // Only handle manual scrolls (not our programmatic ones)
+        if (isScrolling) {
+            const manualScrollDelta = Math.abs(window.scrollY - currentScrollY);
+            
+            // If user manually scrolled significantly, stop inertia
+            if (manualScrollDelta > 5) {
+                stopAnimation();
+                currentScrollY = window.scrollY;
+            }
+        }
+    };
+    
+    // Touch support - disable on touch devices to preserve native behavior
+    let isTouchDevice = false;
+    const detectTouch = () => {
+        isTouchDevice = true;
+        // Remove wheel listener on touch devices
+        window.removeEventListener('wheel', handleWheel);
+    };
+    
+    // Keyboard navigation support
+    const handleKeydown = (e) => {
+        // Allow keyboard navigation to interrupt inertia
+        const scrollKeys = ['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', 'Space'];
+        if (scrollKeys.includes(e.key) || scrollKeys.includes(e.code)) {
+            stopAnimation();
+        }
+    };
+    
+    // Window resize handler
+    const handleResize = debounce(() => {
+        // Stop animation and recalculate on resize
+        stopAnimation();
+        currentScrollY = window.scrollY;
+    }, 150);
+    
+    // Register event listeners
+    // Use passive: false to allow preventDefault
+    window.addEventListener('wheel', handleWheel, { passive: false });
+    window.addEventListener('touchstart', detectTouch, { passive: true, once: true });
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('keydown', handleKeydown, { passive: true });
+    window.addEventListener('resize', handleResize, { passive: true });
+    
+    // Cleanup on page unload
+    window.addEventListener('beforeunload', () => {
+        stopAnimation();
+        window.removeEventListener('wheel', handleWheel);
+        window.removeEventListener('scroll', handleScroll);
+        window.removeEventListener('keydown', handleKeydown);
+        window.removeEventListener('resize', handleResize);
+    });
+    
+    // Performance monitoring (development only)
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        let frameCount = 0;
+        let lastFpsUpdate = performance.now();
+        
+        const monitorFPS = () => {
+            if (isScrolling) {
+                frameCount++;
+                const now = performance.now();
+                if (now - lastFpsUpdate >= 1000) {
+                    console.log(`Scroll FPS: ${frameCount} | Refresh rate optimized`);
+                    frameCount = 0;
+                    lastFpsUpdate = now;
+                }
+            }
+            requestAnimationFrame(monitorFPS);
+        };
+        
+        monitorFPS();
+    }
+    
+    console.log('Inertial scrolling initialized - high refresh rate optimized (60fps+)');
+}
+
 // Prevent elastic overscroll bounce at the very bottom of the page
 function initPreventBottomBounce() {
     const isAtBottom = () => window.innerHeight + window.scrollY >= (document.documentElement.scrollHeight || document.body.scrollHeight) - 1;
 
-    // Wheel (mouse/trackpad)
-    window.addEventListener('wheel', (e) => {
-        if (isAtBottom() && e.deltaY > 0) {
-            e.preventDefault();
-        }
-    }, { passive: false });
-
-    // Touch (mobile/iOS)
+    // Touch (mobile/iOS) - only prevent on touch devices
     let touchStartY = 0;
     window.addEventListener('touchstart', (e) => {
         if (e.touches && e.touches.length) {
@@ -594,7 +812,7 @@ function initVinylPlayer() {
     projectItems.forEach((item, index) => {
         ScrollTrigger.create({
             trigger: item,
-            start: "center 80%",  // 当项目中心到达视口80%时（中线下20%）
+            start: "center 85%",  // 当项目中心到达视口80%时（中线下20%）
             end: "center 40%",    // 当项目中心到达视口30%时（中线上30%）
             onEnter: () => {
                 // 向下滚动进入激活区域
