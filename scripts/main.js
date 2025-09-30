@@ -251,6 +251,11 @@ function initInertialScrolling() {
     
     // Wheel event handler - captures scroll input
     const handleWheel = (e) => {
+        // Allow browser zoom with Ctrl+wheel
+        if (e.ctrlKey || e.metaKey) {
+            return; // Don't prevent default for zoom
+        }
+        
         e.preventDefault();
         
         const currentTime = Date.now();
@@ -319,6 +324,11 @@ function initInertialScrolling() {
     
     // Keyboard navigation support
     const handleKeydown = (e) => {
+        // Allow browser zoom with Ctrl+plus/minus
+        if ((e.ctrlKey || e.metaKey) && (e.key === '+' || e.key === '-' || e.key === '=')) {
+            return; // Don't interfere with zoom
+        }
+        
         // Allow keyboard navigation to interrupt inertia
         const scrollKeys = ['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', 'Space'];
         if (scrollKeys.includes(e.key) || scrollKeys.includes(e.code)) {
