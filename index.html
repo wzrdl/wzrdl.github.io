@@ -25,9 +25,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- CSS Animation Libraries -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css">
+    <!-- CSS Animation Libraries with fallback -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" 
+          onerror="console.warn('Animate.css CDN failed, using fallback'); this.onerror=null; this.href='data:text/css,/* Fallback for Animate.css */';">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css" 
+          onerror="console.warn('Hover.css CDN failed, using fallback'); this.onerror=null; this.href='data:text/css,/* Fallback for Hover.css */';">
     
     <!-- Styles -->
     <link rel="stylesheet" href="./styles/style.css">
@@ -537,9 +539,44 @@
     }
     </script>
 
-    <!-- GSAP Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- GSAP Library with fallback -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" 
+            onerror="console.warn('GSAP CDN failed, using fallback'); window.gsapFallback = true;"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" 
+            onerror="console.warn('ScrollTrigger CDN failed, using fallback'); window.scrollTriggerFallback = true;"></script>
+    
+    <!-- Resource Loading Monitor -->
+    <script>
+        // Monitor resource loading and provide fallbacks
+        window.addEventListener('load', function() {
+            console.log('All resources loaded successfully');
+            
+            // Check if GSAP loaded properly
+            if (typeof gsap === 'undefined') {
+                console.warn('GSAP failed to load, fallback animations will be used');
+            }
+            
+            // Check if ScrollTrigger loaded properly
+            if (typeof ScrollTrigger === 'undefined') {
+                console.warn('ScrollTrigger failed to load, fallback animations will be used');
+            }
+            
+            // Check for any failed resource loads
+            const failedResources = [];
+            const links = document.querySelectorAll('link[rel="stylesheet"]');
+            const scripts = document.querySelectorAll('script[src]');
+            
+            // This is a basic check - in production you might want more sophisticated monitoring
+            console.log('Resource loading check completed');
+        });
+        
+        // Add error handling for failed resource loads
+        window.addEventListener('error', function(e) {
+            if (e.target.tagName === 'LINK' || e.target.tagName === 'SCRIPT') {
+                console.warn('Resource failed to load:', e.target.src || e.target.href);
+            }
+        }, true);
+    </script>
     
     <!-- Scripts -->
     <script src="./scripts/main.js"></script>

@@ -730,8 +730,21 @@ function initVinylPlayer() {
     let currentActiveIndex = -1; // 初始化为-1，表示没有激活的项目
     let isTransitioning = false;
 
+    // Check if GSAP is available, if not, use fallback
+    if (typeof gsap === 'undefined' || window.gsapFallback) {
+        console.warn('GSAP not available, using fallback animations');
+        initVinylPlayerFallback(vinylSection, projectItems, albumItems);
+        return;
+    }
+
     // Register GSAP ScrollTrigger plugin
-    gsap.registerPlugin(ScrollTrigger);
+    try {
+        gsap.registerPlugin(ScrollTrigger);
+    } catch (error) {
+        console.warn('ScrollTrigger registration failed:', error);
+        initVinylPlayerFallback(vinylSection, projectItems, albumItems);
+        return;
+    }
     
     // GSAP performance optimizations
     gsap.config({
@@ -1082,6 +1095,69 @@ function initVinylPlayer() {
     };
 }
 
+// Fallback function for when GSAP is not available
+function initVinylPlayerFallback(vinylSection, projectItems, albumItems) {
+    console.log('Using fallback vinyl player animations');
+    
+    // Simple scroll-based activation without GSAP
+    let currentActiveIndex = -1;
+    
+    // Add scroll listener for project activation
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const index = Array.from(projectItems).indexOf(entry.target);
+                if (index !== -1 && index !== currentActiveIndex) {
+                    // Remove active class from all items
+                    projectItems.forEach(item => item.classList.remove('active'));
+                    albumItems.forEach(item => item.classList.remove('active'));
+                    
+                    // Add active class to current item
+                    entry.target.classList.add('active');
+                    if (albumItems[index]) {
+                        albumItems[index].classList.add('active');
+                    }
+                    
+                    currentActiveIndex = index;
+                }
+            }
+        });
+    }, {
+        threshold: 0.5,
+        rootMargin: '-20% 0px -20% 0px'
+    });
+    
+    // Observe all project items
+    projectItems.forEach(item => observer.observe(item));
+    
+    // Add click handlers
+    projectItems.forEach((item, index) => {
+        item.addEventListener('click', () => {
+            projectItems.forEach(p => p.classList.remove('active'));
+            albumItems.forEach(a => a.classList.remove('active'));
+            
+            item.classList.add('active');
+            if (albumItems[index]) {
+                albumItems[index].classList.add('active');
+            }
+            currentActiveIndex = index;
+        });
+    });
+    
+    albumItems.forEach((item, index) => {
+        item.addEventListener('click', () => {
+            projectItems.forEach(p => p.classList.remove('active'));
+            albumItems.forEach(a => a.classList.remove('active'));
+            
+            item.classList.add('active');
+            if (projectItems[index]) {
+                projectItems[index].classList.add('active');
+            }
+            currentActiveIndex = index;
+        });
+    });
+}
+
 // Footer CTA Interactions - Reveal naturally on scroll
 function initFooterCTA() {
     const footer = document.querySelector('.footer-cta');
@@ -1091,8 +1167,14 @@ function initFooterCTA() {
     if (!footer || !techSection) return;
 
     // Animate footer reveal by clipping footer itself while tech section scrolls
-    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-        gsap.registerPlugin(ScrollTrigger);
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined' && !window.gsapFallback && !window.scrollTriggerFallback) {
+        try {
+            gsap.registerPlugin(ScrollTrigger);
+        } catch (error) {
+            console.warn('ScrollTrigger registration failed in footer:', error);
+            initFooterCTAFallback(footer, techSection, spacer, resetBtn);
+            return;
+        }
         // Start with footer fully clipped (hidden)
         gsap.set(footer, { clipPath: 'inset(100% 0% 0% 0%)' });
 
@@ -1129,6 +1211,54 @@ function initFooterCTA() {
     }
 
     // Add subtle hover animations to CTA buttons
+    const ctaButtons = document.querySelectorAll('.cta-btn');
+    ctaButtons.forEach(btn => {
+        btn.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-3px) scale(1.02)';
+        });
+
+        btn.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+    });
+}
+
+// Fallback function for Footer CTA when GSAP is not available
+function initFooterCTAFallback(footer, techSection, spacer, resetBtn) {
+    console.log('Using fallback footer CTA animations');
+    
+    // Simple CSS-based reveal without GSAP
+    footer.style.clipPath = 'inset(100% 0% 0% 0%)';
+    footer.style.transition = 'clip-path 0.3s ease';
+    
+    // Use Intersection Observer for footer reveal
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                footer.style.clipPath = 'inset(0% 0% 0% 0%)';
+            } else {
+                footer.style.clipPath = 'inset(100% 0% 0% 0%)';
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+    
+    observer.observe(techSection);
+    
+    // Reset button functionality
+    if (resetBtn) {
+        resetBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+    
+    // Add hover effects to CTA buttons
     const ctaButtons = document.querySelectorAll('.cta-btn');
     ctaButtons.forEach(btn => {
         btn.addEventListener('mouseenter', function() {
