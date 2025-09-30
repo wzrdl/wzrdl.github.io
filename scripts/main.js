@@ -439,20 +439,9 @@ function initPerformanceMonitoring() {
     }
 }
 
-// Debug Information
-console.log('Portfolio website loaded successfully');
-console.log('Current URL:', window.location.href);
-console.log('User Agent:', navigator.userAgent);
-
 // Error Handling
 window.addEventListener('error', (e) => {
     console.error('JavaScript Error:', e.error);
-    console.error('Error details:', {
-        message: e.message,
-        filename: e.filename,
-        lineno: e.lineno,
-        colno: e.colno
-    });
 });
 
 // Service Worker Registration (for future PWA features)
