@@ -8,6 +8,8 @@ initSmoothScrolling();
 initHeaderScrollEffect();
 initTechGalleryDrag();
 initVinylPlayer();
+initFooterCTA();
+initPreventBottomBounce();
 });
 
 // Local Time Display
@@ -145,6 +147,34 @@ function throttle(func, limit) {
             setTimeout(() => inThrottle = false, limit);
         }
     };
+}
+
+// Prevent elastic overscroll bounce at the very bottom of the page
+function initPreventBottomBounce() {
+    const isAtBottom = () => window.innerHeight + window.scrollY >= (document.documentElement.scrollHeight || document.body.scrollHeight) - 1;
+
+    // Wheel (mouse/trackpad)
+    window.addEventListener('wheel', (e) => {
+        if (isAtBottom() && e.deltaY > 0) {
+            e.preventDefault();
+        }
+    }, { passive: false });
+
+    // Touch (mobile/iOS)
+    let touchStartY = 0;
+    window.addEventListener('touchstart', (e) => {
+        if (e.touches && e.touches.length) {
+            touchStartY = e.touches[0].clientY;
+        }
+    }, { passive: true });
+
+    window.addEventListener('touchmove', (e) => {
+        if (!(e.touches && e.touches.length)) return;
+        const dy = touchStartY - e.touches[0].clientY; // >0 means scrolling down
+        if (isAtBottom() && dy > 0) {
+            e.preventDefault();
+        }
+    }, { passive: false });
 }
 
 // Contact Form Enhancement (if needed in future)
@@ -834,6 +864,65 @@ function initVinylPlayer() {
     };
 }
 
+// Footer CTA Interactions - Reveal naturally on scroll
+function initFooterCTA() {
+    const footer = document.querySelector('.footer-cta');
+    const techSection = document.querySelector('.tech-stack');
+    const spacer = document.querySelector('.footer-reveal-spacer');
+    const resetBtn = document.getElementById('reset-scroll-btn');
+    if (!footer || !techSection) return;
+
+    // Animate footer reveal by clipping footer itself while tech section scrolls
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+        // Start with footer fully clipped (hidden)
+        gsap.set(footer, { clipPath: 'inset(100% 0% 0% 0%)' });
+
+        const endDistance = spacer ? spacer.offsetHeight : window.innerHeight * 0.6;
+
+        ScrollTrigger.create({
+            trigger: techSection,
+            start: 'bottom bottom',
+            end: `+=${endDistance}`,
+            scrub: true, // direct mapping, no easing/springy feel
+            onUpdate: (self) => {
+                const progress = self.progress;
+                const topInset = 100 - progress * 100;
+                // Apply rounded top corners during reveal to make roundness visible
+                // Keep all other corners square; only the footer top corners are rounded via its own radius
+                const radius = getComputedStyle(document.documentElement).getPropertyValue('--footer-top-radius').trim() || '28px';
+                gsap.set(footer, { clipPath: `inset(${topInset}% 0% 0% 0%)` });
+                footer.style.borderTopLeftRadius = radius;
+                footer.style.borderTopRightRadius = radius;
+            }
+        });
+    }
+
+    // Reset button - Scroll to top smoothly
+    if (resetBtn) {
+        resetBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+
+    // Add subtle hover animations to CTA buttons
+    const ctaButtons = document.querySelectorAll('.cta-btn');
+    ctaButtons.forEach(btn => {
+        btn.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-3px) scale(1.02)';
+        });
+
+        btn.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+    });
+}
+
 // Export functions for testing (if needed)
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
@@ -841,6 +930,7 @@ if (typeof module !== 'undefined' && module.exports) {
         initScrollAnimations,
         initTechGalleryDrag,
         initVinylPlayer,
+        initFooterCTA,
         debounce,
         throttle
     };

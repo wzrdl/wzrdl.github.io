@@ -39,6 +39,14 @@
     --transition-fast: 0.2s ease;
     --transition-normal: 0.3s ease;
     --transition-slow: 0.5s ease;
+    
+    /* Footer */
+    --footer-height: 600px; /* keep footer within 600px */
+    --footer-offset: 0px; /* footer flush to bottom */
+    --footer-radius: 16px;
+    --footer-top-radius: 28px; /* only footer top corners are rounded */
+    /* Main rounded corners */
+    --main-bottom-radius: 32px;
 }
 
 
@@ -54,13 +62,14 @@ body {
     color: var(--text-primary);
     background-color: var(--bg-primary);
     transition: background-color var(--transition-normal), color var(--transition-normal);
+    overscroll-behavior-y: none; /* prevent spring/bounce at page bottom */
 }
 
 /* Container */
 .container {
     max-width: var(--container-max-width);
     margin: 0 auto;
-    padding: 0 var(--spacing-sm); /* 减少容器左右padding */
+    padding: 0 var(--spacing-lg); /* align header and body edges */
 }
 
 /* Header Bar */
@@ -90,9 +99,28 @@ body {
 }
 
 .header-left {
-    display: flex;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: auto 180px 180px 180px; /* logo + 3 aligned info blocks */
     align-items: center;
     gap: var(--spacing-xl);
+}
+
+.header-right { margin-left: auto; }
+
+/* Ensure the three info blocks have consistent widths and alignment */
+.availability-section,
+.time-section,
+.location-section {
+    min-width: 180px;
+    display: grid;
+    align-content: center;
+}
+
+.status-text,
+.time-value,
+.location-value {
+    line-height: 1; /* tighter baseline alignment */
 }
 
 .logo {
@@ -207,6 +235,19 @@ body {
 /* Main content spacing */
 main {
     margin-top: var(--header-height);
+    position: relative;
+    z-index: 1; /* ensure content covers the fixed footer */
+    background-color: var(--bg-primary);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+/* Spacer to allow scrolling past Technologies to reveal fixed footer */
+.footer-reveal-spacer {
+    height: calc(var(--footer-height) + var(--spacing-2xl) + var(--footer-offset));
+    background-color: var(--bg-primary);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
 /* Hero Section */
@@ -1225,76 +1266,196 @@ section {
 }
 
 
-/* Contact - Unobtrusive style */
-.contact {
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
-    border-top: 1px solid var(--border-light);
+
+/* Footer - Fixed at bottom, revealed by cover */
+.footer-cta {
+    /* Off-white (ivory) footer theme */
+    background: linear-gradient(180deg, #f5f3ee 0%, #eceae5 100%);
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: var(--footer-offset);
+    height: var(--footer-height);
+    padding: var(--spacing-xl) 0;
+    border-top: 2px solid #c7c4d0;
+    box-shadow: 0 -10px 40px rgba(124, 92, 255, 0.15);
+    margin-top: 0;
+    z-index: 0; /* bottom-most layer */
+    overflow: hidden;
+    border-top-left-radius: var(--footer-top-radius);
+    border-top-right-radius: var(--footer-top-radius);
 }
 
-.contact-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: var(--spacing-2xl) 0;
+/* Cover overlay removed — technology section itself covers the footer */
+
+/* CTA Content */
+.footer-cta-content {
+    text-align: left;
+    margin-bottom: var(--spacing-md);
+    padding: var(--spacing-md) 0;
 }
 
-.contact-links {
+.footer-cta-title {
+    font-family: var(--font-display);
+    font-size: clamp(40px, 6vw, 64px);
+    font-weight: 400;
+    line-height: 1.05;
+    color: #141414; /* dark text on off-white */
+    margin-bottom: var(--spacing-lg);
+    letter-spacing: -0.02em;
+}
+
+.footer-cta-buttons {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-sm);
+    align-items: flex-start;
 }
 
-.contact-link {
-    font-size: 14px;
-    color: var(--text-primary);
+.cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 24px;
+    background: linear-gradient(135deg, #7c5cff 0%, #6b48ff 100%);
+    color: var(--bg-primary);
+    border: none;
+    border-radius: 40px;
+    font-family: var(--font-primary);
+    font-size: 15px;
+    font-weight: 600;
     text-decoration: none;
-    font-weight: 500;
-    transition: color var(--transition-fast);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(124, 92, 255, 0.3);
 }
 
-.contact-link:hover {
-    color: var(--text-secondary);
+.cta-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #8c6cff 0%, #ffb458 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
-.contact-info {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: var(--spacing-xs);
+.cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(124, 92, 255, 0.4);
 }
 
-.contact-email {
-    font-size: 14px;
-    color: var(--text-primary);
-    text-decoration: none;
-    font-weight: 500;
+.cta-btn:hover::before {
+    opacity: 1;
 }
 
-.contact-phone {
-    font-size: 14px;
-    color: var(--text-secondary);
-    margin: 0;
+.cta-btn:active {
+    transform: translateY(0);
 }
 
-/* Footer */
-.footer {
-    padding: var(--spacing-lg) 0;
-    border-top: 1px solid var(--border-light);
-    background-color: var(--bg-secondary);
+.cta-btn svg {
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
 }
 
-.footer-content {
+.cta-btn span,
+.cta-btn::after {
+    position: relative;
+    z-index: 1;
+}
+
+.cta-btn-email {
+    background: linear-gradient(135deg, #7c5cff 0%, #6b48ff 100%);
+    box-shadow: 0 4px 15px rgba(124, 92, 255, 0.3);
+}
+
+.cta-btn-linkedin {
+    background: linear-gradient(135deg, #7c5cff 0%, #6b48ff 100%);
+    box-shadow: 0 4px 15px rgba(124, 92, 255, 0.3);
+}
+
+.cta-btn-reset {
+    background: linear-gradient(135deg, #7c5cff 0%, #6b48ff 100%);
+    box-shadow: 0 4px 15px rgba(124, 92, 255, 0.3);
+}
+
+/* Footer Signature */
+.footer-signature {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: var(--spacing-md) 0;
+    border-top: 1px solid rgba(0,0,0,0.12);
+    margin-bottom: var(--spacing-sm);
 }
 
-.footer-text {
+.footer-signature-left {
+    flex: 1;
+}
+
+.footer-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0;
+}
+
+.footer-signature-right {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.footer-credit {
+    font-size: 13px;
+    color: #3a3a3a;
+    margin: 0;
+}
+
+.footer-copyright {
+    font-size: 13px;
+    color: #5e5e5e;
+    margin: 0;
+}
+
+/* Footer Archive */
+.footer-archive {
+    text-align: center;
+    padding: var(--spacing-sm) 0;
+}
+
+.footer-archive-link {
     font-size: 14px;
-    color: var(--text-muted);
+    color: #333333;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color var(--transition-fast);
+    position: relative;
+}
+
+.footer-archive-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--text-primary);
+    transition: width var(--transition-normal);
+}
+
+.footer-archive-link:hover {
+    color: #0f0f0f;
+}
+
+.footer-archive-link:hover::after {
+    width: 100%;
 }
 
 
@@ -1302,6 +1463,32 @@ section {
 @media (max-width: 768px) {
     .container {
         padding: 0 var(--spacing-sm);
+    }
+    
+    /* Footer CTA Mobile */
+    .footer-cta-title {
+        font-size: clamp(36px, 10vw, 56px);
+    }
+    
+    .footer-signature {
+        flex-direction: column;
+        gap: var(--spacing-md);
+        text-align: center;
+    }
+    
+    .footer-signature-right {
+        text-align: center;
+    }
+    
+    .cta-btn {
+        width: 100%;
+        justify-content: center;
+        max-width: 400px;
+    }
+    
+    .footer-cta-buttons {
+        width: 100%;
+        align-items: stretch;
     }
     
     .header-content {
@@ -1349,14 +1536,9 @@ section {
         height: 200px;
     }
     
-    .hero-cta,
-    .contact-content {
+    .hero-cta {
         flex-direction: column;
         gap: var(--spacing-lg);
-        align-items: flex-start;
-    }
-    
-    .contact-info {
         align-items: flex-start;
     }
     
@@ -1569,9 +1751,8 @@ section {
 /* Print styles */
 @media print {
     .header-bar,
-    .footer,
+    .footer-cta,
     .hero-cta,
-    .contact-buttons,
     .project-links {
         display: none;
     }
