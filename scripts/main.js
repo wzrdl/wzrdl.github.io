@@ -159,6 +159,32 @@ function initInertialScrolling() {
         return;
     }
 
+    // Detect Mac trackpad and adjust behavior
+    const isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0 || 
+                  navigator.userAgent.toUpperCase().indexOf('MAC') >= 0;
+    
+    // More accurate trackpad detection
+    const isTrackpad = () => {
+        // Check for trackpad-specific wheel events (deltaY is usually smaller and more frequent)
+        let trackpadDetected = false;
+        const testHandler = (e) => {
+            if (e.deltaY !== 0 && Math.abs(e.deltaY) < 10 && e.deltaMode === 0) {
+                trackpadDetected = true;
+            }
+            window.removeEventListener('wheel', testHandler);
+        };
+        window.addEventListener('wheel', testHandler, { once: true, passive: true });
+        
+        // Also check for touch support
+        return trackpadDetected || ('ontouchstart' in window && !('ontouchstart' in document.documentElement));
+    };
+    
+    if (isMac) {
+        console.log('Mac detected - using optimized scrolling behavior');
+        initMacTrackpadScrolling();
+        return;
+    }
+
     // Physics constants - tuned for responsive, controlled feel
     const FRICTION = 0.95;              // Deceleration factor (0.95 = 5% reduction per frame, stops faster)
     const VELOCITY_SCALE = 0.4;         // Multiplier for wheel input sensitivity (reduced for smaller scrolls)
@@ -382,6 +408,68 @@ function initInertialScrolling() {
     }
     
     console.log('Inertial scrolling initialized - high refresh rate optimized (60fps+)');
+}
+
+// Mac Trackpad optimized scrolling - minimal custom inertia
+function initMacTrackpadScrolling() {
+    // For Mac trackpad, we'll use a much more conservative approach
+    // Only add very subtle enhancements without interfering with native behavior
+    
+    let lastScrollTime = 0;
+    let scrollVelocity = 0;
+    let isUserScrolling = false;
+    
+    // Track scroll velocity for subtle enhancements
+    const handleScroll = () => {
+        const now = performance.now();
+        const timeDelta = now - lastScrollTime;
+        lastScrollTime = now;
+        
+        if (timeDelta > 0) {
+            scrollVelocity = 1 / timeDelta; // Simple velocity calculation
+        }
+        
+        isUserScrolling = true;
+        
+        // Reset user scrolling flag after a delay
+        clearTimeout(window.scrollResetTimeout);
+        window.scrollResetTimeout = setTimeout(() => {
+            isUserScrolling = false;
+            scrollVelocity = 0;
+        }, 100);
+    };
+    
+    // Only add very minimal wheel handling for edge cases
+    const handleWheel = (e) => {
+        // Allow browser zoom with Ctrl+wheel
+        if (e.ctrlKey || e.metaKey) {
+            return;
+        }
+        
+        // For Mac trackpad, we mostly let the browser handle it
+        // Only add very subtle smoothing for extreme cases
+        if (Math.abs(e.deltaY) > 50) { // Only for very fast scrolls
+            // Add a tiny bit of smoothing
+            e.preventDefault();
+            window.scrollBy({
+                top: e.deltaY * 0.8, // Slightly reduce the scroll amount
+                behavior: 'smooth'
+            });
+        }
+    };
+    
+    // Register listeners
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('wheel', handleWheel, { passive: false });
+    
+    // Cleanup
+    window.addEventListener('beforeunload', () => {
+        window.removeEventListener('scroll', handleScroll);
+        window.removeEventListener('wheel', handleWheel);
+        clearTimeout(window.scrollResetTimeout);
+    });
+    
+    console.log('Mac trackpad scrolling initialized - using native behavior with minimal interference');
 }
 
 // Prevent elastic overscroll bounce at the very bottom of the page
