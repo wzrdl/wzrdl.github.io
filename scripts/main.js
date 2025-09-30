@@ -825,7 +825,7 @@ function initVinylPlayer() {
     projectItems.forEach((item, index) => {
         ScrollTrigger.create({
             trigger: item,
-            start: "center 85%",  // 当项目中心到达视口80%时（中线下20%）
+            start: "center 80%",  // 当项目中心到达视口80%时（中线下20%）
             end: "center 40%",    // 当项目中心到达视口30%时（中线上30%）
             onEnter: () => {
                 // 向下滚动进入激活区域
@@ -863,6 +863,8 @@ function initVinylPlayer() {
         // 移除所有active类
         projectItems.forEach((item) => {
             item.classList.remove('active');
+            // 重置字体颜色动画到灰色状态
+            resetTextColorAnimation(item);
         });
         
         // 将当前激活的album返回到堆叠
@@ -898,6 +900,7 @@ function initVinylPlayer() {
         projectItems.forEach((item, i) => {
             if (i === index) {
                 item.classList.add('active');
+                console.log('Added active class to project item', i);
             } else {
                 item.classList.remove('active');
             }
@@ -951,6 +954,9 @@ function initVinylPlayer() {
 
         // Update classes
         nextAlbum.classList.add('active');
+        
+        // Force trigger the text color animation
+        forceTextColorAnimation(projectItems[index]);
     }
 
 
@@ -1095,6 +1101,35 @@ function initVinylPlayer() {
     };
 }
 
+// Force trigger text color animation for better compatibility
+function forceTextColorAnimation(projectItem) {
+    if (!projectItem) return;
+    
+    const titleElement = projectItem.querySelector('.project-title');
+    if (!titleElement) return;
+    
+    // Force a reflow to ensure the animation triggers
+    titleElement.style.backgroundPosition = '100% 0';
+    requestAnimationFrame(() => {
+        titleElement.style.backgroundPosition = '0% 0';
+    });
+    
+    console.log('Forced text color animation for project item');
+}
+
+// Reset text color animation to gray state
+function resetTextColorAnimation(projectItem) {
+    if (!projectItem) return;
+    
+    const titleElement = projectItem.querySelector('.project-title');
+    if (!titleElement) return;
+    
+    // Reset to gray state (background-position: 100% 0)
+    titleElement.style.backgroundPosition = '100% 0';
+    
+    console.log('Reset text color animation to gray state');
+}
+
 // Fallback function for when GSAP is not available
 function initVinylPlayerFallback(vinylSection, projectItems, albumItems) {
     console.log('Using fallback vinyl player animations');
@@ -1109,14 +1144,22 @@ function initVinylPlayerFallback(vinylSection, projectItems, albumItems) {
                 const index = Array.from(projectItems).indexOf(entry.target);
                 if (index !== -1 && index !== currentActiveIndex) {
                     // Remove active class from all items
-                    projectItems.forEach(item => item.classList.remove('active'));
+                    projectItems.forEach(item => {
+                        item.classList.remove('active');
+                        // Reset text color animation to gray state
+                        resetTextColorAnimation(item);
+                    });
                     albumItems.forEach(item => item.classList.remove('active'));
                     
                     // Add active class to current item
                     entry.target.classList.add('active');
+                    console.log('Added active class to project item (fallback)', index);
                     if (albumItems[index]) {
                         albumItems[index].classList.add('active');
                     }
+                    
+                    // Force trigger the text color animation
+                    forceTextColorAnimation(entry.target);
                     
                     currentActiveIndex = index;
                 }
@@ -1133,7 +1176,11 @@ function initVinylPlayerFallback(vinylSection, projectItems, albumItems) {
     // Add click handlers
     projectItems.forEach((item, index) => {
         item.addEventListener('click', () => {
-            projectItems.forEach(p => p.classList.remove('active'));
+            projectItems.forEach(p => {
+                p.classList.remove('active');
+                // Reset text color animation to gray state
+                resetTextColorAnimation(p);
+            });
             albumItems.forEach(a => a.classList.remove('active'));
             
             item.classList.add('active');
@@ -1141,12 +1188,19 @@ function initVinylPlayerFallback(vinylSection, projectItems, albumItems) {
                 albumItems[index].classList.add('active');
             }
             currentActiveIndex = index;
+            
+            // Force trigger the text color animation
+            forceTextColorAnimation(item);
         });
     });
     
     albumItems.forEach((item, index) => {
         item.addEventListener('click', () => {
-            projectItems.forEach(p => p.classList.remove('active'));
+            projectItems.forEach(p => {
+                p.classList.remove('active');
+                // Reset text color animation to gray state
+                resetTextColorAnimation(p);
+            });
             albumItems.forEach(a => a.classList.remove('active'));
             
             item.classList.add('active');
@@ -1154,6 +1208,9 @@ function initVinylPlayerFallback(vinylSection, projectItems, albumItems) {
                 projectItems[index].classList.add('active');
             }
             currentActiveIndex = index;
+            
+            // Force trigger the text color animation
+            forceTextColorAnimation(projectItems[index]);
         });
     });
 }
