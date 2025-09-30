@@ -1,205 +1,176 @@
-# Cyberpunk AI Engineer Portfolio
+# Zirui Wen - Personal Portfolio Website
 
-A futuristic cyberpunk-themed portfolio website for Zirui Wen, showcasing AI/ML engineering expertise with interactive animations, particle systems, and glitch effects.
+A modern, responsive personal portfolio website built with pure HTML, CSS, and JavaScript, inspired by the clean aesthetic of aidils.com.
+
+## 🌟 Features
+
+- **Modern Design**: Clean, minimalist aesthetic with excellent typography
+- **Responsive**: Mobile-first design that works on all devices
+- **Dark Mode**: System preference detection with manual toggle
+- **Interactive Elements**: Smooth animations, scroll effects, and hover states
+- **Real-time Clock**: Live local time display in the header
+- **SEO Optimized**: Proper meta tags, Open Graph, and structured data
+- **Performance**: Fast loading with optimized assets and lazy loading
+- **Accessibility**: WCAG compliant with keyboard navigation and screen reader support
 
 ## 🚀 Live Demo
 
-Visit the live website: [https://wzrdl.github.io](https://wzrdl.github.io)
-
-## ✨ Features
-
-### 🎨 Cyberpunk Aesthetics
-- **Custom Color Scheme**: Electric cyan, neon magenta, and glitch yellow
-- **Animated Scanlines**: CRT monitor effect overlay
-- **Glitch Effects**: Dynamic text distortion animations
-- **Custom Cursor**: Interactive cyberpunk-style cursor system
-
-### 🔮 Interactive Elements
-- **Particle System**: WebGL-based interactive background particles
-- **Smooth Scrolling**: Seamless navigation between sections
-- **Hover Effects**: 3D transformations and glow effects
-- **Modal System**: Detailed project showcases with ARIA compliance
-
-### 📱 Responsive Design
-- **Mobile-First**: Optimized for all device sizes
-- **Touch-Friendly**: Enhanced mobile interactions
-- **Cross-Browser**: Compatible with modern browsers
-
-### ♿ Accessibility
-- **WCAG Compliant**: AA-level accessibility standards
-- **Keyboard Navigation**: Full keyboard support
-- **Screen Reader**: Proper ARIA labels and structure
-- **Reduced Motion**: Respects user preferences
-
-## 🛠 Technology Stack
-
-- **Frontend**: Vanilla HTML5, CSS3, JavaScript (ES6+)
-- **Animations**: CSS animations, AOS (Animate On Scroll)
-- **Libraries**: D3.js for data visualization
-- **Fonts**: Orbitron, Source Code Pro
-- **Deployment**: GitHub Pages
+Visit the live website at: [https://wzrdl.github.io](https://wzrdl.github.io)
 
 ## 📁 Project Structure
 
 ```
-wzrdl.github.io/
-├── index.html          # Main HTML structure
-├── styles.css          # Cyberpunk styling and animations
-├── script.js           # Interactive functionality
-├── README.md           # Project documentation
-└── assets/             # Images and other assets (if any)
+├── index.html              # Main HTML file
+├── styles/
+│   └── style.css           # Main stylesheet
+├── scripts/
+│   └── main.js             # JavaScript functionality
+├── assets/
+│   ├── profile.jpg         # Profile photo
+│   └── og-image.png        # Open Graph image
+└── README.md               # This file
 ```
 
-## 🚀 Deployment to GitHub Pages
+## 🛠️ Technologies Used
 
-### Option 1: Direct Push (Recommended)
-1. Ensure your repository name is `username.github.io` (e.g., `wzrdl.github.io`)
-2. Push your code to the `main` branch:
+- **HTML5**: Semantic markup with accessibility features
+- **CSS3**: Modern CSS with custom properties, flexbox, and grid
+- **JavaScript**: Vanilla JS for interactivity and animations
+- **Fonts**: Inter and Space Grotesk from Google Fonts
+- **Icons**: Custom SVG icons for social links and UI elements
+
+## 📱 Responsive Breakpoints
+
+- **Desktop**: 1200px+ (Full layout)
+- **Tablet**: 768px - 1199px (Adjusted layout)
+- **Mobile**: 320px - 767px (Single column, stacked layout)
+
+## 🎨 Design Features
+
+- **Color Scheme**: Clean black/white with orange accents
+- **Typography**: Modern sans-serif fonts with proper hierarchy
+- **Animations**: Subtle scroll-triggered animations and hover effects
+- **Layout**: Grid and flexbox for responsive layouts
+- **Images**: Optimized profile photos with grayscale filter
+
+## 🔧 Setup and Deployment
+
+### Option 1: GitHub Pages (Recommended)
+
+1. **Create a new repository** named `wzrdl.github.io` (must match your GitHub username)
+2. **Upload all files** to the main branch
+3. **Enable GitHub Pages**:
+   - Go to repository Settings → Pages
+   - Source: Deploy from a branch
+   - Branch: main / (root)
+4. **Access your site** at `https://wzrdl.github.io`
+
+### Option 2: Local Development
+
+1. **Clone or download** the project files
+2. **Open `index.html`** in your web browser
+3. **For development server** (optional):
    ```bash
-   git add .
-   git commit -m "Deploy cyberpunk portfolio"
-   git push origin main
+   # Using Python
+   python -m http.server 8000
+   
+   # Using Node.js
+   npx serve .
+   
+   # Using PHP
+   php -S localhost:8000
    ```
-3. Your site will be available at `https://username.github.io`
 
-### Option 2: Custom Domain
-1. Add a `CNAME` file with your custom domain
-2. Configure DNS settings with your domain provider
-3. Enable custom domain in repository settings
+## 📝 Customization
 
-### Repo Files Added For Pages
-- `.nojekyll` to disable Jekyll processing
-- `404.html` to gracefully redirect unknown routes to `/`
-- `robots.txt` and `sitemap.xml` for SEO
+### Personal Information
 
-## 🎯 Key Sections
+Update the following in `index.html`:
 
-### 1. Hero Section
-- Animated particle background
-- Typewriter effect introduction
-- Key achievement statistics
+- **Name and title** in the hero section
+- **Contact information** (email, phone, social links)
+- **Work experience** details and dates
+- **Projects** with descriptions and links
+- **Education** information
+- **Profile photo** in `assets/profile.jpg`
 
-### 2. About Section
-- Terminal-style biography
-- Professional overview
-- System status indicators
+### Styling
 
-### 3. Skills Matrix
-- Interactive skill bars
-- Technology categorization
-- Proficiency animations
+Modify `styles/style.css`:
 
-### 4. Career Timeline
-- Chronological experience
-- Expandable achievement details
-- Visual progression indicators
+- **Colors**: Update CSS custom properties in `:root`
+- **Typography**: Change font families and sizes
+- **Spacing**: Adjust spacing variables
+- **Layout**: Modify grid and flexbox properties
 
-### 5. Project Archives
-- 6 featured projects with detailed modals
-- Technology stack indicators
-- Performance metrics highlighting
+### Functionality
 
-### 6. Contact Protocol
-- Professional contact information
-- Social media integration
-- Glitch-effect styling
+Edit `scripts/main.js`:
 
-## 🎮 Interactive Features
+- **Time display**: Modify timezone or format
+- **Animations**: Adjust scroll trigger thresholds
+- **Theme toggle**: Customize dark mode behavior
 
-### Particle System
-- 100 interactive particles
-- Mouse-responsive movement
-- Connection lines between nearby particles
-- Performance-optimized rendering
+## 🌐 SEO and Performance
 
-### Custom Cursor
-- Cyberpunk-style cursor design
-- Interactive element detection
-- Trail effect animation
-- Color transitions
-
-### Project Modals
-- Detailed project breakdowns
-- Technology stack information
-- Performance achievements
-- Accessible keyboard navigation
-
-## 📊 Performance Optimizations
-
-- **Lazy Loading**: Deferred loading of non-critical assets
-- **CSS Animations**: Hardware-accelerated transformations
-- **Debounced Events**: Optimized scroll and resize handlers
-- **Memory Management**: Efficient particle system cleanup
-
-## 🔧 Development
-
-### Local Development
-```bash
-# Install a simple HTTP server
-npm install -g serve
-
-# Serve the website locally
-npx serve .
-
-# Or use Python
-python -m http.server 8000
-```
-
-### Testing
-- Cross-browser compatibility testing
-- Accessibility audit with screen readers
-- Performance profiling with DevTools
-- Mobile device testing
-
-## 🎨 Design System
-
-### Color Palette
-- **Void Black**: `#0A0A14` - Primary background
-- **Panel Gray**: `#101424` - Secondary background
-- **Electric Cyan**: `#03D8F3` - Primary accent
-- **Neon Magenta**: `#FF007A` - Secondary accent
-- **Glitch Yellow**: `#FCEE0C` - Highlights and warnings
-
-### Typography
-- **Headers**: Orbitron (futuristic, geometric)
-- **Body Text**: Source Code Pro (readable monospace)
-- **Code**: Monospace with syntax highlighting
-
-### Animation Principles
-- **Smooth Transitions**: 0.3s ease curves
-- **Micro-interactions**: Hover and focus states
-- **Performance-First**: 60fps target for all animations
-
-## 📈 SEO & Meta
+### SEO Features
 
 - Semantic HTML structure
-- Open Graph meta tags
-- Twitter Card integration
-- JSON-LD structured data
-- Optimized loading performance
+- Meta descriptions and Open Graph tags
+- Structured data (JSON-LD) for search engines
+- Proper heading hierarchy
+- Alt text for images
 
-## 🔒 Security
+### Performance Optimizations
 
-- Content Security Policy headers
-- HTTPS-only assets
-- No external dependencies for core functionality
-- XSS protection through proper escaping
+- Optimized images and assets
+- Lazy loading for images
+- Minimal JavaScript footprint
+- CSS custom properties for theming
+- Efficient scroll event handling
+
+## 🔍 Browser Support
+
+- **Modern browsers**: Chrome, Firefox, Safari, Edge (last 2 versions)
+- **Mobile browsers**: iOS Safari, Chrome Mobile
+- **Accessibility**: Screen readers, keyboard navigation
+- **Progressive enhancement**: Works without JavaScript
+
+## 📊 Analytics and Monitoring
+
+To add analytics, insert your tracking code before the closing `</head>` tag:
+
+```html
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'GA_MEASUREMENT_ID');
+</script>
+```
+
+## 🤝 Contributing
+
+This is a personal portfolio project, but suggestions and improvements are welcome:
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test across different devices and browsers
+5. Submit a pull request
 
 ## 📄 License
 
 This project is open source and available under the [MIT License](LICENSE).
 
-## 🤝 Contributing
+## 📞 Contactz
 
-Contributions, issues, and feature requests are welcome!
-
-## 📞 Contact
-
-**Zirui Wen**
-- Email: wzrqczj@gmail.com
-- Phone: +1 201-932-5000
-- LinkedIn: [linkedin.com/in/zirui-wen-76320b327](https://www.linkedin.com/in/zirui-wen-76320b327/)
+- **Email**: wzrqczj@gmail.com
+- **LinkedIn**: [Zirui Wen](https://linkedin.com/in/zirui-wen-76320b327/)
+- **GitHub**: [@wzrdl](https://github.com/wzrdl)
 
 ---
 
-⚡ Built with passion for AI and cyberpunk aesthetics ⚡
+Built with ❤️ by Zirui Wen

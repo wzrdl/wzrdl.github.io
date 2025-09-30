@@ -3,516 +3,525 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zirui Wen - Software Development Engineer</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Zirui Wen - Creative Engineer & Researcher</title>
+    <meta name="description" content="Creative engineer & researcher with experience in AI and systems. Building reliable AI systems end-to-end from GraphRAG to microservices.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://wzrdl.github.io/">
+    <meta property="og:title" content="Zirui Wen - Creative Engineer & Researcher">
+    <meta property="og:description" content="Creative engineer & researcher with experience in AI and systems. Building reliable AI systems end-to-end from GraphRAG to microservices.">
+    <meta property="og:image" content="./assets/kg_paradigm.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://wzrdl.github.io/">
+    <meta property="twitter:title" content="Zirui Wen - Creative Engineer & Researcher">
+    <meta property="twitter:description" content="Creative engineer & researcher with experience in AI and systems. Building reliable AI systems end-to-end from GraphRAG to microservices.">
+    <meta property="twitter:image" content="./assets/kg_paradigm.png">
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Source+Code+Pro:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS Animation Libraries -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="./styles/style.css">
 </head>
 <body>
-    <!-- CRT Scanlines Overlay -->
-    <div class="scanlines"></div>
+    <!-- Header Bar -->
+    <header class="header-bar">
+        <div class="container">
+            <div class="header-content">
+                <!-- Left side -->
+                <div class="header-left">
+                    <div class="logo">
+                        <span class="logo-text">ZW</span>
+                    </div>
+                    <div class="availability-section">
+                        <div class="availability">
+                            <span class="status-dot"></span>
+                            <span class="status-text">Available for opportunities</span>
+                        </div>
+                    </div>
+                    <div class="time-section">
+                        <span class="time-label">LOCAL TIME</span>
+                        <span class="time-value" id="local-time">08:41:33</span>
+                    </div>
+                    <div class="location-section">
+                        <span class="location-label">CITY</span>
+                        <span class="location-value">Hoboken, NJ</span>
+                    </div>
+                </div>
+
+                <!-- Right side -->
+                <div class="header-right">
+                    <div class="social-links">
+                        <a href="https://linkedin.com/in/zirui-wen-76320b327/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                        <a href="https://github.com/wzrdl" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                        <a href="mailto:wzrqczj@gmail.com" aria-label="Email">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-.904.732-1.636 1.636-1.636h.636l9.728 7.273 9.728-7.273h.636c.904 0 1.636.732 1.636 1.636z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        Hi, I'm Zirui, a creative engineer & researcher based in Hoboken with expertise in AI systems. I specialize in building reliable AI solutions from GraphRAG and LLM fine-tuning to microservices and GPU acceleration.
+                    </h1>
+                    <div class="hero-cta">
+                        <a href="mailto:wzrqczj@gmail.com" class="btn btn-primary">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="btn-icon">
+                                <path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                            </svg>
+                            Book a Call
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Work Experience Section -->
+        <section class="work-experience">
+            <div class="container">
+                <div class="section-layout">
+                    <div class="section-header">
+                        <h2 class="section-title">
+                            Work Experience<span class="accent-dot">.</span>
+                        </h2>
+                        <p class="section-description">
+                            I have been a part of the high quality design process for several companies.
+                        </p>
+                    </div>
+                    <div class="experience-list">
+                        <div class="experience-item">
+                            <div class="experience-icon">
+                                <img src="./icon/Stevens-Apparel-Color-R.png" alt="Stevens Institute of Technology" />
+                            </div>
+                            <div class="experience-content">
+                                <h3 class="experience-title">Research Assistant — Brain Imaging & Graph Learning Lab</h3>
+                                <p class="experience-meta">Nov 2024 – Present. Stevens Institute of Technology</p>
+                                <ul class="experience-highlights">
+                                    <li>Architected GraphRAG pipeline integrating Neo4j (Cypher) with FAISS dense retrieval via LangChain. <strong>EM +32%</strong> on neurology FAQ benchmark</li>
+                                    <li>Fine-tuned LLaMA-3 & Mistral-7B with LoRA, exported 8-bit quantized artifacts. Achieved <strong>+20% F1</strong> on brain-science Q&A</li>
+                                    <li>Built custom RL environment and trained PPO for multi-step seizure-trajectory prediction. <strong>+17% higher cumulative reward</strong> vs. baselines</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="experience-item">
+                            <div class="experience-icon">
+                                <img src="./icon/ee59a5b2025bded085056f6cda27aca7.png" alt="Siemens" />
+                            </div>
+                            <div class="experience-content">
+                                <h3 class="experience-title">Data Team Assistant Intern — Siemens</h3>
+                                <p class="experience-meta">Nov 2023 – March 2024. Hoboken, NJ</p>
+                                <ul class="experience-highlights">
+                                    <li>Built modular Python pipelines (Pandas/NumPy) to automate multi-source data ingestion, <strong>reducing manual processing time by 60%</strong></li>
+                                    <li>Analyzed 2+ years of transactional data using SQL and Excel to compute KPIs and evaluate A/B tests, <strong>improving engagement by 12%</strong></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section - Vinyl Player Style -->
+        <section class="projects-vinyl">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Sample work</h2>
+                </div>
+                
+                <!-- Vinyl Player Layout -->
+                <div class="vinyl-player-container">
+                    <!-- Left Column: Project List -->
+                    <div class="vinyl-projects-list">
+                        <div class="project-item-vinyl" data-project="0">
+                            <div class="project-content">
+                                <h3 class="project-title">Real-time recommendation microservice</h3>
+                                <p class="project-description">
+                                    I built a high-performance recommendation service using Java Spring Boot (WebFlux) with Apache Kafka for real-time streaming and Redis for low-latency features. The system is fully containerized with Docker/Kubernetes, featuring HPA autoscaling and comprehensive monitoring via Micrometer→Prometheus→Grafana. This microservice architecture enables real-time personalized recommendations at scale.
+                                </p>
+                                <div class="project-links">
+                                    <a href="https://github.com/wzrdl/recommendation-service" class="project-link" target="_blank" rel="noopener noreferrer">
+                                        View case study ↗
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-item-vinyl" data-project="1">
+                            <div class="project-content">
+                                <h3 class="project-title">High-performance B+Tree database engine</h3>
+                                <p class="project-description">
+                                    I designed and implemented a complete mini-RDBMS in C++ featuring an order-3 B+Tree storage engine with buffer pool management, secondary indexes, and write-ahead logging (WAL). The system includes an interactive SQL shell supporting 15 SQL commands with O(log n) query latency, demonstrating deep understanding of database internals and efficient data structures.
+                                </p>
+                                <div class="project-links">
+                                    <a href="https://github.com/wzrdl/bplustree-database" class="project-link" target="_blank" rel="noopener noreferrer">
+                                        View case study ↗
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-item-vinyl" data-project="2">
+                            <div class="project-content">
+                                <h3 class="project-title">GPU-accelerated kernel K-means clustering</h3>
+                                <p class="project-description">
+                                    I refactored kernel K-means algorithms to leverage sparse linear algebra operations (SpMM/SpMV) and optimized for GPU execution using CUDA and cuSPARSE libraries. Through careful memory throughput optimization and occupancy tuning, I achieved remarkable performance gains: <strong>1000× faster than CPU</strong> and <strong>2.6× faster than dense GPU implementations</strong> on MNIST and CIFAR-10 datasets.
+                                </p>
+                                <div class="project-links">
+                                    <a href="https://github.com/wzrdl/kernel-kmeans-cuda" class="project-link" target="_blank" rel="noopener noreferrer">
+                                        View case study ↗
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-item-vinyl" data-project="3">
+                            <div class="project-content">
+                                <h3 class="project-title">AI-powered medical prompt optimization</h3>
+                                <p class="project-description">
+                                    I developed an advanced prompt optimization system using text-gradient techniques with momentum and Bayesian reverse validation. The system significantly improved performance on medical AI benchmarks, achieving <strong>20% better accuracy on MedQA/PubMedQA</strong> compared to Chain-of-Thought approaches. I integrated hybrid retrieval combining BM25 and dense embeddings with cross-encoder reranking for enhanced relevance.
+                                </p>
+                                <div class="project-links">
+                                    <a href="https://github.com/wzrdl/automatic-fullstack" class="project-link" target="_blank" rel="noopener noreferrer">
+                                        View case study ↗
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Unified Album Area -->
+                    <div class="album-player-area">
+                        <div class="album-player-container">
+                            <!-- Unified Album Stack -->
+                            <div class="album-stack">
+                                <div class="album-item" data-project="0">
+                                    <img src="./image/2021-05-27 221024.jpg" alt="Real-time recommendation microservice">
+                                </div>
+                                <div class="album-item" data-project="1">
+                                    <img src="./image/2021-05-27 221037.jpg" alt="High-performance B+Tree database engine">
+                                </div>
+                                <div class="album-item" data-project="2">
+                                    <img src="./image/2021-06-04 184906.jpg" alt="GPU-accelerated kernel K-means clustering">
+                                </div>
+                                <div class="album-item" data-project="3">
+                                    <img src="./image/2021-06-04 184906(3).jpg" alt="AI-powered medical prompt optimization">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Publications Section -->
+        <section class="publications">
+            <div class="publications-hero">
+                <!-- Left Visual Content -->
+                <div class="publications-visual">
+                    <div class="hero-image-container">
+                        <img src="./assets/kg_paradigm.png" alt="Knowledge Graph Paradigm" class="hero-image" />
+                    </div>
+                </div>
+                
+                <!-- Right Text Content -->
+                <div class="publications-content">
+                    <div class="publication-category">Press</div>
+                    <h2 class="publication-main-title">Zirui Wen + Stevens Win 2025 Research Excellence Award</h2>
+                    <p class="publication-main-description">Zirui's innovative research in knowledge graph representation just earned a 2025 Research Excellence Award for "AI & Machine Learning Applications."</p>
+                    <a href="#" class="publication-link">Learn More (Stevens) ↗</a>
+                            </div>
+                        </div>
+                
+            <!-- Additional Publications List -->
+            <div class="publications-list">
+                <!-- Publication Item 1 -->
+                <div class="publication-hero">
+                    <div class="publications-visual">
+                        <div class="hero-image-container">
+                            <img src="./assets/kg_paradigm.png" alt="Knowledge Graph Paradigm" class="hero-image" />
+                        </div>
+                    </div>
+
+                    <div class="publications-content">
+                        <div class="publication-category">Research</div>
+                        <h2 class="publication-main-title">Knowledge Graph Representation of the Mappings between Seizure Semiology and Epileptogenic Zones</h2>
+                        <p class="publication-main-description">Advanced research in epilepsy using knowledge graph representations to map seizure semiology and epileptogenic zones for improved clinical understanding.</p>
+                            <div class="publication-meta">
+                            <span class="publication-authors">Shihao Yang, <strong>Zirui Wen</strong>, Wenxin Zhan, et al.</span>
+                            <span class="publication-venue">Under review at Epilepsia, 2025</span>
+                        </div>
+                        <a href="#" class="publication-link">Learn More (Epilepsia) ↗</a>
+                    </div>
+                            </div>
+
+                <!-- Publication Item 2 -->
+                <div class="publication-hero">
+                    <div class="publications-visual">
+                        <div class="hero-image-container">
+                            <img src="./assets/1.png" alt="COVID-19 Prediction" class="hero-image" />
+                        </div>
+                    </div>
+
+                    <div class="publications-content">
+                        <div class="publication-category">Conference</div>
+                        <h2 class="publication-main-title">COVID-19 Infection Prediction using Physical Signs</h2>
+                        <p class="publication-main-description">Machine learning approach to predict COVID-19 infection using physical signs and symptoms, published in SPIE conference proceedings.</p>
+                            <div class="publication-meta">
+                            <span class="publication-authors"><strong>Zirui Wen</strong>, Junjie Zhang, and Yuhao Zhang</span>
+                            <span class="publication-venue">CCPCDL 2022, SPIE Vol. 12287</span>
+                        </div>
+                        <a href="#" class="publication-link">Learn More (SPIE) ↗</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Stack Section -->
+        <section class="tech-stack">
+            <div class="container">
+                <div class="section-header centered">
+                    <h2 class="section-title">
+                        Technologies<span class="accent-dot">.</span>
+                    </h2>
+                </div>
+                
+                <!-- Tech Categories with Scrolling Galleries -->
+                <div class="tech-categories">
+                    <!-- Languages Category -->
+                    <div class="tech-category">
+                        <h3 class="tech-category-title">Languages</h3>
+                        <div class="tech-gallery">
+                            <div class="tech-scroll-container">
+                                <div class="tech-scroll-track languages-track">
+                                    <div class="tech-item">Python</div>
+                                    <div class="tech-item">C++</div>
+                                    <div class="tech-item">Java</div>
+                                    <div class="tech-item">JavaScript</div>
+                                    <div class="tech-item">HTML/CSS</div>
+                                    <div class="tech-item">SQL</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Deep Learning Category -->
+                    <div class="tech-category">
+                        <h3 class="tech-category-title">Deep Learning</h3>
+                        <div class="tech-gallery">
+                            <div class="tech-scroll-container">
+                                <div class="tech-scroll-track deeplearning-track">
+                                    <div class="tech-item">PyTorch</div>
+                                    <div class="tech-item">TensorFlow</div>
+                                    <div class="tech-item">Keras</div>
+                                    <div class="tech-item">scikit-learn</div>
+                                    <div class="tech-item">Hugging Face</div>
+                                    <div class="tech-item">LangChain</div>
+                                    <div class="tech-item">vLLM</div>
+                                    <div class="tech-item">MLFlow</div>
+                                    <div class="tech-item">Optuna</div>
+                                    <!-- Many duplicates for true infinite scroll without reset -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Data & Storage Category -->
+                    <div class="tech-category">
+                        <h3 class="tech-category-title">Data Analysis</h3>
+                        <div class="tech-gallery">
+                            <div class="tech-scroll-container">
+                                <div class="tech-scroll-track dataanalysis-track">
+                                    <div class="tech-item">NumPy</div>
+                                    <div class="tech-item">Pandas</div>
+                                    <div class="tech-item">MySQL</div>
+                                    <div class="tech-item">PostgreSQL</div>
+                                    <div class="tech-item">MongoDB</div>
+                                    <div class="tech-item">Redis</div>
+                                    <div class="tech-item">Neo4j</div>
+                                    <div class="tech-item">FAISS</div>
+                                    <div class="tech-item">Feast</div>
+                                    <div class="tech-item">Milvus</div>
+                                    <div class="tech-item">Qdrant</div>
+                                    <div class="tech-item">Weaviate</div>
+                                    <!-- Multiple duplicates for true infinite scroll -->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Web & DevOps Category -->
+                    <div class="tech-category">
+                        <h3 class="tech-category-title">Web & DevOps</h3>
+                        <div class="tech-gallery">
+                            <div class="tech-scroll-container">
+                                <div class="tech-scroll-track webdevops-track">
+                                    <div class="tech-item">Flask</div>
+                                    <div class="tech-item">FastAPI</div>
+                                    <div class="tech-item">React</div>
+                                    <div class="tech-item">Next.js</div>
+                                    <div class="tech-item">Vue.js</div>
+                                    <div class="tech-item">gRPC</div>
+                                    <div class="tech-item">REST</div>
+                                    <div class="tech-item">WebSockets</div>
+                                    <div class="tech-item">Kafka</div>
+                                    <div class="tech-item">Docker</div>
+                                    <div class="tech-item">Kubernetes</div>
+                                    <div class="tech-item">Helm</div>
+                                    <!-- Multiple duplicates for true infinite scroll -->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cloud & Tools Category -->
+                    <div class="tech-category">
+                        <h3 class="tech-category-title">Cloud & Tools</h3>
+                        <div class="tech-gallery">
+                            <div class="tech-scroll-container">
+                                <div class="tech-scroll-track cloudtools-track">
+                                    <div class="tech-item">Ray Serve</div>
+                                    <div class="tech-item">KServe</div>
+                                    <div class="tech-item">Triton</div>
+                                    <div class="tech-item">Git</div>
+                                    <div class="tech-item">Linux</div>
+                                    <div class="tech-item">CUDA</div>
+                                    <div class="tech-item">CI/CD</div>
+                                    <div class="tech-item">AWS</div>
+                                    <div class="tech-item">GCP</div>
+                                    <div class="tech-item">Terraform</div>
+                                    <div class="tech-item">GitHub Actions</div>
+                                    <div class="tech-item">Apache Airflow</div>
+                                    <div class="tech-item">Prometheus</div>
+                                    <div class="tech-item">Grafana</div>
+                                    <div class="tech-item">OpenTelemetry</div>
+                                    <div class="tech-item">Schema Registry</div>
+                                    <div class="tech-item">Azure</div>
+                                    <div class="tech-item">Google Cloud</div>
+                                    <!-- Multiple duplicates for true infinite scroll -->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Contact Section -->
+        <section class="contact">
+            <div class="container">
+                <div class="contact-content">
+                    <div class="contact-links">
+                        <a href="https://linkedin.com/in/zirui-wen-76320b327/" class="contact-link" target="_blank" rel="noopener noreferrer">
+                            LinkedIn ↗
+                        </a>
+                        <a href="https://github.com/wzrdl" class="contact-link" target="_blank" rel="noopener noreferrer">
+                            GitHub ↗
+                        </a>
+                    </div>
+                    <div class="contact-info">
+                        <a href="mailto:wzrqczj@gmail.com" class="contact-email">
+                            wzrqczj@gmail.com
+                        </a>
+                        <p class="contact-phone">+1 201-932-5000</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-text">© 2025 Zirui Wen. Built with passion and attention to detail.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Zirui Wen",
+        "url": "https://wzrdl.github.io",
+        "image": "https://wzrdl.github.io/assets/kg_paradigm.png",
+        "description": "Creative engineer & researcher with experience in AI and systems. Building reliable AI systems end-to-end from GraphRAG to microservices.",
+        "jobTitle": "Research Assistant",
+        "worksFor": {
+            "@type": "Organization",
+            "name": "Stevens Institute of Technology"
+        },
+        "alumniOf": [
+            {
+                "@type": "Organization",
+                "name": "Stevens Institute of Technology"
+            },
+            {
+                "@type": "Organization", 
+                "name": "University of Birmingham"
+            },
+            {
+                "@type": "Organization",
+                "name": "Jinan University"
+            }
+        ],
+        "knowsAbout": [
+            "Machine Learning",
+            "Deep Learning",
+            "GraphRAG",
+            "Microservices",
+            "GPU Acceleration",
+            "Data Analysis",
+            "Python",
+            "C++",
+            "Java"
+        ],
+        "email": "wzrqczj@gmail.com",
+        "sameAs": [
+            "https://github.com/wzrdl",
+            "https://linkedin.com/in/zirui-wen-76320b327/"
+        ]
+    }
+    </script>
+
+    <!-- GSAP Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     
-    <!-- Custom Cursor -->
-    <div class="cursor"></div>
-    <div class="cursor-trail"></div>
-
-    <!-- Navigation -->
-    <nav class="nav-container">
-        <div class="nav-brand">
-            <span class="glitch" data-text="ZW">[ZW]</span>
-        </div>
-        <ul class="nav-menu">
-            <li><a href="#hero" class="nav-link" data-section="hero">HOME</a></li>
-            <li><a href="#about" class="nav-link" data-section="about">ABOUT</a></li>
-            <li><a href="#skills" class="nav-link" data-section="skills">SKILLS</a></li>
-            <li><a href="#experience" class="nav-link" data-section="experience">TIMELINE</a></li>
-            <li><a href="#projects" class="nav-link" data-section="projects">PROJECTS</a></li>
-            <li><a href="#contact" class="nav-link" data-section="contact">CONTACT</a></li>
-        </ul>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="hero" class="hero-section">
-        <div class="particle-background" id="particle-container"></div>
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1 class="hero-title">
-                    <span data-text="ZIRUI WEN">ZIRUI WEN</span>
-                </h1>
-                <h2 class="hero-subtitle typewriter">
-                    <span class="typewriter-text">SOFTWARE DEVELOPMENT ENGINEER</span>
-                </h2>
-                <p class="hero-description">
-                    > Full-stack development with modern technologies<br>
-                    > Building scalable applications and systems
-                </p>
-            </div>
-            <div class="scroll-indicator">
-                <span class="scroll-text">SCROLL_TO_EXPLORE</span>
-                <div class="scroll-arrow">↓</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about-section">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">
-                <span class="title-bracket">[</span>SYSTEM.OVERVIEW<span class="title-bracket">]</span>
-            </h2>
-            <div class="about-grid">
-                <div class="about-text full-width" data-aos="fade-right">
-                    <div class="terminal-window">
-                        <div class="terminal-header">
-                            <span class="terminal-dot red"></span>
-                            <span class="terminal-dot yellow"></span>
-                            <span class="terminal-dot green"></span>
-                            <span class="terminal-title">profile.exe</span>
-                        </div>
-                        <div class="terminal-body">
-                            <p class="terminal-line">> <span class="command">cat profile.txt</span></p>
-                            <p class="terminal-output">
-                                Software Development Engineer with expertise in full-stack development, 
-                                system architecture, and modern software engineering practices. Currently 
-                                pursuing MS in Applied AI while building production-grade applications 
-                                and scalable systems across multiple domains.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="skills-section">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">
-                <span class="title-bracket">[</span>CORE.MATRIX<span class="title-bracket">]</span>
-            </h2>
-            <div class="skills-grid">
-                <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
-                    <h3 class="category-title">
-                        <span class="category-icon">λ</span>
-                        PROGRAMMING LANGUAGES
-                    </h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <span class="skill-name">Python</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="95"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">JavaScript/TypeScript</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="92"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Java</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="88"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">C++</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="85"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">SQL</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="90"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
-                    <h3 class="category-title">
-                        <span class="category-icon">⚛️</span>
-                        FRONTEND TECHNOLOGIES
-                    </h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <span class="skill-name">React</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="92"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Next.js</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="88"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Vue.js</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="85"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">HTML/CSS</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="95"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-category" data-aos="fade-up" data-aos-delay="300">
-                    <h3 class="category-title">
-                        <span class="category-icon">⚡</span>
-                        BACKEND & DATABASE
-                    </h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <span class="skill-name">Node.js</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="90"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">PostgreSQL</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="88"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">MongoDB</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="85"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Redis</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="82"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-category" data-aos="fade-up" data-aos-delay="400">
-                    <h3 class="category-title">
-                        <span class="category-icon">🌐</span>
-                        CLOUD & DEVOPS
-                    </h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <span class="skill-name">AWS</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="88"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Docker</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="90"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Kubernetes</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="85"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">CI/CD</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="87"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience Timeline -->
-    <section id="experience" class="timeline-section">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">
-                <span class="title-bracket">[</span>CAREER.LOG<span class="title-bracket">]</span>
-            </h2>
-            <div class="timeline">
-                <div class="timeline-item" data-aos="fade-right">
-                    <div class="timeline-date">NOV 2024 - PRESENT</div>
-                    <div class="timeline-content">
-                        <h3 class="timeline-title">Research Assistant</h3>
-                        <h4 class="timeline-company">Brain Imaging and Graph Learning Lab, Stevens Institute</h4>
-                        <ul class="timeline-achievements">
-                            <li>Architected a GraphRAG pipeline integrating Neo4j (Cypher) with FAISS dense retrieval via LangChain</li>
-                            <li>Achieved <span class="highlight">+32% EM</span> improvement on neurology FAQ benchmark with RAGAS validation</li>
-                            <li>Fine-tuned LLaMA-3 & Mistral-7B with LoRA, exported 8-bit quantized artifacts for inference</li>
-                            <li>Built custom RL environment and trained PPO for multi-step seizure-trajectory prediction</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="timeline-item" data-aos="fade-left">
-                    <div class="timeline-date">SEPT 2024 - PRESENT</div>
-                    <div class="timeline-content">
-                        <h3 class="timeline-title">MS Applied Artificial Intelligence</h3>
-                        <h4 class="timeline-company">Stevens Institute of Technology</h4>
-                        <ul class="timeline-achievements">
-                            <li>GPA: <span class="highlight">3.94/4.0</span></li>
-                            <li>Focus: Software Engineering, System Design, AI Applications</li>
-                            <li>Advanced coursework in distributed systems and algorithms</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="timeline-item" data-aos="fade-right">
-                    <div class="timeline-date">NOV 2023 - MAR 2024</div>
-                    <div class="timeline-content">
-                        <h3 class="timeline-title">Data Team Assistant Intern</h3>
-                        <h4 class="timeline-company">Siemens - Guangzhou, China</h4>
-                        <ul class="timeline-achievements">
-                            <li>Built modular Python pipelines (Pandas/NumPy) to automate multi-source data ingestion, cleansing, and transformation</li>
-                            <li>Reduced manual processing time by <span class="highlight">60%</span> while boosting data-quality conformance to <span class="highlight">99.8%</span></li>
-                            <li>Analyzed 2+ years of transactional data using SQL and Excel to compute KPIs and evaluate A/B tests</li>
-                            <li>Provided insights that informed product strategy and improved engagement by <span class="highlight">12%</span></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="timeline-item" data-aos="fade-left">
-                    <div class="timeline-date">SEPT 2020 - JUNE 2024</div>
-                    <div class="timeline-content">
-                        <h3 class="timeline-title">BS Applied Mathematics</h3>
-                        <h4 class="timeline-company">University of Birmingham & Jinan University</h4>
-                        <ul class="timeline-achievements">
-                            <li>Joint degree program with strong mathematical and computational foundation</li>
-                            <li>Specialized in Information Computing Science and Software Engineering</li>
-                            <li>Completed multiple programming projects in Python, Java, and C++</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="projects-section">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">
-                <span class="title-bracket">[</span>PROJECT.ARCHIVES<span class="title-bracket">]</span>
-            </h2>
-            <div class="projects-grid">
-                <!-- Project 1 -->
-                <div class="project-card" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="project-header">
-                        <h3 class="project-title">Recommendation Service</h3>
-                        <div class="project-tech">
-                            <span class="tech-tag">Spring Boot</span>
-                            <span class="tech-tag">Kafka</span>
-                            <span class="tech-tag">Redis</span>
-                            <span class="tech-tag">Kubernetes</span>
-                        </div>
-                    </div>
-                    <div class="project-description">
-                        Java Spring Boot (WebFlux) microservice for real-time recommendation with Apache Kafka streaming and Redis caching
-                    </div>
-                    <div class="project-metrics">
-                        <span class="metric"><span class="highlight">HPA</span> autoscaling enabled</span>
-                        <span class="metric"><span class="highlight">CI/CD</span> with GitHub Actions</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link" data-project="recommendation-service">
-                            <span>VIEW_DETAILS</span>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="project-card" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="project-header">
-                        <h3 class="project-title">B+Tree Database Engine</h3>
-                        <div class="project-tech">
-                            <span class="tech-tag">C++</span>
-                            <span class="tech-tag">B+Tree</span>
-                            <span class="tech-tag">SQL</span>
-                            <span class="tech-tag">Python ETL</span>
-                        </div>
-                    </div>
-                    <div class="project-description">
-                        Mini-RDBMS with order-3 B+Tree storage engine, buffer pool, secondary indexes, and WAL for O(log n) queries
-                    </div>
-                    <div class="project-metrics">
-                        <span class="metric">15 SQL commands</span>
-                        <span class="metric"><span class="highlight">90%+</span> test coverage</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link" data-project="btree-db">
-                            <span>VIEW_DETAILS</span>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="project-card" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="project-header">
-                        <h3 class="project-title">Kernel K-Means GPU Accelerator</h3>
-                        <div class="project-tech">
-                            <span class="tech-tag">CUDA</span>
-                            <span class="tech-tag">cuSPARSE</span>
-                            <span class="tech-tag">cuBLAS</span>
-                            <span class="tech-tag">C++</span>
-                        </div>
-                    </div>
-                    <div class="project-description">
-                        Refactored kernel-Kmeans to sparse linear algebra, casting core steps as SpMM/SpMV operations
-                    </div>
-                    <div class="project-metrics">
-                        <span class="metric"><span class="highlight">1000×</span> faster than CPU</span>
-                        <span class="metric"><span class="highlight">2.6×</span> vs dense-GPU baselines</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link" data-project="kernel-kmeans">
-                            <span>VIEW_DETAILS</span>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 4 -->
-                <div class="project-card" data-aos="zoom-in" data-aos-delay="400">
-                    <div class="project-header">
-                        <h3 class="project-title">Medical Prompt Optimizer</h3>
-                        <div class="project-tech">
-                            <span class="tech-tag">LangChain</span>
-                            <span class="tech-tag">Flask API</span>
-                            <span class="tech-tag">Next.js</span>
-                            <span class="tech-tag">gRPC</span>
-                        </div>
-                    </div>
-                    <div class="project-description">
-                        Text-gradient + momentum prompt optimizer with Bayesian reverse validation for medical Q&A
-                    </div>
-                    <div class="project-metrics">
-                        <span class="metric"><span class="highlight">20%</span> accuracy improvement</span>
-                        <span class="metric">RAGAS metrics integration</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link" data-project="medical-optimizer">
-                            <span>VIEW_DETAILS</span>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 5 -->
-                <div class="project-card" data-aos="zoom-in" data-aos-delay="500">
-                    <div class="project-header">
-                        <h3 class="project-title">GraphRAG Pipeline</h3>
-                        <div class="project-tech">
-                            <span class="tech-tag">Neo4j</span>
-                            <span class="tech-tag">FAISS</span>
-                            <span class="tech-tag">LangChain</span>
-                            <span class="tech-tag">Python</span>
-                        </div>
-                    </div>
-                    <div class="project-description">
-                        GraphRAG pipeline integrating Neo4j (Cypher) with FAISS dense retrieval for neurology FAQ benchmark
-                    </div>
-                    <div class="project-metrics">
-                        <span class="metric"><span class="highlight">+32%</span> EM improvement</span>
-                        <span class="metric">RAGAS validation</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link" data-project="graphrag-pipeline">
-                            <span>VIEW_DETAILS</span>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 6 -->
-                <div class="project-card" data-aos="zoom-in" data-aos-delay="600">
-                    <div class="project-header">
-                        <h3 class="project-title">PPO Seizure Prediction</h3>
-                        <div class="project-tech">
-                            <span class="tech-tag">PPO</span>
-                            <span class="tech-tag">Reinforcement Learning</span>
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Custom RL Environment</span>
-                        </div>
-                    </div>
-                    <div class="project-description">
-                        Built a custom RL environment and trained PPO for multi-step seizure-trajectory prediction
-                    </div>
-                    <div class="project-metrics">
-                        <span class="metric"><span class="highlight">+17%</span> higher cumulative reward</span>
-                        <span class="metric">vs clinician baselines</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link" data-project="ppo-seizure">
-                            <span>VIEW_DETAILS</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">
-                <span class="title-bracket">[</span>CONNECT.PROTOCOL<span class="title-bracket">]</span>
-            </h2>
-            <div class="contact-content" data-aos="fade-up" data-aos-delay="200">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <span class="contact-label">EMAIL:</span>
-                        <a href="mailto:wzrqczj@gmail.com" class="contact-value glitch" data-text="wzrqczj@gmail.com">wzrqczj@gmail.com</a>
-                    </div>
-                    <div class="contact-item">
-                        <span class="contact-label">PHONE:</span>
-                        <a href="tel:+12019325000" class="contact-value">+1 201-932-5000</a>
-                    </div>
-                    <div class="contact-item">
-                        <span class="contact-label">LOCATION:</span>
-                        <span class="contact-value">Stevens Institute of Technology</span>
-                    </div>
-                </div>
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/in/zirui-wen-76320b327/" class="social-link" target="_blank">
-                        <span class="social-icon">🔗</span>
-                        <span class="social-text">LinkedIn</span>
-                    </a>
-                    <a href="#" class="social-link" target="_blank">
-                        <span class="social-icon">⚡</span>
-                        <span class="social-text">GitHub</span>
-                    </a>
-                    <a href="#" class="social-link" target="_blank">
-                        <span class="social-icon">📄</span>
-                        <span class="social-text">Resume</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Project Modals -->
-    <div id="project-modal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 id="modal-title"></h3>
-                <span class="modal-close">&times;</span>
-            </div>
-            <div class="modal-body" id="modal-body">
-                <!-- Dynamic content will be loaded here -->
-            </div>
-        </div>
-    </div>
-
     <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script src="script.js"></script>
+    <script src="./scripts/main.js"></script>
 </body>
 </html>
