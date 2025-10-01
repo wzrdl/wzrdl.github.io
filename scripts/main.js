@@ -439,37 +439,17 @@ function initMacTrackpadScrolling() {
         }, 100);
     };
     
-    // Only add very minimal wheel handling for edge cases
-    const handleWheel = (e) => {
-        // Allow browser zoom with Ctrl+wheel
-        if (e.ctrlKey || e.metaKey) {
-            return;
-        }
-        
-        // For Mac trackpad, we mostly let the browser handle it
-        // Only add very subtle smoothing for extreme cases
-        if (Math.abs(e.deltaY) > 50) { // Only for very fast scrolls
-            // Add a tiny bit of smoothing
-            e.preventDefault();
-            window.scrollBy({
-                top: e.deltaY * 0.5, // Slightly reduce the scroll amount
-                behavior: 'smooth'
-            });
-        }
-    };
-    
-    // Register listeners
+    // Register listeners: rely entirely on native scrolling behavior on Mac
+    // Do NOT attach a wheel handler to avoid blocking the compositor thread
     window.addEventListener('scroll', handleScroll, { passive: true });
-    window.addEventListener('wheel', handleWheel, { passive: false });
     
     // Cleanup
     window.addEventListener('beforeunload', () => {
         window.removeEventListener('scroll', handleScroll);
-        window.removeEventListener('wheel', handleWheel);
         clearTimeout(window.scrollResetTimeout);
     });
     
-    console.log('Mac trackpad scrolling initialized - using native behavior with minimal interference');
+    console.log('Mac trackpad scrolling initialized - relying on native momentum (no wheel interception)');
 }
 
 // Prevent elastic overscroll bounce at the very bottom of the page
