@@ -148,7 +148,7 @@
         <section class="projects-vinyl">
             <div class="container">
                 <div class="section-header">
-                    <h2 class="section-title">Sample work</h2>
+                    <h2 class="section-title">Project</h2>
                 </div>
                 
                 <!-- Vinyl Player Layout -->
@@ -157,9 +157,9 @@
                     <div class="vinyl-projects-list">
                         <div class="project-item-vinyl" data-project="0">
                             <div class="project-content">
-                                <h3 class="project-title">Real-time recommendation microservice</h3>
+                                <h3 class="project-title">Recommendation service</h3>
                                 <p class="project-description">
-                                    I built a high-performance recommendation service using Java Spring Boot (WebFlux) with Apache Kafka for real-time streaming and Redis for low-latency features. The system is fully containerized with Docker/Kubernetes, featuring HPA autoscaling and comprehensive monitoring via Micrometer→Prometheus→Grafana. This microservice architecture enables real-time personalized recommendations at scale.
+                                    Built a Java Spring Boot (WebFlux) microservice for real-time recommendation; integrated Apache Kafka for streaming and Redis for low-latency features; implemented model loading with XGBoost4J and safe hot reload. Containerized and deployed with Docker and Kubernetes using Helm; enabled HPA autoscaling, health probes, structured JSON logging; exported metrics via Micrometer to Prometheus and visualized in Grafana. Implemented GitHub Actions CI/CD with Maven; added unit and integration tests using JUnit 5 and Testcontainers.
                                 </p>
                                 <div class="project-links">
                                     <a href="https://github.com/wzrdl/recommendation-service" class="project-link" target="_blank" rel="noopener noreferrer">
@@ -171,9 +171,9 @@
 
                         <div class="project-item-vinyl" data-project="1">
                             <div class="project-content">
-                                <h3 class="project-title">High-performance B+Tree database engine</h3>
+                                <h3 class="project-title">B+-Tree Mini‑DB</h3>
                                 <p class="project-description">
-                                    I designed and implemented a complete mini-RDBMS in C++ featuring an order-3 B+Tree storage engine with buffer pool management, secondary indexes, and write-ahead logging (WAL). The system includes an interactive SQL shell supporting 15 SQL commands with O(log n) query latency, demonstrating deep understanding of database internals and efficient data structures.
+                                    Implemented a degree‑3 B+‑Tree, LRU buffer pool, and WAL recovery; point/range queries in O(log n) with single‑thread throughput of 300 k QPS. Added 15 SQL‑like commands (SELECT / JOIN / LOAD …), with > 90 % unit‑test coverage. Python ETL loader for Google Maps CSV; Makefile + GitHub Actions ensure "clone & build" reproducibility.
                                 </p>
                                 <div class="project-links">
                                     <a href="https://github.com/wzrdl/bplustree-database" class="project-link" target="_blank" rel="noopener noreferrer">
@@ -185,9 +185,9 @@
 
                         <div class="project-item-vinyl" data-project="2">
                             <div class="project-content">
-                                <h3 class="project-title">GPU-accelerated kernel K-means clustering</h3>
+                                <h3 class="project-title">Kernel K‑Means GPU Accelerator</h3>
                                 <p class="project-description">
-                                    I refactored kernel K-means algorithms to leverage sparse linear algebra operations (SpMM/SpMV) and optimized for GPU execution using CUDA and cuSPARSE libraries. Through careful memory throughput optimization and occupancy tuning, I achieved remarkable performance gains: <strong>1000× faster than CPU</strong> and <strong>2.6× faster than dense GPU implementations</strong> on MNIST and CIFAR-10 datasets.
+                                    Refactored kernel-Kmeans to sparse linear algebra, casting core steps as SpMM/SpMV, offloading to cuSPARSE/cuBLAS. Tuned for memory throughput and occupancy with coalesced global accesses, shared-memory tiling, and register/SM balance achieved <strong>1000× CPU</strong> and <strong>2.6× dense-GPU baselines</strong> on MNIST/CIFAR-10.
                                 </p>
                                 <div class="project-links">
                                     <a href="https://github.com/wzrdl/kernel-kmeans-cuda" class="project-link" target="_blank" rel="noopener noreferrer">
@@ -199,12 +199,54 @@
 
                         <div class="project-item-vinyl" data-project="3">
                             <div class="project-content">
-                                <h3 class="project-title">AI-powered medical prompt optimization</h3>
+                                <h3 class="project-title">Liar's Bar: Bayesian Reinforcement Learning</h3>
                                 <p class="project-description">
-                                    I developed an advanced prompt optimization system using text-gradient techniques with momentum and Bayesian reverse validation. The system significantly improved performance on medical AI benchmarks, achieving <strong>20% better accuracy on MedQA/PubMedQA</strong> compared to Chain-of-Thought approaches. I integrated hybrid retrieval combining BM25 and dense embeddings with cross-encoder reranking for enhanced relevance.
+                                    Developed a novel warm-start method based on game theory, solving for the SPNE in a simplified perfect-information game to create a powerful policy prior that drastically reduced training time. Architected a Deep CFR agent with a GRU belief-state encoder, using neural networks as regret approximators to achieve a <strong>+12% win-rate increase</strong> over baseline bots and verifiably lower exploitability in 10k sims.
+                                </p>
+                                <div class="project-links">
+                                    <a href="https://github.com/wzrdl/liars-bar-rl" class="project-link" target="_blank" rel="noopener noreferrer">
+                                        View case study ↗
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-item-vinyl" data-project="4">
+                            <div class="project-content">
+                                <h3 class="project-title">Automatic prompt optimization for medical prompt</h3>
+                                <p class="project-description">
+                                    Developed a sophisticated prompt optimizer using text-gradient and momentum techniques, validated through a Bayesian reverse method. Engineered a pragmatic RAG fallback with hybrid retrieval strategy, combining sparse (BM25) and dense embeddings with Reciprocal Rank Fusion (RRF). Result: Achieved a <strong>20% accuracy improvement</strong> on challenging medical benchmarks (MedQA/PubMedQA) compared to Chain-of-Thought prompting.
                                 </p>
                                 <div class="project-links">
                                     <a href="https://github.com/wzrdl/automatic-fullstack" class="project-link" target="_blank" rel="noopener noreferrer">
+                                        View case study ↗
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-item-vinyl" data-project="5">
+                            <div class="project-content">
+                                <h3 class="project-title">Asset Allocation Optimization Based on Evolutional Algorithm</h3>
+                                <p class="project-description">
+                                    Reformulated the Markowitz mean‑variance model as an L1‑regularized SSMP; solved with global PSO search followed by proximal fixed‑point gradients. Built a five‑year rolling back‑test framework that auto‑reports Sharpe ratio, max drawdown, and visual dashboards. Result: Annualized return <strong>2.6× higher</strong> than the classic MV solution in back‑tests.
+                                </p>
+                                <div class="project-links">
+                                    <a href="https://github.com/wzrdl/asset-allocation-optimization" class="project-link" target="_blank" rel="noopener noreferrer">
+                                        View case study ↗
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-item-vinyl" data-project="6">
+                            <div class="project-content">
+                                <h3 class="project-title">An Apex Legend AI Aimbot based on YOLO</h3>
+                                <p class="project-description">
+                                    Combined YOLOv8 + TensorRT + CUDA Graphs to achieve <strong>60 FPS / < 10 ms inference</strong> on an RTX 3060. Injected DLL via Win32 API / DirectX hook to render a translucent overlay and trigger low‑jitter mouse macros. Result: <strong>mAP 0.89</strong> on a 1 k‑frame validation set with negligible in‑game latency.
+                                </p>
+                                <div class="project-links">
+                                    <a href="https://github.com/wzrdl/apex-yolo-aimbot" class="project-link" target="_blank" rel="noopener noreferrer">
                                         View case study ↗
                                     </a>
                                 </div>
@@ -218,16 +260,25 @@
                             <!-- Unified Album Stack -->
                             <div class="album-stack">
                                 <div class="album-item" data-project="0">
-                                    <img src="./image/2021-05-27 221024.jpg" alt="Real-time recommendation microservice">
+                                    <img src="./image/2021-05-27 221024.jpg" alt="Recommendation service">
                                 </div>
                                 <div class="album-item" data-project="1">
-                                    <img src="./image/2021-05-27 221037.jpg" alt="High-performance B+Tree database engine">
+                                    <img src="./image/2021-05-27 221037.jpg" alt="B+-Tree Mini‑DB">
                                 </div>
                                 <div class="album-item" data-project="2">
-                                    <img src="./image/2021-06-04 184906.jpg" alt="GPU-accelerated kernel K-means clustering">
+                                    <img src="./image/2021-06-04 184906.jpg" alt="Kernel K‑Means GPU Accelerator">
                                 </div>
                                 <div class="album-item" data-project="3">
-                                    <img src="./image/2021-06-04 184906(3).jpg" alt="AI-powered medical prompt optimization">
+                                    <img src="./image/2021-06-04 184906(3).jpg" alt="Liar's Bar: Bayesian Reinforcement Learning">
+                                </div>
+                                <div class="album-item" data-project="4">
+                                    <img src="./image/2021-05-27 221024.jpg" alt="Automatic prompt optimization for medical prompt">
+                                </div>
+                                <div class="album-item" data-project="5">
+                                    <img src="./image/2021-05-27 221037.jpg" alt="Asset Allocation Optimization Based on Evolutional Algorithm">
+                                </div>
+                                <div class="album-item" data-project="6">
+                                    <img src="./image/2021-06-04 184906.jpg" alt="An Apex Legend AI Aimbot based on YOLO">
                                 </div>
                             </div>
                         </div>

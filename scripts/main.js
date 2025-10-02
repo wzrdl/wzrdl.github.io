@@ -808,6 +808,44 @@ function initVinylPlayer() {
     let currentActiveIndex = -1; // 初始化为-1，表示没有激活的项目
     let isTransitioning = false;
 
+    // 全局状态重置函数
+    function resetAllProjectStates() {
+        console.log('Resetting all project states');
+        
+        // 重置所有项目状态
+        projectItems.forEach((item, i) => {
+            item.classList.remove('active');
+            resetTextColorAnimation(item);
+        });
+        
+        albumItems.forEach((item, i) => {
+            item.classList.remove('active');
+        });
+        
+        // 重置变量
+        currentActiveIndex = -1;
+        isTransitioning = false;
+        
+        console.log('All project states reset');
+    }
+
+    // 页面加载时重置状态
+    resetAllProjectStates();
+
+    // 确保所有元素都已加载
+    if (projectItems.length === 0 || albumItems.length === 0) {
+        console.error('Project items or album items not found');
+        return;
+    }
+
+    // 验证项目数量匹配
+    if (projectItems.length !== albumItems.length) {
+        console.error(`Mismatch: ${projectItems.length} project items vs ${albumItems.length} album items`);
+        return;
+    }
+
+    console.log(`Initialized vinyl player with ${projectItems.length} projects`);
+
     // Check if GSAP is available, if not, use fallback
     if (typeof gsap === 'undefined' || window.gsapFallback) {
         console.warn('GSAP not available, using fallback animations');
@@ -837,10 +875,13 @@ function initVinylPlayer() {
 
     // Rectangle card stack positions data
     const stackPositions = [
-        { x: -10, y: -10, rotation: -2.5, z: 1 },
-        { x: -6, y: -6, rotation: -1.2, z: 2 },
-        { x: -3, y: -3, rotation: 0, z: 3 },
-        { x: 0, y: 0, rotation: 1.2, z: 4 }
+        { x: -15, y: -15, rotation: -3.5, z: 1 },
+        { x: -12, y: -12, rotation: -2.8, z: 2 },
+        { x: -9, y: -9, rotation: -2.1, z: 3 },
+        { x: -6, y: -6, rotation: -1.4, z: 4 },
+        { x: -3, y: -3, rotation: -0.7, z: 5 },
+        { x: 0, y: 0, rotation: 0, z: 6 },
+        { x: 3, y: 3, rotation: 0.7, z: 7 }
     ];
 
     // Initialize album stack with GSAP - all cards in stack position
@@ -898,43 +939,81 @@ function initVinylPlayer() {
         }
     });
 
-    // Set up ScrollTrigger for each project
-    // 激活区域：视口的20%-30%之间
-    projectItems.forEach((item, index) => {
-        ScrollTrigger.create({
-            trigger: item,
-            start: "center 80%",  // 当项目中心到达视口80%时（中线下20%）
-            end: "center 40%",    // 当项目中心到达视口30%时（中线上30%）
-            onEnter: () => {
-                // 向下滚动进入激活区域
-                if (index !== currentActiveIndex && !isTransitioning) {
-                    switchToAlbum(index);
-                }
-            },
-            onLeave: () => {
-                // 向下滚动离开激活区域（项目中心超过30%线）
-                if (index === currentActiveIndex) {
-                    deactivateCurrentWork();
-                }
-            },
-            onEnterBack: () => {
-                // 向上滚动返回激活区域
-                if (index !== currentActiveIndex && !isTransitioning) {
-                    switchToAlbum(index);
-                }
-            },
-            onLeaveBack: () => {
-                // 向上滚动离开激活区域（项目中心低于80%线）
-                if (index === currentActiveIndex) {
-                    deactivateCurrentWork();
-                }
+    // 简化的项目激活检测逻辑
+    function findActiveProject() {
+        const viewportCenter = window.innerHeight / 2;
+        let closestProject = -1;
+        let closestDistance = Infinity;
+        
+        projectItems.forEach((item, index) => {
+            const rect = item.getBoundingClientRect();
+            const itemCenter = rect.top + rect.height / 2;
+            const distance = Math.abs(itemCenter - viewportCenter);
+            
+            // 如果项目在视口中心附近（±30%范围内）
+            if (distance < viewportCenter * 0.3 && distance < closestDistance) {
+                closestDistance = distance;
+                closestProject = index;
             }
         });
+        
+        return closestProject;
+    }
+
+    // 快速响应的激活检测函数（无防抖，实时检测）
+    function checkActiveProject() {
+        const activeProject = findActiveProject();
+        
+        if (activeProject !== -1 && activeProject !== currentActiveIndex && !isTransitioning) {
+            console.log(`Auto-activating project ${activeProject}, current: ${currentActiveIndex}`);
+            switchToAlbum(activeProject);
+        } else if (activeProject === -1 && currentActiveIndex !== -1) {
+            console.log(`No project in center, deactivating ${currentActiveIndex}`);
+            deactivateCurrentWork();
+        }
+    }
+
+    // 轻量级防抖，仅用于避免过度频繁的调用
+    const throttledCheckActiveProject = throttle(checkActiveProject, 16); // 约60fps
+
+    // 使用单个ScrollTrigger监听整个projects区域，实时更新
+    ScrollTrigger.create({
+        trigger: vinylSection,
+        start: "top 60%",
+        end: "bottom 30%",
+        onUpdate: (self) => {
+            // 实时检查，无延迟
+            if (self.isActive) {
+                checkActiveProject();
+            }
+        },
+        onEnter: () => {
+            console.log('Entered projects section');
+            checkActiveProject();
+        },
+        onLeave: () => {
+            console.log('Left projects section');
+            if (currentActiveIndex !== -1) {
+                deactivateCurrentWork();
+            }
+        },
+        onEnterBack: () => {
+            console.log('Re-entered projects section');
+            checkActiveProject();
+        },
+        onLeaveBack: () => {
+            console.log('Left projects section (back)');
+            if (currentActiveIndex !== -1) {
+                deactivateCurrentWork();
+            }
+        }
     });
 
     // 取消当前激活的work
     function deactivateCurrentWork() {
         if (currentActiveIndex < 0) return; // 没有激活的项目
+        
+        console.log(`Deactivating project ${currentActiveIndex}`);
         
         const previousIndex = currentActiveIndex;
         
@@ -966,35 +1045,57 @@ function initVinylPlayer() {
         
         // 重置当前激活索引
         currentActiveIndex = -1;
+        isTransitioning = false; // 确保重置过渡状态
     }
 
     // Optimized album card switching with GSAP timeline
     function switchToAlbum(index) {
-        if (index === currentActiveIndex || isTransitioning) return;
+        // 更严格的状态检查
+        if (index === currentActiveIndex) {
+            console.log(`Already active project ${index}`);
+            return;
+        }
         
+        if (isTransitioning) {
+            console.log(`Transition in progress, ignoring switch to ${index}`);
+            return;
+        }
+        
+        if (index < 0 || index >= projectItems.length) {
+            console.error(`Invalid project index: ${index}`);
+            return;
+        }
+        
+        console.log(`Switching to project ${index}, previous: ${currentActiveIndex}`);
         isTransitioning = true;
         
-        // Update active project item - 明确地移除和添加active类
+        // 首先重置所有项目状态，确保没有残留的active状态
         projectItems.forEach((item, i) => {
-            if (i === index) {
-                item.classList.add('active');
-                console.log('Added active class to project item', i);
-            } else {
-                item.classList.remove('active');
-            }
+            item.classList.remove('active');
+            resetTextColorAnimation(item);
+        });
+        
+        albumItems.forEach((item, i) => {
+            item.classList.remove('active');
         });
 
         const nextAlbum = albumItems[index];
         
         if (!nextAlbum) {
+            console.error(`Album item not found for index ${index}`);
             isTransitioning = false;
             return;
         }
 
-        // Create optimized timeline
+        // Create optimized timeline with error handling
         const tl = gsap.timeline({
             onComplete: () => {
+                console.log(`Successfully switched to project ${index}`);
                 currentActiveIndex = index;
+                isTransitioning = false;
+            },
+            onError: (error) => {
+                console.error('Animation error:', error);
                 isTransitioning = false;
             }
         });
@@ -1014,8 +1115,6 @@ function initVinylPlayer() {
                 duration: 0.5,
                 ease: "power2.out"
             });
-            
-            currentAlbum.classList.remove('active');
         }
 
         // Extract next album
@@ -1030,7 +1129,8 @@ function initVinylPlayer() {
             ease: "back.out(1.7)"
         }, currentActiveIndex >= 0 ? "-=0.2" : "0");
 
-        // Update classes
+        // 立即更新active状态，避免延迟
+        projectItems[index].classList.add('active');
         nextAlbum.classList.add('active');
         
         // Force trigger the text color animation
@@ -1112,11 +1212,24 @@ function initVinylPlayer() {
     // Setup hover effects
     setupHoverEffects();
 
-    // Handle window resize - refresh ScrollTrigger
+    // 添加滚动事件监听器作为备用检测机制（实时响应）
+    window.addEventListener('scroll', () => {
+        // 检查是否在projects区域内
+        const rect = vinylSection.getBoundingClientRect();
+        const isInProjectsSection = rect.top < window.innerHeight && rect.bottom > 0;
+        
+        if (isInProjectsSection) {
+            throttledCheckActiveProject(); // 使用节流而不是防抖
+        }
+    }, { passive: true });
+
+    // Handle window resize - refresh ScrollTrigger and reset states
     let resizeTimeout;
     window.addEventListener('resize', () => {
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(() => {
+            console.log('Window resized, refreshing ScrollTrigger and resetting states');
+            resetAllProjectStates();
             ScrollTrigger.refresh();
         }, 250);
     });
@@ -1215,41 +1328,89 @@ function initVinylPlayerFallback(vinylSection, projectItems, albumItems) {
     // Simple scroll-based activation without GSAP
     let currentActiveIndex = -1;
     
-    // Add scroll listener for project activation
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const index = Array.from(projectItems).indexOf(entry.target);
-                if (index !== -1 && index !== currentActiveIndex) {
-                    // Remove active class from all items
-                    projectItems.forEach(item => {
-                        item.classList.remove('active');
-                        // Reset text color animation to gray state
-                        resetTextColorAnimation(item);
-                    });
-                    albumItems.forEach(item => item.classList.remove('active'));
-                    
-                    // Add active class to current item
-                    entry.target.classList.add('active');
-                    console.log('Added active class to project item (fallback)', index);
-                    if (albumItems[index]) {
-                        albumItems[index].classList.add('active');
-                    }
-                    
-                    // Force trigger the text color animation
-                    forceTextColorAnimation(entry.target);
-                    
-                    currentActiveIndex = index;
-                }
+    // Fallback: 使用相同的简化检测逻辑
+    function findActiveProjectFallback() {
+        const viewportCenter = window.innerHeight / 2;
+        let closestProject = -1;
+        let closestDistance = Infinity;
+        
+        projectItems.forEach((item, index) => {
+            const rect = item.getBoundingClientRect();
+            const itemCenter = rect.top + rect.height / 2;
+            const distance = Math.abs(itemCenter - viewportCenter);
+            
+            // 如果项目在视口中心附近（±30%范围内）
+            if (distance < viewportCenter * 0.3 && distance < closestDistance) {
+                closestDistance = distance;
+                closestProject = index;
             }
         });
-    }, {
-        threshold: 0.5,
-        rootMargin: '-20% 0px -20% 0px'
-    });
+        
+        return closestProject;
+    }
+
+    // 快速响应的fallback检测函数
+    function checkActiveProjectFallback() {
+        const activeProject = findActiveProjectFallback();
+        
+        if (activeProject !== -1 && activeProject !== currentActiveIndex) {
+            console.log(`Fallback: Auto-activating project ${activeProject}, current: ${currentActiveIndex}`);
+            
+            // Remove active class from all items
+            projectItems.forEach(item => {
+                item.classList.remove('active');
+                resetTextColorAnimation(item);
+            });
+            albumItems.forEach(item => item.classList.remove('active'));
+            
+            // Add active class to current item
+            if (projectItems[activeProject]) {
+                projectItems[activeProject].classList.add('active');
+                forceTextColorAnimation(projectItems[activeProject]);
+            }
+            if (albumItems[activeProject]) {
+                albumItems[activeProject].classList.add('active');
+            }
+            
+            currentActiveIndex = activeProject;
+        } else if (activeProject === -1 && currentActiveIndex !== -1) {
+            console.log(`Fallback: No project in center, deactivating ${currentActiveIndex}`);
+            
+            // Remove active class from all items
+            projectItems.forEach(item => {
+                item.classList.remove('active');
+                resetTextColorAnimation(item);
+            });
+            albumItems.forEach(item => item.classList.remove('active'));
+            
+            currentActiveIndex = -1;
+        }
+    }
+
+    // 节流fallback检测函数
+    const throttledCheckActiveProjectFallback = throttle(checkActiveProjectFallback, 16);
+
+    // 使用滚动事件监听器（实时响应）
+    window.addEventListener('scroll', () => {
+        // 检查是否在projects区域内
+        const rect = vinylSection.getBoundingClientRect();
+        const isInProjectsSection = rect.top < window.innerHeight && rect.bottom > 0;
+        
+        if (isInProjectsSection) {
+            throttledCheckActiveProjectFallback(); // 使用节流
+        } else if (currentActiveIndex !== -1) {
+            // 离开projects区域时取消激活
+            projectItems.forEach(item => {
+                item.classList.remove('active');
+                resetTextColorAnimation(item);
+            });
+            albumItems.forEach(item => item.classList.remove('active'));
+            currentActiveIndex = -1;
+        }
+    }, { passive: true });
     
-    // Observe all project items
-    projectItems.forEach(item => observer.observe(item));
+    // 初始化时检查一次
+    checkActiveProjectFallback();
     
     // Add click handlers
     projectItems.forEach((item, index) => {
