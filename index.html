@@ -72,24 +72,23 @@
         /* Custom Cursor */
         #cursor {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: var(--cursor-size);
-            height: var(--cursor-size);
-            border: 2px solid var(--color-accent);
+            top: 0; left: 0;
+            width: 16px; height: 16px;
+            background: var(--color-accent);
             border-radius: 50%;
             pointer-events: none;
             z-index: 9999;
             transform: translate(-50%, -50%);
-            transition: width 0.2s, height 0.2s, background-color 0.2s;
-            mix-blend-mode: difference;
+            transition: width 0.3s cubic-bezier(0.19, 1, 0.22, 1), 
+                        height 0.3s cubic-bezier(0.19, 1, 0.22, 1),
+                        background-color 0.3s;
+            mix-blend-mode: exclusion;
         }
-        
         #cursor.hovered {
-            width: 50px;
-            height: 50px;
-            background-color: rgba(210, 255, 0, 0.1);
-            border-color: var(--color-accent);
+            width: 64px; height: 64px;
+            background: white;
+            mix-blend-mode: difference;
+            border: none;
         }
 
         /* ThreeJS Canvas */
@@ -184,6 +183,32 @@
 
         /* --- COMPONENTS --- */
 
+        // Text Scramble Component
+        const ScrambleText = ({ text, className }) => {
+            const [display, setDisplay] = useState(text);
+            const chars = '!<>-_\\/[]{}—=+*^?#________';
+            
+            const scramble = () => {
+                let iteration = 0;
+                const interval = setInterval(() => {
+                    setDisplay(
+                        text.split('').map((letter, index) => {
+                            if(index < iteration) return text[index];
+                            return chars[Math.floor(Math.random() * chars.length)];
+                        }).join('')
+                    );
+                    if(iteration >= text.length) clearInterval(interval);
+                    iteration += 1/2; 
+                }, 30);
+            };
+
+            return (
+                <span onMouseEnter={scramble} className={`cursor-default ${className}`}>
+                    {display}
+                </span>
+            );
+        };
+
         // 1. Navigation
         const Navbar = () => {
             return (
@@ -258,13 +283,44 @@
         };
 
         // 3. Work Experience Section
+        const ExperienceItem = ({ exp, index }) => {
+            return (
+                <div className="group relative border-l border-gray-800 pl-8 md:pl-16 py-12 hover:border-[#D2FF00] transition-colors duration-500">
+                    <span className="absolute left-0 top-16 -translate-x-1/2 w-3 h-3 bg-gray-800 group-hover:bg-[#D2FF00] transition-colors rounded-full"></span>
+                    
+                    <div className="flex flex-col md:flex-row justify-between items-start mb-6">
+                        <div>
+                            <h3 className="text-3xl md:text-4xl font-heading font-bold text-white mb-2">
+                                <ScrambleText text={exp.role} />
+                            </h3>
+                            <div className="flex items-center gap-3 text-[#D2FF00] font-mono text-sm">
+                                <span>{exp.company}</span>
+                                <span>//</span>
+                                <span>{exp.period}</span>
+                            </div>
+                        </div>
+                        <img src={exp.icon} alt="logo" className="w-12 h-12 object-contain opacity-50 group-hover:opacity-100 transition-opacity mt-4 md:mt-0 grayscale group-hover:grayscale-0" />
+                    </div>
+
+                    <ul className="space-y-4 text-gray-400 font-light max-w-4xl">
+                        {exp.highlights.map((h, i) => (
+                            <li key={i} className="flex items-start gap-4 group-hover:text-gray-200 transition-colors">
+                                <span className="text-[#D2FF00] mt-1.5 text-xs">●</span>
+                                <span dangerouslySetInnerHTML={{__html: h.replace(/\*\*(.*?)\*\*/g, '<strong class="text-white font-normal">$1</strong>')}} />
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            );
+        };
+
         const WorkExperience = () => {
             const experiences = [
                 {
                     company: "Stevens Institute of Technology",
                     role: "Research Assistant — Brain Imaging & Graph Learning Lab",
                     period: "Nov 2024 – Present",
-                    icon: "./icon/Stevens-Apparel-Color-R.png",
+                    icon: "https://wzrdl.github.io/icon/Stevens-Apparel-Color-R.png",
                     highlights: [
                         "Architected GraphRAG pipeline integrating Neo4j (Cypher) with FAISS dense retrieval via LangChain. EM +32% on neurology FAQ benchmark",
                         "Fine-tuned LLaMA-3 & Mistral-7B with LoRA, exported 8-bit quantized artifacts. Achieved +20% F1 on brain-science Q&A",
@@ -275,7 +331,7 @@
                     company: "Siemens",
                     role: "Data Team Assistant Intern",
                     period: "Nov 2023 – March 2024. Hoboken, NJ",
-                    icon: "./icon/ee59a5b2025bded085056f6cda27aca7.png",
+                    icon: "https://wzrdl.github.io/icon/ee59a5b2025bded085056f6cda27aca7.png",
                     highlights: [
                         "Built modular Python pipelines (Pandas/NumPy) to automate multi-source data ingestion, reducing manual processing time by 60%",
                         "Analyzed 2+ years of transactional data using SQL and Excel to compute KPIs and evaluate A/B tests, improving engagement by 12%"
@@ -284,45 +340,24 @@
             ];
 
             return (
-                <section id="experience" className="w-full py-24 px-6 md:px-20 relative z-10 bg-[#0a0a0a]">
-                    <div className="flex items-end justify-between mb-20 border-b border-gray-800 pb-6">
-                        <h2 className="text-6xl md:text-8xl font-heading font-bold text-white">
-                            Experience <span className="text-[#D2FF00]">.</span>
+                <section id="experience" className="py-32 px-6 md:px-20 bg-[#080808]">
+                    <div className="flex items-end gap-6 mb-20 border-b border-gray-800 pb-8">
+                        <h2 className="text-5xl md:text-7xl font-heading font-bold text-white uppercase">
+                            Experience
                         </h2>
-                        <span className="text-gray-500 font-mono mb-2 hidden md:block">[ WORK HISTORY ]</span>
+                        <span className="hidden md:inline-block px-4 py-1 border border-[#D2FF00] text-[#D2FF00] rounded-full text-xs font-mono uppercase tracking-widest">
+                            Career Timeline
+                        </span>
                     </div>
-
-                    <div className="grid grid-cols-1 gap-y-16">
-                        {experiences.map((exp, index) => (
-                            <div key={index} className="group border-t border-gray-800 pt-12 transition-all duration-500 hover:border-[#D2FF00]">
-                                <div className="flex flex-col md:flex-row gap-8">
-                                    <div className="md:w-1/4">
-                                        <img src={exp.icon} alt={exp.company} className="w-16 h-16 object-contain mb-4 opacity-80 group-hover:opacity-100 transition-opacity" />
-                                        <p className="text-gray-500 text-sm font-mono">{exp.period}</p>
-                                    </div>
-                                    <div className="md:w-3/4">
-                                        <h3 className="text-3xl md:text-5xl font-heading font-bold mb-2 text-gray-300 group-hover:text-white transition-colors">
-                                            {exp.role}
-                                        </h3>
-                                        <p className="text-[#D2FF00] text-lg mb-6">{exp.company}</p>
-                                        <ul className="space-y-3 text-gray-400">
-                                            {exp.highlights.map((highlight, i) => (
-                                                <li key={i} className="flex items-start">
-                                                    <span className="text-[#D2FF00] mr-3">▹</span>
-                                                    <span dangerouslySetInnerHTML={{__html: highlight.replace(/\*\*(.*?)\*\*/g, '<strong class="text-white">$1</strong>')}} />
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
+                    
+                    <div className="flex flex-col">
+                        {experiences.map((exp, i) => <ExperienceItem key={i} exp={exp} index={i} />)}
                     </div>
                 </section>
             );
         };
 
-        // 4. Projects Section
+        // 4. Projects Section (Fixed closing tags)
         const Projects = () => {
             const projects = [
                 {
@@ -441,71 +476,137 @@
             );
         };
 
-        // 5. Publications Section
+        // 5. Publications Section (REDESIGNED: MARBLE WORK / MASTERPIECE EDITION)
         const Publications = () => {
             const publications = [
                 {
-                    category: 'Research',
-                    title: 'Uncovering Epileptic Seizure Propagation Using Knowledge Graph-based Reinforcement Learning',
+                    id: '01',
+                    category: 'FEATURED RESEARCH',
+                    title: 'Epileptic Seizure Propagation',
+                    subtitle: 'Knowledge Graph-based Reinforcement Learning',
                     authors: 'Zirui Wen, Shihao Yang, et al.',
                     venue: 'Under review, 2025',
-                    desc: 'Knowledge graph-based reinforcement learning approach for seizure propagation; under review (2025).',
-                    image: './assets/kg_paradigm.png'
+                    // 请替换为您最震撼的论文配图 / REPLACE WITH YOUR BEST VISUAL
+                    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop', 
+                    span: 'md:col-span-8 md:row-span-2', // 占据最大版面
+                    height: 'min-h-[600px]'
                 },
                 {
-                    category: 'Research',
-                    title: 'Knowledge Graph Representation of the Mappings between Seizure Semiology and Epileptogenic Zones',
-                    authors: 'Shihao Yang, Zirui Wen, Wenxin Zhan, et al.',
-                    venue: 'Under review at Epilepsia, 2025',
-                    desc: 'Advanced research in epilepsy using knowledge graph representations to map seizure semiology and epileptogenic zones for improved clinical understanding.',
-                    image: './assets/kg_paradigm.png'
+                    id: '02',
+                    category: 'KNOWLEDGE GRAPH',
+                    title: 'Seizure Semiology Mapping',
+                    subtitle: 'Representation of Epileptogenic Zones',
+                    authors: 'Shihao Yang, Zirui Wen, et al.',
+                    venue: 'Epilepsia (Review), 2025',
+                    image: 'https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=2574&auto=format&fit=crop',
+                    span: 'md:col-span-4', // 垂直版面
+                    height: 'min-h-[400px]'
                 },
                 {
-                    category: 'Conference',
-                    title: 'COVID-19 Infection Prediction using Physical Signs',
-                    authors: 'Zirui Wen, Junjie Zhang, and Yuhao Zhang',
-                    venue: 'CCPCDL 2022, SPIE Vol. 12287',
-                    desc: 'Machine learning approach to predict COVID-19 infection using physical signs and symptoms, published in SPIE conference proceedings.',
-                    image: './assets/1.png'
+                    id: '03',
+                    category: 'MEDICAL AI',
+                    title: 'COVID-19 Prediction',
+                    subtitle: 'Using Physical Signs via Machine Learning',
+                    authors: 'Zirui Wen, Junjie Zhang, et al.',
+                    venue: 'CCPCDL 2022, SPIE',
+                    image: 'https://images.unsplash.com/photo-1584036561566-b938f493646c?q=80&w=2570&auto=format&fit=crop',
+                    span: 'md:col-span-4',
+                    height: 'min-h-[400px]'
                 },
                 {
-                    category: 'Research',
-                    title: 'Automatic Prompt Optimization for Medicine',
+                    id: '04',
+                    category: 'LLM OPTIMIZATION',
+                    title: 'Automatic Prompt Opt.',
+                    subtitle: 'Bayesian Framework for Medicine',
                     authors: 'Zirui Wen, Wensheng Gan, et al.',
                     venue: 'Under review, 2024',
-                    desc: 'Methods for optimizing prompts in medical AI tasks; under review (2024).',
-                    image: './assets/1.png'
+                    image: 'https://images.unsplash.com/photo-1633167606204-01d115bc783b?q=80&w=2588&auto=format&fit=crop',
+                    span: 'md:col-span-12', // 全宽横幅
+                    height: 'min-h-[500px]'
                 }
             ];
 
             return (
-                <section id="publications" className="w-full py-24 px-6 md:px-20 relative z-10 bg-[#0a0a0a]">
-                    <div className="flex items-end justify-between mb-20 border-b border-gray-800 pb-6">
-                        <h2 className="text-6xl md:text-8xl font-heading font-bold text-white">
-                            Publications <span className="text-[#D2FF00]">.</span>
-                        </h2>
-                        <span className="text-gray-500 font-mono mb-2 hidden md:block">[ RESEARCH ]</span>
+                <section id="publications" className="w-full py-32 px-4 md:px-12 bg-[#050505] relative z-10">
+                    {/* 顶部标题区 - 极简大气 */}
+                    <div className="flex flex-col md:flex-row items-end justify-between mb-16 border-b border-white/10 pb-8 mx-2">
+                        <div>
+                            <h2 className="text-7xl md:text-9xl font-heading font-bold text-white leading-[0.8] tracking-tighter">
+                                PUBLI<br/><span className="text-stroke-accent">CATIONS</span>
+                            </h2>
+                        </div>
+                        <div className="mt-8 md:mt-0 flex flex-col items-end">
+                            <p className="text-gray-400 max-w-xs text-right mb-4 font-light text-sm leading-relaxed">
+                                A curated selection of research exploring the boundaries of Artificial Intelligence & Medical Systems.
+                            </p>
+                            <div className="flex items-center gap-2 text-[#D2FF00] font-mono text-xs uppercase tracking-[0.2em]">
+                                <span className="w-2 h-2 bg-[#D2FF00] rounded-full animate-pulse"></span>
+                                Active Research 2022-2025
+                            </div>
+                        </div>
                     </div>
 
-                    <div className="grid grid-cols-1 gap-y-16">
+                    {/* 画廊布局 (The Marble Work Grid) */}
+                    <div className="grid grid-cols-1 md:grid-cols-12 gap-4 auto-rows-fr">
                         {publications.map((pub, index) => (
-                            <div key={index} className="group border-t border-gray-800 pt-12 transition-all duration-500 hover:border-[#D2FF00]">
-                                <div className="flex flex-col md:flex-row gap-8">
-                                    <div className="md:w-1/3">
-                                        <img src={pub.image} alt={pub.title} className="w-full h-48 object-cover rounded-lg opacity-80 group-hover:opacity-100 transition-opacity" />
+                            <div 
+                                key={index} 
+                                className={`group relative ${pub.span} ${pub.height} overflow-hidden bg-[#111] border border-white/5 hover:z-10 transition-all duration-500`}
+                            >
+                                {/* 1. 图片层 - 全屏覆盖 + 悬停微缩放 */}
+                                <div className="absolute inset-0 overflow-hidden">
+                                    <img 
+                                        src={pub.image} 
+                                        alt={pub.title} 
+                                        className="w-full h-full object-cover transition-transform duration-[1.2s] cubic-bezier(0.19, 1, 0.22, 1) group-hover:scale-110 opacity-50 group-hover:opacity-40 grayscale group-hover:grayscale-0"
+                                    />
+                                </div>
+
+                                {/* 2. 纹理与遮罩层 - 增加质感 */}
+                                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#000_100%)] opacity-80"></div>
+                                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent opacity-90"></div>
+
+                                {/* 3. 内容层 - 悬浮于图片之上 */}
+                                <div className="absolute inset-0 p-6 md:p-10 flex flex-col justify-between z-20">
+                                    
+                                    {/* 顶部标签 */}
+                                    <div className="flex justify-between items-start transform -translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                                        <span className="text-[#D2FF00] font-heading text-4xl md:text-6xl font-bold opacity-30">{pub.id}</span>
+                                        <span className="border border-[#D2FF00]/50 text-[#D2FF00] px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest backdrop-blur-md bg-black/30">
+                                            {pub.category}
+                                        </span>
                                     </div>
-                                    <div className="md:w-2/3">
-                                        <div className="text-[#D2FF00] text-sm font-mono uppercase tracking-widest mb-2">{pub.category}</div>
-                                        <h3 className="text-2xl md:text-4xl font-heading font-bold mb-4 text-gray-300 group-hover:text-white transition-colors">
-                                            {pub.title}
-                                        </h3>
-                                        <p className="text-gray-400 mb-4 leading-relaxed">{pub.desc}</p>
-                                        <div className="text-gray-500 text-sm mb-2">
-                                            <strong className="text-white">{pub.authors}</strong>
+
+                                    {/* 底部文字信息 */}
+                                    <div className="transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+                                        <div className="mb-4">
+                                            <h3 className="text-3xl md:text-5xl font-heading font-bold text-white leading-[0.95] mb-2 group-hover:text-[#D2FF00] transition-colors duration-300">
+                                                {pub.title}
+                                            </h3>
+                                            <p className="text-white/80 text-lg md:text-xl font-light leading-tight max-w-2xl hidden md:block">
+                                                {pub.subtitle}
+                                            </p>
                                         </div>
-                                        <div className="text-gray-500 text-sm">{pub.venue}</div>
+                                        
+                                        <div className="h-[1px] w-full bg-white/20 my-4 group-hover:bg-[#D2FF00] transition-colors duration-500"></div>
+                                        
+                                        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                                            <div>
+                                                <div className="text-xs text-gray-400 font-mono uppercase tracking-wider mb-1">Authors</div>
+                                                <div className="text-sm text-white font-medium">{pub.authors}</div>
+                                                <div className="text-xs text-gray-500 mt-1 italic">{pub.venue}</div>
+                                            </div>
+                                            
+                                            <button className="bg-white text-black hover:bg-[#D2FF00] transition-colors px-6 py-3 font-bold uppercase tracking-widest text-xs flex items-center gap-2 group/btn self-start md:self-auto">
+                                                View Publication
+                                                <i data-lucide="arrow-right" className="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform"></i>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
+
+                                {/* 4. 悬停边框特效 - 霓虹光晕 */}
+                                <div className="absolute inset-0 border border-[#D2FF00] opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-500 pointer-events-none z-30"></div>
                             </div>
                         ))}
                     </div>
@@ -632,8 +733,7 @@
                     gsap.to(cursor, {
                         x: e.clientX,
                         y: e.clientY,
-                        duration: 0.1,
-                        ease: "power2.out"
+                        duration: 0.1
                     });
                 };
                 
@@ -643,16 +743,20 @@
                 window.addEventListener('mousemove', moveCursor);
                 
                 // Delegate event listeners for hover effects (handles dynamically added elements)
-                document.body.addEventListener('mouseover', (e) => {
-                    if (e.target.closest('.nav-link') || e.target.closest('h1') || e.target.closest('.project-card') || e.target.closest('a')) {
+                const handleHover = (e) => {
+                     if (e.target.closest('.nav-link') || e.target.closest('h1') || e.target.closest('.project-card') || e.target.closest('a') || e.target.closest('.group')) {
                         hoverCursor();
                     }
-                });
-                document.body.addEventListener('mouseout', (e) => {
-                     if (e.target.closest('.nav-link') || e.target.closest('h1') || e.target.closest('.project-card') || e.target.closest('a')) {
+                };
+
+                const handleUnhover = (e) => {
+                     if (e.target.closest('.nav-link') || e.target.closest('h1') || e.target.closest('.project-card') || e.target.closest('a') || e.target.closest('.group')) {
                         unhoverCursor();
                     }
-                });
+                };
+
+                document.body.addEventListener('mouseover', handleHover);
+                document.body.addEventListener('mouseout', handleUnhover);
 
                 return () => {
                     window.removeEventListener('mousemove', moveCursor);
