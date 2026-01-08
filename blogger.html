@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogger - Zirui Wen</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Devicons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+
+    <!-- React & ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Marked.js for Markdown -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <!-- MathJax for LaTeX -->
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)'], ['($', '$)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+
+    <style>
+        :root {
+            --color-bg: #0a0a0a;
+            --color-accent: #D2FF00;
+            --color-text: #ffffff;
+        }
+
+        body {
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            cursor: none;
+        }
+
+        h1, h2, h3, .font-heading {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+        }
+
+        #cursor {
+            position: fixed;
+            top: 0; left: 0;
+            width: 16px; height: 16px;
+            background: var(--color-accent);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s cubic-bezier(0.19, 1, 0.22, 1), 
+                        height 0.3s cubic-bezier(0.19, 1, 0.22, 1),
+                        background-color 0.3s;
+            mix-blend-mode: exclusion;
+        }
+        #cursor.hovered {
+            width: 64px; height: 64px;
+            background: white;
+            mix-blend-mode: difference;
+        }
+
+        #canvas-container {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100vh;
+            z-index: -1;
+            opacity: 0.4;
+        }
+
+        .markdown-body {
+            color: #d1d5db;
+            line-height: 1.8;
+        }
+        .markdown-body h1 { font-size: 2.5rem; color: #fff; margin-bottom: 1.5rem; border-bottom: 1px solid #333; padding-bottom: 0.5rem; }
+        .markdown-body h2 { font-size: 2rem; color: #fff; margin-top: 2rem; margin-bottom: 1rem; }
+        .markdown-body h3 { font-size: 1.5rem; color: #fff; margin-top: 1.5rem; margin-bottom: 0.75rem; }
+        .markdown-body p { margin-bottom: 1.25rem; }
+        .markdown-body ul, .markdown-body ol { margin-bottom: 1.25rem; padding-left: 1.5rem; }
+        .markdown-body li { margin-bottom: 0.5rem; }
+        .markdown-body code { background: #1a1a1a; padding: 0.2rem 0.4rem; border-radius: 4px; font-family: monospace; color: var(--color-accent); }
+        .markdown-body pre { background: #111; padding: 1rem; border-radius: 8px; overflow-x: auto; margin-bottom: 1.25rem; border: 1px solid #222; }
+        .markdown-body blockquote { border-left: 4px solid var(--color-accent); padding-left: 1rem; color: #9ca3af; font-style: italic; margin-bottom: 1.25rem; }
+        .markdown-body img { max-width: 100%; height: auto; border-radius: 8px; margin: 2rem 0; border: 1px solid #333; }
+        .markdown-body a { color: var(--color-accent); text-decoration: underline; }
+
+        .loader-overlay {
+            position: fixed;
+            inset: 0;
+            background: #000;
+            z-index: 10000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .post-card {
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        .post-card:hover {
+            border-color: var(--color-accent);
+            background: rgba(210, 255, 0, 0.02);
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="root"></div>
+    <div id="cursor"></div>
+    <div id="canvas-container"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
+
+        const posts = [
+            {
+                id: 'jacobian',
+                title: 'Jacobian Matrix',
+                folder: 'Jacobian',
+                file: 'Jacobian matrix.md',
+                category: 'Mathematics',
+                desc: 'A deep dive into Jacobian matrices and their role in coordinate transformations and mapping.'
+            },
+            {
+                id: 'llm',
+                title: 'Language Model (LM)',
+                folder: 'LLM',
+                file: 'LM.md',
+                category: 'AI Research',
+                desc: 'Understanding the fundamentals of Language Models and their evolution in modern AI.'
+            }
+        ];
+
+        const Navbar = ({ onHome }) => (
+            <nav className="fixed top-0 left-0 w-full p-6 flex justify-between items-center z-50 mix-blend-difference">
+                <div onClick={onHome} className="text-2xl font-heading font-bold tracking-tighter text-[#D2FF00] cursor-pointer">
+                    ZW<span className="text-white">.</span>
+                </div>
+                <div className="flex gap-8 text-sm font-semibold tracking-widest uppercase">
+                    <a href="index.html" className="hover:text-[#D2FF00] transition-colors nav-link">Home</a>
+                    <a href="index.html#work" className="hover:text-[#D2FF00] transition-colors nav-link hidden md:block">Work</a>
+                    <a href="#" onClick={(e) => { e.preventDefault(); onHome(); }} className="text-[#D2FF00] nav-link">Blogger</a>
+                </div>
+            </nav>
+        );
+
+        const BlogList = ({ onSelectPost }) => {
+            return (
+                <section className="pt-32 pb-20 px-6 md:px-20 max-w-7xl mx-auto">
+                    <div className="mb-20">
+                        <h1 className="text-6xl md:text-8xl font-heading font-bold mb-4">
+                            Notebook <span className="text-[#D2FF00]">.</span>
+                        </h1>
+                        <p className="text-gray-400 max-w-2xl text-lg">
+                            A collection of my technical notes, research findings, and mathematical explorations.
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        {posts.map(post => (
+                            <div 
+                                key={post.id} 
+                                className="post-card p-8 group cursor-pointer"
+                                onClick={() => onSelectPost(post)}
+                            >
+                                <div className="flex justify-between items-start mb-6">
+                                    <span className="text-[#D2FF00] font-mono text-xs uppercase tracking-widest border border-[#D2FF00]/30 px-2 py-1">
+                                        {post.category}
+                                    </span>
+                                    <i data-lucide="arrow-up-right" className="text-gray-600 group-hover:text-[#D2FF00] transition-colors"></i>
+                                </div>
+                                <h3 className="text-3xl font-heading font-bold mb-4 group-hover:text-[#D2FF00] transition-colors">
+                                    {post.title}
+                                </h3>
+                                <p className="text-gray-500 font-light leading-relaxed mb-6">
+                                    {post.desc}
+                                </p>
+                                <div className="text-xs text-gray-600 font-mono uppercase tracking-tighter">
+                                    Location: /blogger/{post.folder}/
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+            );
+        };
+
+        const PostViewer = ({ post, onBack }) => {
+            const [content, setContent] = useState('');
+            const [loading, setLoading] = useState(true);
+
+            useEffect(() => {
+                const fetchPost = async () => {
+                    try {
+                        const response = await fetch(`./blogger/${post.folder}/${post.file}`);
+                        let text = await response.text();
+                        
+                        // Handle relative image paths in markdown
+                        // Convert ![alt](image.png) to ![alt](./blogger/folder/image.png)
+                        const imageRegex = /!\[(.*?)\]\((.*?)\)/g;
+                        text = text.replace(imageRegex, (match, alt, src) => {
+                            if (!src.startsWith('http') && !src.startsWith('/')) {
+                                return `![${alt}](./blogger/${post.folder}/${src})`;
+                            }
+                            return match;
+                        });
+
+                        setContent(marked.parse(text));
+                        setLoading(false);
+                        
+                        // Trigger MathJax after content is set
+                        setTimeout(() => {
+                            if (window.MathJax && window.MathJax.typeset) {
+                                window.MathJax.typeset();
+                            }
+                        }, 100);
+
+                        // Re-init icons if any in markdown
+                        if (window.lucide) window.lucide.createIcons();
+                    } catch (err) {
+                        console.error("Failed to load post:", err);
+                        setContent('Error loading post.');
+                        setLoading(false);
+                    }
+                };
+
+                fetchPost();
+                window.scrollTo(0, 0);
+            }, [post]);
+
+            if (loading) return (
+                <div className="h-screen flex items-center justify-center">
+                    <div className="text-[#D2FF00] font-heading text-2xl animate-pulse">Loading Note...</div>
+                </div>
+            );
+
+            return (
+                <article className="pt-32 pb-20 px-6 md:px-20 max-w-4xl mx-auto">
+                    <button 
+                        onClick={onBack}
+                        className="mb-12 flex items-center gap-2 text-gray-500 hover:text-[#D2FF00] transition-colors uppercase font-mono text-sm group"
+                    >
+                        <i data-lucide="arrow-left" className="w-4 h-4 group-hover:-translate-x-1 transition-transform"></i>
+                        Back to Notes
+                    </button>
+                    
+                    <div 
+                        className="markdown-body"
+                        dangerouslySetInnerHTML={{ __html: content }}
+                    />
+                    
+                    <div className="mt-20 pt-10 border-t border-gray-900 text-gray-600 font-mono text-xs uppercase text-center">
+                        End of Note: {post.title}
+                    </div>
+                </article>
+            );
+        };
+
+        // Loader Component
+        const Loader = ({ onComplete }) => {
+            const counterRef = useRef(null);
+            
+            useEffect(() => {
+                let count = 0;
+                const interval = setInterval(() => {
+                    count += Math.floor(Math.random() * 10) + 1;
+                    if(count > 100) count = 100;
+                    if(counterRef.current) counterRef.current.innerText = count + '%';
+                    
+                    if(count === 100) {
+                        clearInterval(interval);
+                        setTimeout(onComplete, 500);
+                    }
+                }, 50);
+                return () => clearInterval(interval);
+            }, []);
+
+            return (
+                <div className="loader-overlay flex-col gap-4">
+                    <div className="text-[#D2FF00] font-heading text-6xl font-bold animate-pulse">ZW</div>
+                    <div ref={counterRef} className="font-mono text-gray-500">0%</div>
+                </div>
+            );
+        };
+
+        const Footer = () => {
+            return (
+                <footer className="w-full py-20 px-6 md:px-20 bg-black text-white relative border-t border-gray-900">
+                    <div className="flex flex-col md:flex-row justify-between items-start md:items-end">
+                        <div>
+                            <h2 className="text-[12vw] leading-none font-heading font-bold text-[#D2FF00] opacity-90 hover:opacity-100 transition-opacity cursor-pointer">
+                                LET'S TALK
+                            </h2>
+                        </div>
+                        <div className="flex gap-6 mt-10 md:mt-0 mb-4">
+                             <a href="https://github.com/wzrdl" target="_blank" className="nav-link text-gray-400 hover:text-[#D2FF00] uppercase tracking-widest text-sm">Github</a>
+                             <a href="mailto:wzrqczj@gmail.com" className="nav-link text-gray-400 hover:text-[#D2FF00] uppercase tracking-widest text-sm">Email</a>
+                             <a href="https://linkedin.com/in/zirui-wen-76320b327/" target="_blank" className="nav-link text-gray-400 hover:text-[#D2FF00] uppercase tracking-widest text-sm">LinkedIn</a>
+                        </div>
+                    </div>
+                    <div className="flex justify-between items-center mt-12 pt-8 border-t border-gray-900 text-gray-600 text-xs font-mono uppercase">
+                        <span>© 2025 Zirui Wen. All Rights Reserved.</span>
+                        <span>Designed and built by Zirui Wen</span>
+                    </div>
+                </footer>
+            );
+        };
+
+        const App = () => {
+            const [loading, setLoading] = useState(true);
+            const [currentPost, setCurrentPost] = useState(null);
+
+            useEffect(() => {
+                if (!loading) {
+                    if (window.lucide) window.lucide.createIcons();
+                    
+                    const cursor = document.getElementById('cursor');
+                    const moveCursor = (e) => {
+                        gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.1 });
+                    };
+                    const handleHover = (e) => {
+                        if (e.target.closest('a') || e.target.closest('button') || e.target.closest('.post-card') || e.target.closest('.nav-link')) {
+                            cursor.classList.add('hovered');
+                        }
+                    };
+                    const handleUnhover = () => cursor.classList.remove('hovered');
+
+                    window.addEventListener('mousemove', moveCursor);
+                    document.addEventListener('mouseover', handleHover);
+                    document.addEventListener('mouseout', handleUnhover);
+                    
+                    return () => {
+                        window.removeEventListener('mousemove', moveCursor);
+                        document.removeEventListener('mouseover', handleHover);
+                        document.removeEventListener('mouseout', handleUnhover);
+                    };
+                }
+            }, [loading, currentPost]);
+
+            if (loading) return <Loader onComplete={() => setLoading(false)} />;
+
+            return (
+                <div className="min-h-screen flex flex-col">
+                    <Navbar onHome={() => setCurrentPost(null)} />
+                    <main className="flex-grow">
+                        {currentPost ? (
+                            <PostViewer post={currentPost} onBack={() => setCurrentPost(null)} />
+                        ) : (
+                            <BlogList onSelectPost={setCurrentPost} />
+                        )}
+                    </main>
+                    <Footer />
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+
+    <script>
+        // Setup Three.js Scene (Synced with index.html)
+        const initThree = () => {
+            const container = document.getElementById('canvas-container');
+            const scene = new THREE.Scene();
+            scene.fog = new THREE.FogExp2(0x0a0a0a, 0.002);
+
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+            
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            container.appendChild(renderer.domElement);
+
+            const particlesGeometry = new THREE.BufferGeometry();
+            const particlesCount = 2000;
+            const posArray = new Float32Array(particlesCount * 3);
+            
+            for(let i = 0; i < particlesCount * 3; i++) {
+                posArray[i] = (Math.random() - 0.5) * 50; 
+            }
+            
+            particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+            
+            const material = new THREE.PointsMaterial({
+                size: 0.05,
+                color: 0xD2FF00,
+                transparent: true,
+                opacity: 0.8,
+            });
+            
+            const particlesMesh = new THREE.Points(particlesGeometry, material);
+            scene.add(particlesMesh);
+
+            const gridHelper = new THREE.GridHelper(100, 50, 0x333333, 0x111111);
+            gridHelper.position.y = -5;
+            scene.add(gridHelper);
+
+            camera.position.z = 5;
+
+            let mouseX = 0;
+            let mouseY = 0;
+            let targetX = 0;
+            let targetY = 0;
+
+            document.addEventListener('mousemove', (event) => {
+                mouseX = event.clientX - window.innerWidth / 2;
+                mouseY = event.clientY - window.innerHeight / 2;
+            });
+
+            const animate = () => {
+                requestAnimationFrame(animate);
+                targetX = mouseX * 0.001;
+                targetY = mouseY * 0.001;
+                particlesMesh.rotation.y += 0.001;
+                particlesMesh.rotation.x += 0.0005;
+                particlesMesh.rotation.x += 0.05 * (targetY - particlesMesh.rotation.x);
+                particlesMesh.rotation.y += 0.05 * (targetX - particlesMesh.rotation.y);
+                gridHelper.position.z += 0.02;
+                if(gridHelper.position.z > 10) gridHelper.position.z = 0;
+                renderer.render(scene, camera);
+            };
+
+            animate();
+
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+        };
+        window.addEventListener('DOMContentLoaded', initThree);
+    </script>
+</body>
+</html>
+
