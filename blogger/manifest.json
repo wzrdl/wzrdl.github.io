@@ -1,0 +1,45 @@
+{
+  "generatedAt": "2026-01-13T06:42:21.160Z",
+  "modules": [
+    {
+      "id": "jacobian",
+      "title": "Jacobian",
+      "notes": [
+        {
+          "title": "Jacobian matrix",
+          "path": "Jacobian/Jacobian matrix.md"
+        }
+      ]
+    },
+    {
+      "id": "llm",
+      "title": "LLM",
+      "notes": [
+        {
+          "title": "LM",
+          "path": "LLM/LM.md"
+        }
+      ]
+    },
+    {
+      "id": "nano-vllm",
+      "title": "Nano-vllm",
+      "notes": [
+        {
+          "title": "Tensor Parallel",
+          "path": "Nano-vllm/TP/Tensor Parallel.md"
+        }
+      ]
+    },
+    {
+      "id": "rl",
+      "title": "RL",
+      "notes": [
+        {
+          "title": "Chapter 1",
+          "path": "RL/Chapter 1.md"
+        }
+      ]
+    }
+  ]
+}

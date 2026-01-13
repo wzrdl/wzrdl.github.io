@@ -92,3 +92,8 @@ $$
 简而言之：在微观尺度下，非线性函数 $\mathbf{f}$ 变成了一个线性乘法 $J$。
 
 ![Jacobian](Jacobian_2D.png)
+
+## Reference
+
+- [What is Jacobian? | The right way of thinking derivatives and integrals](https://www.youtube.com/watch?v=wCZ1VEmVjVo&t=10s)
+
