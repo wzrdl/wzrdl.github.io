@@ -378,32 +378,32 @@
             }, []);
 
             useEffect(() => {
-                if (window.lucide) window.lucide.createIcons();
+                    if (window.lucide) window.lucide.createIcons();
             }, [modules, currentNote]);
-
+                    
             useEffect(() => {
-                const cursor = document.getElementById('cursor');
+                    const cursor = document.getElementById('cursor');
                 if (!cursor) return;
 
-                const moveCursor = (e) => {
-                    gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.1 });
-                };
-                const handleHover = (e) => {
-                    if (e.target.closest('a') || e.target.closest('button') || e.target.closest('.post-card') || e.target.closest('.nav-link')) {
-                        cursor.classList.add('hovered');
-                    }
-                };
-                const handleUnhover = () => cursor.classList.remove('hovered');
+                    const moveCursor = (e) => {
+                        gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.1 });
+                    };
+                    const handleHover = (e) => {
+                        if (e.target.closest('a') || e.target.closest('button') || e.target.closest('.post-card') || e.target.closest('.nav-link')) {
+                            cursor.classList.add('hovered');
+                        }
+                    };
+                    const handleUnhover = () => cursor.classList.remove('hovered');
 
-                window.addEventListener('mousemove', moveCursor);
-                document.addEventListener('mouseover', handleHover);
-                document.addEventListener('mouseout', handleUnhover);
-                
-                return () => {
-                    window.removeEventListener('mousemove', moveCursor);
-                    document.removeEventListener('mouseover', handleHover);
-                    document.removeEventListener('mouseout', handleUnhover);
-                };
+                    window.addEventListener('mousemove', moveCursor);
+                    document.addEventListener('mouseover', handleHover);
+                    document.addEventListener('mouseout', handleUnhover);
+                    
+                    return () => {
+                        window.removeEventListener('mousemove', moveCursor);
+                        document.removeEventListener('mouseover', handleHover);
+                        document.removeEventListener('mouseout', handleUnhover);
+                    };
             }, []);
 
             return (
