@@ -51,3 +51,8 @@ PageAttention的问题就是来解决KV cache的分配问题，通过动态地�
 
 vllm最重要的就是在多卡并行的情况下的优化，如图所示：
 ![distribution](distribution.jpg)
+
+* 首先，vllm有一个中央的调度器(Scheduler)，负责计算和管理每张卡上KV cache从logical KV blocks到physical blocks的Block tables
+* 在做分布式计算的时候，Schedular会将映射表广播到各张卡上，每个卡上的Cache Engine接受到相关信息后，负责管理各卡上的KV Block
+
+同样在推理的时候使用的是Tensor Parallel模式，在TP模式下，各卡的输入的数据相同，各卡负责计算不同head的KV cache，所以这种情况下，各卡上的逻辑块-物理块的映射关系其实是相同的（用的同一张block table），只是各卡上物理块中实际存储的数据不同而已。
