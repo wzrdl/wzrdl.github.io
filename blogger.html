@@ -11,7 +11,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500;700&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
     
     <!-- Devicons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
@@ -32,6 +32,9 @@
 
     <!-- Marked.js for Markdown -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- Highlight.js for code syntax -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/stackoverflow-dark.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/lib/highlight.min.js"></script>
 
     <!-- MathJax for LaTeX -->
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -50,9 +53,19 @@
 
     <style>
         :root {
-            --color-bg: #0a0a0a;
+            --color-bg: #0b0f14;
+            --color-surface: #10151c;
+            --color-surface-2: #151b23;
+            --color-border: #202734;
+            --color-text: #e6e9ee;
+            --color-muted: #9aa4b2;
             --color-accent: #D2FF00;
-            --color-text: #ffffff;
+            --code-bg: #0f141b;
+            --code-border: #202734;
+            --code-header-bg: #0b0f14;
+            --code-inline-bg: #141b23;
+            --code-inline-border: #243041;
+            --code-text: #e6edf3;
         }
 
         body {
@@ -97,20 +110,80 @@
         }
 
         .markdown-body {
-            color: #d1d5db;
+            color: var(--color-text);
             line-height: 1.8;
+            font-size: 1.05rem;
         }
-        .markdown-body h1 { font-size: 2.5rem; color: #fff; margin-bottom: 1.5rem; border-bottom: 1px solid #333; padding-bottom: 0.5rem; }
-        .markdown-body h2 { font-size: 2rem; color: #fff; margin-top: 2rem; margin-bottom: 1rem; }
-        .markdown-body h3 { font-size: 1.5rem; color: #fff; margin-top: 1.5rem; margin-bottom: 0.75rem; }
+        .markdown-body h1 { font-size: 2.5rem; color: inherit; margin-bottom: 1.5rem; border-bottom: 1px solid var(--color-border); padding-bottom: 0.5rem; }
+        .markdown-body h2 { font-size: 2rem; color: inherit; margin-top: 2rem; margin-bottom: 1rem; }
+        .markdown-body h3 { font-size: 1.5rem; color: inherit; margin-top: 1.5rem; margin-bottom: 0.75rem; }
         .markdown-body p { margin-bottom: 1.25rem; }
         .markdown-body ul, .markdown-body ol { margin-bottom: 1.25rem; padding-left: 1.5rem; }
         .markdown-body li { margin-bottom: 0.5rem; }
-        .markdown-body code { background: #1a1a1a; padding: 0.2rem 0.4rem; border-radius: 4px; font-family: monospace; color: var(--color-accent); }
-        .markdown-body pre { background: #111; padding: 1rem; border-radius: 8px; overflow-x: auto; margin-bottom: 1.25rem; border: 1px solid #222; }
-        .markdown-body blockquote { border-left: 4px solid var(--color-accent); padding-left: 1rem; color: #9ca3af; font-style: italic; margin-bottom: 1.25rem; }
-        .markdown-body img { max-width: 100%; height: auto; border-radius: 8px; margin: 2rem 0; border: 1px solid #333; }
-        .markdown-body a { color: var(--color-accent); text-decoration: underline; }
+        .markdown-body code { background: var(--code-inline-bg); padding: 0.15rem 0.4rem; border-radius: 6px; border: 1px solid var(--code-inline-border); font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace; color: var(--code-text); font-size: 0.95em; }
+        .markdown-body pre { background: var(--code-bg); padding: 1rem 1.25rem; border-radius: 12px; overflow-x: auto; margin-bottom: 1.5rem; border: 1px solid var(--code-border); color: var(--code-text); font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace; font-size: 0.95rem; }
+        .markdown-body pre code { background: transparent; border: none; padding: 0; }
+        .markdown-body pre code.hljs { background: transparent; }
+        .markdown-body blockquote { border-left: 4px solid var(--color-accent); background: rgba(210, 255, 0, 0.05); padding: 0.75rem 1rem; color: var(--color-muted); font-style: italic; margin-bottom: 1.5rem; }
+        .markdown-body img { max-width: 100%; height: auto; border-radius: 8px; margin: 2rem 0; border: 1px solid var(--color-border); }
+        .markdown-body a { color: #93c5fd; text-decoration: underline; text-decoration-color: rgba(147, 197, 253, 0.5); }
+
+        .code-block {
+            background: var(--code-bg);
+            border: 1px solid var(--code-border);
+            border-radius: 12px;
+            overflow: hidden;
+            margin: 1.6rem 0;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+        }
+        .code-block pre {
+            margin: 0;
+            border: none;
+            padding: 1rem 1.25rem 1.25rem;
+            background: transparent;
+        }
+        .code-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.55rem 1rem;
+            background: var(--code-header-bg);
+            border-bottom: 1px solid var(--code-border);
+        }
+        .code-lang {
+            font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
+            font-size: 0.72rem;
+            letter-spacing: 0.12em;
+            color: var(--color-muted);
+            text-transform: uppercase;
+        }
+        .code-copy {
+            font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--color-text);
+            border: 1px solid var(--code-inline-border);
+            padding: 0.35rem 0.65rem;
+            border-radius: 999px;
+            background: transparent;
+            transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+        }
+        .code-copy:hover {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+            background: rgba(210, 255, 0, 0.08);
+            transform: translateY(-1px);
+        }
+        .code-copy.copied {
+            color: #0b0f14;
+            background: var(--color-accent);
+            border-color: var(--color-accent);
+        }
+        .code-copy:focus-visible {
+            outline: 2px solid var(--color-accent);
+            outline-offset: 2px;
+        }
 
         .loader-overlay {
             position: fixed;
@@ -143,6 +216,149 @@
     <script type="text/babel">
         const { useState, useEffect } = React;
         const encodePath = (pathStr = '') => pathStr.split('/').map(encodeURIComponent).join('/');
+        marked.setOptions({
+            langPrefix: 'hljs language-',
+            highlight: (code, lang) => {
+                if (window.hljs) {
+                    if (lang && hljs.getLanguage(lang)) {
+                        return hljs.highlight(code, { language: lang }).value;
+                    }
+                    return hljs.highlightAuto(code).value;
+                }
+                return code;
+            }
+        });
+
+        const languageLabelMap = {
+            bash: 'Bash',
+            c: 'C',
+            cpp: 'C++',
+            'c++': 'C++',
+            'c#': 'C#',
+            csharp: 'C#',
+            cs: 'C#',
+            css: 'CSS',
+            go: 'Go',
+            html: 'HTML',
+            java: 'Java',
+            javascript: 'JavaScript',
+            js: 'JavaScript',
+            json: 'JSON',
+            jsx: 'JSX',
+            kotlin: 'Kotlin',
+            markdown: 'Markdown',
+            md: 'Markdown',
+            powershell: 'PowerShell',
+            ps1: 'PowerShell',
+            py: 'Python',
+            python: 'Python',
+            rust: 'Rust',
+            sh: 'Shell',
+            shell: 'Shell',
+            sql: 'SQL',
+            swift: 'Swift',
+            ts: 'TypeScript',
+            tsx: 'TSX',
+            typescript: 'TypeScript',
+            yaml: 'YAML',
+            yml: 'YAML'
+        };
+
+        const getLanguageLabel = (rawLang = '') => {
+            const normalized = rawLang.toLowerCase();
+            if (!normalized || normalized === 'text' || normalized === 'plaintext' || normalized === 'plain') {
+                return 'TEXT';
+            }
+            return languageLabelMap[normalized] || normalized.toUpperCase();
+        };
+
+        const getCodeLanguage = (codeEl) => {
+            const className = codeEl.className || '';
+            const match = className.match(/language-([a-z0-9_+#-]+)/i);
+            return match ? match[1].toLowerCase() : '';
+        };
+
+        const enhanceCodeBlocks = () => {
+            const container = document.querySelector('.markdown-body');
+            if (!container) return;
+            const codeBlocks = container.querySelectorAll('pre > code');
+            codeBlocks.forEach((codeEl) => {
+                const pre = codeEl.parentElement;
+                if (!pre || pre.closest('.code-block')) return;
+                if (!codeEl.classList.contains('hljs')) {
+                    codeEl.classList.add('hljs');
+                }
+
+                const wrapper = document.createElement('div');
+                wrapper.className = 'code-block';
+
+                const header = document.createElement('div');
+                header.className = 'code-header';
+
+                const language = getCodeLanguage(codeEl);
+                const label = document.createElement('span');
+                label.className = 'code-lang';
+                label.textContent = getLanguageLabel(language);
+
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.className = 'code-copy';
+                button.textContent = 'Copy';
+                button.setAttribute('aria-label', 'Copy code');
+
+                header.appendChild(label);
+                header.appendChild(button);
+                wrapper.appendChild(header);
+
+                pre.parentNode.insertBefore(wrapper, pre);
+                wrapper.appendChild(pre);
+            });
+        };
+
+        const copyCodeToClipboard = async (button) => {
+            const codeEl = button.closest('.code-block')?.querySelector('code');
+            if (!codeEl) return;
+            const text = codeEl.innerText;
+
+            const setCopied = () => {
+                button.classList.add('copied');
+                button.textContent = 'Copied';
+                if (button._copyTimer) {
+                    clearTimeout(button._copyTimer);
+                }
+                button._copyTimer = setTimeout(() => {
+                    button.classList.remove('copied');
+                    button.textContent = 'Copy';
+                }, 1600);
+            };
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                try {
+                    await navigator.clipboard.writeText(text);
+                    setCopied();
+                    return;
+                } catch (err) {
+                    // Fall through to legacy copy.
+                }
+            }
+
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.setAttribute('readonly', '');
+            textarea.style.position = 'absolute';
+            textarea.style.left = '-9999px';
+            document.body.appendChild(textarea);
+            textarea.select();
+            textarea.setSelectionRange(0, textarea.value.length);
+            try {
+                document.execCommand('copy');
+                setCopied();
+            } catch (err) {
+                button.textContent = 'Copy';
+            } finally {
+                document.body.removeChild(textarea);
+            }
+        };
 
         const Navbar = ({ onHome }) => (
             <nav className="fixed top-0 left-0 w-full p-6 flex justify-between items-center z-50 mix-blend-difference">
@@ -265,14 +481,6 @@
 
                         setContent(marked.parse(text));
                         setLoading(false);
-                        
-                        setTimeout(() => {
-                            if (window.MathJax && window.MathJax.typeset) {
-                                window.MathJax.typeset();
-                            }
-                        }, 100);
-
-                        if (window.lucide) window.lucide.createIcons();
                     } catch (err) {
                         console.error("Failed to load post:", err);
                         setError('笔记加载失败，请返回列表重试。');
@@ -284,6 +492,29 @@
                 fetchPost();
                 window.scrollTo(0, 0);
             }, [note]);
+
+            useEffect(() => {
+                if (!content) return;
+                const raf = requestAnimationFrame(() => {
+                    enhanceCodeBlocks();
+                    if (window.MathJax && window.MathJax.typeset) {
+                        window.MathJax.typeset();
+                    }
+                    if (window.lucide) window.lucide.createIcons();
+                });
+                return () => cancelAnimationFrame(raf);
+            }, [content]);
+
+            useEffect(() => {
+                const handleCopyClick = (event) => {
+                    const button = event.target.closest('.code-copy');
+                    if (!button) return;
+                    event.preventDefault();
+                    copyCodeToClipboard(button);
+                };
+                document.addEventListener('click', handleCopyClick);
+                return () => document.removeEventListener('click', handleCopyClick);
+            }, []);
 
             if (loading) return (
                 <div className="h-screen flex items-center justify-center">
@@ -504,4 +735,3 @@
     </script>
 </body>
 </html>
-
