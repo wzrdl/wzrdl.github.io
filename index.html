@@ -222,8 +222,8 @@
                     </div>
                     <div className="hidden md:flex gap-8 text-sm font-semibold tracking-widest uppercase">
                         <a href="#home" className="hover:text-[#D2FF00] transition-colors cursor-pointer nav-link">Home</a>
-                        <a href="#projects" className="hover:text-[#D2FF00] transition-colors cursor-pointer nav-link">Projects</a>
                         <a href="#experience" className="hover:text-[#D2FF00] transition-colors cursor-pointer nav-link">Experience</a>
+                        <a href="#projects" className="hover:text-[#D2FF00] transition-colors cursor-pointer nav-link">Projects</a>
                         <a href="#publications" className="hover:text-[#D2FF00] transition-colors cursor-pointer nav-link">Publications</a>
                         <a href="blogger.html" className="hover:text-[#D2FF00] transition-colors cursor-pointer nav-link">Blog</a>
                         <a href="#contact" className="hover:text-[#D2FF00] transition-colors cursor-pointer nav-link">Contact</a>
@@ -325,7 +325,7 @@
                                 <span>{exp.period}</span>
                             </div>
                         </div>
-                        <img src={exp.icon} alt="logo" className="w-12 h-12 object-contain opacity-50 group-hover:opacity-100 transition-opacity mt-4 md:mt-0 grayscale group-hover:grayscale-0" />
+                        <img src={exp.icon} alt="logo" className="w-14 h-14 object-contain opacity-50 group-hover:opacity-100 transition-opacity mt-4 md:mt-0 grayscale group-hover:grayscale-0" />
                     </div>
 
                     <ul className="space-y-4 text-gray-400 font-light max-w-4xl">
@@ -407,59 +407,66 @@
         const Projects = () => {
             const projects = [
                 {
-                    id: '01',
-                    title: "Smarter Doctor Agent",
-                    cat: "Agentic Medical AI",
-                    desc: "Grounded clinical assistant that blends guidelines, patient context, and tool calls for safer answers.",
+                    title: "mini-vllm",
+                    cat: "LLM Systems / Serving",
+                    desc: "Minimal vLLM-style inference stack to study KV cache, block management, and scheduling.",
                     highlights: [
-                        "Graph-grounded responses with Neo4j + dense retrieval.",
-                        "Safety layer enforces citations and refusal rules.",
-                        "Evaluation suite for factuality, coverage, and latency."
+                        "KV cache + block manager experiments with traceable memory accounting.",
+                        "Scheduler instrumentation for latency/throughput trade-offs.",
+                        "Reproducible benchmarks and ablation notes."
                     ],
-                    img: "https://images.unsplash.com/photo-1584036561566-b938f493646c?q=80&w=2570&auto=format&fit=crop",
-                    link: "https://github.com/wzrdl"
+                    img: "blogger/Nano-vllm/PageAttention/block_table.jpg",
+                    link: "https://github.com/wzrdl/mini-vllm"
                 },
                 {
-                    id: '02',
+                    title: "3D Model Generator & Cloud Library",
+                    cat: "3D Systems",
+                    desc: "Desktop 3D viewer with a cloud model library and text-to-3D pipeline.",
+                    highlights: [
+                        "PyQt + PyVista client for browsing and viewing.",
+                        "FastAPI + SQLite + GCS for model management.",
+                        "Meshy API integration for text-to-3D."
+                    ],
+                    img: "assets/1.png",
+                    link: "https://github.com/wzrdl/3D-visual"
+                },
+                {
+                    title: "Miniagent",
+                    cat: "RL Agents",
+                    desc: "Lightweight RL agent framework for tool orchestration and experiment loops.",
+                    highlights: [
+                        "Policy loop and tool invocation scaffolding.",
+                        "Config-driven environments and logging.",
+                        "Reusable experiment templates for fast iteration."
+                    ],
+                    img: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2670&auto=format&fit=crop",
+                    link: "https://github.com/wzrdl/Miniagent"
+                },
+                {
+                    title: "MiniMind",
+                    cat: "LLM Training",
+                    desc: "From-scratch 26M GPT training pipeline covering pretrain, SFT, LoRA, and RL.",
+                    highlights: [
+                        "End-to-end scripts from data prep to evaluation.",
+                        "Covers pretrain, SFT, LoRA, and RL in one repo.",
+                        "Learning-focused baseline for LLM training."
+                    ],
+                    img: "https://images.unsplash.com/photo-1526378722484-bd91ca387e72?q=80&w=2670&auto=format&fit=crop",
+                    link: "https://github.com/wzrdl/minimind"
+                },
+                {
                     title: "Recommendation Service",
                     cat: "Recommender Systems",
-                    desc: "Real-time recommendation stack on AWS with streaming features and automated training and deployment.",
+                    desc: "Real-time recommendation stack on AWS with streaming features and automated training.",
                     highlights: [
                         "Kafka + Feast + Redis for low-latency feature serving.",
-                        "FastAPI service with XGBoost and MLflow tracking.",
-                        "Airflow + Kubernetes pipelines for retraining."
+                        "FastAPI + XGBoost with MLflow tracking.",
+                        "Airflow pipelines on Kubernetes for retraining."
                     ],
                     img: "https://images.unsplash.com/photo-1558494949-ef526b0042a0?q=80&w=2668&auto=format&fit=crop",
                     link: "https://github.com/wzrdl/Recommendation-service"
                 },
                 {
-                    id: '03',
-                    title: "Clinical Epilepsy QA (GraphRAG)",
-                    cat: "RAG / GraphRAG",
-                    desc: "KG + dense retrieval QA for epilepsy, grounded in structured clinical evidence.",
-                    highlights: [
-                        "Neo4j GraphRAG with FAISS evidence assembly.",
-                        "LoRA-tuned Mistral-7B with **+20% factual consistency**.",
-                        "Regression tests for retrieval and generation stability."
-                    ],
-                    img: "assets/kg_paradigm.png",
-                    link: "https://github.com/wzrdl"
-                },
-                {
-                    id: '04',
-                    title: "Seizure Trajectory RL",
-                    cat: "RL for Decision Modeling",
-                    desc: "PPO-based modeling of seizure trajectories with partial observability and clinical rewards.",
-                    highlights: [
-                        "MDP design for semiology transitions and early prediction.",
-                        "**+40% predictive return** vs MC baselines.",
-                        "Cross-patient generalization analysis."
-                    ],
-                    img: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=2670&auto=format&fit=crop",
-                    link: "https://github.com/wzrdl"
-                },
-                {
-                    id: '05',
                     title: "Kernel K-Means CUDA",
                     cat: "Systems / HPC",
                     desc: "GPU-accelerated kernel k-means using sparse linear algebra and custom CUDA kernels.",
@@ -472,327 +479,30 @@
                     link: "https://github.com/wzrdl/Kernel-k-means-cuda"
                 },
                 {
-                    id: '06',
-                    title: "3D Model Generator & Cloud Library",
-                    cat: "3D Systems",
-                    desc: "Desktop 3D viewer with a cloud model library and text-to-3D pipeline.",
+                    title: "Event-Everywhere",
+                    cat: "Web Platform",
+                    desc: "Full-stack event discovery and sharing app with map-based search, live publishing, and social interactions.",
                     highlights: [
-                        "PyQt + PyVista client for browsing and viewing.",
-                        "FastAPI + SQLite + GCS for model management.",
-                        "Meshy API integration for text-to-3D."
+                        "Map-based browsing and search with interactive map integration.",
+                        "Real-time event publishing, comments, user accounts, and bookmarking.",
+                        "Vue.js + Element UI frontend with FastAPI + MySQL backend."
                     ],
-                    img: "assets/1.png",
-                    link: "https://github.com/wzrdl/3D-visual"
-                }
-            ];
-
-            const projectFilters = [
-                "All",
-                "LLM Systems",
-                "Alignment/RL",
-                "RAG/Healthcare",
-                "Recommender/MLOps",
-                "Vision",
-                "3D",
-                "Systems/HPC",
-                "Web/Mobile"
-            ];
-
-            const projectLibrary = [
-                {
-                    title: "3D Model Generator & Cloud Library",
-                    repo: "3D-visual",
-                    tags: ["3D"],
-                    desc: "Desktop 3D viewer with cloud model library and text-to-3D pipeline.",
-                    highlights: [
-                        "PyQt + PyVista client for browsing, viewing, and local caching.",
-                        "FastAPI backend with SQLite + GCS metadata management."
-                    ],
-                    tech: ["Python", "PyQt", "PyVista", "FastAPI", "SQLite", "GCS", "Meshy API"],
-                    link: "https://github.com/wzrdl/3D-visual"
-                },
-                {
-                    title: "Kernel K-Means CUDA",
-                    repo: "Kernel-k-means-cuda",
-                    tags: ["Systems/HPC"],
-                    desc: "GPU-accelerated kernel k-means using sparse linear algebra.",
-                    highlights: [
-                        "CSR formulation with SpMM/SpMV kernels.",
-                        "cuBLAS/cuSPARSE + custom CUDA optimizations."
-                    ],
-                    tech: ["CUDA", "C/C++", "cuBLAS", "cuSPARSE", "Sparse Linear Algebra"],
-                    link: "https://github.com/wzrdl/Kernel-k-means-cuda"
-                },
-                {
-                    title: "Automatic Prompt Optimization (Medical)",
-                    repo: "Automatic-prompt-optimization-for-medical-prompts",
-                    tags: ["Alignment/RL"],
-                    desc: "Automated prompt optimization for medical datasets with Bayesian evaluation.",
-                    highlights: [
-                        "Text-based gradient descent with momentum.",
-                        "Bayesian reverse validation for robust scoring."
-                    ],
-                    tech: ["Python", "LangChain", "Bayesian Methods", "LLM APIs"],
-                    link: "https://github.com/wzrdl/Automatic-prompt-optimization-for-medical-prompts"
+                    img: "https://images.unsplash.com/photo-1506157786151-b8491531f063?q=80&w=2670&auto=format&fit=crop",
+                    link: "https://github.com/Ky1eYing/Event-Everywhere"
                 },
                 {
                     title: "Prompt Optimizer (Full-Stack)",
-                    repo: "automatic_fullstack",
-                    tags: ["Web/Mobile"],
-                    desc: "Full-stack prompt optimization tool with interactive UI and experiment history.",
+                    cat: "Full-Stack Tools",
+                    desc: "Full-stack prompt optimization tool with interactive UI and backend history.",
                     highlights: [
                         "Frontend + Flask backend for iterative prompt tuning.",
-                        "Persistent history and real-time feedback loop."
+                        "Persistent history and real-time feedback loop.",
+                        "PostgreSQL storage with API-driven workflows."
                     ],
-                    tech: ["TypeScript", "Next.js", "Python", "Flask", "PostgreSQL"],
+                    img: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=2670&auto=format&fit=crop",
                     link: "https://github.com/wzrdl/automatic_fullstack"
-                },
-                {
-                    title: "Liar's Bar Game",
-                    repo: "Liar-s-Bar",
-                    tags: ["Alignment/RL"],
-                    desc: "Game theory simulation of sequential bluffing with incomplete information.",
-                    highlights: [
-                        "Bayesian belief updates vs non-Bayesian strategies.",
-                        "Nash equilibrium analysis with simulations."
-                    ],
-                    tech: ["Python", "Simulation", "Game Theory"],
-                    link: "https://github.com/wzrdl/Liar-s-Bar"
-                },
-                {
-                    title: "MiniMind",
-                    repo: "minimind",
-                    tags: ["LLM Systems"],
-                    desc: "Train a tiny GPT from scratch to reproduce the full training flow.",
-                    highlights: [
-                        "Pretrain, SFT, LoRA, and RL training pipeline.",
-                        "Educational baseline with reproducible scripts."
-                    ],
-                    tech: ["PyTorch", "LLM Training", "LoRA", "RL"],
-                    link: "https://github.com/wzrdl/minimind"
-                },
-                {
-                    title: "MiniMind-V",
-                    repo: "minimind-v",
-                    tags: ["LLM Systems"],
-                    desc: "Tiny VLM training pipeline for vision-language experiments.",
-                    highlights: [
-                        "From-scratch VLM training with 26M-scale models.",
-                        "Extends MiniMind for multimodal learning."
-                    ],
-                    tech: ["PyTorch", "VLM Training", "LoRA"],
-                    link: "https://github.com/wzrdl/minimind-v"
-                },
-                {
-                    title: "mini-vllm",
-                    repo: "mini-vllm",
-                    tags: ["LLM Systems"],
-                    desc: "Minimal vLLM-style serving stack for KV cache and scheduling studies.",
-                    highlights: [
-                        "Block management and KV cache experiments.",
-                        "Scheduling traces and instrumentation."
-                    ],
-                    tech: ["Python", "LLM Serving", "KV Cache"],
-                    link: "https://github.com/wzrdl/mini-vllm"
-                },
-                {
-                    title: "nano-vllm",
-                    repo: "nano-vllm",
-                    tags: ["LLM Systems"],
-                    desc: "Lightweight vLLM fork for reading, modification, and comparison experiments.",
-                    highlights: [
-                        "Inference stack walkthroughs and experiments.",
-                        "Prototype changes with reproducible benchmarks."
-                    ],
-                    tech: ["Python", "vLLM Inference", "Systems Study"],
-                    link: "https://github.com/wzrdl/nano-vllm"
-                },
-                {
-                    title: "LLM-forgetting",
-                    repo: "LLM-forgetting",
-                    tags: ["Alignment/RL"],
-                    desc: "Continual post-training experiments on forgetting metrics and mitigation.",
-                    highlights: [
-                        "Forgetting score tracking and monitoring.",
-                        "Ablations across LoRA and training phases."
-                    ],
-                    tech: ["PyTorch", "Continual Learning", "Metrics"],
-                    link: "https://github.com/wzrdl/LLM-forgetting"
-                },
-                {
-                    title: "Miniagent",
-                    repo: "Miniagent",
-                    tags: ["Alignment/RL"],
-                    desc: "Lightweight RL agent framework for tool orchestration.",
-                    highlights: [
-                        "Policy loops and tool invocation scaffolding.",
-                        "Reusable experiment environments."
-                    ],
-                    tech: ["Python", "RL Agents", "Tooling"],
-                    link: "https://github.com/wzrdl/Miniagent"
-                },
-                {
-                    title: "Clinical Epilepsy QA",
-                    repo: "Lab Project",
-                    tags: ["RAG/Healthcare"],
-                    desc: "KG + dense retrieval QA for epilepsy, grounded in clinical evidence.",
-                    highlights: [
-                        "Neo4j GraphRAG + FAISS dense retrieval.",
-                        "QLoRA fine-tuning with +20% factual consistency."
-                    ],
-                    tech: ["Neo4j", "FAISS", "QLoRA", "LLaMA-3", "Mistral-7B"],
-                    link: "https://github.com/wzrdl"
-                },
-                {
-                    title: "Seizure Trajectory RL",
-                    repo: "Lab Project",
-                    tags: ["Alignment/RL", "RAG/Healthcare"],
-                    desc: "PPO-based modeling of seizure trajectories with partial observability.",
-                    highlights: [
-                        "MDP design for semiology transitions.",
-                        "+40% predictive return vs baseline."
-                    ],
-                    tech: ["RL", "PPO", "MDP"],
-                    link: "https://github.com/wzrdl"
-                },
-                {
-                    title: "RAG_local",
-                    repo: "RAG_local",
-                    tags: ["RAG/Healthcare"],
-                    desc: "Local RAG sandbox for retrieval-augmented QA and evaluation.",
-                    highlights: [
-                        "Local embedding and retriever experiments.",
-                        "Evaluation scripts for retrieval quality."
-                    ],
-                    tech: ["Python", "RAG", "Evaluation"],
-                    link: "https://github.com/wzrdl/RAG_local"
-                },
-                {
-                    title: "Recommendation Service",
-                    repo: "Recommendation-service",
-                    tags: ["Recommender/MLOps"],
-                    desc: "Real-time recommendation service with streaming feature pipelines.",
-                    highlights: [
-                        "Kafka + Feast + Redis for low-latency features.",
-                        "FastAPI inference with XGBoost and MLflow."
-                    ],
-                    tech: ["Kafka", "Feast", "Redis", "FastAPI", "XGBoost", "MLflow", "AWS"],
-                    link: "https://github.com/wzrdl/Recommendation-service"
-                },
-                {
-                    title: "sam3",
-                    repo: "sam3",
-                    tags: ["Vision"],
-                    desc: "Segment Anything Model 3 fork with fine-tuning notebooks.",
-                    highlights: [
-                        "Experimental segmentation fine-tuning.",
-                        "Notebook-driven evaluation workflows."
-                    ],
-                    tech: ["PyTorch", "Segmentation", "SAM3"],
-                    link: "https://github.com/wzrdl/sam3"
-                },
-                {
-                    title: "Apex-yolo",
-                    repo: "Apex-yolo",
-                    tags: ["Vision"],
-                    desc: "YOLO detection experiments with training and evaluation scripts.",
-                    highlights: [
-                        "Detection benchmarks and visualization.",
-                        "Training and inference notes."
-                    ],
-                    tech: ["Python", "YOLO", "Detection"],
-                    link: "https://github.com/wzrdl/Apex-yolo"
-                },
-                {
-                    title: "shap-e",
-                    repo: "shap-e",
-                    tags: ["3D"],
-                    desc: "OpenAI Shap-E fork for text and image to 3D experiments.",
-                    highlights: [
-                        "Model setup and inference experiments.",
-                        "3D generation pipeline studies."
-                    ],
-                    tech: ["Python", "3D Generation", "Shap-E"],
-                    link: "https://github.com/wzrdl/shap-e"
-                },
-                {
-                    title: "dreamgaussian",
-                    repo: "dreamgaussian",
-                    tags: ["3D"],
-                    desc: "DreamGaussian fork for Gaussian Splatting 3D creation.",
-                    highlights: [
-                        "Reproduction of generative splatting pipeline.",
-                        "Experiment notes and tuning."
-                    ],
-                    tech: ["Python", "Gaussian Splatting", "3D"],
-                    link: "https://github.com/wzrdl/dreamgaussian"
-                },
-                {
-                    title: "Page",
-                    repo: "Page",
-                    tags: ["Web/Mobile"],
-                    desc: "Vue page prototypes and UI experiments.",
-                    highlights: [
-                        "Reusable components and layouts.",
-                        "Preview-ready demo builds."
-                    ],
-                    tech: ["Vue", "JavaScript", "UI"],
-                    link: "https://github.com/wzrdl/Page"
-                },
-                {
-                    title: "ClimbHub",
-                    repo: "ClimbHub",
-                    tags: ["Web/Mobile"],
-                    desc: "Swift iOS app prototype with feature-driven flows.",
-                    highlights: [
-                        "UI flows and local data management.",
-                        "Architecture notes and screenshots."
-                    ],
-                    tech: ["Swift", "iOS", "UIKit"],
-                    link: "https://github.com/wzrdl/ClimbHub"
-                },
-                {
-                    title: "code_handwritten",
-                    repo: "code_handwritten",
-                    tags: ["Web/Mobile"],
-                    desc: "Handwritten code notes and coursework archive.",
-                    highlights: [
-                        "Organized notes and snippets.",
-                        "Refined into Notes/Coursework collections."
-                    ],
-                    tech: ["Notes", "Coursework"],
-                    link: "https://github.com/wzrdl/code_handwritten"
-                },
-                {
-                    title: "Covid-19 ML",
-                    repo: "Covid-19-machine-learning",
-                    tags: ["RAG/Healthcare"],
-                    desc: "COVID-19 prediction using physical signs and ML models.",
-                    highlights: [
-                        "Dataset preprocessing and modeling.",
-                        "Linked to SPIE CCPCDL 2022 publication."
-                    ],
-                    tech: ["Python", "ML", "Healthcare"],
-                    link: "https://github.com/wzrdl/Covid-19-machine-learning"
-                },
-                {
-                    title: "baby-llama2-chinese",
-                    repo: "baby-llama2-chinese",
-                    tags: ["LLM Systems"],
-                    desc: "Small-parameter Chinese LLaMA2 training for learning.",
-                    highlights: [
-                        "Pretraining + SFT pipeline walkthrough.",
-                        "Reproducible training scripts."
-                    ],
-                    tech: ["PyTorch", "LLM Training", "SFT"],
-                    link: "https://github.com/wzrdl/baby-llama2-chinese"
                 }
             ];
-
-            const [activeFilter, setActiveFilter] = useState("All");
-            const filteredProjects = activeFilter === "All"
-                ? projectLibrary
-                : projectLibrary.filter((project) => project.tags.includes(activeFilter));
 
             useEffect(() => {
                 // Parallax for images
@@ -873,71 +583,6 @@
                         ))}
                     </div>
 
-                    <div className="mt-28">
-                        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10 border-b border-gray-800 pb-6">
-                            <div>
-                                <h3 className="text-4xl md:text-6xl font-heading font-bold text-white uppercase">
-                                    Project Library
-                                </h3>
-                                <p className="text-gray-500 mt-3 max-w-2xl text-sm">
-                                    A complete list of repositories and lab projects, grouped by focus area.
-                                </p>
-                            </div>
-                            <div className="flex flex-wrap gap-2">
-                                {projectFilters.map((filter) => (
-                                    <button
-                                        key={filter}
-                                        type="button"
-                                        onClick={() => setActiveFilter(filter)}
-                                        className={`px-3 py-1 rounded-full text-[10px] font-mono uppercase tracking-widest border transition-colors nav-link ${
-                                            activeFilter === filter
-                                                ? 'border-[#D2FF00] text-[#D2FF00]'
-                                                : 'border-gray-700 text-gray-500 hover:border-[#D2FF00] hover:text-[#D2FF00]'
-                                        }`}
-                                    >
-                                        {filter}
-                                    </button>
-                                ))}
-                            </div>
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            {filteredProjects.map((project, index) => (
-                                <div key={`${project.title}-${index}`} className="bg-[#0b0b0b] border border-gray-800 p-6 hover:border-[#D2FF00] transition-colors">
-                                    <div className="flex items-start justify-between gap-4">
-                                        <div>
-                                            <h4 className="text-2xl font-heading font-bold text-white">{project.title}</h4>
-                                            <div className="text-xs text-gray-500 font-mono uppercase tracking-widest mt-1">{project.repo}</div>
-                                        </div>
-                                        <span className="text-[10px] uppercase tracking-widest border border-white/10 text-gray-400 px-2 py-1 rounded-full">
-                                            {project.tags.join(" / ")}
-                                        </span>
-                                    </div>
-                                    <p className="text-gray-400 mt-3 leading-relaxed">{project.desc}</p>
-                                    <ul className="mt-4 space-y-2 text-gray-500 text-sm leading-relaxed">
-                                        {project.highlights.map((item, i) => (
-                                            <li key={i} className="flex items-start gap-3">
-                                                <span className="text-[#D2FF00] mt-1 text-[10px]">&bull;</span>
-                                                <span>{item}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                    <div className="mt-4 flex flex-wrap gap-2">
-                                        {project.tech.map((tech, i) => (
-                                            <span key={i} className="text-[10px] uppercase tracking-widest border border-white/10 text-gray-500 px-2 py-1 rounded-full">
-                                                {tech}
-                                            </span>
-                                        ))}
-                                    </div>
-                                    <div className="mt-5">
-                                        <a href={project.link} target="_blank" rel="noopener noreferrer" className="nav-link text-xs font-mono uppercase tracking-widest text-white border-b border-white/30 pb-1 hover:border-[#D2FF00] hover:text-[#D2FF00] transition-all">
-                                            View Repo
-                                        </a>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
                 </section>
             );
         };
@@ -1240,8 +885,8 @@
                 <div className="opacity-0 animate-fade-in" ref={(el) => el && gsap.to(el, {opacity: 1, duration: 1})}>
                     <Navbar />
                     <Hero />
-                    <Projects />
                     <WorkExperience />
+                    <Projects />
                     <Publications />
                     <Skills />
                     <Footer />
