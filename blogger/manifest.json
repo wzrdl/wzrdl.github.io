@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-09T17:28:46.367Z",
+  "generatedAt": "2026-02-09T23:03:07.515Z",
   "modules": [
     {
       "id": "jacobian",
@@ -40,6 +40,20 @@
         {
           "title": "Tensor Parallel",
           "path": "Nano-vllm/TP/Tensor Parallel.md"
+        }
+      ]
+    },
+    {
+      "id": "pfl",
+      "title": "PFL",
+      "notes": [
+        {
+          "title": "FedALA",
+          "path": "PFL/FedALA/FedALA.md"
+        },
+        {
+          "title": "FedCP",
+          "path": "PFL/FedCP/FedCP.md"
         }
       ]
     },
