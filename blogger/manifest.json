@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-23T02:00:07.349Z",
+  "generatedAt": "2026-02-09T17:28:46.367Z",
   "modules": [
     {
       "id": "jacobian",
@@ -26,6 +26,10 @@
       "title": "Nano-vllm",
       "notes": [
         {
+          "title": "Block Manager",
+          "path": "Nano-vllm/Block Manager/Block Manager.md"
+        },
+        {
           "title": "vllm_1",
           "path": "Nano-vllm/PageAttention/vllm_1.md"
         },
@@ -46,6 +50,10 @@
         {
           "title": "Chapter 1",
           "path": "RL/Chapter 1.md"
+        },
+        {
+          "title": "Chapter 2",
+          "path": "RL/Chapter 2.md"
         }
       ]
     }
