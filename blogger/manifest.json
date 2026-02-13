@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-09T23:03:07.515Z",
+  "generatedAt": "2026-02-13T20:19:34.748Z",
   "modules": [
     {
       "id": "jacobian",
@@ -54,6 +54,14 @@
         {
           "title": "FedCP",
           "path": "PFL/FedCP/FedCP.md"
+        },
+        {
+          "title": "FedMGP",
+          "path": "PFL/FedMGP/FedMGP.md"
+        },
+        {
+          "title": "pFedDIL",
+          "path": "PFL/pFedDIL/pFedDIL.md"
         }
       ]
     },
