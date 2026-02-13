@@ -1,12 +1,12 @@
 # FedALA: Adaptive Local Aggregation for Personalized Federated Learning 解读
 
-## 问题怎么来的？
+## 问题提出？
 
 * statistical heterogeneity 的经典表现 Non-IID 导致在全局服务器上学习的模型在客户端上泛化性不好
 * PFL 为了解决这个问题，优先保证每个本地客户端的模型质量，通过3个类别：
   * 每次在local使用全局模型进行覆盖
   * 额外学习个性化模型
-  * 使用个性化的聚合方式
+  * 使用个性化的聚合方式  
 * 前两种导致的问题就是每次获得是 desired information 混合 undesired information
 * 第三种出现了几种问题，也就是本文解决的问题
   * 个性化聚合没有在本地做对齐，也就在本地不一定是为了找到 local minimal 的 loss
