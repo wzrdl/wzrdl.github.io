@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-13T20:19:34.748Z",
+  "generatedAt": "2026-02-15T23:31:41.218Z",
   "modules": [
     {
       "id": "jacobian",
@@ -48,12 +48,24 @@
       "title": "PFL",
       "notes": [
         {
+          "title": "DCFCL",
+          "path": "PFL/DCFCL/DCFCL.md"
+        },
+        {
+          "title": "DPAO-PFL",
+          "path": "PFL/DPAO-PFL/DPAO-PFL.md"
+        },
+        {
           "title": "FedALA",
           "path": "PFL/FedALA/FedALA.md"
         },
         {
           "title": "FedCP",
           "path": "PFL/FedCP/FedCP.md"
+        },
+        {
+          "title": "FedMeS",
+          "path": "PFL/FedMeS/FedMeS.md"
         },
         {
           "title": "FedMGP",
