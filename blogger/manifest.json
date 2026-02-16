@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-15T23:31:41.218Z",
+  "generatedAt": "2026-02-16T01:40:00.522Z",
   "modules": [
     {
       "id": "jacobian",
@@ -74,6 +74,10 @@
         {
           "title": "pFedDIL",
           "path": "PFL/pFedDIL/pFedDIL.md"
+        },
+        {
+          "title": "pFL + CL",
+          "path": "PFL/pFL + CL/pFL + CL.md"
         }
       ]
     },

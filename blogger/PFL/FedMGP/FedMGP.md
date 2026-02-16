@@ -57,3 +57,7 @@ $$\text{MSA}(h_q, h_k, h_v) \rightarrow \text{MSA}'(h_q, [p_K; h_k], [p_V; h_v])
 ### 6. 这样如何最终实现模型个性化？
 
 **解决方法：** global prompt 提供跨 client 的共享信息，local prompt 提供跨任务的细节信息；server 不聚合 local prompt，从而保留各客户端的个性化。
+
+## Limitation
+
+* 如果任务数量变多，多粒度的prompt会带来额外的存储以及路由的复杂度，并且在任务边界模糊或者高度non-IID的情况下，可能出现prompt失配的问题
