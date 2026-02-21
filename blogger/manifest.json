@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-16T01:40:00.522Z",
+  "generatedAt": "2026-02-21T05:10:21.165Z",
   "modules": [
     {
       "id": "jacobian",
@@ -18,6 +18,14 @@
         {
           "title": "LM",
           "path": "LLM/LM.md"
+        },
+        {
+          "title": "Multi-Head Attention",
+          "path": "LLM/Multi-Head Attention.md"
+        },
+        {
+          "title": "Self-Attention",
+          "path": "LLM/Self-Attention.md"
         }
       ]
     },
