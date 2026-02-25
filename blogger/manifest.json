@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-21T05:10:21.165Z",
+  "generatedAt": "2026-02-25T18:10:42.543Z",
   "modules": [
     {
       "id": "jacobian",
@@ -16,12 +16,24 @@
       "title": "LLM",
       "notes": [
         {
+          "title": "Layer Normalization",
+          "path": "LLM/Layer Normalization.md"
+        },
+        {
           "title": "LM",
           "path": "LLM/LM.md"
         },
         {
+          "title": "Masked Self-Attention",
+          "path": "LLM/Masked Self-Attention.md"
+        },
+        {
           "title": "Multi-Head Attention",
           "path": "LLM/Multi-Head Attention.md"
+        },
+        {
+          "title": "pos",
+          "path": "LLM/pos.md"
         },
         {
           "title": "Self-Attention",
@@ -60,6 +72,10 @@
           "path": "PFL/DCFCL/DCFCL.md"
         },
         {
+          "title": "Ditto",
+          "path": "PFL/Ditto/Ditto.md"
+        },
+        {
           "title": "DPAO-PFL",
           "path": "PFL/DPAO-PFL/DPAO-PFL.md"
         },
@@ -78,6 +94,10 @@
         {
           "title": "FedMGP",
           "path": "PFL/FedMGP/FedMGP.md"
+        },
+        {
+          "title": "Per-FedAvg",
+          "path": "PFL/Per-FedAvg/Per-FedAvg.md"
         },
         {
           "title": "pFedDIL",
