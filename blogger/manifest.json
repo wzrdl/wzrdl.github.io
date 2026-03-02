@@ -1,6 +1,64 @@
 {
-  "generatedAt": "2026-02-25T18:10:42.543Z",
+  "generatedAt": "2026-03-02T19:07:00.426Z",
   "modules": [
+    {
+      "id": "gpt",
+      "title": "GPT",
+      "notes": [
+        {
+          "title": "Feed-Forward Block with Residual and Dropout",
+          "path": "GPT/Feed-Forward Block with Residual and Dropout.md"
+        },
+        {
+          "title": "Implement Adam Optimization Algorithm",
+          "path": "GPT/Implement Adam Optimization Algorithm.md"
+        },
+        {
+          "title": "Implement RMSNorm",
+          "path": "GPT/Implement RMSNorm.md"
+        },
+        {
+          "title": "Implementing Basic Autograd Operations",
+          "path": "GPT/Implementing Basic Autograd Operations.md"
+        },
+        {
+          "title": "KV Cache for Efficient Autoregressive Attention",
+          "path": "GPT/KV Cache for Efficient Autoregressive Attention.md"
+        },
+        {
+          "title": "Layer Normalization",
+          "path": "GPT/Layer Normalization.md"
+        },
+        {
+          "title": "Linear Learning Rate Decay",
+          "path": "GPT/Linear Learning Rate Decay.md"
+        },
+        {
+          "title": "Masked Self-Attention",
+          "path": "GPT/Masked Self-Attention.md"
+        },
+        {
+          "title": "Multi-Head Attention",
+          "path": "GPT/Multi-Head Attention.md"
+        },
+        {
+          "title": "pos",
+          "path": "GPT/pos.md"
+        },
+        {
+          "title": "Self-Attention",
+          "path": "GPT/Self-Attention.md"
+        },
+        {
+          "title": "Simple Residual Block",
+          "path": "GPT/Simple Residual Block.md"
+        },
+        {
+          "title": "Single Neuron with Backpropagation",
+          "path": "GPT/Single Neuron with Backpropagation.md"
+        }
+      ]
+    },
     {
       "id": "jacobian",
       "title": "Jacobian",
@@ -16,28 +74,8 @@
       "title": "LLM",
       "notes": [
         {
-          "title": "Layer Normalization",
-          "path": "LLM/Layer Normalization.md"
-        },
-        {
           "title": "LM",
           "path": "LLM/LM.md"
-        },
-        {
-          "title": "Masked Self-Attention",
-          "path": "LLM/Masked Self-Attention.md"
-        },
-        {
-          "title": "Multi-Head Attention",
-          "path": "LLM/Multi-Head Attention.md"
-        },
-        {
-          "title": "pos",
-          "path": "LLM/pos.md"
-        },
-        {
-          "title": "Self-Attention",
-          "path": "LLM/Self-Attention.md"
         }
       ]
     },
@@ -120,6 +158,22 @@
         {
           "title": "Chapter 2",
           "path": "RL/Chapter 2.md"
+        },
+        {
+          "title": "Group Relative Advantage for GRPO",
+          "path": "RL/GRPO/Group Relative Advantage for GRPO.md"
+        },
+        {
+          "title": "Implement the GRPO Objective Function",
+          "path": "RL/GRPO/Implement the GRPO Objective Function.md"
+        },
+        {
+          "title": "Knowledge Distillation Loss",
+          "path": "RL/GRPO/Knowledge Distillation Loss.md"
+        },
+        {
+          "title": "Pass@k and Majority Voting Evaluation Metrics",
+          "path": "RL/GRPO/Pass@k and Majority Voting Evaluation Metrics.md"
         }
       ]
     }
