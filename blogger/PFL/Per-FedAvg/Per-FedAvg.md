@@ -1,13 +1,11 @@
 # Personalized Federated Learning with Theoretical Guarantees: A Model-Agnostic Meta-Learning Approach 解读
-
-## 问题提出
-
-* 有些方法在解决non-IID的时候使用能够拥有一定的个性化程度
-* 从MAML迁移到pFL的时候，没有考虑到pFL的问题：
-  * 只能local 和 global之间进行通信
-  * client的多步的优化
-  * 数据non-IID，随机梯度噪声等问题
   
+## 问题详细阐述
+
+传统的Fedavg是在解决一个FL的问题，方法是优化一个全局的损失函数，这种方法会使得client模型不能够适配，即使后续在本地继续优化几步可能还是不够（因为数据异质性的问题），所以Per-FedAvg尝试使用一种方法，通过改变整个学习的目标，不再是求解一个FedAvg形式的最小值，而是改变成为学习一个共享的初始化，然后每个用户通过本地的一两次的微调就可以收敛到本地的最优。
+
+另外一点是meta-learning范式如果直接搬到FL的情况下会出现问题，一个是FL情况下，client需要做多次本地更新，然后再传回global，在MAML结构中，直接照搬会需要每一步inner-loop都和globa进行通信，要么就是本地多步更新的连乘的梯度。
+
 ## 解决方法
 
 ### 问题1：FedAvg 目标只关心 (f_i(w))，不关心本地适配后效果
