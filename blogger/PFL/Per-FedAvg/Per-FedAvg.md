@@ -53,3 +53,5 @@ w_{k+1}=\frac{1}{rn}\sum_{i\in A_k} w^i_{k+1,\tau}
 $$
 
 ![algo](algo1.png)
+
+## Global knowledge和personal knowledge的角度理解meta-learning，从global的角度上来说，Per-FedAvg保留的global信息是所有用户共享的初始化的参数，这个参数因为是通过每个用户的
