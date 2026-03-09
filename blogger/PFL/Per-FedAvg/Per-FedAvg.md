@@ -54,4 +54,7 @@ $$
 
 ![algo](algo1.png)
 
-## Global knowledge和personal knowledge的角度理解meta-learning，从global的角度上来说，Per-FedAvg保留的global信息是所有用户共享的初始化的参数，这个参数因为是通过每个用户的
+## Global knowledge和personal knowledge
+从这个角度理解meta-learning，从global的角度上来说，Per-FedAvg保留的global信息是所有用户共享的初始化的参数，这个参数因为是通过每个用户的训练之后得到再进行fedavg式的聚合的，所以能够保留全局的信息
+
+然后从local的角度上讲，Per-FedAvg的client通过共享的初始化由本地数据快速适配得到的，并且在本地保留，所以不会在聚合的时候被平均抹掉

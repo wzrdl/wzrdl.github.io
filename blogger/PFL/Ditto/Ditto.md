@@ -1,12 +1,7 @@
 # Ditto: Fair and Robust Federated Learning Through Personalization 解读
 
-## 问题提出
-* 强公平策略，比如取平均之类的，往往更关注"离群/稀有更新"，攻击者可以伪装成离群点，导致整个框架脆弱，
-* 强robust的策略往往会使得弱势点更加弱势
-
-## 一句话解释问题
-
-本文希望提出一个方法来平衡robust和fair之间的关系，并且保证FL的可拓展性
+## 解释问题
+在non-IID的pFL的环境中，fairness和Robustness是一个相互制约的关系，过去的一些文章为了解决这些attacks，使用的robustness的方法牺牲了很多fairness，同样使用的fariness的方法也会使得robust变差，Ditto是用来解决这个问题的。Ditto受mean regularized MTL方法的启发，之前的工作是在优化average personalized model，但是Ditto的目标转为优化global model。并且指出了MTL本身就能够很好的平衡fairness和robustness。引入正则项的方法是为了能够让personalized model更加接近optimal global point，同时在之前提到的robustness和fairness中，文章中的λ提供一个trade off between them，λ越大惩罚越大，更global，λ越小惩罚越小，更personalized。
 
 ## 解决方法
 
@@ -46,3 +41,8 @@ $$v_k \leftarrow v_k - \eta\big(\nabla F_k(v_k) + \lambda(v_k - w^t)\big)$$
 * Global对所有上传的参数进行聚合
   
 ![algo](algo1.png)
+
+
+## Global knowledge和personal knowledge
+Ditto的global knowledge和personal knowledge是通过他的两套参数来保持的，global knowledge 通过每一轮的下发以及聚合保留了全局的知识，并且ditto的目标是优化这个全局模型，全局的知识保留在这个参数中
+对于personal knowledge，client的私有模型承载了所有的知识，由于client是在优化一个正则项的函数，并且是本地不上传的，每一轮基于上一轮进行优化，所以知识得以保留
