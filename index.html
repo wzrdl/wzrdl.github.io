@@ -1,996 +1,183 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zirui Wen - LLM Systems Engineer</title>
-    <meta name="description" content="LLM systems engineer focused on RAG, reinforcement learning, and production-ready AI infrastructure.">
-    <meta property="og:title" content="Zirui Wen - LLM Systems Engineer">
-    <meta property="og:description" content="LLM systems engineer focused on RAG, reinforcement learning, and production-ready AI infrastructure.">
-    <meta property="og:image" content="https://wzrdl.github.io/assets/1.png">
+    <title>About me - Zirui Wen</title>
+    <meta name="description" content="Academic homepage of Zirui Wen.">
+    <meta property="og:title" content="About me - Zirui Wen">
+    <meta property="og:description" content="Academic homepage of Zirui Wen.">
     <meta property="og:type" content="website">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Fonts: Oswald (Bold, Industrial) & Inter (Clean) -->
+    <meta property="og:url" content="https://wzrdl.github.io/">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Devicons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
-
-    <!-- React & ReactDOM -->
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-
-    <!-- Three.js for WebGL Background -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    
-    <!-- GSAP for Animations -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-
-    <style>
-        /* Custom Styles */
-        :root {
-            --color-bg: #0a0a0a;
-            --color-accent: #D2FF00; /* Lando Norris Style Neon */
-            --color-text: #ffffff;
-            --cursor-size: 20px;
-        }
-
-        body {
-            background-color: var(--color-bg);
-            color: var(--color-text);
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-            cursor: none; /* Custom cursor */
-        }
-
-        h1, h2, h3, .font-heading {
-            font-family: 'Oswald', sans-serif;
-            text-transform: uppercase;
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: var(--color-bg);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #333;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--color-accent);
-        }
-
-        /* Custom Cursor */
-        #cursor {
-            position: fixed;
-            top: 0; left: 0;
-            width: 16px; height: 16px;
-            background: var(--color-accent);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
-            transition: width 0.3s cubic-bezier(0.19, 1, 0.22, 1), 
-                        height 0.3s cubic-bezier(0.19, 1, 0.22, 1),
-                        background-color 0.3s;
-            mix-blend-mode: exclusion;
-        }
-        #cursor.hovered {
-            width: 64px; height: 64px;
-            background: white;
-            mix-blend-mode: difference;
-            border: none;
-        }
-
-        /* ThreeJS Canvas */
-        #canvas-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            z-index: -1;
-            opacity: 0.4; /* Subtle background */
-        }
-
-        /* Utilities */
-        .text-stroke {
-            -webkit-text-stroke: 1px rgba(255,255,255,0.3);
-            color: transparent;
-        }
-        .text-stroke-accent {
-            -webkit-text-stroke: 1px var(--color-accent);
-            color: transparent;
-        }
-
-        .clip-text-image {
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            background-image: linear-gradient(45deg, #fff, #666);
-        }
-        
-        .loader-overlay {
-            position: fixed;
-            inset: 0;
-            background: #000;
-            z-index: 10000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Tech Stack Scrolling */
-        .tech-scroll-track {
-            display: flex;
-            gap: 2rem;
-            animation: scroll 40s linear infinite;
-        }
-
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        .tech-item {
-            white-space: nowrap;
-            padding: 0.5rem 1rem;
-            border: 1px solid rgba(210, 255, 0, 0.2);
-            border-radius: 9999px;
-            background: rgba(210, 255, 0, 0.05);
-            transition: all 0.3s;
-        }
-
-        .tech-item:hover {
-            border-color: var(--color-accent);
-            background: rgba(210, 255, 0, 0.1);
-        }
-
-        /* Project Gallery Styles (Imported) */
-        .font-oswald { font-family: 'Oswald', sans-serif; }
-        
-        .project-card:hover .project-img {
-            transform: scale(1.05);
-        }
-        .project-card:hover .project-overlay {
-            opacity: 0.4;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <header class="masthead">
+        <div class="container masthead__inner">
+            <a class="site-title" href="index.html">Zirui Wen</a>
+            <nav class="site-nav" aria-label="Primary">
+                <a href="publications/index.html">Publications</a>
+                <a href="CV_phd.pdf" download>CV</a>
+            </nav>
+        </div>
+    </header>
 
-    <!-- Root for React -->
-    <div id="root"></div>
-
-    <!-- Custom Cursor Element -->
-    <div id="cursor"></div>
-
-    <!-- React Application -->
-    <script type="text/babel">
-        const { useState, useEffect, useRef, useLayoutEffect } = React;
-
-        // Register GSAP Plugin
-        gsap.registerPlugin(ScrollTrigger);
-
-        /* --- COMPONENTS --- */
-
-        // Text Scramble Component
-        const ScrambleText = ({ text, className }) => {
-            const [display, setDisplay] = useState(text);
-            const chars = '!<>-_\\/[]{}=+*^?#________';
-            
-            const scramble = () => {
-                let iteration = 0;
-                const interval = setInterval(() => {
-                    setDisplay(
-                        text.split('').map((letter, index) => {
-                            if(index < iteration) return text[index];
-                            return chars[Math.floor(Math.random() * chars.length)];
-                        }).join('')
-                    );
-                    if(iteration >= text.length) clearInterval(interval);
-                    iteration += 1/2; 
-                }, 30);
-            };
-
-            return (
-                <span onMouseEnter={scramble} className={`cursor-default ${className}`}>
-                    {display}
-                </span>
-            );
-        };
-
-        // 1. Navigation
-        const Navbar = () => {
-            return (
-                <nav className="fixed top-0 left-0 w-full p-6 flex justify-between items-center z-50 mix-blend-difference">
-                    <div className="text-2xl font-heading font-bold tracking-tighter text-[#D2FF00]">
-                        ZW<span className="text-white">.</span>
-                    </div>
-                    <div className="hidden md:flex gap-8 text-sm font-semibold tracking-widest uppercase">
-                        <a href="#home" className="hover:text-[#D2FF00] transition-colors cursor-pointer nav-link">Home</a>
-                        <a href="#experience" className="hover:text-[#D2FF00] transition-colors cursor-pointer nav-link">Experience</a>
-                        <a href="#projects" className="hover:text-[#D2FF00] transition-colors cursor-pointer nav-link">Projects</a>
-                        <a href="#publications" className="hover:text-[#D2FF00] transition-colors cursor-pointer nav-link">Publications</a>
-                        <a href="blogger.html" className="hover:text-[#D2FF00] transition-colors cursor-pointer nav-link">Blog</a>
-                        <a href="#contact" className="hover:text-[#D2FF00] transition-colors cursor-pointer nav-link">Contact</a>
-                    </div>
-                    <div className="flex items-center gap-4">
-                        <a href="Zirui%20Wen%20MLE%20CV.pdf" download className="hidden md:inline-flex items-center gap-2 px-4 py-2 border border-[#D2FF00] text-[#D2FF00] text-[10px] font-mono uppercase tracking-[0.2em] hover:bg-[#D2FF00] hover:text-black transition-colors nav-link">
-                            Download Resume
-                        </a>
-                        <a href="https://github.com/wzrdl" target="_blank" rel="noopener noreferrer" className="text-[#D2FF00] hover:text-white transition-colors nav-link">
-                            <i data-lucide="github" className="w-6 h-6"></i>
-                        </a>
-                        <a href="https://linkedin.com/in/zirui-wen-76320b327/" target="_blank" rel="noopener noreferrer" className="text-[#D2FF00] hover:text-white transition-colors nav-link">
-                            <i data-lucide="linkedin" className="w-6 h-6"></i>
-                        </a>
-                    </div>
-                </nav>
-            );
-        };
-
-        // 2. Hero Section
-        const Hero = () => {
-            const titleRef = useRef(null);
-            const subRef = useRef(null);
-
-            useLayoutEffect(() => {
-                const ctx = gsap.context(() => {
-                    gsap.from(titleRef.current, {
-                        y: 100,
-                        opacity: 0,
-                        duration: 1.5,
-                        ease: "power4.out",
-                        delay: 0.5
-                    });
-                    gsap.from(subRef.current, {
-                        y: 20,
-                        opacity: 0,
-                        duration: 1,
-                        delay: 1
-                    });
-                });
-                return () => ctx.revert();
-            }, []);
-
-            return (
-                <section id="home" className="relative h-screen w-full flex flex-col justify-center items-center px-4 overflow-hidden">
-                    <div className="z-10 text-center max-w-5xl">
-                        <p ref={subRef} className="text-[#D2FF00] tracking-[0.35em] uppercase text-xs md:text-sm mb-4 font-bold">
-                            LLM Engineer / Applied AI / LLM Systems + RL + RAG
-                        </p>
-                        <h1 ref={titleRef} className="text-4xl md:text-7xl lg:text-8xl leading-tight font-bold font-heading text-white mb-6">
-                            Hi, I'm <span className="text-[#D2FF00]">Zirui Wen</span>
-                            <br />
-                            <span className="text-stroke text-transparent hover:text-[#D2FF00] transition-colors duration-500">LLM Systems Engineer</span>
-                        </h1>
-                        <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
-                            I build production-grade LLM systems across GraphRAG, continual post-training, and RL for decision modeling, with reproducible evaluation and reliable serving.
-                        </p>
-                        <div className="mt-6 flex flex-wrap justify-center gap-3 text-[10px] md:text-xs uppercase tracking-widest font-mono text-gray-400">
-                            <span className="px-3 py-1 border border-white/10 rounded-full">LLM Systems</span>
-                            <span className="px-3 py-1 border border-white/10 rounded-full">RAG / GraphRAG</span>
-                            <span className="px-3 py-1 border border-white/10 rounded-full">RL for Decision Modeling</span>
-                        </div>
-                        <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
-                            <a href="Zirui%20Wen%20MLE%20CV.pdf" download className="nav-link inline-flex items-center justify-center px-6 py-3 bg-[#D2FF00] text-black font-bold uppercase tracking-widest text-xs hover:bg-white transition-colors">
-                                Download Resume
-                            </a>
-                            <a href="#projects" className="nav-link inline-flex items-center justify-center px-6 py-3 border border-white/30 text-white font-bold uppercase tracking-widest text-xs hover:border-[#D2FF00] hover:text-[#D2FF00] transition-colors">
-                                View Projects
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div className="absolute bottom-10 left-10 flex flex-col gap-2 text-xs text-gray-500 uppercase tracking-widest font-mono hidden md:flex">
-                        <span>LOC: Hoboken, NJ</span>
-                        <span>EST: 2025</span>
-                    </div>
-                    
-                    <div className="absolute bottom-10 right-10 animate-bounce">
-                        <i data-lucide="arrow-down" className="w-6 h-6 text-[#D2FF00]"></i>
-                    </div>
-                </section>
-            );
-        };
-
-        // 3. Work Experience Section
-        const ExperienceItem = ({ exp, index }) => {
-            return (
-                <div className="group relative border-l border-gray-800 pl-8 md:pl-16 py-12 hover:border-[#D2FF00] transition-colors duration-500">
-                    <span className="absolute left-0 top-16 -translate-x-1/2 w-3 h-3 bg-gray-800 group-hover:bg-[#D2FF00] transition-colors rounded-full"></span>
-                    
-                    <div className="flex flex-col md:flex-row justify-between items-start mb-6">
-                        <div>
-                            <h3 className="text-3xl md:text-4xl font-heading font-bold text-white mb-2">
-                                <ScrambleText text={exp.role} />
-                            </h3>
-                            <div className="flex items-center gap-3 text-[#D2FF00] font-mono text-sm">
-                                <span>{exp.company}</span>
-                                <span>//</span>
-                                <span>{exp.period}</span>
-                            </div>
-                        </div>
-                        <img src={exp.icon} alt="logo" className="w-14 h-14 object-contain opacity-50 group-hover:opacity-100 transition-opacity mt-4 md:mt-0 grayscale group-hover:grayscale-0" />
-                    </div>
-
-                    <ul className="space-y-4 text-gray-400 font-light max-w-4xl">
-                        {exp.highlights.map((h, i) => (
-                            <li key={i} className="flex items-start gap-4 group-hover:text-gray-200 transition-colors">
-                                <span className="text-[#D2FF00] mt-1.5 text-xs">&bull;</span>
-                                <span dangerouslySetInnerHTML={{__html: h.replace(/\*\*(.*?)\*\*/g, '<strong class="text-white font-normal">$1</strong>')}} />
-                            </li>
-                        ))}
+    <main id="main">
+        <div class="container main-grid">
+            <aside class="sidebar">
+                <div class="author-card">
+                    <img src="me.jpg" alt="Zirui Wen" class="author-avatar">
+                    <h3 class="author-name">Zirui Wen</h3>
+                    <p class="author-bio">M.S. student at Stevens Institute of Technology, working on LLM reasoning, reinforcement learning, agents, continual learning, and AI for health.</p>
+                    <ul class="author-links">
+                        <li><span><i class="fa-solid fa-location-dot"></i> Hoboken, NJ</span></li>
+                        <li><a href="mailto:zwen6@stevens.edu"><i class="fa-solid fa-envelope"></i><span>Email</span></a></li>
+                        <li><a href="mailto:wzrqczj@gmail.com"><i class="fa-regular fa-paper-plane"></i><span>Personal Email</span></a></li>
+                        <li><a href="https://github.com/wzrdl" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i><span>GitHub</span></a></li>
+                        <li><a href="https://linkedin.com/in/zirui-wen-76320b327/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin"></i><span>LinkedIn</span></a></li>
+                        <li><a href="CV_phd.pdf" download><i class="fa-regular fa-file-lines"></i><span>Curriculum Vitae</span></a></li>
                     </ul>
                 </div>
-            );
-        };
+            </aside>
 
-        const WorkExperience = () => {
-            const experiences = [
-                {
-                    company: "Stevens Institute of Technology",
-                    role: "Research Assistant - Intelligent Systems (IntelliSys) Lab",
-                    period: "Nov 2025 - Present",
-                    icon: "https://wzrdl.github.io/icon/Stevens-Apparel-Color-R.png",
-                    highlights: [
-                        "**Forgetting Score** metric for continual post-training by fusing loss non-quadraticity, Hessian curvature scale, and update misalignment into a traceable signal.",
-                        "Instrumented step/epoch logging with dashboards to compare forgetting across datasets, training phases, and LoRA configurations.",
-                        "Used the score as a control signal to steer sampling and regularization for continual post-training stability.",
-                        "Built evaluation harnesses to quantify what and when the model forgets, enabling reproducible ablations.",
-                        "Packaged configs, scripts, and baselines for repeatable experiments."
-                    ]
-                },
-                {
-                    company: "Stevens Institute of Technology",
-                    role: "Research Assistant - Brain Imaging & Graph Learning Lab",
-                    period: "Nov 2024 - Present",
-                    icon: "https://wzrdl.github.io/icon/Stevens-Apparel-Color-R.png",
-                    highlights: [
-                        "**Clinical Epilepsy QA (KG + Dense RAG)**: structured clinical entities and relations into a Neo4j knowledge graph for grounded QA.",
-                        "Integrated GraphRAG with FAISS dense retrieval to assemble unified evidence from KG and vectors.",
-                        "LoRA-tuned Mistral-7B, delivering **+20% factual consistency** on internal QA benchmarks.",
-                        "Added regression tests and evaluation scripts to keep retrieval and generation stable.",
-                        "**Seizure Trajectory RL**: modeled semiology transitions as a partially observed MDP with rewards for early and stable prediction.",
-                        "Trained PPO policies with **+40% predictive return** and stronger cross-patient generalization vs MC baselines.",
-                        "Built trajectory visualizations and offline policy analysis for interpretability.",
-                        "Released configs, seeds, and scripts for reproducible experiments."
-                    ]
-                },
-                {
-                    company: "Siemens",
-                    role: "Data Team Assistant Intern",
-                    period: "Nov 2023 - Mar 2024 | Hoboken, NJ",
-                    icon: "https://wzrdl.github.io/icon/ee59a5b2025bded085056f6cda27aca7.png",
-                    highlights: [
-                        "Built reusable Excel templates for weekly data refreshes with standardized schemas, KPIs, and auto-generated summaries.",
-                        "Implemented multi-table SQL pipelines to consolidate audit data and reduce reporting inconsistencies.",
-                        "Automated data quality checks and spot audits, improving weekly reporting stability.",
-                        "Documented templates and workflows to enable reuse across teams."
-                    ]
-                }
-            ];
+            <article class="page">
+                <section class="section" id="about">
+                    <h1 class="page-title">About me</h1>
+                    <p>
+                        I am an M.S. student in Applied Artificial Intelligence at <strong>Stevens Institute of Technology</strong>. I am currently working with <strong>Prof. Hao Wang</strong> in the Intelligent Systems Lab on continual post-training and forgetting mitigation for large language models, and with <strong>Prof. Feng Liu</strong> in the Brain Imaging and Graph Learning Lab on medical AI, knowledge graphs, and seizure modeling.
+                    </p>
+                    <p>
+                        My research interests lie in <strong>LLM reasoning and planning</strong>, <strong>reinforcement learning</strong>, <strong>tool-using agents</strong>, <strong>continual learning</strong>, <strong>knowledge graph reasoning</strong>, and <strong>AI for health</strong>. I am particularly interested in building systems that combine principled learning algorithms with reliable deployment and evaluation in real-world settings.
+                    </p>
+                    <p>
+                        Before that, I worked with <strong>Prof. Wensheng Gan</strong> at Pazhou Lab, Jinan University, on prompt optimization for medical language models, and interned at <strong>Siemens</strong> on data processing, validation, and KPI analysis.
+                    </p>
+                </section>
 
-            return (
-                <section id="experience" className="py-32 px-6 md:px-20 bg-[#080808]">
-                    <div className="flex items-end gap-6 mb-20 border-b border-gray-800 pb-8">
-                        <h2 className="text-5xl md:text-7xl font-heading font-bold text-white uppercase">
-                            Experience
-                        </h2>
-                        <span className="hidden md:inline-block px-4 py-1 border border-[#D2FF00] text-[#D2FF00] rounded-full text-xs font-mono uppercase tracking-widest">
-                            Career Timeline
-                        </span>
+                <section class="section" id="news">
+                    <h2 class="section-title">News</h2>
+                    <ul class="list">
+                        <li>One paper was published in <strong>Scientific Reports</strong> in 2026.</li>
+                        <li>Our manuscript <strong>A Chance-Constrained Optimization Framework for LLM Forgetting</strong> is under review at ICML 2026.</li>
+                        <li>I joined the Intelligent Systems Lab at Stevens Institute of Technology in November 2025.</li>
+                        <li>I joined the Brain Imaging and Graph Learning Lab at Stevens Institute of Technology in November 2024.</li>
+                        <li>My bachelor's thesis <strong>Automatic Prompt Optimization for Medicine</strong> was recognized as an Outstanding Bachelor's Thesis in 2024.</li>
+                        <li>Our paper <strong>COVID-19 infection prediction using physical signs</strong> was published in CCPCDL 2022.</li>
+                    </ul>
+                </section>
+
+                <section class="section" id="experience">
+                    <h2 class="section-title">Research and Work Experience</h2>
+
+                    <div class="entry">
+                        <div class="entry-header">
+                            <p class="entry-title">Research Assistant, Intelligent Systems Lab, Stevens Institute of Technology</p>
+                            <span class="entry-date">Nov 2025 - Present</span>
+                        </div>
+                        <p class="entry-subtitle">Advisor: Hao Wang</p>
+                        <ul class="list">
+                            <li>Worked on forgetting-aware continual post-training for large language models.</li>
+                            <li>Developed a chance-constrained optimization framework that models forgetting as probabilistic risk and improved retention by up to 2.96% on MMLU for 7B to 14B models.</li>
+                        </ul>
                     </div>
-                    
-                    <div className="flex flex-col">
-                        {experiences.map((exp, i) => <ExperienceItem key={i} exp={exp} index={i} />)}
+
+                    <div class="entry">
+                        <div class="entry-header">
+                            <p class="entry-title">Research Assistant, Brain Imaging and Graph Learning Lab, Stevens Institute of Technology</p>
+                            <span class="entry-date">Nov 2024 - Present</span>
+                        </div>
+                        <p class="entry-subtitle">Advisor: Feng Liu</p>
+                        <ul class="list">
+                            <li>Built a Transformer-based EEG sequence labeling pipeline over 670 samples and 1.07M time points for seizure detection.</li>
+                            <li>Designed a medical GraphRAG pipeline combining Neo4j structural queries, FAISS dense retrieval, and QLoRA-based LLaMA-3 and Mistral-7B fine-tuning, improving factual consistency by 20% on internal benchmarks.</li>
+                            <li>Constructed probabilistic knowledge graphs from more than 10,000 clinical records and modeled seizure propagation as an MDP trained with PPO-style reinforcement learning.</li>
+                        </ul>
+                    </div>
+
+                    <div class="entry">
+                        <div class="entry-header">
+                            <p class="entry-title">Data Team Assistant Intern, Siemens</p>
+                            <span class="entry-date">Nov 2023 - Mar 2024</span>
+                        </div>
+                        <ul class="list">
+                            <li>Built modular Python, SQL, and Excel pipelines for multi-source data ingestion, cleansing, validation, and KPI analysis.</li>
+                            <li>Automated recurring workflows to reduce manual effort and improve reporting consistency and data quality.</li>
+                        </ul>
+                    </div>
+
+                    <div class="entry">
+                        <div class="entry-header">
+                            <p class="entry-title">Research Assistant, Pazhou Lab, Jinan University</p>
+                            <span class="entry-date">Mar 2024 - May 2024</span>
+                        </div>
+                        <p class="entry-subtitle">Advisor: Wensheng Gan</p>
+                        <ul class="list">
+                            <li>Studied gradient-based prompt optimization for medical language models by treating prompt tuning as a continuous optimization problem over text embeddings.</li>
+                            <li>Introduced a Bayesian reliability estimator for candidate prompts and improved factual precision by 12% on internal medical QA benchmarks.</li>
+                        </ul>
                     </div>
                 </section>
-            );
-        };
 
-        // 4. Projects Section (Fixed closing tags)
-        const Projects = () => {
-            const projects = [
-                {
-                    title: "mini-vllm",
-                    cat: "LLM Systems / Serving",
-                    desc: "Minimal vLLM-style inference stack to study KV cache, block management, and scheduling.",
-                    highlights: [
-                        "KV cache + block manager experiments with traceable memory accounting.",
-                        "Scheduler instrumentation for latency/throughput trade-offs.",
-                        "Reproducible benchmarks and ablation notes."
-                    ],
-                    img: "blogger/Nano-vllm/PageAttention/block_table.jpg",
-                    link: "https://github.com/wzrdl/mini-vllm"
-                },
-                {
-                    title: "3D Model Generator & Cloud Library",
-                    cat: "3D Systems",
-                    desc: "Desktop 3D viewer with a cloud model library and text-to-3D pipeline.",
-                    highlights: [
-                        "PyQt + PyVista client for browsing and viewing.",
-                        "FastAPI + SQLite + GCS for model management.",
-                        "Meshy API integration for text-to-3D."
-                    ],
-                    img: "assets/1.png",
-                    link: "https://github.com/wzrdl/3D-visual"
-                },
-                {
-                    title: "Miniagent",
-                    cat: "RL Agents",
-                    desc: "Lightweight RL agent framework for tool orchestration and experiment loops.",
-                    highlights: [
-                        "Policy loop and tool invocation scaffolding.",
-                        "Config-driven environments and logging.",
-                        "Reusable experiment templates for fast iteration."
-                    ],
-                    img: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2670&auto=format&fit=crop",
-                    link: "https://github.com/wzrdl/Miniagent"
-                },
-                {
-                    title: "MiniMind",
-                    cat: "LLM Training",
-                    desc: "From-scratch 26M GPT training pipeline covering pretrain, SFT, LoRA, and RL.",
-                    highlights: [
-                        "End-to-end scripts from data prep to evaluation.",
-                        "Covers pretrain, SFT, LoRA, and RL in one repo.",
-                        "Learning-focused baseline for LLM training."
-                    ],
-                    img: "https://images.unsplash.com/photo-1526378722484-bd91ca387e72?q=80&w=2670&auto=format&fit=crop",
-                    link: "https://github.com/wzrdl/minimind"
-                },
-                {
-                    title: "Recommendation Service",
-                    cat: "Recommender Systems",
-                    desc: "Real-time recommendation stack on AWS with streaming features and automated training.",
-                    highlights: [
-                        "Kafka + Feast + Redis for low-latency feature serving.",
-                        "FastAPI + XGBoost with MLflow tracking.",
-                        "Airflow pipelines on Kubernetes for retraining."
-                    ],
-                    img: "https://images.unsplash.com/photo-1558494949-ef526b0042a0?q=80&w=2668&auto=format&fit=crop",
-                    link: "https://github.com/wzrdl/Recommendation-service"
-                },
-                {
-                    title: "Kernel K-Means CUDA",
-                    cat: "Systems / HPC",
-                    desc: "GPU-accelerated kernel k-means using sparse linear algebra and custom CUDA kernels.",
-                    highlights: [
-                        "CSR formulation with SpMM/SpMV kernels.",
-                        "cuBLAS/cuSPARSE + custom CUDA optimizations.",
-                        "Major speedups for non-linear clustering."
-                    ],
-                    img: "https://images.unsplash.com/photo-1591405351990-4726e331f141?q=80&w=2670&auto=format&fit=crop",
-                    link: "https://github.com/wzrdl/Kernel-k-means-cuda"
-                },
-                {
-                    title: "Event-Everywhere",
-                    cat: "Web Platform",
-                    desc: "Full-stack event discovery and sharing app with map-based search, live publishing, and social interactions.",
-                    highlights: [
-                        "Map-based browsing and search with interactive map integration.",
-                        "Real-time event publishing, comments, user accounts, and bookmarking.",
-                        "Vue.js + Element UI frontend with FastAPI + MySQL backend."
-                    ],
-                    img: "https://images.unsplash.com/photo-1506157786151-b8491531f063?q=80&w=2670&auto=format&fit=crop",
-                    link: "https://github.com/Ky1eYing/Event-Everywhere"
-                },
-                {
-                    title: "Prompt Optimizer (Full-Stack)",
-                    cat: "Full-Stack Tools",
-                    desc: "Full-stack prompt optimization tool with interactive UI and backend history.",
-                    highlights: [
-                        "Frontend + Flask backend for iterative prompt tuning.",
-                        "Persistent history and real-time feedback loop.",
-                        "PostgreSQL storage with API-driven workflows."
-                    ],
-                    img: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=2670&auto=format&fit=crop",
-                    link: "https://github.com/wzrdl/automatic_fullstack"
-                }
-            ];
-
-            useEffect(() => {
-                // Parallax for images
-                gsap.utils.toArray('.parallax-container').forEach(container => {
-                    const img = container.querySelector('img');
-                    gsap.fromTo(img, 
-                        { yPercent: -20, scale: 1.2 },
-                        { yPercent: 20, scale: 1.2, scrollTrigger: {
-                            trigger: container,
-                            start: "top bottom",
-                            end: "bottom top",
-                            scrub: true
-                        }}
-                    );
-                });
-            }, []);
-
-            return (
-                <section id="projects" className="py-24 px-6 md:px-12">
-                    <div className="mb-20 flex items-end gap-4">
-                        <h2 className="text-6xl md:text-8xl font-oswald font-bold uppercase leading-none">
-                            Featured<br/><span className="text-[#D2FF00]">Projects</span>
-                        </h2>
-                        <span className="text-sm font-mono border border-[#D2FF00] text-[#D2FF00] px-3 py-1 rounded-full mb-4">PROJECTS</span>
-                    </div>
-
-                    <div className="flex flex-col gap-32">
-                        {projects.map((project, index) => (
-                            <div key={index} className="project-card group relative flex flex-col md:flex-row gap-8 md:gap-20 items-center">
-                                {/* Image Container */}
-                                <div className={`w-full md:w-3/5 h-[50vh] md:h-[70vh] overflow-hidden relative rounded-sm ${index % 2 === 1 ? 'md:order-2' : ''}`}>
-                                    <div className="parallax-container w-full h-full overflow-hidden">
-                                        <a href={project.link} target="_blank" rel="noopener noreferrer">
-                                            <div className="project-overlay absolute inset-0 bg-black opacity-0 transition-opacity duration-500 z-10 flex items-center justify-center">
-                                                <div className="w-20 h-20 bg-[#D2FF00] rounded-full flex items-center justify-center">
-                                                    <i data-lucide="arrow-up-right" className="text-black w-8 h-8"></i>
-                                                </div>
-                                            </div>
-                                            <img 
-                                                src={project.img} 
-                                                alt={project.title} 
-                                                className="project-img w-full h-full object-cover transition-transform duration-700"
-                                            />
-                                        </a>
-                                    </div>
-                                </div>
-
-                                {/* Text Content */}
-                                <div className={`w-full md:w-2/5 ${index % 2 === 1 ? 'md:order-1 md:text-right' : ''}`}>
-                                    <div className="flex flex-col gap-4">
-                                        <div className={`flex items-center gap-3 text-[#D2FF00] font-mono text-sm uppercase tracking-widest ${index % 2 === 1 ? 'md:justify-end' : ''}`}>
-                                            <span>0{index + 1}</span>
-                                            <div className="w-8 h-[1px] bg-[#D2FF00]"></div>
-                                            <span>{project.cat}</span>
-                                        </div>
-                                        <h3 className="text-4xl md:text-6xl font-oswald font-bold uppercase leading-tight group-hover:text-gray-300 transition-colors">
-                                            {project.title}
-                                        </h3>
-                                        <p className="text-gray-400 text-lg leading-relaxed max-w-md">
-                                            {project.desc}
-                                        </p>
-                                        <ul className={`mt-4 space-y-2 text-gray-500 text-sm leading-relaxed text-left ${index % 2 === 1 ? 'md:ml-auto' : ''}`}>
-                                            {project.highlights.map((item, i) => (
-                                                <li key={i} className="flex items-start gap-3">
-                                                    <span className="text-[#D2FF00] mt-1 text-[10px]">&bull;</span>
-                                                    <span dangerouslySetInnerHTML={{__html: item.replace(/\*\*(.*?)\*\*/g, '<strong class="text-white font-normal">$1</strong>')}} />
-                                                </li>
-                                            ))}
-                                        </ul>
-                                        <div className={`pt-6 ${index % 2 === 1 ? 'flex justify-end' : ''}`}>
-                                            <a href={project.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-white border-b border-white/30 pb-1 hover:border-[#D2FF00] hover:text-[#D2FF00] transition-all">
-                                                VIEW CASE STUDY <i data-lucide="arrow-right" className="w-4 h-4"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-
+                <section class="section" id="projects">
+                    <h2 class="section-title">Projects</h2>
+                    <ul class="list">
+                        <li>
+                            <strong>Miniagent</strong>
+                            <ul class="nested-list">
+                                <li>Built a modular GRPO-based agent training framework for tool-augmented tasks.</li>
+                                <li>Designed a tool-call interface that supports external web search during rollouts for end-to-end agent RL experiments.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Mini-vLLM</strong>
+                            <ul class="nested-list">
+                                <li>Implemented a lightweight vLLM-style inference engine with PagedAttention and block-based KV cache management.</li>
+                                <li>Focused on improving long-context decoding throughput and reducing memory fragmentation.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Smarter Doctor Agent</strong>
+                            <ul class="nested-list">
+                                <li>Built and deployed a real-time voice-based medical agent on Google Cloud using a FastAPI backend and Next.js frontend.</li>
+                                <li>Integrated Twilio, Elasticsearch, BigQuery, and Gemini through Vertex AI, with CI/CD via Docker and GitHub Actions.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Kernel K-Means GPU Accelerator</strong>
+                            <ul class="nested-list">
+                                <li>Reformulated kernel K-Means updates using sparse linear algebra and GPU-parallel SpMM operations.</li>
+                                <li>Achieved up to 8.3x speedup over a CUDA baseline on 100k-sample datasets.</li>
+                            </ul>
+                        </li>
+                    </ul>
                 </section>
-            );
-        };
 
-        // 5. Publications Section (REDESIGNED: MARBLE WORK / MASTERPIECE EDITION)
-        const Publications = () => {
-            const publications = [
-                {
-                    id: '01',
-                    category: 'ACCEPTED',
-                    title: 'Clinical Epilepsy QA with GraphRAG',
-                    subtitle: 'Scientific Reports, 2025',
-                    authors: 'Zirui Wen, Shihao Yang, et al.',
-                    venue: 'Accepted, Scientific Reports 2025',
-                    link: 'https://github.com/wzrdl',
-                    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop',
-                    span: 'md:col-span-8 md:row-span-2',
-                    height: 'min-h-[600px]'
-                },
-                {
-                    id: '02',
-                    category: 'UNDER REVIEW',
-                    title: 'Graph RL for Seizure Propagation',
-                    subtitle: 'Temporal graph-based RL modeling',
-                    authors: 'Zirui Wen, Shihao Yang, et al.',
-                    venue: 'Under review, 2025',
-                    link: 'https://github.com/wzrdl',
-                    image: 'https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=2574&auto=format&fit=crop',
-                    span: 'md:col-span-4',
-                    height: 'min-h-[400px]'
-                },
-                {
-                    id: '03',
-                    category: 'CONFERENCE',
-                    title: 'COVID-19 Prediction',
-                    subtitle: 'Using Physical Signs via Machine Learning',
-                    authors: 'Zirui Wen, Junjie Zhang, et al.',
-                    venue: 'CCPCDL 2022, SPIE',
-                    link: 'https://github.com/wzrdl/Covid-19-machine-learning',
-                    image: 'https://images.unsplash.com/photo-1584036561566-b938f493646c?q=80&w=2570&auto=format&fit=crop',
-                    span: 'md:col-span-4',
-                    height: 'min-h-[400px]'
-                },
-                {
-                    id: '04',
-                    category: 'UNDER REVIEW',
-                    title: 'Automatic Prompt Optimization',
-                    subtitle: 'Bayesian framework for medical prompts',
-                    authors: 'Zirui Wen, Wensheng Gan, et al.',
-                    venue: 'Under review, 2024',
-                    link: 'https://github.com/wzrdl/Automatic-prompt-optimization-for-medical-prompts',
-                    image: 'https://images.unsplash.com/photo-1633167606204-01d115bc783b?q=80&w=2588&auto=format&fit=crop',
-                    span: 'md:col-span-12',
-                    height: 'min-h-[500px]'
-                }
-            ];
-
-            return (
-                <section id="publications" className="w-full py-32 px-4 md:px-12 bg-[#050505] relative z-10">
-                    {/* Header */}
-                    <div className="flex flex-col md:flex-row items-end justify-between mb-16 border-b border-white/10 pb-8 mx-2">
-                        <div>
-                            <h2 className="text-7xl md:text-9xl font-heading font-bold text-white leading-[0.8] tracking-tighter">
-                                PUBLI<br/><span className="text-stroke-accent">CATIONS</span>
-                            </h2>
-                        </div>
-                        <div className="mt-8 md:mt-0 flex flex-col items-end">
-                            <p className="text-gray-400 max-w-xs text-right mb-4 font-light text-sm leading-relaxed">
-                                A curated selection of research exploring the boundaries of Artificial Intelligence & Medical Systems.
-                            </p>
-                            <div className="flex items-center gap-2 text-[#D2FF00] font-mono text-xs uppercase tracking-[0.2em]">
-                                <span className="w-2 h-2 bg-[#D2FF00] rounded-full animate-pulse"></span>
-                                Active Research 2022-2025
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Gallery grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-12 gap-4 auto-rows-fr">
-                        {publications.map((pub, index) => (
-                            <div 
-                                key={index} 
-                                className={`group relative ${pub.span} ${pub.height} overflow-hidden bg-[#111] border border-white/5 hover:z-10 transition-all duration-500`}
-                            >
-                                {/* Image layer */}
-                                <div className="absolute inset-0 overflow-hidden">
-                                    <img 
-                                        src={pub.image} 
-                                        alt={pub.title} 
-                                        className="w-full h-full object-cover transition-transform duration-[1.2s] cubic-bezier(0.19, 1, 0.22, 1) group-hover:scale-110 opacity-50 group-hover:opacity-40 grayscale group-hover:grayscale-0"
-                                    />
-                                </div>
-
-                                {/* Texture and mask layers */}
-                                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#000_100%)] opacity-80"></div>
-                                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent opacity-90"></div>
-
-                                {/* Content layer */}
-                                <div className="absolute inset-0 p-6 md:p-10 flex flex-col justify-between z-20">
-                                    
-                                    {/* Top tag */}
-                                    <div className="flex justify-between items-start transform -translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                                        <span className="text-[#D2FF00] font-heading text-4xl md:text-6xl font-bold opacity-30">{pub.id}</span>
-                                        <span className="border border-[#D2FF00]/50 text-[#D2FF00] px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest backdrop-blur-md bg-black/30">
-                                            {pub.category}
-                                        </span>
-                                    </div>
-
-                                    {/* Footer details */}
-                                    <div className="transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
-                                        <div className="mb-4">
-                                            <h3 className="text-3xl md:text-5xl font-heading font-bold text-white leading-[0.95] mb-2 group-hover:text-[#D2FF00] transition-colors duration-300">
-                                                {pub.title}
-                                            </h3>
-                                            <p className="text-white/80 text-lg md:text-xl font-light leading-tight max-w-2xl hidden md:block">
-                                                {pub.subtitle}
-                                            </p>
-                                        </div>
-                                        
-                                        <div className="h-[1px] w-full bg-white/20 my-4 group-hover:bg-[#D2FF00] transition-colors duration-500"></div>
-                                        
-                                        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-                                            <div>
-                                                <div className="text-xs text-gray-400 font-mono uppercase tracking-wider mb-1">Authors</div>
-                                                <div className="text-sm text-white font-medium">{pub.authors}</div>
-                                                <div className="text-xs text-gray-500 mt-1 italic">{pub.venue}</div>
-                                            </div>
-                                            
-                                            <a href={pub.link} target="_blank" rel="noopener noreferrer" className="bg-white text-black hover:bg-[#D2FF00] transition-colors px-6 py-3 font-bold uppercase tracking-widest text-xs flex items-center gap-2 group/btn self-start md:self-auto">
-                                                View Publication
-                                                <i data-lucide="arrow-right" className="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Hover border glow */}
-                                <div className="absolute inset-0 border border-[#D2FF00] opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-500 pointer-events-none z-30"></div>
-                            </div>
-                        ))}
-                    </div>
+                <section class="section" id="education">
+                    <h2 class="section-title">Education</h2>
+                    <ul class="list">
+                        <li><strong>Stevens Institute of Technology</strong>, M.S. in Applied Artificial Intelligence, GPA 3.94/4.0, Sep 2024 - May 2026</li>
+                        <li><strong>University of Birmingham</strong>, B.S. in Applied Mathematics with Information Computing Science, Sep 2020 - Jun 2024</li>
+                        <li><strong>Jinan University</strong>, B.S. in Information and Computing Science, Sep 2020 - Jun 2024</li>
+                    </ul>
                 </section>
-            );
-        };
 
-        // 6. Skills Section
-        const Skills = () => {
-            const skillGroups = [
-                {
-                    title: 'LLM & Training',
-                    summary: 'Continual post-training, alignment, and evaluation for LLMs.',
-                    items: ['PyTorch', 'LoRA', 'QLoRA', 'PPO', 'Continual Training', 'LLM Evaluation', 'Hugging Face', 'Mistral-7B', 'LLaMA-3']
-                },
-                {
-                    title: 'Serving & LLMOps',
-                    summary: 'Inference stacks, observability, and production deployment.',
-                    items: ['vLLM', 'KV Cache', 'Ray Serve', 'KServe', 'Triton', 'Docker', 'Kubernetes', 'MLflow', 'Prometheus', 'Grafana', 'OpenTelemetry']
-                },
-                {
-                    title: 'Data & Platform',
-                    summary: 'Retrieval, knowledge graphs, and data pipelines.',
-                    items: ['Neo4j', 'FAISS', 'Redis', 'Kafka', 'Feast', 'PostgreSQL', 'MySQL', 'MongoDB', 'Airflow', 'GCS', 'AWS']
-                },
-                {
-                    title: 'SWE',
-                    summary: 'Backend services, APIs, and systems programming.',
-                    items: ['Python', 'C++', 'TypeScript', 'FastAPI', 'Flask', 'React', 'Next.js', 'gRPC', 'REST', 'CI/CD', 'Linux', 'CUDA']
-                }
-            ];
-
-            return (
-                <section id="skills" className="w-full py-24 px-6 md:px-20 relative z-10 bg-[#0f0f0f]">
-                    <div className="flex items-end justify-between mb-20 border-b border-gray-800 pb-6">
-                        <h2 className="text-6xl md:text-8xl font-heading font-bold text-white">
-                            Skills <span className="text-[#D2FF00]">.</span>
-                        </h2>
-                        <span className="text-gray-500 font-mono mb-2 hidden md:block">[ SKILLS ]</span>
-                    </div>
-
-                    <div className="grid grid-cols-1 gap-y-12">
-                        {skillGroups.map((group, index) => (
-                            <div key={index} className="overflow-hidden">
-                                <h3 className="text-2xl font-heading font-bold text-[#D2FF00] mb-3">{group.title}</h3>
-                                <p className="text-gray-500 text-sm max-w-2xl mb-6">{group.summary}</p>
-                                <div className="overflow-hidden">
-                                    <div className="tech-scroll-track flex gap-4">
-                                        {[...group.items, ...group.items, ...group.items, ...group.items].map((item, i) => (
-                                            <div key={i} className="tech-item flex items-center gap-2">
-                                                <span>{item}</span>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
+                <section class="section" id="contact">
+                    <h2 class="section-title">Contact</h2>
+                    <p>
+                        Email: <a href="mailto:zwen6@stevens.edu">zwen6@stevens.edu</a><br>
+                        Personal email: <a href="mailto:wzrqczj@gmail.com">wzrqczj@gmail.com</a><br>
+                        GitHub: <a href="https://github.com/wzrdl" target="_blank" rel="noopener noreferrer">github.com/wzrdl</a><br>
+                        LinkedIn: <a href="https://linkedin.com/in/zirui-wen-76320b327/" target="_blank" rel="noopener noreferrer">linkedin.com/in/zirui-wen-76320b327</a>
+                    </p>
                 </section>
-            );
-        };
 
-        // 7. Footer
-        const Footer = () => {
-            return (
-                <footer id="contact" className="w-full py-20 px-6 md:px-20 bg-black text-white relative border-t border-gray-900">
-                    <div className="flex flex-col md:flex-row justify-between items-start md:items-end">
-                        <div>
-                            <h2 className="text-[12vw] leading-none font-heading font-bold text-[#D2FF00] opacity-90 hover:opacity-100 transition-opacity cursor-pointer">
-                                LET'S TALK
-                            </h2>
-                        </div>
-                        <div className="flex flex-wrap gap-6 mt-10 md:mt-0 mb-4">
-                             <a href="Zirui%20Wen%20MLE%20CV.pdf" download className="nav-link text-gray-400 hover:text-[#D2FF00] uppercase tracking-widest text-sm">Resume</a>
-                             <a href="https://github.com/wzrdl" target="_blank" rel="noopener noreferrer" className="nav-link text-gray-400 hover:text-[#D2FF00] uppercase tracking-widest text-sm">GitHub</a>
-                             <a href="mailto:wzrqczj@gmail.com" className="nav-link text-gray-400 hover:text-[#D2FF00] uppercase tracking-widest text-sm">Email</a>
-                             <a href="https://linkedin.com/in/zirui-wen-76320b327/" target="_blank" rel="noopener noreferrer" className="nav-link text-gray-400 hover:text-[#D2FF00] uppercase tracking-widest text-sm">LinkedIn</a>
-                        </div>
-                    </div>
-                    <div className="flex justify-between items-center mt-12 pt-8 border-t border-gray-900 text-gray-600 text-xs font-mono uppercase">
-                        <span>(c) 2025 Zirui Wen. All Rights Reserved.</span>
-                        <span>Designed and built by Zirui Wen</span>
-                    </div>
-                </footer>
-            );
-        };
-
-        // Loader Component
-        const Loader = ({ onComplete }) => {
-            const counterRef = useRef(null);
-            
-            useEffect(() => {
-                let count = 0;
-                const interval = setInterval(() => {
-                    count += Math.floor(Math.random() * 10) + 1;
-                    if(count > 100) count = 100;
-                    if(counterRef.current) counterRef.current.innerText = count + '%';
-                    
-                    if(count === 100) {
-                        clearInterval(interval);
-                        setTimeout(onComplete, 500);
-                    }
-                }, 50);
-                return () => clearInterval(interval);
-            }, []);
-
-            return (
-                <div className="loader-overlay flex-col gap-4">
-                    <div className="text-[#D2FF00] font-heading text-6xl font-bold animate-pulse">ZW</div>
-                    <div ref={counterRef} className="font-mono text-gray-500">0%</div>
-                </div>
-            );
-        };
-
-        // Main App Component
-        const App = () => {
-            const [loading, setLoading] = useState(true);
-
-            useEffect(() => {
-                // Initialize Icons
-                if (window.lucide) window.lucide.createIcons();
-
-                // Custom Cursor Logic
-                const cursor = document.getElementById('cursor');
-                const moveCursor = (e) => {
-                    gsap.to(cursor, {
-                        x: e.clientX,
-                        y: e.clientY,
-                        duration: 0.1
-                    });
-                };
-                
-                const hoverCursor = () => cursor.classList.add('hovered');
-                const unhoverCursor = () => cursor.classList.remove('hovered');
-
-                window.addEventListener('mousemove', moveCursor);
-                
-                // Delegate event listeners for hover effects (handles dynamically added elements)
-                const handleHover = (e) => {
-                     if (e.target.closest('.nav-link') || e.target.closest('h1') || e.target.closest('.project-card') || e.target.closest('a') || e.target.closest('.group')) {
-                        hoverCursor();
-                    }
-                };
-
-                const handleUnhover = (e) => {
-                     if (e.target.closest('.nav-link') || e.target.closest('h1') || e.target.closest('.project-card') || e.target.closest('a') || e.target.closest('.group')) {
-                        unhoverCursor();
-                    }
-                };
-
-                document.body.addEventListener('mouseover', handleHover);
-                document.body.addEventListener('mouseout', handleUnhover);
-
-                return () => {
-                    window.removeEventListener('mousemove', moveCursor);
-                };
-            }, [loading]);
-
-            if (loading) return <Loader onComplete={() => setLoading(false)} />;
-
-            return (
-                <div className="opacity-0 animate-fade-in" ref={(el) => el && gsap.to(el, {opacity: 1, duration: 1})}>
-                    <Navbar />
-                    <Hero />
-                    <WorkExperience />
-                    <Projects />
-                    <Publications />
-                    <Skills />
-                    <Footer />
-                </div>
-            );
-        };
-
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
-    </script>
-
-    <!-- Three.js Background Logic -->
-    <div id="canvas-container"></div>
-    <script>
-        // Setup Three.js Scene
-        const initThree = () => {
-            const container = document.getElementById('canvas-container');
-            const scene = new THREE.Scene();
-            // Add subtle fog for depth
-            scene.fog = new THREE.FogExp2(0x0a0a0a, 0.002);
-
-            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-            
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            container.appendChild(renderer.domElement);
-
-            // Create Starfield / Particles
-            const particlesGeometry = new THREE.BufferGeometry();
-            const particlesCount = 2000; // Number of particles
-            const posArray = new Float32Array(particlesCount * 3);
-            
-            for(let i = 0; i < particlesCount * 3; i++) {
-                // Spread particles wide
-                posArray[i] = (Math.random() - 0.5) * 50; 
-            }
-            
-            particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-            
-            // Material (Neon Yellow/Green)
-            const material = new THREE.PointsMaterial({
-                size: 0.05,
-                color: 0xD2FF00,
-                transparent: true,
-                opacity: 0.8,
-            });
-            
-            const particlesMesh = new THREE.Points(particlesGeometry, material);
-            scene.add(particlesMesh);
-
-            // Add grid lines for "Cyber" feel
-            const gridHelper = new THREE.GridHelper(100, 50, 0x333333, 0x111111);
-            gridHelper.position.y = -5;
-            scene.add(gridHelper);
-
-            camera.position.z = 5;
-
-            // Mouse interaction
-            let mouseX = 0;
-            let mouseY = 0;
-            
-            // Smooth target values
-            let targetX = 0;
-            let targetY = 0;
-
-            document.addEventListener('mousemove', (event) => {
-                mouseX = event.clientX - window.innerWidth / 2;
-                mouseY = event.clientY - window.innerHeight / 2;
-            });
-
-            // Animation Loop
-            const animate = () => {
-                requestAnimationFrame(animate);
-
-                // Smooth camera movement based on mouse
-                targetX = mouseX * 0.001;
-                targetY = mouseY * 0.001;
-
-                particlesMesh.rotation.y += 0.001; // Constant rotation
-                particlesMesh.rotation.x += 0.0005;
-                
-                // Warp effect on interaction
-                particlesMesh.rotation.x += 0.05 * (targetY - particlesMesh.rotation.x);
-                particlesMesh.rotation.y += 0.05 * (targetX - particlesMesh.rotation.y);
-
-                // Move grid for speed illusion
-                gridHelper.position.z += 0.02;
-                if(gridHelper.position.z > 10) gridHelper.position.z = 0;
-
-                renderer.render(scene, camera);
-            };
-
-            animate();
-
-            // Handle Resize
-            window.addEventListener('resize', () => {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, window.innerHeight);
-            });
-        };
-
-        // Init Three.js after DOM load
-        window.addEventListener('DOMContentLoaded', initThree);
-    </script>
+                <p class="footer-note">Last updated: April 2026.</p>
+            </article>
+        </div>
+    </main>
 </body>
 </html>
