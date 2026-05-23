@@ -16,6 +16,7 @@ Here are some frequently asked questions. If you have a different question, plea
   - [My code runs fine locally, but when I create a commit and submit it, it fails with prettier code formatter workflow run failed for main branch. How do I fix that?](#my-code-runs-fine-locally-but-when-i-create-a-commit-and-submit-it-it-fails-with-prettier-code-formatter-workflow-run-failed-for-main-branch-how-do-i-fix-that)
   - [After I update my site with some new content, even a small change, the GitHub action throws an error or displays a warning. What happened?](#after-i-update-my-site-with-some-new-content-even-a-small-change-the-github-action-throws-an-error-or-displays-a-warning-what-happened)
   - [How do I upgrade from al-folio `v1.0` to `v1.1+` with minimal friction?](#how-do-i-upgrade-from-al-folio-v10-to-v11-with-minimal-friction)
+  - [Do I need to fork every v1 gem to customize layouts and Liquid files?](#do-i-need-to-fork-every-v1-gem-to-customize-layouts-and-liquid-files)
   - [How do I handle legacy Bootstrap-marked pages on Tailwind-first `v1.x`?](#how-do-i-handle-legacy-bootstrap-marked-pages-on-tailwind-first-v1x)
   - [I am trying to deploy my site, but it fails with Could not find gem 'jekyll-diagrams' in locally installed gems. How do I fix that?](#i-am-trying-to-deploy-my-site-but-it-fails-with-could-not-find-gem-jekyll-diagrams-in-locally-installed-gems-how-do-i-fix-that)
   - [How can I update icon library versions on the template](#how-can-i-update-icon-library-versions-on-the-template)
@@ -121,6 +122,18 @@ Use the SemVer migration flow:
 Then resolve all **Blocking** findings in `al-folio-upgrade-report.md`. Non-blocking findings are deprecated patterns you can migrate incrementally.
 
 For starter-based sites, keep `theme: al_folio_core` and avoid copying theme internals into your repo unless you intentionally need overrides.
+
+## Do I need to fork every v1 gem to customize layouts and Liquid files?
+
+No. In `v1.x`, gem-owned layouts/includes/assets provide the default runtime, but your site can still override a file locally by adding the same path in your starter repo, for example `_layouts/bib.liquid` or `_includes/repository/repo.liquid`.
+
+Use this rule of thumb:
+
+- Keep site-specific content, data, Sass, and intentional local overrides in your site repo.
+- Remove old copied runtime files when v1 gems own them now, especially `_includes/head.liquid`, `_includes/scripts.liquid`, `assets/js/distillpub/**`, `assets/js/search/**`, and old citation/external-post helper plugins.
+- Fork or pin a plugin only when you want to change plugin-owned behavior for every site using that plugin.
+
+For a heavily customized migration rehearsal, see [`MIGRATION_REHEARSAL_FUCHSS_ORG.md`](MIGRATION_REHEARSAL_FUCHSS_ORG.md). That site migrated without forking every plugin after removing obsolete local runtime copies and enabling Bootstrap compatibility.
 
 ## Why does `v1.x` starter not have `npm run build:css` anymore?
 

@@ -125,6 +125,25 @@ The project is structured as follows, focusing on the main components that you w
 
 In `v1.x`, the starter is intentionally thin. Theme internals (layouts/includes/style pipeline/runtime assets) are owned by gems such as `al_folio_core` and `al_folio_distill`.
 
+### Where common files moved in `v1.x`
+
+Most customizations still live in your site repo. The difference is that default implementations now come from gems, so local files with the same path act as overrides.
+
+| Pre-v1 path or feature                                                                                 | v1 owner                           | Customize locally when...                                  |
+| ------------------------------------------------------------------------------------------------------ | ---------------------------------- | ---------------------------------------------------------- |
+| `_layouts/default.liquid`, `_layouts/page.liquid`, `_includes/head.liquid`, `_includes/scripts.liquid` | `al_folio_core`                    | you intentionally need site-specific shell/runtime changes |
+| `_includes/cv/**`, CV layouts, RenderCV wiring                                                         | `al_folio_cv`                      | you need a one-site CV display override                    |
+| Distill layouts and `assets/js/distillpub/**`                                                          | `al_folio_distill`                 | you maintain custom Distill article behavior               |
+| Search assets and search setup                                                                         | `al_search`                        | you change the local search UI only for your site          |
+| Citation badges, Scholar/Inspire helpers, bibliography helpers                                         | `al_citations` and `al_folio_core` | your publication layout needs a local display override     |
+| External posts                                                                                         | `al_ext_posts`                     | your site has custom external-source rendering             |
+| Comments                                                                                               | `al_comments`                      | your site needs custom comment markup                      |
+| Analytics                                                                                              | `al_analytics`                     | your site needs a custom analytics provider                |
+| Math, TikZ, charts, diagrams                                                                           | `al_math` and `al_charts`          | your site has custom rendering snippets                    |
+| Repository cards                                                                                       | `al_folio_core`                    | you need custom links, badges, or card markup              |
+
+When migrating an older customized fork, remove old local copies of files that you did not intentionally customize. In the `dfuchss/fuchss.org` rehearsal, deleting old local `_includes/head.liquid`, `_includes/scripts.liquid`, citation helper plugins, external-post helper plugins, `assets/js/distillpub/**`, and `assets/js/search/**` turned the upgrade audit from 4 blocking findings to 0 blocking findings.
+
 ## Configuration
 
 The configuration file [\_config.yml](_config.yml) contains the main configuration of the website. Most of the settings is self-explanatory and we also tried to add as much comments as possible. If you have any questions, please check if it was not already answered in the [FAQ](FAQ.md).
@@ -400,6 +419,13 @@ Once deployed, update the URLs above to point to your custom deployment.
 You can create new pages by adding new Markdown files in the [\_pages](_pages/) directory. The easiest way to do this is to copy an existing page and modify it. You can choose the layout of the page by changing the [layout](https://jekyllrb.com/docs/layouts/) attribute in the [frontmatter](https://jekyllrb.com/docs/front-matter/) of the Markdown file, and also the path to access it by changing the [permalink](https://jekyllrb.com/docs/permalinks/) attribute.
 
 In `v1.x`, default layout implementations are gem-owned (primarily `al_folio_core` and feature gems). If you need custom layout behavior, create a local override file in your site (for example, create `_layouts/<name>.liquid` in your starter repo). If you want to improve shared runtime behavior for everyone, open a PR in the owning gem repo.
+
+For a one-site customization, prefer a local override over a plugin fork. Fork or Git-pin a plugin only when the change belongs to that plugin's reusable behavior. For example:
+
+```ruby
+gem "al_folio_core", git: "https://github.com/YOUR-USER/al-folio-core.git", branch: "my-fix"
+gem "al_folio_core", path: "../al-folio-core"
+```
 
 ## Creating new blog posts
 
@@ -868,7 +894,7 @@ toc:
 # collapse_depth: 3
 ```
 
-In `v1.x`, sidebar TOC rendering is powered by Tocbot (configured in `_config.yml` under `third_party_libraries.tocbot`).  
+In `v1.x`, sidebar TOC rendering is powered by Tocbot (configured in `_config.yml` under `third_party_libraries.tocbot`).
 You can override displayed TOC labels per heading with `data-toc-text`:
 
 ```markdown

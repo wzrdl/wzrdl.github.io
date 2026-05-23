@@ -24,6 +24,7 @@
     - [Deployment to a separate repository (advanced users only)](#deployment-to-a-separate-repository-advanced-users-only)
   - [Maintaining Dependencies](#maintaining-dependencies)
   - [Upgrading from a previous version](#upgrading-from-a-previous-version)
+    - [Migrating heavily customized pre-v1 sites](#migrating-heavily-customized-pre-v1-sites)
 
 <!--te-->
 
@@ -335,8 +336,46 @@ The report is written to `al-folio-upgrade-report.md` and classifies findings as
 
 For heavily customized pre-v1 repositories, you can still use rebase/cherry-pick workflows if needed, but the recommended path is:
 
-1. Upgrade dependencies
-2. Run the upgrade audit/codemods
-3. Fix blocking findings from `al-folio-upgrade-report.md`
+1. Start from the v1 starter/runtime contract and copy your site-owned files over: `_config.yml` values, `_data`, content collections, assets, Sass overrides, and intentional local `_layouts`/`_includes` overrides.
+2. Keep `theme: al_folio_core`, the `al_folio` config namespace, and the bundled `al_*` plugin entries from the v1 starter.
+3. Enable `al_folio.compat.bootstrap.enabled: true` if your custom templates still use Bootstrap classes or `data-toggle` attributes.
+4. Run the upgrade audit/codemods.
+5. Fix all blocking findings from `al-folio-upgrade-report.md`.
+6. Build locally and review key pages before deploying.
 
 For ownership boundaries (starter vs gem runtime/tests), see [`BOUNDARIES.md`](BOUNDARIES.md).
+
+#### Migrating heavily customized pre-v1 sites
+
+The safest migration pattern is to keep custom site code local, but stop carrying old copies of runtime files that v1 gems now own.
+
+Keep these in your site repo:
+
+- content collections such as `_pages`, `_projects`, `_news`, `_bibliography`, `_data`, and site assets
+- intentional local overrides such as `_layouts/bib.liquid`, `_includes/repository/repo.liquid`, or custom Sass files
+- custom plugins that are truly site-specific
+- local path or Git-pinned gems when you intentionally maintain a custom plugin variant
+
+Remove or review these during migration:
+
+- `_includes/head.liquid` and `_includes/scripts.liquid` if they only copy old al-folio runtime setup
+- old local citation and external-post plugins now owned by `al_citations` and `al_ext_posts`
+- `assets/js/distillpub/**` now owned by `al_folio_distill`
+- `assets/js/search/**` now owned by `al_search`
+- starter sample content that does not exist in your old site, such as sample `_posts`
+
+To pin a plugin while testing a local fix:
+
+```ruby
+gem "al_folio_core", git: "https://github.com/YOUR-USER/al-folio-core.git", branch: "my-fix"
+```
+
+To use a local plugin checkout:
+
+```ruby
+gem "al_folio_core", path: "../al-folio-core"
+```
+
+Only fork a plugin when the behavior you need belongs to that plugin. A local layout/include/Sass override in your site repo is enough for one-off site customization.
+
+A real migration rehearsal was run against `dfuchss/fuchss.org`, a heavily customized public site. The migrated copy built successfully after removing obsolete plugin-owned local files and enabling Bootstrap compatibility. See [`MIGRATION_REHEARSAL_FUCHSS_ORG.md`](MIGRATION_REHEARSAL_FUCHSS_ORG.md).
