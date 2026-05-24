@@ -5,7 +5,7 @@
 ## Read This First
 
 - Start with `.github/copilot-instructions.md` for architecture, ownership boundaries, and CI expectations.
-- Use `BOUNDARIES.md` as the source of truth for starter-vs-plugin ownership.
+- Use `docs/BOUNDARIES.md` as the source of truth for starter-vs-plugin ownership.
 
 ## What This Repo Owns
 
@@ -15,6 +15,7 @@
 - Visual regression tests
 
 Runtime/component logic belongs in owning plugin repos (`al_folio_core`, `al_folio_distill`, `al_search`, `al_icons`, `al_cookie`, and other `al-*` gems).
+Long-form documentation lives in `docs/`; keep this root file as the short discovery entry point for coding agents.
 
 ## Validated Local Command Set
 

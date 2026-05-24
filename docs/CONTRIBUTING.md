@@ -35,16 +35,18 @@ You can publish and own your own plugin, then propose it for featuring in `al-fo
 1. Open a **Plugin Feature Proposal** issue in this repo.
 2. Share plugin metadata (repo URL, gem name, plugin id, compatibility, owner, demo path).
 3. Open a PR to this starter updating:
-   - [`_data/featured_plugins.yml`](_data/featured_plugins.yml)
+   - [`_data/featured_plugins.yml`](../_data/featured_plugins.yml)
    - optional demo content page/post under `_pages/` or `_posts/`
 4. If requesting **bundled** status (not only featured listing), include starter wiring updates in:
-   - [Gemfile](Gemfile)
-   - [\_config.yml](_config.yml)
+   - [Gemfile](../Gemfile)
+   - [\_config.yml](../_config.yml)
 
 Featuring and bundling are separate decisions:
 
 - **Featured-only**: catalog/docs entry and demo.
 - **Bundled**: also included in starter dependencies/plugin list by maintainers.
+
+Plugin patch releases are published from their owning repositories. Update this starter only when a plugin release changes default wiring, dependency pins, documentation, examples, integration tests, visual baselines, or Docker/runtime release artifacts.
 
 ## Test Ownership
 
@@ -98,7 +100,7 @@ To use the customization agent, you need to have [GitHub Copilot](https://github
 
 The **Documentation Agent** (`.github/agents/docs.agent.md`) maintains the project documentation. It:
 
-- Updates and maintains documentation files (`README.md`, `INSTALL.md`, `CUSTOMIZE.md`, `FAQ.md`, `CONTRIBUTING.md`)
+- Updates and maintains documentation files (`README.md`, `docs/README.md`, `docs/INSTALL.md`, `docs/CUSTOMIZE.md`, `docs/FAQ.md`, `docs/CONTRIBUTING.md`)
 - Keeps documentation in sync with code changes
 - Writes clear, concise documentation for users without technical backgrounds
 - Follows documentation standards and best practices

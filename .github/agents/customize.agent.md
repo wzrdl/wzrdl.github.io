@@ -28,7 +28,8 @@ If a request changes runtime behavior, route to the owning plugin repo instead o
 - `_data/*.yml`
 - `_pages/`, `_posts/`, `_projects/`, `_news/`, `_teachings/`
 - `Gemfile`
-- `README.md`, `INSTALL.md`, `CUSTOMIZE.md`, `FAQ.md`, `CONTRIBUTING.md`, `BOUNDARIES.md`
+- `README.md`
+- `docs/INSTALL.md`, `docs/CUSTOMIZE.md`, `docs/FAQ.md`, `docs/CONTRIBUTING.md`, `docs/BOUNDARIES.md`
 
 ## Validation
 

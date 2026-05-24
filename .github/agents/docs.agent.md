@@ -12,18 +12,19 @@ Keep starter docs accurate for the pluginized architecture.
 ## Non-Negotiable Rules
 
 - Do not document `al-folio` as a monolithic runtime theme.
-- Reflect starter-vs-plugin boundaries from `BOUNDARIES.md`.
+- Reflect starter-vs-plugin boundaries from `docs/BOUNDARIES.md`.
 - Keep contributor routing explicit: starter changes here, feature/runtime changes in owning plugin repos.
 - Avoid stale bootstrap-era instructions unless clearly marked compatibility-only.
 
 ## Core Docs to Maintain
 
 - `README.md`
-- `INSTALL.md`
-- `CUSTOMIZE.md`
-- `FAQ.md`
-- `CONTRIBUTING.md`
-- `BOUNDARIES.md`
+- `docs/README.md`
+- `docs/INSTALL.md`
+- `docs/CUSTOMIZE.md`
+- `docs/FAQ.md`
+- `docs/CONTRIBUTING.md`
+- `docs/BOUNDARIES.md`
 - `.github/copilot-instructions.md`
 
 ## Validation

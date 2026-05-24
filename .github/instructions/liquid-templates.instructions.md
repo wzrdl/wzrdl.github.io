@@ -10,7 +10,7 @@ Scope: `**/*.liquid`
 ## Guidance
 
 - Prefer plugin wrappers/includes over embedding feature runtime logic in starter.
-- Keep markup/config expectations consistent with `BOUNDARIES.md`.
+- Keep markup/config expectations consistent with `docs/BOUNDARIES.md`.
 - Avoid reintroducing bootstrap-specific assumptions in starter templates.
 
 ## Validation

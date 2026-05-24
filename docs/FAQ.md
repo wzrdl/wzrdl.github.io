@@ -77,7 +77,7 @@ You need to [create a personal access token](https://docs.github.com/en/authenti
 
 We implemented support for [Prettier code formatting](https://prettier.io/) in [#2048](https://github.com/alshedivat/al-folio/pull/2048). It basically ensures that your code is [well formatted](https://prettier.io/docs/en/). If you want to ensure your code is compliant with `Prettier`, you have a few options:
 
-- if you are running locally with `Docker` and using [development containers](https://github.com/alshedivat/al-folio/blob/main/INSTALL.md#local-setup-with-development-containers), `Prettier` is already included
+- if you are running locally with `Docker` and using [development containers](https://github.com/alshedivat/al-folio/blob/main/docs/INSTALL.md#local-setup-with-development-containers), `Prettier` is already included
 - if you don't use `Docker`, it is simple to integrate it with your preferred IDE using an [extension](https://prettier.io/docs/en/editors)
 - if you want to run it manually, you can follow the first 2 steps in [this tutorial](https://george-gca.github.io/blog/2023/slidev_for_non_web_devs/) (`Installing node version manager (nvm)` and `Installing Node (latest version)`), then, install it using `npm install prettier` inside the project directory, or install it globally on your computer using `npm install -g prettier`. To run `Prettier` on your current directory use `npx prettier . --write`.
 
@@ -132,8 +132,7 @@ Use this rule of thumb:
 - Keep site-specific content, data, Sass, and intentional local overrides in your site repo.
 - Remove old copied runtime files when v1 gems own them now, especially `_includes/head.liquid`, `_includes/scripts.liquid`, `assets/js/distillpub/**`, `assets/js/search/**`, and old citation/external-post helper plugins.
 - Fork or pin a plugin only when you want to change plugin-owned behavior for every site using that plugin.
-
-For a heavily customized migration rehearsal, see [`MIGRATION_REHEARSAL_FUCHSS_ORG.md`](MIGRATION_REHEARSAL_FUCHSS_ORG.md). That site migrated without forking every plugin after removing obsolete local runtime copies and enabling Bootstrap compatibility.
+- Run `bundle exec al-folio upgrade report` to identify old local copies of plugin-owned runtime files before you start deleting or rewriting templates.
 
 ## Why does `v1.x` starter not have `npm run build:css` anymore?
 
@@ -261,15 +260,15 @@ Use the **Plugin Feature Proposal** issue template in this repo and include:
 4. owner/maintainer contact
 5. demo page/post path
 
-If maintainers decide to list it, update [`_data/featured_plugins.yml`](_data/featured_plugins.yml) through a PR.
-If maintainers decide to bundle it by default, that is a separate decision and requires wiring updates in [Gemfile](Gemfile) and [\_config.yml](_config.yml).
+If maintainers decide to list it, update [`_data/featured_plugins.yml`](../_data/featured_plugins.yml) through a PR.
+If maintainers decide to bundle it by default, that is a separate decision and requires wiring updates in [Gemfile](../Gemfile) and [\_config.yml](../_config.yml).
 
 ## Why does plugin integration use `Gemfile` + `_config.yml` instead of a gemspec?
 
 `al-folio` starter currently does not have a gemspec. Plugin integration is controlled by:
 
-- [Gemfile](Gemfile) for dependency declarations
-- [\_config.yml](_config.yml) for Jekyll plugin activation/configuration
+- [Gemfile](../Gemfile) for dependency declarations
+- [\_config.yml](../_config.yml) for Jekyll plugin activation/configuration
 
 Any contribution guidance that references gemspec updates should be interpreted as starter wiring updates to those two files.
 
@@ -286,9 +285,9 @@ Currently we have the following workflows:
 - `deploy-image.yml`: deploys a new docker image with the latest changes to Docker Hub
 - `deploy.yml`: deploys the website to GitHub Pages
 - `docker-slim.yml`: deploys a smaller version of the docker image to Docker Hub with the [docker-slim-action](https://github.com/kitabisa/docker-slim-action)
-- `lighthouse-badger.yml`: runs a [lighthouse](https://github.com/GoogleChrome/lighthouse) test for your site with the [lighthouse-badger-action](https://github.com/MyActionWay/lighthouse-badger-action), saving the results in the repository for easy inspecting, as can be seen [here](https://github.com/alshedivat/al-folio?tab=readme-ov-file#lighthouse-pagespeed-insights). For more information on how to enable this workflow, check our [FAQ question about it](https://github.com/alshedivat/al-folio/blob/main/FAQ.md#when-i-manually-run-the-lighthouse-badger-workflow-it-fails-with-error-input-required-and-not-supplied-token-how-do-i-fix-that)
+- `lighthouse-badger.yml`: runs a [lighthouse](https://github.com/GoogleChrome/lighthouse) test for your site with the [lighthouse-badger-action](https://github.com/MyActionWay/lighthouse-badger-action), saving the results in the repository for easy inspecting, as can be seen [here](https://github.com/alshedivat/al-folio?tab=readme-ov-file#lighthouse-pagespeed-insights). For more information on how to enable this workflow, check our [FAQ question about it](https://github.com/alshedivat/al-folio/blob/main/docs/FAQ.md#when-i-manually-run-the-lighthouse-badger-workflow-it-fails-with-error-input-required-and-not-supplied-token-how-do-i-fix-that)
 - `prettier-comment-on-pr.yml`: not working. For now, this action is disabled. It was supposed to run prettier on the PRs and comment on them with the changes needed. For more information, check [issue 2115](https://github.com/alshedivat/al-folio/issues/2115)
-- `prettier.yml`: runs [prettier](https://prettier.io/) on the code to ensure it is well formatted. For more information, check our [FAQ question about it](https://github.com/alshedivat/al-folio/blob/main/FAQ.md#my-code-runs-fine-locally-but-when-i-create-a-commit-and-submit-it-it-fails-with-prettier-code-formatter-workflow-run-failed-for-main-branch-how-do-i-fix-that)
+- `prettier.yml`: runs [prettier](https://prettier.io/) on the code to ensure it is well formatted. For more information, check our [FAQ question about it](https://github.com/alshedivat/al-folio/blob/main/docs/FAQ.md#my-code-runs-fine-locally-but-when-i-create-a-commit-and-submit-it-it-fails-with-prettier-code-formatter-workflow-run-failed-for-main-branch-how-do-i-fix-that)
 
 ## How can I use Google Search Console ID on the template?
 

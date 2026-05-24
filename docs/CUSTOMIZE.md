@@ -146,7 +146,7 @@ When migrating an older customized fork, remove old local copies of files that y
 
 ## Configuration
 
-The configuration file [\_config.yml](_config.yml) contains the main configuration of the website. Most of the settings is self-explanatory and we also tried to add as much comments as possible. If you have any questions, please check if it was not already answered in the [FAQ](FAQ.md).
+The configuration file [\_config.yml](../_config.yml) contains the main configuration of the website. Most of the settings is self-explanatory and we also tried to add as much comments as possible. If you have any questions, please check if it was not already answered in the [FAQ](FAQ.md).
 
 > Note that the `url` and `baseurl` settings are used to generate the links of the website, as explained in the [install instructions](INSTALL.md).
 
@@ -244,7 +244,7 @@ Use Code Wiki and DeepWiki **only after**:
 
 - You have reviewed the relevant sections in this `CUSTOMIZE.md` file
 - You have checked the [project structure](#project-structure) section above
-- You have explored the [main documentation files](README.md) (README.md, INSTALL.md, FAQ.md)
+- You have explored the [documentation index](README.md) and the main guides linked from the root [README](../README.md)
 - You have checked the [GitHub Discussions Q&A section](https://github.com/alshedivat/al-folio/discussions/categories/q-a)
 
 These tools are best used for:
@@ -331,29 +331,29 @@ Your CV can be created using one of two formats. Choose the format that works be
 
 ### RenderCV Format (Recommended)
 
-[`_data/cv.yml`](_data/cv.yml) uses the [RenderCV](https://rendercv.com/) YAML format, which is human-readable and designed specifically for generating professional resumes. This format also enables optional automatic PDF generation via GitHub Actions.
+[`_data/cv.yml`](../_data/cv.yml) uses the [RenderCV](https://rendercv.com/) YAML format, which is human-readable and designed specifically for generating professional resumes. This format also enables optional automatic PDF generation via GitHub Actions.
 
 **If you choose this format:**
 
-1. Edit your CV data in [`_data/cv.yml`](_data/cv.yml)
+1. Edit your CV data in [`_data/cv.yml`](../_data/cv.yml)
 2. Optionally customize how the PDF is styled by editing:
-   - [`assets/rendercv/design.yaml`](assets/rendercv/design.yaml) — Design and styling
-   - [`assets/rendercv/locale.yaml`](assets/rendercv/locale.yaml) — Localization and formatting
-   - [`assets/rendercv/settings.yaml`](assets/rendercv/settings.yaml) — RenderCV settings
-3. To display only this format, delete [`assets/json/resume.json`](assets/json/resume.json) (optional)
+   - [`assets/rendercv/design.yaml`](../assets/rendercv/design.yaml) — Design and styling
+   - [`assets/rendercv/locale.yaml`](../assets/rendercv/locale.yaml) — Localization and formatting
+   - [`assets/rendercv/settings.yaml`](../assets/rendercv/settings.yaml) — RenderCV settings
+3. To display only this format, delete [`assets/json/resume.json`](../assets/json/resume.json) (optional)
 
 ### JSONResume Format
 
-[`assets/json/resume.json`](assets/json/resume.json) uses the [JSONResume](https://jsonresume.org/) standard format, which is compatible with other tools and services.
+[`assets/json/resume.json`](../assets/json/resume.json) uses the [JSONResume](https://jsonresume.org/) standard format, which is compatible with other tools and services.
 
 **If you choose this format:**
 
-1. Edit your CV data in [`assets/json/resume.json`](assets/json/resume.json)
-2. To display only this format, delete [`_data/cv.yml`](_data/cv.yml) (optional)
+1. Edit your CV data in [`assets/json/resume.json`](../assets/json/resume.json)
+2. To display only this format, delete [`_data/cv.yml`](../_data/cv.yml) (optional)
 
 ### Using Both Formats Simultaneously
 
-You can keep both [`_data/cv.yml`](_data/cv.yml) and [`assets/json/resume.json`](assets/json/resume.json) in your repository and switch between them on your website by setting the `cv_format` frontmatter variable in [`_pages/cv.md`](_pages/cv.md):
+You can keep both [`_data/cv.yml`](../_data/cv.yml) and [`assets/json/resume.json`](../assets/json/resume.json) in your repository and switch between them on your website by setting the `cv_format` frontmatter variable in [`_pages/cv.md`](../_pages/cv.md):
 
 ```yaml
 ---
@@ -366,11 +366,11 @@ Change `rendercv` to `jsonresume` to display the JSONResume format instead.
 
 ### Automatic PDF Generation (RenderCV only)
 
-If you use the RenderCV format, a GitHub Actions workflow can automatically generate a PDF version of your CV whenever you push changes to [`_data/cv.yml`](_data/cv.yml). The PDF is saved to `assets/rendercv/rendercv_output/`.
+If you use the RenderCV format, a GitHub Actions workflow can automatically generate a PDF version of your CV whenever you push changes to [`_data/cv.yml`](../_data/cv.yml). The PDF is saved to `assets/rendercv/rendercv_output/`.
 
 **To link the auto-generated PDF to your CV page:**
 
-Set the `cv_pdf` variable in the frontmatter of [`_pages/cv.md`](_pages/cv.md) to point to the generated PDF:
+Set the `cv_pdf` variable in the frontmatter of [`_pages/cv.md`](../_pages/cv.md) to point to the generated PDF:
 
 ```yaml
 ---
@@ -384,11 +384,11 @@ This will add a download button on your CV page that links to the PDF. (The exac
 
 **To disable automatic PDF generation:**
 
-Delete or comment out the [`.github/workflows/render-cv.yml`](.github/workflows/render-cv.yml) workflow file.
+Delete or comment out the [`.github/workflows/render-cv.yml`](../.github/workflows/render-cv.yml) workflow file.
 
 ## Modifying the user and repository information
 
-The user and repository information is defined in [\_data/repositories.yml](_data/repositories.yml). You can add as many users and repositories as you want. Both informations are used in the `repositories` section.
+The user and repository information is defined in [\_data/repositories.yml](../_data/repositories.yml). You can add as many users and repositories as you want. Both informations are used in the `repositories` section.
 
 ### Configuring external service URLs
 
@@ -399,7 +399,7 @@ The repository page uses external services to display GitHub statistics and trop
 
 **Important:** These default services are hosted by third parties and may not be available 100% of the time. For better reliability, privacy, and customization, you can self-host these services and configure your website to use your own instances.
 
-To use your own instances of these services, configure the URLs in [\_config.yml](_config.yml):
+To use your own instances of these services, configure the URLs in [\_config.yml](../_config.yml):
 
 ```yaml
 external_services:
@@ -416,7 +416,7 @@ Once deployed, update the URLs above to point to your custom deployment.
 
 ## Creating new pages
 
-You can create new pages by adding new Markdown files in the [\_pages](_pages/) directory. The easiest way to do this is to copy an existing page and modify it. You can choose the layout of the page by changing the [layout](https://jekyllrb.com/docs/layouts/) attribute in the [frontmatter](https://jekyllrb.com/docs/front-matter/) of the Markdown file, and also the path to access it by changing the [permalink](https://jekyllrb.com/docs/permalinks/) attribute.
+You can create new pages by adding new Markdown files in the [\_pages](../_pages/) directory. The easiest way to do this is to copy an existing page and modify it. You can choose the layout of the page by changing the [layout](https://jekyllrb.com/docs/layouts/) attribute in the [frontmatter](https://jekyllrb.com/docs/front-matter/) of the Markdown file, and also the path to access it by changing the [permalink](https://jekyllrb.com/docs/permalinks/) attribute.
 
 In `v1.x`, default layout implementations are gem-owned (primarily `al_folio_core` and feature gems). If you need custom layout behavior, create a local override file in your site (for example, create `_layouts/<name>.liquid` in your starter repo). If you want to improve shared runtime behavior for everyone, open a PR in the owning gem repo.
 
@@ -429,7 +429,7 @@ gem "al_folio_core", path: "../al-folio-core"
 
 ## Creating new blog posts
 
-To create a new blog post, you can add a new Markdown file in the [\_posts](_posts/) directory, which is the [default location for posts in Jekyll](https://jekyllrb.com/docs/posts/). The [name of the file must follow](https://jekyllrb.com/docs/posts/#creating-posts) the format `YYYY-MM-DD-title.md`. The easiest way to do this is to copy an existing blog post and modify it. Note that some blog posts have optional fields in the [frontmatter](https://jekyllrb.com/docs/front-matter/) that are used to enable specific behaviors or functions.
+To create a new blog post, you can add a new Markdown file in the [\_posts](../_posts/) directory, which is the [default location for posts in Jekyll](https://jekyllrb.com/docs/posts/). The [name of the file must follow](https://jekyllrb.com/docs/posts/#creating-posts) the format `YYYY-MM-DD-title.md`. The easiest way to do this is to copy an existing blog post and modify it. Note that some blog posts have optional fields in the [frontmatter](https://jekyllrb.com/docs/front-matter/) that are used to enable specific behaviors or functions.
 
 If you want to create blog posts that are not ready to be published, but you want to track it with git, you can create a [\_drafts](https://jekyllrb.com/docs/posts/#drafts) directory and store them there.
 
@@ -437,11 +437,11 @@ Note that `posts` is also a collection, but it is a default collection created a
 
 ## Creating new projects
 
-You can create new projects by adding new Markdown files in the [\_projects](_projects/) directory. The easiest way to do this is to copy an existing project and modify it.
+You can create new projects by adding new Markdown files in the [\_projects](../_projects/) directory. The easiest way to do this is to copy an existing project and modify it.
 
 ## Adding some news
 
-You can add news in the about page by adding new Markdown files in the [\_news](_news/) directory. There are currently two types of news: inline news and news with a link. News with a link take you to a new page while inline news are displayed directly in the about page. The easiest way to create yours is to copy an existing news and modify it.
+You can add news in the about page by adding new Markdown files in the [\_news](../_news/) directory. There are currently two types of news: inline news and news with a link. News with a link take you to a new page while inline news are displayed directly in the about page. The easiest way to create yours is to copy an existing news and modify it.
 
 ## Adding Collections
 
@@ -455,7 +455,7 @@ To create a new collection, follow these steps. We will create a `courses` colle
 
 1. **Add the collection to `_config.yml`**
 
-   Open the `collections` section in [\_config.yml](_config.yml) and add your new collection:
+   Open the `collections` section in [\_config.yml](../_config.yml) and add your new collection:
 
    ```yaml
    collections:
@@ -487,7 +487,7 @@ To create a new collection, follow these steps. We will create a `courses` colle
 
 3. **Create a landing page for your collection**
 
-   Add a Markdown file in `_pages/` (e.g., `courses.md`) that will serve as the main page for your collection. You can use [\_pages/projects.md](_pages/projects.md) or [\_pages/books.md](_pages/books.md) as a template and adapt it for your needs.
+   Add a Markdown file in `_pages/` (e.g., `courses.md`) that will serve as the main page for your collection. You can use [\_pages/projects.md](../_pages/projects.md) or [\_pages/books.md](../_pages/books.md) as a template and adapt it for your needs.
 
    In your landing page, access your collection using the `site.COLLECTION_NAME` variable:
 
@@ -502,7 +502,7 @@ To create a new collection, follow these steps. We will create a `courses` colle
 
 4. **Add a navigation link to your collection page**
 
-   Update [\_pages/dropdown.md](_pages/dropdown.md) or the navigation configuration of your page. In the frontmatter of your collection landing page (e.g., `_pages/courses.md`), add:
+   Update [\_pages/dropdown.md](../_pages/dropdown.md) or the navigation configuration of your page. In the frontmatter of your collection landing page (e.g., `_pages/courses.md`), add:
 
    ```yaml
    nav: true
@@ -604,7 +604,7 @@ Additional course content, information, or resources can be added here as markdo
 
 ### Collections with categories and tags
 
-If you want to add category and tag support (like the blog posts have), you need to configure the `jekyll-archives` section in [\_config.yml](_config.yml). See how this is done with the `books` collection for reference. For more details, check the [jekyll-archives-v2 documentation](https://george-gca.github.io/jekyll-archives-v2/).
+If you want to add category and tag support (like the blog posts have), you need to configure the `jekyll-archives` section in [\_config.yml](../_config.yml). See how this is done with the `books` collection for reference. For more details, check the [jekyll-archives-v2 documentation](https://george-gca.github.io/jekyll-archives-v2/).
 
 ### Creating custom metadata groups and archive pages
 
@@ -654,7 +654,7 @@ Custom fields (any field name you create) remain as **strings** and require expl
 
 3. **Enable archive pages for your custom field**
 
-   Add your custom field to the `jekyll-archives` configuration in [\_config.yml](_config.yml):
+   Add your custom field to the `jekyll-archives` configuration in [\_config.yml](../_config.yml):
 
    ```yaml
    jekyll-archives:
@@ -752,13 +752,13 @@ After rebuilding, users can browse books by adaptation at `/books/adaptations/mo
 
 ## Adding a new publication
 
-To add publications create a new entry in the [\_bibliography/papers.bib](_bibliography/papers.bib) file. You can find the BibTeX entry of a publication in Google Scholar by clicking on the quotation marks below the publication title, then clicking on "BibTeX", or also in the conference page itself. By default, the publications will be sorted by year and the most recent will be displayed first. You can change this behavior and more in the `Jekyll Scholar` section in [\_config.yml](_config.yml) file.
+To add publications create a new entry in the [\_bibliography/papers.bib](../_bibliography/papers.bib) file. You can find the BibTeX entry of a publication in Google Scholar by clicking on the quotation marks below the publication title, then clicking on "BibTeX", or also in the conference page itself. By default, the publications will be sorted by year and the most recent will be displayed first. You can change this behavior and more in the `Jekyll Scholar` section in [\_config.yml](../_config.yml) file.
 
 You can add extra information to a publication, like a PDF file in the `assets/pdfs/` directory and add the path to the PDF file in the BibTeX entry with the `pdf` field. Some of the supported fields are: `abstract`, `altmetric`, `annotation`, `arxiv`, `bibtex_show`, `blog`, `code`, `dimensions`, `doi`, `eprint`, `hal`, `html`, `isbn`, `pdf`, `pmid`, `poster`, `slides`, `supp`, `video`, and `website`.
 
 ### Author annotation
 
-In publications, the author entry for yourself is identified by string array `scholar:last_name` and string array `scholar:first_name` in [\_config.yml](_config.yml). For example, if you have the following entry in your [\_config.yml](_config.yml):
+In publications, the author entry for yourself is identified by string array `scholar:last_name` and string array `scholar:first_name` in [\_config.yml](../_config.yml). For example, if you have the following entry in your [\_config.yml](../_config.yml):
 
 ```yaml
 scholar:
@@ -766,7 +766,7 @@ scholar:
   first_name: [Albert, A.]
 ```
 
-If the entry matches one form of the last names and the first names, it will be underlined. Keep meta-information about your co-authors in [\_data/coauthors.yml](_data/coauthors.yml) and Jekyll will insert links to their webpages automatically. The co-author data format is as follows, with the last names lower cased and without accents as the key:
+If the entry matches one form of the last names and the first names, it will be underlined. Keep meta-information about your co-authors in [\_data/coauthors.yml](../_data/coauthors.yml) and Jekyll will insert links to their webpages automatically. The co-author data format is as follows, with the last names lower cased and without accents as the key:
 
 ```yaml
 "adams":
@@ -820,7 +820,7 @@ A variety of beautiful theme colors have been selected for you to choose from. I
 
 ## Customizing layout and UI
 
-You can customize the layout and user interface in [\_config.yml](_config.yml):
+You can customize the layout and user interface in [\_config.yml](../_config.yml):
 
 ```yaml
 back_to_top: true
@@ -838,7 +838,7 @@ navbar_fixed: true
 
 Social media information is managed through the [`jekyll-socials` plugin](https://github.com/george-gca/jekyll-socials). To add your social media links:
 
-1. Edit [`_data/socials.yml`](_data/socials.yml) to add your social profiles
+1. Edit [`_data/socials.yml`](../_data/socials.yml) to add your social profiles
 2. The plugin will automatically display the social icons based on the order they are defined in the file (see the comments at the top of `_data/socials.yml`)
 
 The template supports icons from:
@@ -849,7 +849,7 @@ The template supports icons from:
 
 In `v1.x`, icon runtime ownership is provided by the `al_icons` plugin. Icon files are loaded from pinned CDN URLs via `third_party_libraries` in `_config.yml` (not from starter-local `assets/fonts` or `assets/webfonts` copies).
 
-Social media links will appear at the bottom of the `About` page and in the search results by default. You can customize this behavior in [`_config.yml`](_config.yml):
+Social media links will appear at the bottom of the `About` page and in the search results by default. You can customize this behavior in [`_config.yml`](../_config.yml):
 
 - `enable_navbar_social: true` – Display social links in the navigation bar
 - `socials_in_search: false` – Remove social links from search results
@@ -858,13 +858,13 @@ For more details, see the [`jekyll-socials` documentation](https://github.com/ge
 
 ## Adding a newsletter
 
-You can add a newsletter subscription form by adding the specified information at the `newsletter` section in the [\_config.yml](_config.yml) file. To set up a newsletter, you can use a service like [Loops.so](https://loops.so/), which is the current supported solution. Once you have set up your newsletter, you can add the form [endpoint](https://loops.so/docs/forms/custom-form) to the `endpoint` field in the `newsletter` section of the [\_config.yml](_config.yml) file.
+You can add a newsletter subscription form by adding the specified information at the `newsletter` section in the [\_config.yml](../_config.yml) file. To set up a newsletter, you can use a service like [Loops.so](https://loops.so/), which is the current supported solution. Once you have set up your newsletter, you can add the form [endpoint](https://loops.so/docs/forms/custom-form) to the `endpoint` field in the `newsletter` section of the [\_config.yml](../_config.yml) file.
 
 Depending on your specified footer behavior, the sign up form either will appear at the bottom of the `About` page and at the bottom of blogposts if `related_posts` are enabled, or in the footer at the bottom of each page.
 
 ## Configuring search features
 
-The theme includes a powerful search functionality that can be customized in [\_config.yml](_config.yml):
+The theme includes a powerful search functionality that can be customized in [\_config.yml](../_config.yml):
 
 ```yaml
 bib_search: true
@@ -1124,7 +1124,7 @@ The default style is `border:0; width:100%; height:600px;`.
 
 ## Updating third-party libraries
 
-The theme uses various third-party JavaScript and CSS libraries. You can manage these in the `third_party_libraries` section of [\_config.yml](_config.yml):
+The theme uses various third-party JavaScript and CSS libraries. You can manage these in the `third_party_libraries` section of [\_config.yml](../_config.yml):
 
 ```yaml
 third_party_libraries:
@@ -1185,8 +1185,8 @@ Third-party non-`al-*` plugins are also valid and may be featured in the catalog
 
 Starter wiring uses:
 
-- [Gemfile](Gemfile) for dependencies
-- [\_config.yml](_config.yml) for plugin activation/configuration
+- [Gemfile](../Gemfile) for dependencies
+- [\_config.yml](../_config.yml) for plugin activation/configuration
 
 The starter currently has no gemspec; plugin integration docs should reference these two files.
 
@@ -1234,37 +1234,37 @@ Here is a list of the main components that you may want to delete, and how to do
 
 To remove the blog, you have to:
 
-- delete [\_posts](_posts/) directory
-- delete blog page [\_pages/blog.md](_pages/blog.md)
-- remove reference to blog page in our [\_pages/dropdown.md](_pages/dropdown.md)
-- remove the `latest_posts` part in [\_pages/about.md](_pages/about.md)
-- remove the `Blog` section in the [\_config.yml](_config.yml) file and the related parts, like the `jekyll-archives`
+- delete [\_posts](../_posts/) directory
+- delete blog page [\_pages/blog.md](../_pages/blog.md)
+- remove reference to blog page in our [\_pages/dropdown.md](../_pages/dropdown.md)
+- remove the `latest_posts` part in [\_pages/about.md](../_pages/about.md)
+- remove the `Blog` section in the [\_config.yml](../_config.yml) file and the related parts, like the `jekyll-archives`
 
 You can also:
 
-- disable `latest_posts.enabled` in [\_pages/about.md](_pages/about.md) and disable related posts via front matter/config where needed
+- disable `latest_posts.enabled` in [\_pages/about.md](../_pages/about.md) and disable related posts via front matter/config where needed
 - in `v1.x` there are no starter-local `_includes/latest_posts.liquid`, `_includes/related_posts.liquid`, or `_layouts/archive.liquid` files to delete (these are gem-owned)
-- remove `al_ext_posts` from the [Gemfile](Gemfile) and from the `plugins` section in [\_config.yml](_config.yml)
-- remove the `jekyll-archives-v2` gem from the [Gemfile](Gemfile) and the `plugins` section in [\_config.yml](_config.yml) (unless you have a custom collection that uses it)
-- remove the `classifier-reborn` gem from the [Gemfile](Gemfile)
+- remove `al_ext_posts` from the [Gemfile](../Gemfile) and from the `plugins` section in [\_config.yml](../_config.yml)
+- remove the `jekyll-archives-v2` gem from the [Gemfile](../Gemfile) and the `plugins` section in [\_config.yml](../_config.yml) (unless you have a custom collection that uses it)
+- remove the `classifier-reborn` gem from the [Gemfile](../Gemfile)
 
 ### Removing the news section
 
 To remove the news section, you can:
 
-- delete the [\_news](_news/) directory
-- remove/disable the announcements block in [\_pages/about.md](_pages/about.md) (news include runtime is gem-owned in `v1.x`)
-- remove the `announcements` part in [\_pages/about.md](_pages/about.md)
-- remove the news part in the `Collections` section in the [\_config.yml](_config.yml) file
+- delete the [\_news](../_news/) directory
+- remove/disable the announcements block in [\_pages/about.md](../_pages/about.md) (news include runtime is gem-owned in `v1.x`)
+- remove the `announcements` part in [\_pages/about.md](../_pages/about.md)
+- remove the news part in the `Collections` section in the [\_config.yml](../_config.yml) file
 
 ### Removing the projects page
 
 To remove the projects, you can:
 
-- delete the [\_projects](_projects/) directory
-- delete the projects page [\_pages/projects.md](_pages/projects.md)
-- remove reference to projects page in our [\_pages/dropdown.md](_pages/dropdown.md)
-- remove projects part in the `Collections` section in the [\_config.yml](_config.yml) file
+- delete the [\_projects](../_projects/) directory
+- delete the projects page [\_pages/projects.md](../_pages/projects.md)
+- remove reference to projects page in our [\_pages/dropdown.md](../_pages/dropdown.md)
+- remove projects part in the `Collections` section in the [\_config.yml](../_config.yml) file
 
 You can also:
 
@@ -1274,28 +1274,28 @@ You can also:
 
 To remove the publications, you can:
 
-- delete the [\_bibliography](_bibliography/) directory
-- delete the publications page [\_pages/publications.md](_pages/publications.md)
-- remove reference to publications page in our [\_pages/dropdown.md](_pages/dropdown.md)
-- remove `Jekyll Scholar` section in the [\_config.yml](_config.yml) file
+- delete the [\_bibliography](../_bibliography/) directory
+- delete the publications page [\_pages/publications.md](../_pages/publications.md)
+- remove reference to publications page in our [\_pages/dropdown.md](../_pages/dropdown.md)
+- remove `Jekyll Scholar` section in the [\_config.yml](../_config.yml) file
 
 You can also:
 
 - in `v1.x`, bibliography layout/includes are gem-owned, so there are no starter-local `_layouts/bib.liquid`, `_includes/bib_search.liquid`, `_includes/citation.liquid`, or `_includes/selected_papers.liquid` files to delete
 - the old `hide-custom-bibtex.rb` helper is now provided by `al_folio_core` (there is no local file to delete)
-- remove `al_citations` from the [Gemfile](Gemfile) and from the `plugins` section in [\_config.yml](_config.yml)
-- remove the `jekyll-scholar` gem from the [Gemfile](Gemfile) and the `plugins` section in [\_config.yml](_config.yml)
+- remove `al_citations` from the [Gemfile](../Gemfile) and from the `plugins` section in [\_config.yml](../_config.yml)
+- remove the `jekyll-scholar` gem from the [Gemfile](../Gemfile) and the `plugins` section in [\_config.yml](../_config.yml)
 
 ### Removing the repositories page
 
 To remove the repositories, you can:
 
-- delete the repositories page [\_pages/repositories.md](_pages/repositories.md)
+- delete the repositories page [\_pages/repositories.md](../_pages/repositories.md)
 - in `v1.x`, repository rendering includes are gem-owned and not present as starter-local files to delete
 
 ### You can also remove pages through commenting out front-matter blocks
 
-For `.md` files in [\_pages](_pages/) directory, if you do not want to completely edit or delete them but save for later use, you can temporarily disable these variables. But be aware that Jekyll only recognizes front matter when it appears as uncommented. The layout, permalink, and other front-matter behavior are disabled for that file.
+For `.md` files in [\_pages](../_pages/) directory, if you do not want to completely edit or delete them but save for later use, you can temporarily disable these variables. But be aware that Jekyll only recognizes front matter when it appears as uncommented. The layout, permalink, and other front-matter behavior are disabled for that file.
 
 For example, books.md do:
 

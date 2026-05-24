@@ -160,8 +160,8 @@ Interactive TOC (`toc.sidebar`) and TikZ (`tikzjax: true`) use pinned CDN runtim
 
 Starter plugin wiring lives in:
 
-- [Gemfile](Gemfile) for dependency declarations
-- [\_config.yml](_config.yml) for Jekyll plugin activation/config
+- [Gemfile](../Gemfile) for dependency declarations
+- [\_config.yml](../_config.yml) for Jekyll plugin activation/config
 
 `al-folio` starter does not currently use a gemspec; contributor/plugin integration docs should reference the two files above.
 
@@ -356,6 +356,8 @@ Keep these in your site repo:
 - custom plugins that are truly site-specific
 - local path or Git-pinned gems when you intentionally maintain a custom plugin variant
 
+Run `bundle exec al-folio upgrade report` early. The report calls out plugin-owned local files that usually should be removed or replaced by v1 plugin wiring.
+
 Remove or review these during migration:
 
 - `_includes/head.liquid` and `_includes/scripts.liquid` if they only copy old al-folio runtime setup
@@ -377,5 +379,3 @@ gem "al_folio_core", path: "../al-folio-core"
 ```
 
 Only fork a plugin when the behavior you need belongs to that plugin. A local layout/include/Sass override in your site repo is enough for one-off site customization.
-
-A real migration rehearsal was run against `dfuchss/fuchss.org`, a heavily customized public site. The migrated copy built successfully after removing obsolete plugin-owned local files and enabling Bootstrap compatibility. See [`MIGRATION_REHEARSAL_FUCHSS_ORG.md`](MIGRATION_REHEARSAL_FUCHSS_ORG.md).

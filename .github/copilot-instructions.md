@@ -8,7 +8,7 @@ This repo owns starter configuration, docs, sample content, integration tests, a
 
 ## Ownership Boundaries
 
-Follow `BOUNDARIES.md`.
+Follow `docs/BOUNDARIES.md`.
 
 - Starter (`al-folio`) owns:
   - `Gemfile`, `_config.yml`
@@ -44,6 +44,7 @@ Do not reintroduce plugin-owned runtime assets into starter paths unless intenti
 - `test/integration_*.sh` - cross-plugin integration checks
 - `test/visual/` - visual parity checks
 - `.github/workflows/` - CI workflows
+- `docs/` - user, maintainer, upgrade, and plugin-system documentation
 
 ## Validated Commands
 

@@ -4,7 +4,7 @@ Describe what changed and why.
 
 ## Ownership Routing
 
-- [ ] I confirmed this PR targets the correct repo based on `BOUNDARIES.md`.
+- [ ] I confirmed this PR targets the correct repo based on `docs/BOUNDARIES.md`.
 - [ ] This PR only changes starter-owned scope (`al-folio`) **or** I am porting a routed change and linked the owning repo issue/PR.
 
 Owning repo (if not starter): <!-- e.g., al-org-dev/al-folio-core -->
