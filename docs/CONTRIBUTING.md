@@ -85,14 +85,14 @@ The `CLAUDE.md` file serves as an entry point for Claude (Anthropic's AI assista
 @AGENTS.md
 ```
 
-### Codex Skills
+### Agent Skills
 
-Codex can use repo-local skills for common v1 workflows:
+Agents can use repo-local skills for common v1 workflows:
 
-- `.codex/skills/al-folio-bootstrap/SKILL.md` for new site setup and safe starter customization.
-- `.codex/skills/al-folio-v1-migration/SKILL.md` for customized fork migration and override drift auditing.
+- `.agents/skills/al-folio-bootstrap/SKILL.md` for new site setup and safe starter customization.
+- `.agents/skills/al-folio-v1-migration/SKILL.md` for customized fork migration and override drift auditing.
 
-Other agents can use the same Markdown files as task context.
+The canonical skill files live in `.agents/skills/`. `.codex/skills/` and `.claude/skills/` are symlinks for agent-specific discovery.
 
 ### Customization Agent
 

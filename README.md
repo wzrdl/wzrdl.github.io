@@ -354,12 +354,16 @@ The bundled v1 plugin repos are:
 
 `al-folio` v1.x is designed for agent-assisted setup and migration. Agents should read [AGENTS.md](AGENTS.md) first, then use [docs/BOUNDARIES.md](docs/BOUNDARIES.md) to route changes to the starter or the owning plugin repo.
 
+For existing customized forks, the recommended migration path is to ask an agent to use the [al-folio v1 migration skill](.agents/skills/al-folio-v1-migration/SKILL.md). The skill walks through creating a disposable migration branch, bringing site-owned content/config/data onto the v1 starter contract, running `al_folio_upgrade`, auditing local overrides, and validating the build. This is preferred over a manual file-by-file upgrade because v1 runtime ownership moved into plugins and local overrides need explicit drift tracking.
+
+The canonical skills live in [.agents/skills/](.agents/skills/). They are also exposed through `.codex/skills/` and `.claude/skills/` symlinks for agents that discover skills from tool-specific directories.
+
 ### Codex
 
 Codex can use the repo-local skills:
 
-- [al-folio bootstrap](.codex/skills/al-folio-bootstrap/SKILL.md): create and configure a new v1 site.
-- [al-folio v1 migration](.codex/skills/al-folio-v1-migration/SKILL.md): migrate customized forks and audit local overrides.
+- [al-folio bootstrap](.agents/skills/al-folio-bootstrap/SKILL.md): create and configure a new v1 site.
+- [al-folio v1 migration](.agents/skills/al-folio-v1-migration/SKILL.md): migrate customized forks and audit local overrides.
 
 Useful first prompts:
 
@@ -368,7 +372,7 @@ Useful first prompts:
 
 ### Claude
 
-Claude should start from [CLAUDE.md](CLAUDE.md), which imports [AGENTS.md](AGENTS.md). For setup or migration tasks, paste or attach the matching skill file from `.codex/skills/` as task context.
+Claude should start from [CLAUDE.md](CLAUDE.md), which imports [AGENTS.md](AGENTS.md). For setup or migration tasks, use the matching skill from `.claude/skills/`, which points to the canonical `.agents/skills/` directory.
 
 ### Copilot And Other Agents
 

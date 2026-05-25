@@ -16,8 +16,8 @@ These guides cover the `al-folio` v1.x starter and its pluginized runtime.
 
 - [Ownership Boundaries](BOUNDARIES.md): starter-vs-plugin ownership, PR routing, and release responsibilities.
 - [Contributing](CONTRIBUTING.md): contributor workflow, validation, and agent guidance.
-- [Codex bootstrap skill](../.codex/skills/al-folio-bootstrap/SKILL.md): agent workflow for new v1 sites.
-- [Codex migration skill](../.codex/skills/al-folio-v1-migration/SKILL.md): agent workflow for customized fork migrations and override audits.
+- [Bootstrap skill](../.agents/skills/al-folio-bootstrap/SKILL.md): agent workflow for new v1 sites.
+- [Migration skill](../.agents/skills/al-folio-v1-migration/SKILL.md): agent workflow for customized fork migrations and override audits.
 
 ## v1 Plugin System
 

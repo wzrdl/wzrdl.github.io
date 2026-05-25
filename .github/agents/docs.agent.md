@@ -27,8 +27,8 @@ Keep starter docs accurate for the pluginized architecture.
 - `docs/CONTRIBUTING.md`
 - `docs/BOUNDARIES.md`
 - `.github/copilot-instructions.md`
-- `.codex/skills/al-folio-bootstrap/SKILL.md`
-- `.codex/skills/al-folio-v1-migration/SKILL.md`
+- `.agents/skills/al-folio-bootstrap/SKILL.md`
+- `.agents/skills/al-folio-v1-migration/SKILL.md`
 
 ## Validation
 

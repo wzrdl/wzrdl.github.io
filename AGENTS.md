@@ -6,8 +6,9 @@
 
 - Start with `.github/copilot-instructions.md` for architecture, ownership boundaries, and CI expectations.
 - Use `docs/BOUNDARIES.md` as the source of truth for starter-vs-plugin ownership.
-- Use `.codex/skills/al-folio-bootstrap/SKILL.md` for new-site setup tasks.
-- Use `.codex/skills/al-folio-v1-migration/SKILL.md` for customized fork migrations.
+- Use `.agents/skills/al-folio-bootstrap/SKILL.md` for new-site setup tasks.
+- Use `.agents/skills/al-folio-v1-migration/SKILL.md` for customized fork migrations.
+- `.codex/skills` and `.claude/skills` are symlinks to `.agents/skills` for agent-specific discovery.
 
 ## What This Repo Owns
 
