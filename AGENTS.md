@@ -6,6 +6,8 @@
 
 - Start with `.github/copilot-instructions.md` for architecture, ownership boundaries, and CI expectations.
 - Use `docs/BOUNDARIES.md` as the source of truth for starter-vs-plugin ownership.
+- Use `.codex/skills/al-folio-bootstrap/SKILL.md` for new-site setup tasks.
+- Use `.codex/skills/al-folio-v1-migration/SKILL.md` for customized fork migrations.
 
 ## What This Repo Owns
 
@@ -34,6 +36,7 @@ bash test/integration_upgrade_cli.sh
 npx playwright install chromium webkit
 npm run test:visual
 bundle exec al-folio upgrade audit
+bundle exec al-folio upgrade overrides audit
 bundle exec al-folio upgrade report
 docker compose up -d
 curl -fsS http://127.0.0.1:8080/al-folio/ >/dev/null
@@ -49,3 +52,4 @@ Docker note: v1 uses `/srv/jekyll/bin/entry_point.sh` and serves from container-
 - If change is runtime feature behavior: route to owning plugin repo.
 - Do not add starter-local npm build scripts for theme/runtime assets.
 - Keep docs aligned with pluginized v1 ownership.
+- If you create or keep local overrides of plugin-owned files, run `bundle exec al-folio upgrade overrides audit` and commit `.al-folio-overrides.yml` after review.

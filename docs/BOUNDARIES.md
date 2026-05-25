@@ -37,6 +37,8 @@ Use this table before opening or reviewing a PR:
 
 Local site overrides are still valid. A starter site may define `_layouts/<name>.liquid`, `_includes/<path>.liquid`, `_sass/*.scss`, or site-specific plugins when the customization is only for that site. Shared runtime fixes should be ported to the owning plugin instead.
 
+When a site keeps local overrides of plugin-owned files, run `bundle exec al-folio upgrade overrides audit`. Commit `.al-folio-overrides.yml` after review so future plugin gem updates can flag upstream changes to shadowed files.
+
 Plugin releases are versioned and published independently on RubyGems. A plugin patch release does not require a new starter release unless the starter wiring, dependency pins, lockfile/image metadata, docs, or test fixtures need to change.
 
 ## Plugin naming convention
@@ -78,6 +80,7 @@ Use [`_data/featured_plugins.yml`](../_data/featured_plugins.yml) as the catalog
 
 - Do not duplicate gem-owned component correctness tests in `al-folio`.
 - Do not add local starter copies of gem-owned runtime files unless intentionally overriding behavior.
+- Do not leave intentional local overrides untracked; acknowledge them with `bundle exec al-folio upgrade overrides accept`.
 
 ## PR triage playbook
 

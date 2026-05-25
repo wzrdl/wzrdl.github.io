@@ -144,6 +144,8 @@ Most customizations still live in your site repo. The difference is that default
 
 When migrating an older customized fork, remove old local copies of files that you did not intentionally customize. In the `dfuchss/fuchss.org` rehearsal, deleting old local `_includes/head.liquid`, `_includes/scripts.liquid`, citation helper plugins, external-post helper plugins, `assets/js/distillpub/**`, and `assets/js/search/**` turned the upgrade audit from 4 blocking findings to 0 blocking findings.
 
+When you intentionally keep a local override of a plugin-owned file, run `bundle exec al-folio upgrade overrides audit` after dependency updates. Review stale overrides with `bundle exec al-folio upgrade overrides diff PATH`, then acknowledge reviewed files with `bundle exec al-folio upgrade overrides accept PATH`.
+
 ## Configuration
 
 The configuration file [\_config.yml](../_config.yml) contains the main configuration of the website. Most of the settings is self-explanatory and we also tried to add as much comments as possible. If you have any questions, please check if it was not already answered in the [FAQ](FAQ.md).

@@ -56,7 +56,7 @@ GEM
     al_folio_distill (1.0.1)
       jekyll (>= 3.9, < 5.0)
       liquid (>= 4.0, < 6.0)
-    al_folio_upgrade (1.0.2)
+    al_folio_upgrade (1.0.3)
       al_folio_core (>= 1.0.0)
       jekyll (>= 3.9, < 5.0)
       liquid (>= 4.0, < 6.0)
@@ -355,7 +355,7 @@ DEPENDENCIES
   al_folio_core (= 1.0.9)
   al_folio_cv (= 1.0.0)
   al_folio_distill (= 1.0.1)
-  al_folio_upgrade (= 1.0.2)
+  al_folio_upgrade (= 1.0.3)
   al_icons (= 1.0.0)
   al_img_tools (= 1.0.2)
   al_math (= 1.0.1)
@@ -400,7 +400,7 @@ CHECKSUMS
   al_folio_core (1.0.9) sha256=2f81477fb1e12d79dcd927815c9f22f3392157917a89a936308a6f22645e373a
   al_folio_cv (1.0.0) sha256=aa54c6efb38f46c5da09e09b82b4b050b5ce3b384f808922dc4fd665e10a840e
   al_folio_distill (1.0.1) sha256=f8ca859acdec0673ccd8b5314331af2bb0d1373461e22978f87dff68445550e9
-  al_folio_upgrade (1.0.2) sha256=f971e376ce8b39daa18629983ce19745b02d92b86979f811c13c2f4e1f526264
+  al_folio_upgrade (1.0.3) sha256=434ffddb27705852eae0bcaa01a8d007e0ef65472a989d1a33ae759f910f4709
   al_icons (1.0.0) sha256=7a7b6428d18e77b039aa1ae765a3faed0ae27cb646a08c1009b145c31ca5ef2d
   al_img_tools (1.0.2) sha256=1b86e860984d2f714e5a7d715e79722f280e90cc6739375a9119fc9dcb5bb8d6
   al_math (1.0.1) sha256=c66d402821a9efb997e63501654116ab9683401cb80ac9365c4a013afed4f2c4
@@ -410,7 +410,6 @@ CHECKSUMS
   benchmark (0.5.0) sha256=465df122341aedcb81a2a24b4d3bd19b6c67c1530713fd533f3ff034e419236c
   bibtex-ruby (6.2.0) sha256=d610eba78d6adf503a843daf144644449fb34e7c3f4a75e9ab67fae5dfd7c69a
   bigdecimal (4.1.2) sha256=53d217666027eab4280346fba98e7d5b66baaae1b9c3c1c0ffe89d48188a3fbd
-  bundler (4.0.12) sha256=7f8b757d28dfb636e7b24fba2344ac6dd13b5b24f4b46d62573d483f211825ac
   citeproc (1.1.0) sha256=278e6b8948133e82bef1c8204a1f88ca7adaa8744b9a283fe73e8f4cd0b53b95
   citeproc-ruby (2.1.8) sha256=192ce6525235adaa60d1dbc3f1b10b0839e86d98a94278736b807e234b3572e9
   classifier-reborn (2.3.0) sha256=e2236322de42b9c8d45d88a951cb0d76e210afa3bb8658b7b5802e2df41ef61c
@@ -534,4 +533,4 @@ CHECKSUMS
   webrick (1.9.2) sha256=beb4a15fc474defed24a3bda4ffd88a490d517c9e4e6118c3edce59e45864131
 
 BUNDLED WITH
-  4.0.12
+  4.0.6

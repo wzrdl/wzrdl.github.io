@@ -73,9 +73,9 @@ npx playwright install chromium webkit
 npm run test:visual
 ```
 
-## GitHub Copilot Agents
+## AI Agent Guidance
 
-This repository includes specialized GitHub Copilot agents and files to assist with development and documentation:
+This repository includes agent entrypoints and skills for Codex, Claude, Copilot, and similar coding agents.
 
 ### CLAUDE.md
 
@@ -84,6 +84,15 @@ The `CLAUDE.md` file serves as an entry point for Claude (Anthropic's AI assista
 ```
 @AGENTS.md
 ```
+
+### Codex Skills
+
+Codex can use repo-local skills for common v1 workflows:
+
+- `.codex/skills/al-folio-bootstrap/SKILL.md` for new site setup and safe starter customization.
+- `.codex/skills/al-folio-v1-migration/SKILL.md` for customized fork migration and override drift auditing.
+
+Other agents can use the same Markdown files as task context.
 
 ### Customization Agent
 

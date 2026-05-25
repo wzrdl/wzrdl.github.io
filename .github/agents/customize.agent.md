@@ -21,6 +21,7 @@ If a request changes runtime behavior, route to the owning plugin repo instead o
 1. Keep explanations simple for non-expert users.
 2. Prefer editing `_config.yml`, content collections, and data files.
 3. Avoid monolith-era guidance that assumes starter owns `_includes/_layouts/_sass` runtime internals.
+4. When retaining local overrides of plugin-owned files, run the override audit and acknowledge reviewed overrides.
 
 ## Key Starter Files
 
@@ -34,6 +35,12 @@ If a request changes runtime behavior, route to the owning plugin repo instead o
 ## Validation
 
 Use the validated command set in `AGENTS.md`.
+
+For local overrides, include:
+
+```bash
+bundle exec al-folio upgrade overrides audit
+```
 
 ## Escalation
 

@@ -263,9 +263,10 @@ Run the test yourself: [Google Lighthouse PageSpeed Insights](https://pagespeed.
   - [Installing and Deploying](#installing-and-deploying)
   - [Customizing](#customizing)
   - [Plugin Ecosystem](#plugin-ecosystem)
-  - [GitHub Copilot Agents](#github-copilot-agents)
-    - [Customization Agent](#customization-agent)
-    - [Documentation Agent](#documentation-agent)
+  - [Using AI Agents](#using-ai-agents)
+    - [Codex](#codex)
+    - [Claude](#claude)
+    - [Copilot And Other Agents](#copilot-and-other-agents)
   - [Documentation](#documentation)
   - [Features](#features)
     - [Light/Dark Mode](#lightdark-mode)
@@ -349,33 +350,29 @@ The bundled v1 plugin repos are:
 - [`al-ext-posts`](https://github.com/al-org-dev/al-ext-posts): external post ingestion
 - [`al-analytics`](https://github.com/al-org-dev/al-analytics), [`al-comments`](https://github.com/al-org-dev/al-comments), [`al-cookie`](https://github.com/al-org-dev/al-cookie), [`al-img-tools`](https://github.com/al-org-dev/al-img-tools), [`al-math`](https://github.com/al-org-dev/al-math), [`al-charts`](https://github.com/al-org-dev/al-charts), and [`al-newsletter`](https://github.com/al-org-dev/al-newsletter): feature-specific runtime and integration behavior
 
-## GitHub Copilot Agents
+## Using AI Agents
 
-This repository includes two specialized GitHub Copilot agents to enhance your development experience:
+`al-folio` v1.x is designed for agent-assisted setup and migration. Agents should read [AGENTS.md](AGENTS.md) first, then use [docs/BOUNDARIES.md](docs/BOUNDARIES.md) to route changes to the starter or the owning plugin repo.
 
-### Customization Agent
+### Codex
 
-The **Customization Agent** helps you personalize your al-folio website by:
+Codex can use the repo-local skills:
 
-- Guiding you through configuration changes step-by-step
-- Modifying files directly in your repository
-- Explaining technical concepts in plain language (great for users without coding experience)
-- Assisting with common tasks like updating your CV, adding publications, creating blog posts, and customizing themes
+- [al-folio bootstrap](.codex/skills/al-folio-bootstrap/SKILL.md): create and configure a new v1 site.
+- [al-folio v1 migration](.codex/skills/al-folio-v1-migration/SKILL.md): migrate customized forks and audit local overrides.
 
-See [docs/CUSTOMIZE.md § GitHub Copilot Customization Agent](docs/CUSTOMIZE.md#github-copilot-customization-agent) for detailed usage instructions.
+Useful first prompts:
 
-### Documentation Agent
+- "Use the al-folio bootstrap skill to configure my new site."
+- "Use the al-folio v1 migration skill to migrate this customized fork and run the override audit."
 
-The **Documentation Agent** maintains clear and up-to-date project documentation by:
+### Claude
 
-- Updating documentation files when features change
-- Writing in a style accessible to academics and researchers
-- Keeping documentation synchronized with the codebase
-- Following documentation best practices
+Claude should start from [CLAUDE.md](CLAUDE.md), which imports [AGENTS.md](AGENTS.md). For setup or migration tasks, paste or attach the matching skill file from `.codex/skills/` as task context.
 
-See [docs/CONTRIBUTING.md § GitHub Copilot Agents](docs/CONTRIBUTING.md#github-copilot-agents) for more information.
+### Copilot And Other Agents
 
-> **Requirements:** Both agents require a [GitHub Copilot](https://github.com/features/copilot) subscription. For more information about GitHub Copilot and how to use agents, see the [GitHub Copilot documentation](https://docs.github.com/en/copilot).
+Copilot should follow [.github/copilot-instructions.md](.github/copilot-instructions.md) and the specialized agents in [.github/agents/](.github/agents/). Other agents should follow the same rule: keep starter work in this repo, route runtime behavior to the owning `al-org-dev` plugin, and run `bundle exec al-folio upgrade overrides audit` whenever local overrides are added or retained.
 
 ## Documentation
 

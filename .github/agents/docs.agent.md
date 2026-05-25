@@ -15,6 +15,7 @@ Keep starter docs accurate for the pluginized architecture.
 - Reflect starter-vs-plugin boundaries from `docs/BOUNDARIES.md`.
 - Keep contributor routing explicit: starter changes here, feature/runtime changes in owning plugin repos.
 - Avoid stale bootstrap-era instructions unless clearly marked compatibility-only.
+- Keep migration guidance aligned with `al_folio_upgrade`, including the local override audit workflow.
 
 ## Core Docs to Maintain
 
@@ -26,6 +27,8 @@ Keep starter docs accurate for the pluginized architecture.
 - `docs/CONTRIBUTING.md`
 - `docs/BOUNDARIES.md`
 - `.github/copilot-instructions.md`
+- `.codex/skills/al-folio-bootstrap/SKILL.md`
+- `.codex/skills/al-folio-v1-migration/SKILL.md`
 
 ## Validation
 

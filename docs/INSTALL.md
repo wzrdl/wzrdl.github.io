@@ -340,8 +340,9 @@ For heavily customized pre-v1 repositories, you can still use rebase/cherry-pick
 2. Keep `theme: al_folio_core`, the `al_folio` config namespace, and the bundled `al_*` plugin entries from the v1 starter.
 3. Enable `al_folio.compat.bootstrap.enabled: true` if your custom templates still use Bootstrap classes or `data-toggle` attributes.
 4. Run the upgrade audit/codemods.
-5. Fix all blocking findings from `al-folio-upgrade-report.md`.
-6. Build locally and review key pages before deploying.
+5. Run the local override audit.
+6. Fix all blocking findings from `al-folio-upgrade-report.md`.
+7. Build locally and review key pages before deploying.
 
 For ownership boundaries (starter vs gem runtime/tests), see [`BOUNDARIES.md`](BOUNDARIES.md).
 
@@ -356,7 +357,15 @@ Keep these in your site repo:
 - custom plugins that are truly site-specific
 - local path or Git-pinned gems when you intentionally maintain a custom plugin variant
 
-Run `bundle exec al-folio upgrade report` early. The report calls out plugin-owned local files that usually should be removed or replaced by v1 plugin wiring.
+Run these checks early:
+
+```bash
+bundle exec al-folio upgrade audit --no-fail
+bundle exec al-folio upgrade overrides audit
+bundle exec al-folio upgrade report
+```
+
+The report calls out plugin-owned local files that usually should be removed or replaced by v1 plugin wiring. The override audit catches intentional local copies of plugin-owned files and records the upstream version you reviewed.
 
 Remove or review these during migration:
 
@@ -379,3 +388,15 @@ gem "al_folio_core", path: "../al-folio-core"
 ```
 
 Only fork a plugin when the behavior you need belongs to that plugin. A local layout/include/Sass override in your site repo is enough for one-off site customization.
+
+#### Tracking local override drift
+
+Local overrides are still supported in v1, but Git will not conflict when a gem updates the upstream file that your local copy shadows. Use `al_folio_upgrade` to restore that review signal:
+
+```bash
+bundle exec al-folio upgrade overrides audit
+bundle exec al-folio upgrade overrides diff _includes/repository/repo.liquid
+bundle exec al-folio upgrade overrides accept _includes/repository/repo.liquid
+```
+
+Commit `.al-folio-overrides.yml` in customized sites. It stores the owning gem, gem version, upstream checksum, and local checksum for each reviewed override. After future `bundle update` runs, `bundle exec al-folio upgrade overrides audit` flags overrides whose upstream plugin file changed.

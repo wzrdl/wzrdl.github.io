@@ -116,8 +116,9 @@ Use the SemVer migration flow:
 
 1. `bundle update`
 2. `bundle exec al-folio upgrade audit`
-3. `bundle exec al-folio upgrade apply --safe` (optional)
-4. `bundle exec al-folio upgrade report`
+3. `bundle exec al-folio upgrade overrides audit`
+4. `bundle exec al-folio upgrade apply --safe` (optional)
+5. `bundle exec al-folio upgrade report`
 
 Then resolve all **Blocking** findings in `al-folio-upgrade-report.md`. Non-blocking findings are deprecated patterns you can migrate incrementally.
 
@@ -132,7 +133,20 @@ Use this rule of thumb:
 - Keep site-specific content, data, Sass, and intentional local overrides in your site repo.
 - Remove old copied runtime files when v1 gems own them now, especially `_includes/head.liquid`, `_includes/scripts.liquid`, `assets/js/distillpub/**`, `assets/js/search/**`, and old citation/external-post helper plugins.
 - Fork or pin a plugin only when you want to change plugin-owned behavior for every site using that plugin.
-- Run `bundle exec al-folio upgrade report` to identify old local copies of plugin-owned runtime files before you start deleting or rewriting templates.
+- Run `bundle exec al-folio upgrade overrides audit` after dependency updates to identify local overrides whose upstream plugin files changed.
+- Commit `.al-folio-overrides.yml` after reviewing intentional overrides so future gem updates can flag stale copies explicitly.
+
+## How do I know when a local override is stale after a plugin update?
+
+Use the override audit workflow:
+
+```bash
+bundle exec al-folio upgrade overrides audit
+bundle exec al-folio upgrade overrides diff _includes/repository/repo.liquid
+bundle exec al-folio upgrade overrides accept _includes/repository/repo.liquid
+```
+
+The audit compares local overrides with files shipped by installed `al-*` gems. The acknowledgement file `.al-folio-overrides.yml` stores the upstream checksum you reviewed. When a future gem update changes that upstream file, the audit marks your local override as stale so you can reconcile it.
 
 ## Why does `v1.x` starter not have `npm run build:css` anymore?
 

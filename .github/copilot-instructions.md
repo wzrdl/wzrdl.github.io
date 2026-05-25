@@ -45,6 +45,8 @@ Do not reintroduce plugin-owned runtime assets into starter paths unless intenti
 - `test/visual/` - visual parity checks
 - `.github/workflows/` - CI workflows
 - `docs/` - user, maintainer, upgrade, and plugin-system documentation
+- `.codex/skills/al-folio-bootstrap/SKILL.md` - agent workflow for new site setup
+- `.codex/skills/al-folio-v1-migration/SKILL.md` - agent workflow for customized fork migration
 
 ## Validated Commands
 
@@ -61,6 +63,7 @@ bash test/integration_upgrade_cli.sh
 npx playwright install chromium webkit
 npm run test:visual
 bundle exec al-folio upgrade audit
+bundle exec al-folio upgrade overrides audit
 bundle exec al-folio upgrade report
 docker compose up -d
 curl -fsS http://127.0.0.1:8080/al-folio/ >/dev/null
@@ -82,3 +85,4 @@ Keep these workflows aligned when changing starter behavior:
 - Prefer starter wiring/docs/content changes in this repo.
 - Route runtime/layout/feature fixes to owning plugin repos.
 - Keep all contributor guidance consistent with v1 ownership boundaries.
+- When a site keeps local overrides of plugin-owned files, run `bundle exec al-folio upgrade overrides audit` and update `.al-folio-overrides.yml` after reviewing diffs.
