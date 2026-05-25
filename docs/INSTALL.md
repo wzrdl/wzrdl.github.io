@@ -102,7 +102,7 @@ docker compose up --build
 
 > If you want to update jekyll, install new ruby packages, etc., all you have to do is build the image again using `--force-recreate` argument at the end of the previous command! It will download Ruby and Jekyll and install all Ruby packages again from scratch.
 
-If you want to use a specific docker version, you can do so by changing the version tag to `your_version` in `docker-compose.yaml` (the `v0.16.3` in `image: amirpourmand/al-folio:v0.16.3`). For example, you might have created your website on `v0.10.0` and you want to stick with that.
+If you want to use a specific docker version, you can do so by changing the version tag to `your_version` in `docker-compose.yml` (for example, `image: amirpourmand/al-folio:v1.0.0`). Plugin patch releases do not require a new starter Docker image unless the starter wiring, lockfile, Dockerfile, or image build inputs change.
 
 ### Have Bugs on Docker Image?
 

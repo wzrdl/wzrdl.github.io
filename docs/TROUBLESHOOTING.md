@@ -111,9 +111,9 @@ This guide covers common issues and their solutions. For more information, see [
 
 **Solution:**
 
-1. Delete `Gemfile.lock`: `rm Gemfile.lock`
-2. Update Bundler: `bundle update`
-3. Install gems: `bundle install`
+1. Install with the committed lockfile: `bundle install`
+2. If you intentionally changed plugin pins or Ruby dependencies, update the affected gems: `bundle update <gem-name>`
+3. For broad local dependency refreshes in a customized fork, run `bundle update` and commit the regenerated `Gemfile.lock`
 4. Try serving again: `bundle exec jekyll serve`
 
 ---
