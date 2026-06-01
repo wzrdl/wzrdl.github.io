@@ -308,7 +308,8 @@ jekyll-minifier:
   # tokens inside calc(), turning `var(--spacing)` into the invalid `var( -  - spacing)` and
   # breaking every spacing/positioning utility (e.g. .fixed-top -> broken navbar). Disable it.
   compress_css: false
-  exclude: ["robots.txt", "assets/js/search/*.js"]
+  # JS minification is delegated to jekyll-terser (compress_javascript above is false).
+  exclude: ["robots.txt"]
 
 # -----------------------------------------------------------------------------
 # Terser
