@@ -1,0 +1,13 @@
+"Sci Rep":
+  url: https://www.nature.com/srep/
+  color: "#2f6f73"
+
+"SPIE":
+  url: https://www.spiedigitallibrary.org/
+  color: "#6b4c9a"
+
+"Under Review":
+  color: "#6f7c8a"
+
+"Thesis":
+  color: "#c76f3a"

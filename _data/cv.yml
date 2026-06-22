@@ -1,0 +1,130 @@
+cv:
+  name: Zirui Wen
+  label: M.S. Student in Applied Artificial Intelligence
+  email: zwen6@stevens.edu
+  location: Hoboken, NJ
+  image: ""
+  summary: M.S. student at Stevens Institute of Technology working on LLM reasoning, LLM forgetting, continual learning, federated learning, reinforcement learning, knowledge graphs, and AI for health.
+
+  social_networks:
+    - network: GitHub
+      username: wzrdl
+    - network: LinkedIn
+      username: zirui-wen-76320b327
+
+  sections:
+    Education:
+      - institution: Stevens Institute of Technology
+        location: Hoboken, NJ
+        area: Applied Artificial Intelligence
+        studyType: M.S.
+        start_date: 2024-09
+        end_date: 2026-05
+        score: "GPA: 3.94/4.0"
+
+      - institution: University of Birmingham
+        location: Birmingham, United Kingdom
+        area: Applied Mathematics with Information Computing Science
+        studyType: B.S.
+        start_date: 2020-09
+        end_date: 2024-06
+
+      - institution: Jinan University
+        location: Guangzhou, China
+        area: Information and Computing Science
+        studyType: B.S.
+        start_date: 2020-09
+        end_date: 2024-06
+
+    Experience:
+      - company: Intelligent Systems Lab, Stevens Institute of Technology
+        position: Research Assistant
+        location: Hoboken, NJ
+        start_date: 2025-11
+        end_date: present
+        summary: "Advisor: Hao Wang."
+        highlights:
+          - Conducting research on LLM forgetting, continual learning, federated learning, and related language model problems.
+          - Working on model behavior analysis, evaluation, and system-level experimentation for large-scale AI systems.
+
+      - company: Brain Imaging and Graph Learning Lab, Stevens Institute of Technology
+        position: Research Assistant
+        location: Hoboken, NJ
+        start_date: 2024-11
+        end_date: present
+        summary: "Advisor: Feng Liu."
+        highlights:
+          - Built a Transformer-based EEG sequence labeling pipeline over 670 samples and 1.07M time points for seizure detection.
+          - Designed a medical GraphRAG pipeline combining Neo4j structural queries, FAISS dense retrieval, and QLoRA-based LLaMA-3 and Mistral-7B fine-tuning, improving factual consistency by 20% on internal benchmarks.
+          - Constructed probabilistic knowledge graphs from more than 10,000 clinical records and modeled seizure propagation as an MDP trained with PPO-style reinforcement learning.
+
+      - company: Siemens
+        position: Data Team Assistant Intern
+        location: China
+        start_date: 2023-11
+        end_date: 2024-03
+        highlights:
+          - Built modular Python, SQL, and Excel pipelines for multi-source data ingestion, cleansing, validation, and KPI analysis.
+          - Automated recurring workflows to reduce manual effort and improve reporting consistency and data quality.
+
+      - company: Pazhou Lab, Jinan University
+        position: Research Assistant
+        location: Guangzhou, China
+        start_date: 2024-03
+        end_date: 2024-05
+        summary: "Advisor: Wensheng Gan."
+        highlights:
+          - Studied gradient-based prompt optimization for medical language models by treating prompt tuning as a continuous optimization problem over text embeddings.
+          - Introduced a Bayesian reliability estimator for candidate prompts and improved factual precision by 12% on internal medical QA benchmarks.
+
+    Publications:
+      - title: Knowledge graph representation of the mappings between seizure semiology and epileptogenic zones
+        authors:
+          - Shihao Yang
+          - Zirui Wen
+          - Wenxin Zhan
+          - Feng Liu
+        publisher: Scientific Reports
+        releaseDate: 2026-01-10
+        url: https://doi.org/10.1038/s41598-025-32920-z
+        summary: Peer-reviewed article in Scientific Reports, volume 16, article 3004.
+
+      - title: COVID-19 infection prediction using physical signs
+        authors:
+          - Zirui Wen
+          - Junjie Zhang
+          - Yuhao Zhang
+        publisher: SPIE CCPCDL 2022
+        releaseDate: 2022-10-13
+        url: https://doi.org/10.1117/12.2640976
+
+    Projects:
+      - name: Miniagent
+        summary: Modular GRPO-based agent training framework for tool-augmented tasks.
+        highlights:
+          - Designed a tool-call interface supporting external web search during rollouts.
+          - Built infrastructure for end-to-end agent reinforcement learning experiments.
+
+      - name: Mini-vLLM
+        summary: Lightweight vLLM-style inference engine.
+        highlights:
+          - Implemented PagedAttention and block-based KV cache management.
+          - Focused on long-context decoding throughput and memory fragmentation.
+
+      - name: Smarter Doctor Agent
+        summary: Real-time voice-based medical agent deployed on Google Cloud.
+        highlights:
+          - Built a FastAPI backend and Next.js frontend.
+          - Integrated Twilio, Elasticsearch, BigQuery, and Gemini through Vertex AI with Docker and GitHub Actions CI/CD.
+
+      - name: Kernel K-Means GPU Accelerator
+        summary: GPU-accelerated kernel K-Means implementation.
+        highlights:
+          - Reformulated kernel K-Means updates using sparse linear algebra and GPU-parallel SpMM operations.
+          - Achieved up to 8.3x speedup over a CUDA baseline on 100k-sample datasets.
+
+    Skills:
+      - name: Machine Learning
+        keywords: LLM reasoning, reinforcement learning, continual learning, federated learning, knowledge graph reasoning, medical AI
+      - name: Systems
+        keywords: Python, PyTorch, FastAPI, Next.js, Neo4j, FAISS, SQL, Docker, GitHub Actions
