@@ -2,7 +2,7 @@
 # Site settings
 # -----------------------------------------------------------------------------
 
-title: blank
+title: Zirui Wen
 first_name: Zirui
 middle_name:
 last_name: Wen
@@ -90,7 +90,7 @@ posts_in_search: false
 bib_search: true
 
 # Dimensions
-max_width: 800px
+max_width: 930px
 
 # -----------------------------------------------------------------------------
 # Open Graph & Schema.org
