@@ -2,6 +2,8 @@
 layout: about
 title: about
 permalink: /
+nav: true
+nav_order: 1
 subtitle: M.S. student in Applied Artificial Intelligence at <a href="https://www.stevens.edu/" target="_blank">Stevens Institute of Technology</a>
 
 profile:
@@ -9,15 +11,18 @@ profile:
   image: prof_pic.jpg
   image_circular: false
   more_info: >
+    <p>M.S. Student @ Stevens Institute of Technology</p>
     <p>Hoboken, NJ</p>
     <p><a href="mailto:zwen6@stevens.edu">zwen6@stevens.edu</a></p>
     <p><a href="mailto:wzrqczj@gmail.com">wzrqczj@gmail.com</a></p>
+    <p><a href="https://github.com/wzrdl" target="_blank" rel="noopener noreferrer">GitHub</a> / <a href="https://linkedin.com/in/zirui-wen-76320b327/" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+    <p><a href="/assets/pdf/CV_phd.pdf">CV</a></p>
 
 selected_papers: true
-social: true
+social: false
 
 announcements:
-  enabled: true
+  enabled: false
   scrollable: false
   limit: 5
 
