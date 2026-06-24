@@ -4,24 +4,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - "assets/**"
-      - "_bibliography/**"
-      - "_data/**"
-      - "_news/**"
-      - "_pages/**"
-      - "_projects/**"
-      - "**.bib"
-      - "**.html"
-      - "**.js"
-      - "**.liquid"
-      - "**/*.md"
-      - "**.yml"
-      - "Gemfile"
-      - "Gemfile.lock"
-      - "package.json"
-      - "package-lock.json"
-      - "purgecss.config.js"
   pull_request:
     branches:
       - main
