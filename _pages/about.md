@@ -13,6 +13,7 @@ profile:
     <p>Hoboken, NJ</p>
     <p>
       <a href="mailto:wzrqczj@gmail.com" title="Email" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+      <a href="https://scholar.google.com/citations?user=OjgB2gsAAAAJ" target="_blank" rel="noopener noreferrer" title="Google Scholar" aria-label="Google Scholar"><i class="ai ai-google-scholar"></i></a>
       <a href="https://github.com/wzrdl" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
       <a href="https://linkedin.com/in/zirui-wen-76320b327/" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
       <a href="/assets/pdf/CV_phd.pdf" title="CV" aria-label="CV"><i class="fa-regular fa-file-pdf"></i></a>
