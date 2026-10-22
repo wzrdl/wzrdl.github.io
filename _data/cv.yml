@@ -1,10 +1,10 @@
 cv:
   name: Zirui Wen
-  label: M.S. Student in Applied Artificial Intelligence
+  label: Research Assistant in Prof. Feng Liu's Lab, Rutgers University
   email: wzrqczj@gmail.com
-  location: Hoboken, NJ
+  location: New Brunswick, NJ
   image: ""
-  summary: M.S. student at Stevens Institute of Technology working on LLM reasoning, LLM forgetting, continual learning, federated learning, reinforcement learning, knowledge graphs, and AI for health.
+  summary: Research Assistant in Prof. Feng Liu's Lab at Rutgers University working on machine learning for brain science, EEG source imaging, and epilepsy. M.S. in Applied Artificial Intelligence from Stevens Institute of Technology.
 
   social_networks:
     - network: GitHub
@@ -78,6 +78,16 @@ cv:
           - Introduced a Bayesian reliability estimator for candidate prompts and improved factual precision by 12% on internal medical QA benchmarks.
 
     Publications:
+      - title: Observable and Null-Space Electrophysiological Source Imaging with Diffusion Priors
+        authors:
+          - Zirui Wen
+          - Shihao Yang
+          - Feng Liu
+        publisher: Under review
+        releaseDate: "2026"
+        url: https://www.researchgate.net/publication/415632656_Observable_and_Null-Space_Electrophysiological_Source_Imaging_with_Diffusion_Priors
+        summary: Diffusion-based refinement of EEG-observable source activity with deterministic null-space completion.
+
       - title: Knowledge graph representation of the mappings between seizure semiology and epileptogenic zones
         authors:
           - Shihao Yang

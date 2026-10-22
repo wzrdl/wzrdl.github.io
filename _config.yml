@@ -9,11 +9,11 @@ last_name: Wen
 contact_note: >
   Best reached by email for research collaborations, Ph.D. opportunities, and project discussions.
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
-  Academic homepage of Zirui Wen, M.S. student in Applied Artificial Intelligence at Stevens Institute of Technology.
+  Academic homepage of Zirui Wen, Research Assistant in Prof. Feng Liu's Lab at Rutgers University, working on machine learning for brain science, EEG source imaging, and epilepsy.
 footer_text: >
   Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
-keywords: large-language-models, reinforcement-learning, federated-learning, continual-learning, knowledge-graphs, medical-ai
+keywords: neuroscience, eeg-source-imaging, epilepsy, diffusion-models, reinforcement-learning, knowledge-graphs, medical-ai
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: YahaUsagi.jpg # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
